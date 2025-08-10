@@ -1,37 +1,154 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Coaches - Downingtown East Boys Volleyball</title>
-<script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaches - Downingtown East Boys Volleyball</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        :root {
+            --dt-blue: #003366;
+            --dt-yellow: #FFD700;
+        }
+        .bg-dt-blue { background-color: var(--dt-blue); }
+        .text-dt-blue { color: var(--dt-blue); }
+        .bg-dt-yellow { background-color: var(--dt-yellow); }
+        .text-dt-yellow { color: var(--dt-yellow); }
+        .border-dt-yellow { border-color: var(--dt-yellow); }
+        .nav-link {
+            @apply px-4 py-2 text-white hover:bg-dt-yellow hover:text-dt-blue rounded-md transition-colors duration-300;
+        }
+    </style>
 </head>
-<body class="bg-dt-blue text-white">
-<header class="bg-dt-yellow p-4 flex justify-between items-center">
-<img alt="Cougars Volleyball Logo" class="h-12" src="images/logo.png"/>
-<nav class="space-x-4">
-<a class="px-4 py-2 hover:bg-dt-blue rounded-md transition-colors duration-300" href="index.html">Home</a>
-<a class="px-4 py-2 hover:bg-dt-blue rounded-md transition-colors duration-300" href="schedule.html">Schedule</a>
-<a class="px-4 py-2 hover:bg-dt-blue rounded-md transition-colors duration-300" href="coaches.html">Coaches</a>
-<a class="px-4 py-2 hover:bg-dt-blue rounded-md transition-colors duration-300" href="contact.html">Contact</a>
-</nav>
-</header>
-<main class="p-8">
-<h1 class="text-4xl font-bold mb-4">Meet the Coaches</h1>
-<div class="space-y-4">
-<div>
-<h2 class="text-2xl font-semibold">Coach Smith</h2>
-<p>Head Coach - 10 years of experience building championship teams.</p>
-</div>
-<div>
-<h2 class="text-2xl font-semibold">Coach Johnson</h2>
-<p>Assistant Coach - Former collegiate player, focused on player development.</p>
-</div>
-</div>
-</main>
-<footer class="bg-dt-yellow text-center p-4 mt-8">
-<p class="text-dt-blue">© 2025 Downingtown East Boys Volleyball</p>
-</footer>
+<body class="bg-gray-100">
+
+    <!-- Header & Navigation -->
+    <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="http://googleusercontent.com/file_content/19" alt="Cougars Volleyball Logo" class="h-14">
+                <span class="text-white text-xl font-bold hidden md:block">Downingtown East<br>Boys Volleyball</span>
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
+                </svg>
+            </button>
+
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="schedule.html" class="nav-link">Schedule</a>
+                <a href="#" class="nav-link font-bold bg-white/20">Coaches</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="index.html" class="block nav-link text-center">Home</a>
+            <a href="schedule.html" class="block nav-link text-center">Schedule</a>
+            <a href="#" class="block nav-link text-center font-bold bg-white/20">Coaches</a>
+            <a href="contact.html" class="block nav-link text-center">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+            
+            <div class="space-y-12">
+                <!-- Head Coach Bio -->
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <!-- Placeholder for coach photo -->
+                        <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
+                        <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            <!-- Placeholder for bio text -->
+                            Your bio will go here. You can write about your coaching experience, your passion for volleyball, your connection to Downingtown East, and your goals for the team and its players. This is a great place to set the tone for the program.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="border-t-2 border-gray-200">
+
+                <!-- Assistant Coach Bio -->
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <!-- Placeholder for coach photo -->
+                        <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h2 class="text-3xl font-bold text-gray-800">TBD</h2>
+                        <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            <!-- Placeholder for bio text -->
+                           A bio for the assistant coach can be placed here.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dt-blue text-white mt-12">
+        <div class="container mx-auto p-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-dt-yellow">Home</a></li>
+                        <li><a href="schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
+                        <li><a href="contact.html" class="hover:text-dt-yellow">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-3">CONTACT</h4>
+                    <p>Downingtown East High School</p>
+                    <p>50 Devon Dr, Exton, PA 19341</p>
+                    <a href="contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
+                    <p>Links to social media coming soon!</p>
+                </div>
+            </div>
+            <div class="text-center border-t border-white/20 mt-8 pt-6">
+                <p>&copy; 2025 Downingtown East Boys Volleyball. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
 </body>
 </html>
