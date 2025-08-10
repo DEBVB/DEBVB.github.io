@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Downingtown East Boys Volleyball</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        :root { --dt-blue: #003366; --dt-yellow: #FFD700; }
+        .bg-dt-blue { background-color: var(--dt-blue); }
+        .text-dt-blue { color: var(--dt-blue); }
+        .bg-dt-yellow { background-color: var(--dt-yellow); }
+        .text-dt-yellow { color: var(--dt-yellow); }
+        .border-dt-yellow { border-color: var(--dt-yellow); }
+        .nav-link { @apply px-4 py-2 text-white hover:bg-dt-yellow hover:text-dt-blue rounded-md transition-colors duration-300; }
+        .result-win { @apply bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm; }
+        .result-loss { @apply bg-red-100 text-red-800 font-bold px-3 py-1 rounded-full text-sm; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <!-- CORRECTED IMAGE PATH -->
+                <img src="logo.png" alt="Cougars Volleyball Logo" class="h-14">
+                <span class="text-white text-xl font-bold hidden md:block">Downingtown East<br>Boys Volleyball</span>
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" /></svg>
+            </button>
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="schedule.html" class="nav-link font-bold bg-white/20">Schedule</a>
+                <a href="coaches.html" class="nav-link">Coaches</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="index.html" class="block nav-link text-center">Home</a>
+            <a href="schedule.html" class="block nav-link text-center font-bold bg-white/20">Schedule</a>
+            <a href="coaches.html" class="block nav-link text-center">Coaches</a>
+            <a href="contact.html" class="block nav-link text-center">Contact</a>
+        </div>
+    </header>
+    <main class="container mx-auto p-4 md:p-8">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">2025 Game Schedule</h1>
+            <div class="text-center bg-blue-50 border border-dt-blue rounded-lg p-4 mb-8">
+                <p class="font-bold text-dt-blue">The 2025 schedule is coming soon! The table below shows our results from the 2024 season.</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead class="bg-dt-blue text-white">
+                        <tr>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Opponent</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">Location</th>
+                            <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Time</th>
+                            <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b"><td class="py-3 px-4">Mar 26, 2024</td><td class="py-3 px-4 font-bold">@ Unionville</td><td class="py-3 px-4 hidden md:table-cell">Away</td><td class="py-3 px-4">6:00 PM</td><td class="py-3 px-4 text-center"><span class="result-win">W 3-1</span></td></tr>
+                        <tr class="border-b bg-gray-50"><td class="py-3 px-4">Mar 28, 2024</td><td class="py-3 px-4 font-bold">vs. Avon Grove</td><td class="py-3 px-4 hidden md:table-cell">Home</td><td class="py-3 px-4">6:00 PM</td><td class="py-3 px-4 text-center"><span class="result-win">W 3-0</span></td></tr>
+                        <tr class="border-b"><td class="py-3 px-4">Apr 2, 2024</td><td class="py-3 px-4 font-bold">@ Downingtown West</td><td class="py-3 px-4 hidden md:table-cell">Away</td><td class="py-3 px-4">6:45 PM</td><td class="py-3 px-4 text-center"><span class="result-loss">L 1-3</span></td></tr>
+                        <tr class="border-b bg-gray-50"><td class="py-3 px-4">Apr 4, 2024</td><td class="py-3 px-4 font-bold">vs. West Chester Henderson</td><td class="py-3 px-4 hidden md:table-cell">Home</td><td class="py-3 px-4">6:00 PM</td><td class="py-3 px-4 text-center"><span class="result-win">W 3-0</span></td></tr>
+                        <tr class="border-b"><td class="py-3 px-4">Apr 9, 2024</td><td class="py-3 px-4 font-bold">@ West Chester Rustin</td><td class="py-3 px-4 hidden md:table-cell">Away</td><td class="py-3 px-4">5:00 PM</td><td class="py-3 px-4 text-center"><span class="result-win">W 3-0</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dt-blue text-white mt-12">
+        <div class="container mx-auto p-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-dt-yellow">Home</a></li>
+                        <li><a href="coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
+                        <li><a href="contact.html" class="hover:text-dt-yellow">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-3">CONTACT</h4>
+                    <p>Downingtown East High School</p>
+                    <p>50 Devon Dr, Exton, PA 19341</p>
+                    <a href="contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
+                    <p>Links to social media coming soon!</p>
+                </div>
+            </div>
+            <div class="text-center border-t border-white/20 mt-8 pt-6">
+                <p>&copy; 2025 Downingtown East Boys Volleyball. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
