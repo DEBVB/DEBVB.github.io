@@ -16,110 +16,113 @@
             --dt-blue: #003366;
             --dt-yellow: #FFD700;
         }
-        .bg-dt-blue {
-            background-color: var(--dt-blue);
-        }
-        .text-dt-blue {
-            color: var(--dt-blue);
-        }
-        .bg-dt-yellow {
-            background-color: var(--dt-yellow);
-        }
-        .text-dt-yellow {
-            color: var(--dt-yellow);
-        }
-        .border-dt-yellow {
-            border-color: var(--dt-yellow);
-        }
+        .bg-dt-blue { background-color: var(--dt-blue); }
+        .text-dt-blue { color: var(--dt-blue); }
+        .bg-dt-yellow { background-color: var(--dt-yellow); }
+        .text-dt-yellow { color: var(--dt-yellow); }
+        .border-dt-yellow { border-color: var(--dt-yellow); }
+
+        /* Consistent navigation link style */
         .nav-link {
-            @apply px-4 py-2 text-white hover:bg-dt-yellow hover:text-dt-blue rounded-md transition-colors duration-300;
+            padding: 0.5rem 1rem;
+            color: white;
+            border-radius: 0.375rem;
+            transition: color 0.3s, background-color 0.3s;
+            display: inline-block;
+        }
+        .nav-link:hover {
+            background-color: var(--dt-yellow);
+            color: var(--dt-blue);
         }
     </style>
 </head>
 <body class="bg-gray-100">
-   <header class="shadow-lg sticky top-0 z-50">
-    <nav class="container mx-auto px-4 py-2 flex justify-between items-center" style="background-color: var(--nav-bg);">
-        <a href="index.html" class="flex items-center space-x-3">
-            <img src="logo.png" alt="Cougars Volleyball Logo" class="h-14" />
-            <span class="text-white text-xl font-bold hidden md:block">Downingtown East<br />Boys Volleyball</span>
-        </a>
-        <button id="mobile-menu-button" class="md:hidden text-white">
-            <!-- hamburger icon SVG -->
-        </button>
-        <div class="hidden md:flex items-center space-x-2">
-            <a href="index.html" class="nav-link active">Home</a> <!-- active link -->
-            <a href="schedule.html" class="nav-link">Schedule</a>
-            <a href="coaches.html" class="nav-link">Coaches</a>
-            <a href="contact.html" class="nav-link">Contact</a>
-        </div>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2" style="background-color: var(--nav-bg);">
-        <a href="index.html" class="block nav-link text-center active">Home</a>
-        <a href="schedule.html" class="block nav-link text-center">Schedule</a>
-        <a href="coaches.html" class="block nav-link text-center">Coaches</a>
-        <a href="contact.html" class="block nav-link text-center">Contact</a>
-    </div>
-</header>
-<main class="container mx-auto p-4 md:p-8">
-  <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-    <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
-    <div class="space-y-12">
-      
-      <!-- Coach 1 -->
-    <div class="grid md:grid-cols-4 gap-8 items-center">
-  <div class="md:col-span-2">
-    <img src="IMG_1446.JPG" alt="Grant Shieh Head Coach" class="rounded-lg w-full object-cover" />
-  </div>
-  <div class="md:col-span-2">
-    <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
-    <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
-    <p class="text-gray-700 leading-relaxed">
-      Head Men’s Volleyball Coach and Assistant Girls Volleyball Coach in Downingtown Area School District.
-      Currently, teaches 8th grade history at Lionville MS. A Bucks County Native, four-year Libero for Council Rock North HS.
-      Grant played club volleyball at Temple University, and began coaching at Council Rock in 2022.
-      Outside of volleyball, Grant enjoys playing in open gyms, adult leagues, watching Philadelphia sports and exploring the outdoors
-    </p>
-  </div>
-</div>
-      <hr class="border-t-2 border-gray-200" />
 
-      <!-- Coach 2 -->
-      <div class="grid md:grid-cols-3 gap-8 items-center">
-        <!-- Image placeholder on left -->
-        <div class="md:col-span-1">
-          <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-            </svg>
-          </div>
+    <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center space-x-3">
+                <img src="/logo.png" alt="Cougars Volleyball Logo" class="h-14" />
+                <span class="text-white text-xl font-bold hidden md:block">
+                    Downingtown East<br />
+                    Boys Volleyball
+                </span>
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
+                </svg>
+            </button>
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="/index.html" class="nav-link">Home</a>
+                <a href="/schedule.html" class="nav-link">Schedule</a>
+                <a href="/coaches.html" class="nav-link font-bold bg-white/20">Coaches</a>
+                <a href="/contact.html" class="nav-link">Contact</a>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+            <a href="/index.html" class="block nav-link text-center">Home</a>
+            <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
+            <a href="/coaches.html" class="block nav-link text-center font-bold bg-white/20">Coaches</a>
+            <a href="/contact.html" class="block nav-link text-center">Contact</a>
         </div>
-        <!-- Text on right -->
-        <div class="md:col-span-2">
-          <h2 class="text-3xl font-bold text-gray-800">TBD</h2>
-          <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
-          <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
-        </div>
-      </div>
+    </header>
 
-    </div>
-  </div>
-</main>
+    <main class="container mx-auto p-4 md:p-8">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+            <div class="space-y-12">
+
+                <div class="grid md:grid-cols-4 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <img src="/IMG_1446.JPG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
+                        <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Head Men’s Volleyball Coach and Assistant Girls Volleyball Coach in Downingtown Area School District. Currently, teaches 8th grade history at Lionville MS. A Bucks County Native, four-year Libero for Council Rock North HS. Grant played club volleyball at Temple University, and began coaching at Council Rock in 2022. Outside of volleyball, Grant enjoys playing in open gyms, adult leagues, watching Philadelphia sports and exploring the outdoors.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-t-2 border-gray-200" />
+
+                <div class="grid md:grid-cols-4 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl font-bold text-gray-800">TBD</h2>
+                        <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
+                        <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
     <footer class="bg-dt-blue text-white mt-12">
         <div class="container mx-auto p-8">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-dt-yellow">Home</a></li>
-                        <li><a href="schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-                        <li><a href="contact.html" class="hover:text-dt-yellow">Contact</a></li>
+                        <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
+                        <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
+                        <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
+                        <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-lg mb-3">CONTACT</h4>
                     <p>Downingtown East High School</p>
                     <p>50 Devon Dr, Exton, PA 19341</p>
-                    <a href="contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+                    <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
                 </div>
                 <div>
                     <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
@@ -131,23 +134,18 @@
             </div>
         </div>
     </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
                 });
             }
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
