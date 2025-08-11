@@ -1,7 +1,7 @@
 # Grant Shieh | Software Developer & Volleyball Coach
 
 <p align="center">
-  <img src="https://gshieh.github.io/social-preview.png" alt="Grant Shieh Social Media Preview Banner"/>
+  <img src="https://debvb.github.io/social-preview.png" alt="Grant Shieh Social Media Preview Banner"/>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ I am a graduate of Temple University, where I played club volleyball, and I bega
 ### Projects
 
 #### Personal Portfolio Website
-This repository contains the full source code for my personal website, [gshieh.github.io](https://gshieh.github.io/index.html). It's a static site built with HTML and styled with Tailwind CSS, highlighting my resume, coaching schedule, and contact information.
+This repository contains the full source code for my personal website, [debvb.github.io](https://debvb.github.io/index.html). It's a static site built with HTML and styled with Tailwind CSS, highlighting my resume, coaching schedule, and contact information.
 
 ---
 
@@ -44,4 +44,4 @@ I'm always open to connecting with fellow developers, coaches, and tech enthusia
 
 -   **Email:** [gshieh11@outlook.com](mailto:gshieh11@outlook.com)
 -   **LinkedIn:** [linkedin.com/in/grantshieh].(https://www.linkedin.com/in/grantshieh/)
--   **GitHub:** [github.com/gshieh](https://github.com/gshieh)
+-   **GitHub:** [github.com/debvb](https://github.com/debvb)
