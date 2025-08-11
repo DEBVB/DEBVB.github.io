@@ -340,8 +340,30 @@
               <td class="py-3 px-4 hidden md:table-cell">Away</td>
               <td class="py-3 px-4">5:00 PM</td>
               <td class="py-3 px-4 text-center">
-                <span class="tooltip result-loss" tabindex="
-                  
+                <span class="tooltip result-loss" tabindex="0" aria-label="Lost 1-3, detailed scores 22-25, 25-20, 18-25, 19-25">
+                  L 1-3
+                  <span class="tooltip-content" role="tooltip">
+                    22-25, 25-20, 
+            <tr class="border-b">
+              <td class="py-3 px-4">Apr 14, 2024</td>
+              <td class="py-3 px-4 font-bold">@ Quakertown</td>
+              <td class="py-3 px-4 hidden md:table-cell">Away</td>
+              <td class="py-3 px-4">5:00 PM</td>
+              <td class="py-3 px-4 text-center">
+                <span class="tooltip result-loss" tabindex="0" aria-label="Lost 1-3, detailed scores 22-25, 25-20, 18-25, 19-25">
+                  L 1-3
+                  <span class="tooltip-content" role="tooltip">
+                    22-25, 25-20, 18-25, 19-25
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+                    
   <footer class="bg-dt-blue text-white mt-12">
     <div class="container mx-auto p-8">
       <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
@@ -381,30 +403,7 @@
           mobileMenu.classList.toggle("hidden");
         });
       }
-
-      // Tooltip toggle on click/focus
-      const tooltipTriggers = document.querySelectorAll(".tooltip-trigger");
-      tooltipTriggers.forEach(trigger => {
-        trigger.addEventListener("click", e => {
-          e.stopPropagation();
-          const tooltip = trigger.querySelector(".tooltip-content");
-          const isOpen = tooltip.getAttribute("data-state") === "open";
-          // Close all tooltips first
-          document.querySelectorAll(".tooltip-content").forEach(t => t.setAttribute("data-state", "closed"));
-          tooltip.setAttribute("data-state", isOpen ? "closed" : "open");
-        });
-        // Close tooltip on blur (for accessibility)
-        trigger.addEventListener("blur", () => {
-          const tooltip = trigger.querySelector(".tooltip-content");
-          tooltip.setAttribute("data-state", "closed");
-        });
-      });
-      // Close tooltips when clicking anywhere else
-      document.body.addEventListener("click", () => {
-        document.querySelectorAll(".tooltip-content").forEach(t => t.setAttribute("data-state", "closed"));
-      });
     });
   </script>
 </body>
 </html>
-
