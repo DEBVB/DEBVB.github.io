@@ -259,3 +259,21 @@
       if (slides.length > 0) {
         let currentSlide = 0;
 
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+          });
+        }
+
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000); // change slide every 5 seconds
+      }
+    });
+  </script>
+</body>
+</html>
