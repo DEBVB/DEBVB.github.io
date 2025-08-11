@@ -192,35 +192,50 @@
           >
         </div>
       </section>
-      <section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+<section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
   <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
     Team Announcements
   </h2>
+  <div id="announcements-list" class="space-y-6">
+    <p class="text-gray-500">Loading announcements...</p>
+  </div>
+</section>
+<script>
+fetch('/announcements.json')
+  .then(response => response.json())
+  .then(data => {
+    // Sort newest first
+    data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  <div class="space-y-6">
-    <!-- Announcement -->
-    <article class="p-4 border-l-4 border-dt-blue bg-blue-50 rounded-r-lg">
-      <header class="mb-2">
-        <h3 class="font-bold text-xl text-gray-800">2025 Season Open Gyms</h3>
-        <p class="text-gray-500 text-sm">Posted on August 10, 2025</p>
-      </header>
-      <p class="text-gray-700">
-        Open gym and tryout dates for the upcoming 2025 season will be announced soon. 
-        Please check back for updates, and ensure all physical forms are submitted!
-      </p>
-    </article>
+    const container = document.getElementById('announcements-list');
+    container.innerHTML = '';
 
-    <!-- Announcement -->
-    <article class="p-4 border-l-4 border-gray-400 bg-gray-50 rounded-r-lg">
-      <header class="mb-2">
-        <h3 class="font-bold text-xl text-gray-800">Congratulations to Our Seniors!</h3>
-        <p class="text-gray-500 text-sm">Posted on May 20, 2025</p>
-      </header>
-      <p class="text-gray-700">
-        A big thank you and congratulations to the graduating class of 2025 for a fantastic season. 
-        We wish you the best of luck in your future endeavors!
-      </p>
-    </article>
+    data.forEach(announcement => {
+      const borderColor = `border-${announcement.color}`;
+      const bgColor = announcement.color.startsWith('dt-') 
+        ? `bg-blue-50`
+        : `bg-${announcement.color}-50`;
+
+      const article = document.createElement('article');
+      article.className = `p-4 border-l-4 ${borderColor} ${bgColor} rounded-r-lg`;
+
+      article.innerHTML = `
+        <header class="mb-2">
+          <h3 class="font-bold text-xl text-gray-800">${announcement.title}</h3>
+          <p class="text-gray-500 text-sm">Posted on ${announcement.date}</p>
+        </header>
+        <p class="text-gray-700">${announcement.content}</p>
+      `;
+
+      container.appendChild(article);
+    });
+  })
+  .catch(error => {
+    document.getElementById('announcements-list').innerHTML = 
+      `<p class="text-red-500">Failed to load announcements.</p>`;
+    console.error('Error loading announcements:', error);
+  });
+</script>
   </div>
 </section>
     </div>
@@ -282,6 +297,7 @@
   </script>
 </body>
 </html>
+
 
 
 
