@@ -191,18 +191,31 @@
           >
         </div>
       </section>
-
       <section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-        <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
-          Team Announcements
-        </h2>
-        <div id="announcements-list" class="space-y-6">
-          <p class="text-gray-500">Loading announcements...</p>
-        </div>
-      </section>
+  <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
+    Team Announcements
+  </h2>
+  <div class="space-y-6">
+    <div class="p-4 border-l-4 border-dt-blue bg-blue-50 rounded-r-lg">
+      <h4 class="font-bold text-xl text-gray-800">2025 Season Open Gyms</h4>
+      <p class="text-gray-500 text-sm mb-2">Posted on August 10, 2025</p>
+      <p class="text-gray-700">
+        Open Gyms and Tryout dates for the upcoming 2025 season will be
+        announced soon. Please check back for updates and make sure all
+        your physical forms are submitted!
+      </p>
     </div>
-  </main>
-
+    <div class="p-4 border-l-4 border-gray-400 bg-gray-50 rounded-r-lg">
+      <h4 class="font-bold text-xl text-gray-800">Congratulations to our Seniors!</h4>
+      <p class="text-gray-500 text-sm mb-2">Posted on May 20, 2025</p>
+      <p class="text-gray-700">
+        A big thank you and congratulations to the graduating class of
+        2025 for a fantastic season. We wish you the best of luck in your
+        future endeavors!
+      </p>
+    </div>
+  </div>
+</section>
   <footer class="bg-dt-blue text-white mt-12">
     <div class="container mx-auto p-8">
       <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
@@ -245,3 +258,4 @@
       const slides = document.querySelectorAll(".hero-slideshow img");
       if (slides.length > 0) {
         let currentSlide = 0;
+
