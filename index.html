@@ -1,71 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Downingtown East Boys Volleyball</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-      }
-      :root {
-        --dt-blue: #003366;
-        --dt-yellow: #ffd700;
-      }
-      .bg-dt-blue {
-        background-color: var(--dt-blue);
-      }
-      .text-dt-blue {
-        color: var(--dt-blue);
-      }
-      .bg-dt-yellow {
-        background-color: var(--dt-yellow);
-      }
-      .text-dt-yellow {
-        color: var(--dt-yellow);
-      }
-      .border-dt-yellow {
-        border-color: var(--dt-yellow);
-      }
-      /* @apply won’t work here without Tailwind build, so replace with CSS */
-      .nav-link {
-        padding: 0.5rem 1rem;
-        color: white;
-        border-radius: 0.375rem;
-        transition: color 0.3s, background-color 0.3s;
-        display: inline-block;
-      }
-      .nav-link:hover {
-        background-color: var(--dt-yellow);
-        color: var(--dt-blue);
-      }
-      .hero-slideshow {
-        position: relative;
-        width: 100%;
-        height: 60vh;
-        overflow: hidden;
-      }
-      .hero-slideshow img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-      .hero-slideshow img.active {
-        opacity: 1;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Downingtown East Boys Volleyball</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+    }
+    :root {
+      --dt-blue: #003366;
+      --dt-yellow: #ffd700;
+    }
+    .bg-dt-blue {
+      background-color: var(--dt-blue);
+    }
+    .text-dt-blue {
+      color: var(--dt-blue);
+    }
+    .bg-dt-yellow {
+      background-color: var(--dt-yellow);
+    }
+    .text-dt-yellow {
+      color: var(--dt-yellow);
+    }
+    .border-dt-yellow {
+      border-color: var(--dt-yellow);
+    }
+    .nav-link {
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 0.375rem;
+      transition: color 0.3s, background-color 0.3s;
+      display: inline-block;
+    }
+    .nav-link:hover {
+      background-color: var(--dt-yellow);
+      color: var(--dt-blue);
+    }
+    .hero-slideshow {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+    }
+    .hero-slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hero-slideshow img.active {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body class="bg-gray-100">
   <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
@@ -114,7 +113,7 @@
       <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
       <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
       <a href="/contact.html" class="block nav-link text-center">Contact</a>
-        <a href="/roster.html" class="block nav-link text-center">Roster</a>
+      <a href="/roster.html" class="block nav-link text-center">Roster</a>
     </div>
   </header>
 
@@ -192,63 +191,25 @@
           >
         </div>
       </section>
-<section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-  <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
-    Team Announcements
-  </h2>
-  <div id="announcements-list" class="space-y-6">
-    <p class="text-gray-500">Loading announcements...</p>
-  </div>
-</section>
-<script>
-fetch('/announcements.json')
-  .then(response => response.json())
-  .then(data => {
-    // Sort newest first
-    data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    const container = document.getElementById('announcements-list');
-    container.innerHTML = '';
-
-    data.forEach(announcement => {
-      const borderColor = `border-${announcement.color}`;
-      const bgColor = announcement.color.startsWith('dt-') 
-        ? `bg-blue-50`
-        : `bg-${announcement.color}-50`;
-
-      const article = document.createElement('article');
-      article.className = `p-4 border-l-4 ${borderColor} ${bgColor} rounded-r-lg`;
-
-      article.innerHTML = `
-        <header class="mb-2">
-          <h3 class="font-bold text-xl text-gray-800">${announcement.title}</h3>
-          <p class="text-gray-500 text-sm">Posted on ${announcement.date}</p>
-        </header>
-        <p class="text-gray-700">${announcement.content}</p>
-      `;
-
-      container.appendChild(article);
-    });
-  })
-  .catch(error => {
-    document.getElementById('announcements-list').innerHTML = 
-      `<p class="text-red-500">Failed to load announcements.</p>`;
-    console.error('Error loading announcements:', error);
-  });
-</script>
-  </div>
-</section>
+      <section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+        <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
+          Team Announcements
+        </h2>
+        <div id="announcements-list" class="space-y-6">
+          <p class="text-gray-500">Loading announcements...</p>
+        </div>
+      </section>
     </div>
   </main>
+
   <footer class="bg-dt-blue text-white mt-12">
     <div class="container mx-auto p-8">
       <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
         <div>
           <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
           <ul class="space-y-2">
-            <li>
-              <a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a>
-            </li>
+            <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
             <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
             <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
           </ul>
@@ -268,8 +229,10 @@ fetch('/announcements.json')
       </div>
     </div>
   </footer>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Mobile menu toggle
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       if (mobileMenuButton) {
@@ -278,35 +241,7 @@ fetch('/announcements.json')
         });
       }
 
+      // Slideshow
       const slides = document.querySelectorAll(".hero-slideshow img");
       if (slides.length > 0) {
         let currentSlide = 0;
-        const showSlide = (index) => {
-          slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === index);
-          });
-        };
-        const nextSlide = () => {
-          currentSlide = (currentSlide + 1) % slides.length;
-          showSlide(currentSlide);
-        };
-        setInterval(nextSlide, 5000);
-        showSlide(currentSlide);
-      }
-    });
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
