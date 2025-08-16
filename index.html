@@ -276,6 +276,79 @@
       }
     });
   </script>
+      <!-- Floating Donate Bubble -->
+<div id="donate-bubble">
+  <div id="donate-header">💛 Donate</div>
+  <div id="donate-content">
+    <p>Support Cougar Volleyball!</p>
+    <img src="images/venmo-qr.png" alt="Venmo QR Code">
+    <a href="https://venmo.com/YourUsername" target="_blank" class="venmo-button">Open Venmo</a>
+  </div>
+</div>
+
+<style>
+  /* Bubble styling */
+  #donate-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0a2a56;
+    color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    width: 120px;
+    text-align: center;
+  }
+  #donate-header {
+    padding: 12px;
+    font-weight: 600;
+    background-color: #0a2a56;
+  }
+  #donate-content {
+    background: white;
+    color: #1a1a1a;
+    padding: 15px;
+    display: none;
+  }
+  #donate-content p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  #donate-content img {
+    max-width: 120px;
+    margin: 10px auto;
+    display: block;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+  .venmo-button {
+    display: inline-block;
+    background-color: #3D95CE; /* Venmo blue */
+    color: white;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  .venmo-button:hover {
+    background-color: #337fb0;
+  }
+</style>
+
+<script>
+  // Toggle bubble expansion
+  document.getElementById("donate-header").addEventListener("click", function() {
+    const content = document.getElementById("donate-content");
+    content.style.display = content.style.display === "block" ? "none" : "block";
+  });
+</script>
 </body>
 </html>
+
 
