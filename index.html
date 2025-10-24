@@ -195,9 +195,9 @@
       <section class="bg-white rounded-lg shadow-xl p-6 md:p-8">
   <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">
     Team Announcements
-   </h2>
+     </h2>
   <div class="space-y-6">
-    <div class="p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg opacity-0 animate-fadeIn">
+    <div class="p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg opacity-0 transition-opacity duration-1000 transform translate-y-3" id="openGymsAnnouncement">
       <h4 class="font-bold text-xl text-gray-800">Boys Volleyball Open Gyms Starting November!</h4>
       <p class="text-gray-500 text-sm mb-2">Posted on October 24, 2025</p>
       <div class="text-gray-700 space-y-2">
@@ -229,6 +229,25 @@
         future endeavors!
       </p>
     </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const target = document.getElementById("openGymsAnnouncement");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              target.classList.remove("opacity-0", "translate-y-3");
+              target.classList.add("opacity-100", "translate-y-0");
+              observer.unobserve(target); // trigger once
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(target);
+    });
+  </script>
   </div>
   <style>
     @keyframes fadeIn {
@@ -374,6 +393,7 @@
 </script>
 </body>
 </html>
+
 
 
 
