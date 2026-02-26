@@ -19,13 +19,7 @@
     .bg-dt-yellow { background-color: var(--dt-yellow); }
     .text-dt-yellow { color: var(--dt-yellow); }
     .border-dt-yellow { border-color: var(--dt-yellow); }
-    .nav-link {
-      padding: 0.5rem 1rem;
-      color: white;
-      border-radius: 0.375rem;
-      transition: color 0.3s, background-color 0.3s;
-      display: inline-block;
-   /* Updated for white header */
+    /* Updated for white header */
     .nav-link {
       padding: 0.5rem 1rem;
       color: var(--dt-blue);
@@ -44,7 +38,6 @@
     .nav-link.active:hover {
       background-color: var(--dt-yellow);
       color: var(--dt-blue);
-    }
     }
     .tooltip-content {
       position: absolute;
@@ -70,10 +63,11 @@
   </style>
 </head>
 <body class="bg-gray-100">
- <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
+<header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
       <a href="/index.html" class="flex items-center space-x-4">
         <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+        
         <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
           Downingtown East
         </span>
