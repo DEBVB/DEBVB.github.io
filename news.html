@@ -19,9 +19,11 @@
     .bg-dt-yellow { background-color: var(--dt-yellow); }
     .text-dt-yellow { color: var(--dt-yellow); }
     .border-dt-yellow { border-color: var(--dt-yellow); }
+    
+    /* Updated for white header */
     .nav-link {
       padding: 0.5rem 1rem;
-      color: white;
+      color: var(--dt-blue);
       border-radius: 0.375rem;
       transition: color 0.3s, background-color 0.3s;
       display: inline-block;
@@ -30,20 +32,29 @@
       background-color: var(--dt-yellow);
       color: var(--dt-blue);
     }
+    .nav-link.active {
+      background-color: var(--dt-blue);
+      color: white;
+    }
+    .nav-link.active:hover {
+      background-color: var(--dt-yellow);
+      color: var(--dt-blue);
+    }
   </style>
 </head>
 
 <body class="bg-gray-100">
-  <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
+  
+  <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-3">
-        <img src="/logo.png" alt="Cougars Volleyball Logo" class="h-14" />
-        <span class="text-white text-xl font-bold hidden md:block">
-          Downingtown East<br />Boys Volleyball
+      <a href="/index.html" class="flex items-center space-x-4">
+        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain" />
+        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
+          Downingtown East
         </span>
       </a>
-      <button id="mobile-menu-button" class="md:hidden text-white" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <button id="mobile-menu-button" class="md:hidden text-dt-blue">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
         </svg>
       </button>
@@ -53,16 +64,16 @@
         <a href="/coaches.html" class="nav-link">Coaches</a>
         <a href="/contact.html" class="nav-link">Contact</a>
         <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link font-bold bg-white/20">News</a>
+        <a href="/news.html" class="nav-link active font-bold">News</a>    
       </div>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
       <a href="/index.html" class="block nav-link text-center">Home</a>
       <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
       <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
       <a href="/contact.html" class="block nav-link text-center">Contact</a>
       <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link text-center font-bold bg-white/20">News</a>
+      <a href="/news.html" class="block nav-link active font-bold text-center">News</a>  
     </div>
   </header>
 
@@ -96,26 +107,3 @@
         </div>
       </div>
     </div>
-  </main>
-
-  <footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-      <div class="text-center border-t border-white/20 mt-8 pt-6">
-        <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      }
-    });
-  </script>
-</body>
-</html>
