@@ -9,9 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+        body { font-family: 'Roboto', sans-serif; }
         :root {
             --dt-blue: #003366;
             --dt-yellow: #FFD700;
@@ -21,8 +19,6 @@
         .bg-dt-yellow { background-color: var(--dt-yellow); }
         .text-dt-yellow { color: var(--dt-yellow); }
         .border-dt-yellow { border-color: var(--dt-yellow); }
-
-        /* Consistent navigation link style */
         .nav-link {
             padding: 0.5rem 1rem;
             color: white;
@@ -34,17 +30,50 @@
             background-color: var(--dt-yellow);
             color: var(--dt-blue);
         }
+        /* Moved coach-profile styles here out of the inline <p> tag */
+        .coach-profile {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-left: 5px solid #004488;
+            background-color: #f9f9f9;
+        }
+        .coach-profile h2 {
+            color: #004488;
+            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .coach-profile h3 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .philosophy-list {
+            background: #fff;
+            padding: 15px 15px 15px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            list-style-type: disc;
+        }
+        .philosophy-list li { margin-bottom: 10px; }
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <header class="bg-dt-blue shadow-lg sticky top-0 z-50">
+<header class="bg-dt-blue shadow-lg sticky top-0 z-50">
   <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
     <a href="/index.html" class="flex items-center space-x-3">
       <img src="/logo.png" alt="Cougars Volleyball Logo" class="h-14" />
       <span class="text-white text-xl font-bold hidden md:block">
-        Downingtown East<br />
-        Boys Volleyball
+        Downingtown East<br />Boys Volleyball
       </span>
     </a>
 
@@ -59,7 +88,7 @@
       <a href="/schedule.html" class="nav-link">Schedule</a>
       <a href="/coaches.html" class="nav-link font-bold bg-white/20">Coaches</a>
       <a href="/contact.html" class="nav-link">Contact</a>
-        <a href="roster.html" class="nav-link">Roster</a> 
+      <a href="/roster.html" class="nav-link">Roster</a> 
       <a href="/news.html" class="nav-link">News</a>
     </div>
   </nav>
@@ -69,148 +98,105 @@
     <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
     <a href="/coaches.html" class="block nav-link text-center font-bold bg-white/20">Coaches</a>
     <a href="/contact.html" class="block nav-link text-center">Contact</a>
-      <a href="/roster.html" class="block nav-link text-center">Roster</a>
-    <a href="/news.html" class="block nav-link text-center">News</a> <!-- Added missing link for consistency -->
+    <a href="/roster.html" class="block nav-link text-center">Roster</a>
+    <a href="/news.html" class="block nav-link text-center">News</a>
   </div>
 </header>
 
-    <main class="container mx-auto p-4 md:p-8">
-        <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
-            <div class="space-y-12">
+<main class="container mx-auto p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+        <div class="space-y-12">
 
-                <div class="grid md:grid-cols-4 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
-                    </div>
-                    <div class="md:col-span-3">
-                        <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
-                        <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
-                        <p class="text-gray-700 leading-relaxed">
-                            <style>
-    .coach-profile {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        border-left: 5px solid #004488; /* Optional: Downingtown Blue accent */
-        background-color: #f9f9f9;
-    }
-    .coach-profile h2 {
-        color: #004488;
-        margin-top: 0;
-    }
-    .coach-profile h3 {
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 5px;
-    }
-    .philosophy-list {
-        background: #fff;
-        padding: 15px 40px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .philosophy-list li {
-        margin-bottom: 10px;
-    }
-</style>
+            <div class="grid md:grid-cols-4 gap-8 items-center">
+                <div class="md:col-span-1">
+                    <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
+                </div>
+                <div class="md:col-span-3">
+                    <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
+                    <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
+                    
+                    <div class="coach-profile">
+                        <h2>Grant Shieh: Building Leaders in the Classroom and on the Court</h2>
+                        
+                        <p>For <strong>Grant Shieh</strong>, the transition from the history classroom at Lionville Middle School to the volleyball court is a natural one. Whether he’s guiding 8th graders through historical milestones or coaching the Downingtown boys' and girls' teams, his mission remains the same: <em>helping young people find their confidence.</em></p>
+                        <br>
+                        <p>Grant’s own journey started in Bucks County, where he played four years of varsity volleyball as a libero for Council Rock North. He carried that passion to Temple University’s club team and eventually into the coaching world in 2022.</p>
 
-<div class="coach-profile">
-    <h2>Grant Shieh: Building Leaders in the Classroom and on the Court</h2>
-    
-    <p>For <strong>Grant Shieh</strong>, the transition from the history classroom at Lionville Middle School to the volleyball court is a natural one. Whether he’s guiding 8th graders through historical milestones or coaching the Downingtown boys' and girls' teams, his mission remains the same: <em>helping young people find their confidence.</em></p>
-
-    <p>Grant’s own journey started in Bucks County, where he played four years of varsity volleyball as a libero for Council Rock North. He carried that passion to Temple University’s club team and eventually into the coaching world in 2022.</p>
-
-    <h3>His Philosophy</h3>
-    <p>Grant believes that sports are the ultimate classroom for "soft skills." While he’s focused on technical precision—a nod to his days as a libero—he’s even more dedicated to teaching:</p>
-    
-    <ul class="philosophy-list">
-        <li><strong>Accountability:</strong> Owning your role on and off the court.</li>
-        <li><strong>Resilience:</strong> Learning how to bounce back from a tough set or a difficult exam.</li>
-        <li><strong>Collaboration:</strong> Understanding that the team is always stronger than the individual.</li>
-    </ul>
-
-    <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, or losing his voice cheering for the Philadelphia sports scene. He’s a firm believer in a "lifelong appreciation for the game" and aims to ensure every athlete he coaches leaves the program as a better leader and a more well-rounded person.</p>
-</div>
-                        </p>
+                        <h3>His Philosophy</h3>
+                        <p>Grant believes that sports are the ultimate classroom for "soft skills." While he’s focused on technical precision—a nod to his days as a libero—he’s even more dedicated to teaching:</p>
+                        <br>
+                        <ul class="philosophy-list">
+                            <li><strong>Accountability:</strong> Owning your role on and off the court.</li>
+                            <li><strong>Resilience:</strong> Learning how to bounce back from a tough set or a difficult exam.</li>
+                            <li><strong>Collaboration:</strong> Understanding that the team is always stronger than the individual.</li>
+                        </ul>
+                        <br>
+                        <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, or losing his voice cheering for the Philadelphia sports scene. He’s a firm believer in a "lifelong appreciation for the game" and aims to ensure every athlete he coaches leaves the program as a better leader and a more well-rounded person.</p>
                     </div>
                 </div>
+            </div>
 
-                <hr class="border-t-2 border-gray-200" />
+            <hr class="border-t-2 border-gray-200" />
 
-                <div class="grid md:grid-cols-4 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center shadow-md">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="md:col-span-3">
-                        <h2 class="text-3xl font-bold text-gray-800">TBD</h2>
-                        <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
-                        <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
+            <div class="grid md:grid-cols-4 gap-8 items-center">
+                <div class="md:col-span-1">
+                    <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                        </svg>
                     </div>
                 </div>
+                <div class="md:col-span-3">
+                    <h2 class="text-3xl font-bold text-gray-800">TBD</h2>
+                    <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
+                    <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
+                </div>
+            </div>
 
+        </div>
+    </div>
+</main>
+
+<footer class="bg-dt-blue text-white mt-12">
+    <div class="container mx-auto p-8">
+        <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
+                <ul class="space-y-2">
+                    <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
+                    <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
+                    <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
+                    <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">CONTACT</h4>
+                <p>Downingtown East High School</p>
+                <p>50 Devon Dr, Exton, PA 19341</p>
+                <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
+                <p>Links to social media coming soon!</p>
             </div>
         </div>
-    </main>
-
-    <footer class="bg-dt-blue text-white mt-12">
-        <div class="container mx-auto p-8">
-            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-                    <ul class="space-y-2">
-                        <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
-                        <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-                        <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-                        <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-                    <p>Downingtown East High School</p>
-                    <p>50 Devon Dr, Exton, PA 19341</p>
-                    <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-                    <p>Links to social media coming soon!</p>
-                </div>
-            </div>
-            <div class="text-center border-t border-white/20 mt-8 pt-6">
-                <p>&copy; 2025 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-            </div>
+        <div class="text-center border-t border-white/20 mt-8 pt-6">
+            <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById("mobile-menu-button");
-            const mobileMenu = document.getElementById("mobile-menu");
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener("click", () => {
-                    mobileMenu.classList.toggle("hidden");
-                });
-            }
-        });
-    </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+        }
+    });
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
