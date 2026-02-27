@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>2026 Game Schedule - Downingtown East Boys Volleyball</title>
+    <title>2026 Game Schedule | Downingtown East Boys Volleyball</title>
     
     <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, and news for the Cougars.">
     <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball">
     <meta name="author" content="Downingtown East Boys Volleyball">
 
-    <meta property="og:title" content="Downingtown East Boys Volleyball">
-    <meta property="og:description" content="Follow the Cougars this season! Get the latest schedules, scores, and roster updates.">
+    <meta property="og:title" content="Downingtown East Boys Volleyball Schedule">
+    <meta property="og:description" content="Follow the Cougars this season! Get the latest schedules, scores, and match updates.">
     <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-    <meta property="og:url" content="https://debvb.github.io">
+    <meta property="og:url" content="https://debvb.github.io/schedule.html">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
+    
     <style>
         body { font-family: "Roboto", sans-serif; }
         :root {
@@ -49,10 +50,11 @@
           color: white;
         }
 
-        /* Visual Polish: Side bars for Home/Away distinction */
+        /* Visual distinction sidebars */
         .game-row-home { border-left: 6px solid var(--dt-yellow); }
-        .game-row-away { border-left: 6px solid #cbd5e1; } /* Light gray for away */
+        .game-row-away { border-left: 6px solid #e2e8f0; }
 
+        /* Tooltip styling */
         .tooltip-content {
           position: absolute;
           bottom: 125%;
@@ -69,10 +71,8 @@
           transition: opacity 0.3s ease-in-out;
           z-index: 10;
         }
-        .tooltip:hover .tooltip-content,
-        .tooltip:focus-within .tooltip-content {
+        .tooltip:hover .tooltip-content {
           opacity: 1;
-          pointer-events: auto;
         }
     </style>
 </head>
@@ -113,177 +113,241 @@
   <main class="container mx-auto p-4 md:p-8">
     <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
       <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-dt-yellow pb-4 mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-dt-blue">2026 Game Schedule</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-dt-blue">2026 Season Schedule</h1>
         <span class="mt-2 md:mt-0 bg-dt-blue text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Varsity / JV</span>
       </div>
 
       <div class="overflow-x-auto">
         <table class="min-w-full bg-white">
-          <thead class="bg-dt-blue text-white">
+          <thead class="bg-dt-blue text-white text-base">
             <tr>
-              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
-              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Opponent</th>
-              <th class="text-left py-3 px-4 uppercase font-semibold text-sm hidden md:table-cell">Location</th>
-              <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Time</th>
-              <th class="text-center py-3 px-4 uppercase font-semibold text-sm">Result</th>
+              <th class="text-left py-4 px-4 uppercase font-semibold">Date</th>
+              <th class="text-left py-4 px-4 uppercase font-semibold">Opponent</th>
+              <th class="text-left py-4 px-4 uppercase font-semibold hidden md:table-cell">Location</th>
+              <th class="text-left py-4 px-4 uppercase font-semibold">Time</th>
+              <th class="text-center py-4 px-4 uppercase font-semibold">Result</th>
             </tr>
           </thead>
-          <tbody class="text-gray-700">
+          <tbody class="text-gray-700 text-base">
+            
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 10, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Souderton</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center">
-                <span class="tooltip text-gray-400 font-mono text-xs cursor-help" tabindex="0">
+              <td class="py-4 px-4">Mar 10, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Souderton</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center">
+                <span class="tooltip text-gray-400 font-mono text-sm cursor-help" tabindex="0">
                   SCRIM <span class="tooltip-content">JV @ 3:30 PM</span>
                 </span>
               </td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 13, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Bensalem</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center">
-                <span class="tooltip text-gray-400 font-mono text-xs cursor-help" tabindex="0">
+              <td class="py-4 px-4">Mar 13, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Bensalem</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center">
+                <span class="tooltip text-gray-400 font-mono text-sm cursor-help" tabindex="0">
                   SCRIM <span class="tooltip-content">JV @ 3:45 PM</span>
                 </span>
               </td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 14, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Wilson (Reading)</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">11:00 AM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 14, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Wilson (Reading)</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">11:00 AM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 16, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Lansdale Catholic</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:15 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 16, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Lansdale Catholic</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:15 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 24, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Downingtown West</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 24, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Downingtown West</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 26, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Kennett</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 26, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Kennett</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 27, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Dock Mennonite</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 27, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Dock Mennonite</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 30, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Council Rock South</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 30, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Council Rock South</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Mar 31, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. WC Rustin</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">3:45 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Mar 31, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. WC Rustin</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">3:45 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 7, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Avon Grove</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 7, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Avon Grove</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 9, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Unionville</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 9, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Unionville</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 10, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. CB South</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 10, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. CB South</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 14, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Bishop Shanahan</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 14, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Bishop Shanahan</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 16, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Downingtown West</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 16, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Downingtown West</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 18, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Lower Merion</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">11:30 AM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 18, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Lower Merion</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">11:30 AM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 20, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Quakertown</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">6:30 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 20, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Quakertown</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">6:30 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 23, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Kennett</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 23, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Kennett</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 28, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Unionville</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 28, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Unionville</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">Apr 30, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Bishop Shanahan</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">Apr 30, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Bishop Shanahan</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">May 1, 2026</td>
-              <td class="py-3 px-4 font-black text-dt-blue uppercase">vs. Spring-Ford</td>
-              <td class="py-3 px-4 hidden md:table-cell"><span class="bg-dt-yellow text-dt-blue text-[10px] font-black px-2 py-0.5 rounded">HOME</span></td>
-              <td class="py-3 px-4">7:00 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">May 1, 2026</td>
+              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Spring-Ford</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+              </td>
+              <td class="py-4 px-4">7:00 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
             <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-3 px-4 font-medium text-sm">May 4, 2026</td>
-              <td class="py-3 px-4 font-bold">@ Lower Merion</td>
-              <td class="py-3 px-4 hidden md:table-cell text-xs text-gray-400">Away</td>
-              <td class="py-3 px-4">5:30 PM</td>
-              <td class="py-3 px-4 text-center text-xs font-mono text-gray-400 italic">Upcoming</td>
+              <td class="py-4 px-4">May 4, 2026</td>
+              <td class="py-4 px-4 font-normal">@ Lower Merion</td>
+              <td class="py-4 px-4 hidden md:table-cell">
+                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
+              </td>
+              <td class="py-4 px-4">5:30 PM</td>
+              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
+
           </tbody>
         </table>
       </div>
