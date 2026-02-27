@@ -19,36 +19,29 @@
         .bg-dt-yellow { background-color: var(--dt-yellow); }
         .text-dt-yellow { color: var(--dt-yellow); }
         .border-dt-yellow { border-color: var(--dt-yellow); }
-    .nav-link {
-      padding: 0.5rem 1rem;
-      color: var(--dt-blue);
-      border-radius: 0.375rem;
-      transition: color 0.3s, background-color 0.3s;
-      display: inline-block;
-    }
-    .nav-link:hover {
-      background-color: var(--dt-yellow);
-      color: var(--dt-blue);
-    }
-    .nav-link.active {
-      background-color: var(--dt-blue);
-      color: white;
-    }
-    .nav-link.active:hover {
-      background-color: var(--dt-yellow);
-      color: var(--dt-blue);
-    }
+        
+        .nav-link {
+            padding: 0.5rem 1rem;
+            color: var(--dt-blue);
+            border-radius: 0.375rem;
+            transition: color 0.3s, background-color 0.3s;
+            display: inline-block;
+        }
         .nav-link:hover {
             background-color: var(--dt-yellow);
             color: var(--dt-blue);
         }
-        /* Moved coach-profile styles here out of the inline <p> tag */
+        .nav-link.active {
+            background-color: var(--dt-blue);
+            color: white;
+        }
+
         .coach-profile {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
-            margin: 20px auto;
+            /* Removed max-width and margin-top to fix alignment with the photo */
+            margin-bottom: 20px;
             padding: 20px;
             border-left: 5px solid #004488;
             background-color: #f9f9f9;
@@ -76,6 +69,14 @@
             list-style-type: disc;
         }
         .philosophy-list li { margin-bottom: 10px; }
+
+        /* Makes the photo stay put on desktop while scrolling the bio */
+        @media (min-width: 768px) {
+            .sticky-photo {
+                position: sticky;
+                top: 100px; 
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -84,7 +85,6 @@
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
       <a href="/index.html" class="flex items-center space-x-4">
         <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
-        
         <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
           Downingtown East
         </span>
@@ -97,7 +97,7 @@
       <div class="hidden md:flex items-center space-x-2">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/schedule.html" class="nav-link">Schedule</a>
-        <a href="/coaches.html" class="nav-link">Coaches</a>
+        <a href="/coaches.html" class="nav-link active">Coaches</a>
         <a href="/contact.html" class="nav-link">Contact</a>
         <a href="/roster.html" class="nav-link">Roster</a>
         <a href="/news.html" class="nav-link">News</a>    
@@ -111,19 +111,20 @@
       <a href="/roster.html" class="block nav-link text-center">Roster</a>
       <a href="/news.html" class="block nav-link text-center">News</a>  
     </div>
-  </header>
+</header>
+
 <main class="container mx-auto p-4 md:p-8">
     <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
         <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+        
         <div class="space-y-12">
-
-            <div class="grid md:grid-cols-4 gap-8 items-center">
-                <div class="md:col-span-1">
+            <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="md:col-span-1 sticky-photo">
                     <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
                 </div>
                 <div class="md:col-span-3">
                     <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
-                    <p class="text-xl text-dt-blue font-semibold mb-4">Head Coach</p>
+                    <p class="text-xl text-dt-blue font-semibold mb-6">Head Coach</p>
                     
                     <div class="coach-profile">
                         <h2>Grant Shieh: Building Leaders in the Classroom and on the Court</h2>
@@ -148,7 +149,7 @@
 
             <hr class="border-t-2 border-gray-200" />
 
-            <div class="grid md:grid-cols-4 gap-8 items-center">
+            <div class="grid md:grid-cols-4 gap-8 items-start">
                 <div class="md:col-span-1">
                     <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center shadow-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -162,7 +163,6 @@
                     <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
                 </div>
             </div>
-
         </div>
     </div>
 </main>
@@ -209,6 +209,3 @@
 </script>
 </body>
 </html>
-
-
-
