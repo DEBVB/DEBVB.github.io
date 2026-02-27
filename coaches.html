@@ -40,7 +40,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            /* Removed max-width and margin-top to fix alignment with the photo */
             margin-bottom: 20px;
             padding: 20px;
             border-left: 5px solid #004488;
@@ -70,7 +69,6 @@
         }
         .philosophy-list li { margin-bottom: 10px; }
 
-        /* Makes the photo stay put on desktop while scrolling the bio */
         @media (min-width: 768px) {
             .sticky-photo {
                 position: sticky;
@@ -100,7 +98,7 @@
         <a href="/coaches.html" class="nav-link active">Coaches</a>
         <a href="/contact.html" class="nav-link">Contact</a>
         <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>    
+        <a href="/news.html" class="nav-link">News</a>  
       </div>
     </nav>
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
@@ -128,13 +126,12 @@
                     
                     <div class="coach-profile">
                         <h2>The "Student-Athlete" Growth Model</h2>
-                        
                         <p>For <strong>Grant Shieh</strong>, the transition from the history classroom at Lionville Middle School to the volleyball court is a natural one. Whether he’s guiding 8th graders through historical milestones or coaching the Downingtown boys' and girls' teams, his mission remains the same: <em>helping young people find their confidence.</em></p>
                         <br>
                         <p>Grant’s own journey started in Bucks County, where he played as a libero for Council Rock North. He carried that passion to Temple University’s club team and eventually into the coaching world in 2022.</p>
 
                         <h3>His Philosophy</h3>
-                        <p>Sustainable success isn't about a single "breakthrough" moment; it’s about the compounding effect of small, intentional shifts. My coaching is built on the idea that your current limits are simply markers for where your next level begins. We don’t just solve the problems in front of you—we build the internal systems and mental resilience required to outgrow them.:</p>
+                        <p>Sustainable success isn't about a single "breakthrough" moment; it’s about the compounding effect of small, intentional shifts. My coaching is built on the idea that your current limits are simply markers for where your next level begins.</p>
                         <br>
                         <ul class="philosophy-list">
                             <li><strong>Accountability:</strong> Owning your role on and off the court.</li>
@@ -142,7 +139,7 @@
                             <li><strong>Collaboration:</strong> Understanding that the team is always stronger than the individual.</li>
                         </ul>
                         <br>
-                        <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, or losing his voice cheering for the Philadelphia sports scene. He’s a firm believer in a "lifelong appreciation for the game" and aims to ensure every athlete he coaches leaves the program as a better leader and a more well-rounded person.</p>
+                        <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, or losing his voice cheering for the Philadelphia sports scene.</p>
                     </div>
                 </div>
             </div>
@@ -150,17 +147,30 @@
             <hr class="border-t-2 border-gray-200" />
 
             <div class="grid md:grid-cols-4 gap-8 items-start">
-                <div class="md:col-span-1">
-                    <div class="bg-gray-200 w-full aspect-square rounded-lg flex items-center justify-center shadow-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
+                <div class="md:col-span-1 sticky-photo">
+                    <img src="ac1.jpg" alt="Chris D'Amore Assistant Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
                 </div>
                 <div class="md:col-span-3">
                     <h2 class="text-3xl font-bold text-gray-800">Chris D'Amore</h2>
-                    <p class="text-xl text-gray-600 font-semibold mb-4">Assistant Coach</p>
-                    <p class="text-gray-700 leading-relaxed">Bio will be up shortly!</p>
+                    <p class="text-xl text-dt-blue font-semibold mb-6">Assistant Coach</p>
+                    
+                    <div class="coach-profile">
+                        <h2>Three Decades of Competitive Excellence</h2>
+                        
+                        <p>Born and raised in <strong>Texas</strong>, Chris D'Amore brings a wealth of knowledge and elite-level experience to Downingtown East. A graduate of <strong>Twin Valley</strong> and <strong>California University of PA</strong>, Chris has spent over <strong>30 years</strong> immersed in the sport, developing a deep understanding of the technical and mental aspects of winning volleyball.</p>
+                        
+                        <br>
+                        <p>Chris’s extensive playing career spans from local dominance to the national collegiate stage:</p>
+
+                        <ul class="philosophy-list">
+                            <li><strong>Championship Pedigree:</strong> A former County Champion during his high school career at Twin Valley.</li>
+                            <li><strong>Collegiate Success:</strong> Played for a nationally ranked NCAA Division II program at California University of PA.</li>
+                            <li><strong>Active Competitor:</strong> Continues to compete at a high level, most recently with the Shamona Creek Volleyball team.</li>
+                        </ul>
+                        
+                        <br>
+                        <p>With a career rooted in high-stakes competition, Coach D'Amore is focused on instilling a championship mindset in our players, emphasizing the precision and discipline required to succeed at the next level.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,5 +219,3 @@
 </script>
 </body>
 </html>
-
-
