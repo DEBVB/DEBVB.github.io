@@ -1,246 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Meet the Coaches - Downingtown East Boys Volleyball</title>
-    
-    <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, and news for the Cougars.">
-    <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball">
-    <meta name="author" content="Downingtown East Boys Volleyball">
-
-    <meta property="og:title" content="Downingtown East Boys Volleyball">
-    <meta property="og:description" content="Follow the Cougars this season! Get the latest schedules, scores, and roster updates.">
-    <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-    <meta property="og:url" content="https://debvb.github.io">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-   <style>
-        body { font-family: 'Roboto', sans-serif; }
-        :root {
-            --dt-blue: #003366;
-            --dt-yellow: #FFD700;
-        }
-        .bg-dt-blue { background-color: var(--dt-blue); }
-        .text-dt-blue { color: var(--dt-blue); }
-        .bg-dt-yellow { background-color: var(--dt-yellow); }
-        .text-dt-yellow { color: var(--dt-yellow); }
-        .border-dt-yellow { border-color: var(--dt-yellow); }
-        
-        .nav-link {
-            padding: 0.5rem 1rem;
-            color: var(--dt-blue);
-            border-radius: 0.375rem;
-            transition: color 0.3s, background-color 0.3s;
-            display: inline-block;
-        }
-        .nav-link:hover {
-            background-color: var(--dt-yellow);
-            color: var(--dt-blue);
-        }
-        .nav-link.active {
-            background-color: var(--dt-blue);
-            color: white;
-        }
-
-        .coach-profile {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-left: 5px solid #004488;
-            background-color: #f9f9f9;
-        }
-        .coach-profile h2 {
-            color: #004488;
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .coach-profile h3 {
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 5px;
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .philosophy-list {
-            background: #fff;
-            padding: 15px 15px 15px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            list-style-type: disc;
-        }
-        .philosophy-list li { margin-bottom: 10px; }
-
-        @media (min-width: 768px) {
-            .sticky-photo {
-                position: sticky;
-                top: 100px; 
-            }
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
-
-<header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
-    <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-4">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
-          Downingtown East
-        </span>
-      </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
-        </svg>
-      </button>
-      <div class="hidden md:flex items-center space-x-2">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/schedule.html" class="nav-link">Schedule</a>
-        <a href="/coaches.html" class="nav-link active">Coaches</a>
-        <a href="/contact.html" class="nav-link">Contact</a>
-        <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>  
-      </div>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
-      <a href="/index.html" class="block nav-link text-center">Home</a>
-      <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
-      <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
-      <a href="/contact.html" class="block nav-link text-center">Contact</a>
-      <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link text-center">News</a>  
+<div class="grid md:grid-cols-4 gap-8 items-start">
+    <div class="md:col-span-1 sticky-photo">
+        <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
     </div>
-</header>
-
-<main class="container mx-auto p-4 md:p-8">
-    <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+    <div class="md:col-span-3">
+        <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
+        <p class="text-xl text-dt-blue font-semibold mb-6">Head Coach</p> 
         
-        <div class="space-y-12">
-            <div class="grid md:grid-cols-4 gap-8 items-start">
-                <div class="md:col-span-1 sticky-photo">
-                    <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
-                </div>
-                <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
-                    <p class="text-xl text-dt-blue font-semibold mb-6">Head Coach</p> 
-                  <div class="coach-profile">
-    <h2>Building the Local Volleyball Community</h2>
-    <p>For <strong>Grant Shieh</strong>, volleyball is more than a game—it’s the cornerstone of a thriving local community. While he spends his days as a history teacher at Lionville Middle School, his primary mission on the court is to elevate the standard of play and connection within the Downingtown area.</p>
+        <div class="coach-profile">
+            <h2>Building the Local Volleyball Community</h2>
+            <p>For <strong>Grant Shieh</strong>, volleyball is more than a game—it’s the cornerstone of a thriving local community. While he spends his days as a history teacher at Lionville Middle School, his primary mission on the court is to develop a high-level standard of play and cultive a strong community within the Downingtown area.</p>
 
-    <p>Grant currently leads both the Downingtown boys’ and girls’ programs, bringing a high-energy, community-first approach to every practice. His journey began in Bucks County as a libero for Council Rock North, continued through Temple University’s club team, and evolved into a full-time coaching career in 2022.</p>
+            <p>Grant currently leads the Downingtown East boys’ and program and is the assistant coach for the girls' program. His journey began in Bucks County as a libero for Council Rock North High School, continued through Temple University’s club team, and finally coaching the high school and club level in 2021.</p>
 
-    <br>
+            <br>
+            <p>Grant’s coaching is built on the <strong>"Student-Athlete" Growth Model</strong>, emphasizing that sustainable success is the result of intentional, small shifts:</p>
 
-    <h3>Coaching Philosophy</h3>
-    <p>Grant’s coaching is built on the <strong>"Student-Athlete" Growth Model</strong>, emphasizing that sustainable success is the result of intentional, small shifts rather than lucky breakthroughs.</p>
-    
-    <ul>
-        <li><strong>Community Impact:</strong> Creating a pipeline of talent where local players feel connected to their teammates and their town.</li>
-        <li><strong>Incremental Growth:</strong> Breaking down complex skills into manageable steps to ensure players see consistent, measurable progress.</li>
-        <li><strong>Confidence Through Sport:</strong> Using the court as a space where young athletes can test their limits and find their voice.</li>
-    </ul>
+            <ul class="philosophy-list">
+                <li><strong>Community Impact:</strong> Creating a pipeline of talent where local players feel connected to their teammates and their town.</li>
+                <li><strong>Incremental Growth:</strong> Breaking down complex skills into manageable steps to ensure players see consistent, measurable progress.</li>
+                <li><strong>Confidence Through Sport:</strong> Using the court as a space where young athletes can test their limits and find their voice.</li>
+            </ul>
+            
+            <br>
+            <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, skiing around the Northeast or cheering for the Philadelphia sports scene.</p>
+        </div>
+    </div>
 </div>
-                        <ul class="philosophy-list">
-                            <li><strong>Accountability:</strong> Owning your role on and off the court.</li>
-                            <li><strong>Resilience:</strong> Learning how to bounce back from a tough set or a difficult exam.</li>
-                            <li><strong>Collaboration:</strong> Understanding that the team is always stronger than the individual.</li>
-                        </ul>
-                        <br>
-                        <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, or losing his voice cheering for the Philadelphia sports scene.</p>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="border-t-2 border-gray-200" />
-
-            <div class="grid md:grid-cols-4 gap-8 items-start">
-                <div class="md:col-span-1 sticky-photo">
-                    <img src="ac1.jpg" alt="Chris D'Amore Assistant Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
-                </div>
-                <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold text-gray-800">Chris D'Amore</h2>
-                    <p class="text-xl text-dt-blue font-semibold mb-6">Assistant Coach</p>
-                    
-                    <div class="coach-profile">
-                        <h2>Three Decades of Competitive Excellence</h2>
-                        
-                        <p>Born and raised in <strong>Texas</strong>, Chris D'Amore brings a wealth of knowledge and elite-level experience to Downingtown East. A graduate of <strong>Twin Valley</strong> and <strong>California University of PA</strong>, Chris has spent over <strong>30 years</strong> immersed in the sport, developing a deep understanding of the technical and mental aspects of winning volleyball.</p>
-                        
-                        <br>
-                        <p>Chris’s extensive playing career spans from local dominance to the national collegiate stage:</p>
-
-                        <ul class="philosophy-list">
-                            <li><strong>Experience:</strong> A former County Champion during his high school career at Twin Valley.</li>
-                            <li><strong>Collegiate Level:</strong> Played for a nationally ranked NCAA Division II program at California University of PA.</li>
-                            <li><strong>Active Player:</strong> Continues to compete, most recently with the Shamona Creek Volleyball team.</li>
-                        </ul>
-                        
-                        <br>
-                        <p>With a career rooted in high-stakes competition, Coach D'Amore is focused on instilling a championship mindset in our players, emphasizing the precision and discipline required to succeed at the next level.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-
-<footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-        <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-                <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-                <ul class="space-y-2">
-                    <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
-                    <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-                    <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-                    <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-                <p>Downingtown East High School</p>
-                <p>50 Devon Dr, Exton, PA 19341</p>
-                <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-                <p>Links to social media coming soon!</p>
-            </div>
-        </div>
-        <div class="text-center border-t border-white/20 mt-8 pt-6">
-            <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-            });
-        }
-    });
-</script>
-</body>
-</html>
-
-
-
-
-
