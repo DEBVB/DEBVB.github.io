@@ -4,76 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>2026 Game Schedule | Downingtown East Boys Volleyball</title>
-    
-    <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, and news for the Cougars.">
-    <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball">
+
+    <meta name="description" content="2026 game schedule for Downingtown East Boys Volleyball. View upcoming matches, home and away games, and results for the Cougars.">
+    <meta name="keywords" content="Downingtown East, Volleyball Schedule, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
     <meta name="author" content="Downingtown East Boys Volleyball">
 
-    <meta property="og:title" content="Downingtown East Boys Volleyball Schedule">
-    <meta property="og:description" content="Follow the Cougars this season! Get the latest schedules, scores, and match updates.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="2026 Schedule | Downingtown East Boys Volleyball">
+    <meta property="og:description" content="Full 2026 season schedule for DE Boys Volleyball — home games, away games, times, and results.">
     <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
     <meta property="og:url" content="https://debvb.github.io/schedule.html">
+    <meta property="og:site_name" content="Downingtown East Boys Volleyball">
+
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@devbboys">
+    <meta name="twitter:title" content="2026 Schedule | Downingtown East Boys Volleyball">
+    <meta name="twitter:description" content="Full 2026 season schedule for DE Boys Volleyball — home games, away games, times, and results.">
+    <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-    
+
     <style>
         body { font-family: "Roboto", sans-serif; }
-        :root {
-          --dt-blue: #003366;
-          --dt-yellow: #ffd700;
-        }
+        :root { --dt-blue: #003366; --dt-yellow: #ffd700; }
         .bg-dt-blue { background-color: var(--dt-blue); }
         .text-dt-blue { color: var(--dt-blue); }
         .bg-dt-yellow { background-color: var(--dt-yellow); }
         .text-dt-yellow { color: var(--dt-yellow); }
         .border-dt-yellow { border-color: var(--dt-yellow); }
-
         .nav-link {
-          padding: 0.5rem 1rem;
-          color: var(--dt-blue);
-          border-radius: 0.375rem;
-          transition: color 0.3s, background-color 0.3s;
-          display: inline-block;
+            padding: 0.5rem 1rem; color: var(--dt-blue); border-radius: 0.375rem;
+            transition: color 0.3s, background-color 0.3s; display: inline-block;
         }
-        .nav-link:hover {
-          background-color: var(--dt-yellow);
-          color: var(--dt-blue);
-        }
-        .nav-link.active {
-          background-color: var(--dt-blue);
-          color: white;
-        }
-
-        /* Visual distinction sidebars */
+        .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
+        .nav-link.active { background-color: var(--dt-blue); color: white; }
         .game-row-home { border-left: 6px solid var(--dt-yellow); }
         .game-row-away { border-left: 6px solid #e2e8f0; }
-
-        /* Tooltip styling */
+        .game-row-next { background-color: #fffbeb; border-left: 6px solid #f59e0b !important; }
         .tooltip-content {
-          position: absolute;
-          bottom: 125%;
-          left: 50%;
-          transform: translateX(-50%);
-          background-color: rgba(31, 41, 55, 0.9);
-          color: #fff;
-          padding: 0.25rem 0.5rem;
-          border-radius: 0.25rem;
-          font-size: 0.75rem;
-          white-space: nowrap;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s ease-in-out;
-          z-index: 10;
+            position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
+            background-color: rgba(31, 41, 55, 0.9); color: #fff; padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem; font-size: 0.75rem; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; z-index: 10;
         }
-        .tooltip:hover .tooltip-content {
-          opacity: 1;
-        }
+        .tooltip:hover .tooltip-content { opacity: 1; }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -82,9 +60,7 @@
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
       <a href="/index.html" class="flex items-center space-x-4">
         <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
-          Downingtown East
-        </span>
+        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East</span>
       </a>
       <button id="mobile-menu-button" class="md:hidden text-dt-blue">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -97,7 +73,7 @@
         <a href="/coaches.html" class="nav-link">Coaches</a>
         <a href="/contact.html" class="nav-link">Contact</a>
         <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>    
+        <a href="/news.html" class="nav-link">News</a>
       </div>
     </nav>
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
@@ -106,7 +82,7 @@
       <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
       <a href="/contact.html" class="block nav-link text-center">Contact</a>
       <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link text-center">News</a>  
+      <a href="/news.html" class="block nav-link text-center">News</a>
     </div>
   </header>
 
@@ -115,6 +91,22 @@
       <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-dt-yellow pb-4 mb-8">
         <h1 class="text-3xl md:text-4xl font-bold text-dt-blue">2026 Season Schedule</h1>
         <span class="mt-2 md:mt-0 bg-dt-blue text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Varsity / JV</span>
+      </div>
+
+      <!-- Legend -->
+      <div class="flex flex-wrap gap-4 mb-6 text-sm">
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 rounded" style="background-color:#FFD700;"></div>
+          <span class="text-gray-600">Home</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 rounded bg-gray-200"></div>
+          <span class="text-gray-600">Away</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 rounded bg-amber-400"></div>
+          <span class="text-gray-600">Next Game</span>
+        </div>
       </div>
 
       <div class="overflow-x-auto">
@@ -129,9 +121,9 @@
             </tr>
           </thead>
           <tbody class="text-gray-700 text-base">
-            
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">Mar 10, 2026</td>
+
+            <tr class="game-row-next game-row-home border-b hover:bg-yellow-100 transition">
+              <td class="py-4 px-4 font-bold">Mar 10, 2026 <span class="ml-2 inline-block bg-amber-400 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">Next</span></td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Souderton</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
@@ -177,8 +169,8 @@
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
-              
-                <tr class="game-row-away border-b hover:bg-gray-50 transition">
+
+            <tr class="game-row-away border-b hover:bg-gray-50 transition">
               <td class="py-4 px-4">Mar 18, 2026</td>
               <td class="py-4 px-4 font-normal">@ Henderson</td>
               <td class="py-4 px-4 hidden md:table-cell">
@@ -304,110 +296,3 @@
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
-              <td class="py-4 px-4">6:30 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">Apr 23, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Kennett</td>
-              <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
-              </td>
-              <td class="py-4 px-4">5:00 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">Apr 28, 2026</td>
-              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Unionville</td>
-              <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
-              </td>
-              <td class="py-4 px-4">5:00 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">Apr 30, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Bishop Shanahan</td>
-              <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
-              </td>
-              <td class="py-4 px-4">5:00 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">May 1, 2026</td>
-              <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Spring-Ford</td>
-              <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
-              </td>
-              <td class="py-4 px-4">7:00 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
-              <td class="py-4 px-4">May 4, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Lower Merion</td>
-              <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
-              </td>
-              <td class="py-4 px-4">5:30 PM</td>
-              <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-      <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-        <div>
-          <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-          <ul class="space-y-2">
-            <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
-            <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-            <li><a href="/roster.html" class="hover:text-dt-yellow">Roster</a></li>
-            <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-            <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-          <p>Downingtown East High School</p>
-          <p>50 Devon Dr, Exton, PA 19341</p>
-          <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
-        </div>
-        <div>
-          <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-          <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <span>@devbboys</span>
-          </a>
-        </div>
-      </div>
-      <div class="text-center border-t border-white/20 mt-8 pt-6">
-        <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      }
-    });
-  </script>
-</body>
-</html>
-
