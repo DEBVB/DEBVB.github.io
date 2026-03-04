@@ -42,10 +42,30 @@
         }
         .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
         .nav-link.active { background-color: var(--dt-blue); color: white; }
-        .roster-placeholder {
-            border: 2px dashed #cbd5e1; background-color: #f8fafc; transition: transform 0.2s;
+        .player-card {
+            background: white;
+            border-top: 4px solid var(--dt-blue);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .roster-placeholder:hover { transform: translateY(-2px); }
+        .player-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .player-card.jv { border-top-color: #94a3b8; }
+        .role-badge {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: var(--dt-blue);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .jv .role-badge { background-color: #f1f5f9; color: #475569; }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -84,72 +104,162 @@
     <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
       <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">2026 Season Roster</h1>
 
-      <!-- Coming Soon Banner -->
-      <div class="mb-10 bg-blue-50 border border-blue-200 rounded-lg p-6 flex flex-col md:flex-row items-center gap-4">
-        <div class="text-4xl">🏐</div>
-        <div>
-          <h2 class="text-xl font-bold text-dt-blue">Roster Coming Soon</h2>
-          <p class="text-gray-600 mt-1">Tryouts concluded March 4th. Rosters will be posted here once finalized. Follow <a href="https://www.remind.com/join/boysdevb" target="_blank" class="text-dt-blue font-semibold hover:underline">@BOYSDEVB on Remind</a> for the official announcement.</p>
-        </div>
-      </div>
-
+      <!-- VARSITY -->
       <section class="mb-16">
-        <div class="flex items-center mb-6">
+        <div class="flex items-center mb-2">
           <h2 class="text-2xl font-black text-dt-blue uppercase tracking-tight">Varsity</h2>
           <div class="ml-4 h-1 flex-grow bg-gray-100 rounded"></div>
+          <span class="ml-4 text-sm font-bold text-gray-400 uppercase tracking-widest">13 Players</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+        <p class="text-gray-400 text-sm mb-6">Head Coach: Grant Shieh &nbsp;|&nbsp; Asst. Coach: Chris D'Amore</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Adrian Liu</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 6'3"</p>
+            <span class="role-badge mt-2">Middle</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Sritan Bhurmireddy</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 6'0"</p>
+            <span class="role-badge mt-2">Outside</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Ritvik Adoni</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 5'9"</p>
+            <span class="role-badge mt-2">Libero</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Divyansh Ajmera</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 5'5"</p>
+            <span class="role-badge mt-2">DS</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Samuel Joshy</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 5'6"</p>
+            <span class="role-badge mt-2">DS</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Arjun Sankar</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 5'10"</p>
+            <span class="role-badge mt-2">Setter</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Parker Laverya</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 6'2"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Anish Yasa</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 5'7"</p>
+            <span class="role-badge mt-2">Right Side</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Sidd Madipadaga</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 6'3"</p>
+            <span class="role-badge mt-2">Middle</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Anish Dachepalli</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 5'9"</p>
+            <span class="role-badge mt-2">Middle</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Aadi Kurukunda</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 5'7"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Gavin Tulloch</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 6'10"</p>
+            <span class="role-badge mt-2">Middle</span>
+          </div>
+          <div class="player-card p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Arjun Potankar</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 5'8"</p>
+            <span class="role-badge mt-2">Right Side</span>
           </div>
         </div>
       </section>
 
+      <!-- JUNIOR VARSITY -->
       <section class="mb-8">
-        <div class="flex items-center mb-6">
+        <div class="flex items-center mb-2">
           <h2 class="text-2xl font-black text-dt-blue uppercase tracking-tight">Junior Varsity</h2>
           <div class="ml-4 h-1 flex-grow bg-gray-100 rounded"></div>
+          <span class="ml-4 text-sm font-bold text-gray-400 uppercase tracking-widest">13 Players</span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+        <p class="text-gray-400 text-sm mb-6">Coach: Chris D'Amore</p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Ishaan Karamchandani</h3>
+            <p class="text-xs text-gray-500 mt-1">Senior &nbsp;·&nbsp; 5'8"</p>
+            <span class="role-badge mt-2">Setter</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Shreyan Potdar</h3>
+            <p class="text-xs text-gray-500 mt-1">Junior &nbsp;·&nbsp; 6'10"</p>
+            <span class="role-badge mt-2">Right Side</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Nehan Madankumar</h3>
+            <p class="text-xs text-gray-500 mt-1">Sophomore &nbsp;·&nbsp; 5'7"</p>
+            <span class="role-badge mt-2">DS</span>
           </div>
-          <div class="roster-placeholder rounded-lg p-6 text-center shadow-sm">
-            <p class="text-3xl font-black text-gray-300">#--</p>
-            <h3 class="text-lg font-bold mt-2 text-gray-400">TBD</h3>
-            <p class="text-gray-400 text-sm">Coming Soon</p>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Sreekar Pasupulati</h3>
+            <p class="text-xs text-gray-500 mt-1">Sophomore &nbsp;·&nbsp; 5'10"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Tyler McGowan</h3>
+            <p class="text-xs text-gray-500 mt-1">Sophomore &nbsp;·&nbsp; 5'10"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Anish Sugan</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 6'0"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Avanish Rao</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'3"</p>
+            <span class="role-badge mt-2">Setter</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">David Son</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'6"</p>
+            <span class="role-badge mt-2">Right Side</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Mason Gulotta</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'5"</p>
+            <span class="role-badge mt-2">DS</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Rishaan Kesari</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'7"</p>
+            <span class="role-badge mt-2">Setter</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Samrudh Ghanta</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'6"</p>
+            <span class="role-badge mt-2">DS</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Srithan Ravula</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 6'0"</p>
+            <span class="role-badge mt-2">Outside</span>
+          </div>
+          <div class="player-card jv p-5 text-center">
+            <h3 class="text-base font-black text-gray-800 leading-tight">Vivaan Adiga</h3>
+            <p class="text-xs text-gray-500 mt-1">Freshman &nbsp;·&nbsp; 5'3"</p>
+            <span class="role-badge mt-2">Setter</span>
           </div>
         </div>
       </section>
+
     </div>
   </main>
 
