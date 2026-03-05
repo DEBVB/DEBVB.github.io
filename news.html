@@ -4,24 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Latest News & Updates - Downingtown East Boys Volleyball</title>
-
   <meta name="description" content="Latest news and updates for Downingtown East Boys Volleyball. Season announcements, tryout info, and team highlights for the Cougars.">
   <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
   <meta name="author" content="Downingtown East Boys Volleyball">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="News & Updates | Downingtown East Boys Volleyball">
   <meta property="og:description" content="Latest news and updates for Downingtown East Boys Volleyball — season announcements, tryout info, and team highlights.">
   <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
   <meta property="og:url" content="https://debvb.github.io/news.html">
   <meta property="og:site_name" content="Downingtown East Boys Volleyball">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@devbboys">
   <meta name="twitter:title" content="News & Updates | Downingtown East Boys Volleyball">
   <meta name="twitter:description" content="Latest news and updates for Downingtown East Boys Volleyball — season announcements, tryout info, and team highlights.">
   <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,36 +28,29 @@
     :root { --dt-blue: #003366; --dt-yellow: #ffd700; }
     .bg-dt-blue { background-color: var(--dt-blue); }
     .text-dt-blue { color: var(--dt-blue); }
-    .bg-dt-yellow { background-color: var(--dt-yellow); }
-    .text-dt-yellow { color: var(--dt-yellow); }
     .border-dt-yellow { border-color: var(--dt-yellow); }
-    .nav-link {
-      padding: 0.5rem 1rem;
-      color: var(--dt-blue);
-      border-radius: 0.375rem;
-      transition: color 0.3s, background-color 0.3s;
-      display: inline-block;
-    }
+    .nav-link { padding: 0.5rem 1rem; color: var(--dt-blue); border-radius: 0.375rem; transition: color 0.3s, background-color 0.3s; display: inline-block; }
     .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
     .nav-link.active { background-color: var(--dt-blue); color: white; }
-    .nav-link.active:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
+    .mobile-nav-link { display: block; padding: 0.9rem 1rem; color: var(--dt-blue); font-size: 1rem; font-weight: 600; text-align: center; border-radius: 0.375rem; transition: background-color 0.2s; }
+    .mobile-nav-link:hover { background-color: var(--dt-yellow); }
+    .mobile-nav-link.active { background-color: var(--dt-blue); color: white; }
   </style>
 </head>
-
 <body class="bg-gray-100">
 
   <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-4">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+      <a href="/index.html" class="flex items-center space-x-3">
+        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 w-auto object-contain mix-blend-multiply" />
         <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East</span>
       </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
+      <button id="mobile-menu-button" class="md:hidden text-dt-blue p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-      <div class="hidden md:flex items-center space-x-2">
+      <div class="hidden md:flex items-center space-x-1">
         <a href="/index.html" class="nav-link">Home</a>
         <a href="/schedule.html" class="nav-link">Schedule</a>
         <a href="/coaches.html" class="nav-link">Coaches</a>
@@ -70,73 +59,67 @@
         <a href="/news.html" class="nav-link active font-bold">News</a>
       </div>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
-      <a href="/index.html" class="block nav-link text-center">Home</a>
-      <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
-      <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
-      <a href="/contact.html" class="block nav-link text-center">Contact</a>
-      <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link active font-bold text-center">News</a>
+    <div id="mobile-menu" class="hidden md:hidden px-3 pt-1 pb-3 space-y-1 bg-white border-t border-gray-100">
+      <a href="/index.html" class="mobile-nav-link">Home</a>
+      <a href="/schedule.html" class="mobile-nav-link">Schedule</a>
+      <a href="/coaches.html" class="mobile-nav-link">Coaches</a>
+      <a href="/contact.html" class="mobile-nav-link">Contact</a>
+      <a href="/roster.html" class="mobile-nav-link">Roster</a>
+      <a href="/news.html" class="mobile-nav-link active">News</a>
     </div>
   </header>
 
-  <main class="container mx-auto p-4 md:p-8">
-    <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-      <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Recent News</h1>
+  <main class="container mx-auto px-4 py-6 md:p-8">
+    <div class="bg-white rounded-lg shadow-xl p-4 md:p-8">
+      <h1 class="text-2xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-6">Recent News</h1>
 
-      <div class="space-y-8">
+      <div class="space-y-5">
 
-        <!-- NEW: Parent Meeting -->
-        <div class="border-l-4 border-dt-yellow bg-yellow-50/60 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">Parent Meeting — Friday After Practice</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on March 4, 2026</p>
-          <p class="text-gray-700 leading-relaxed">
-            There will be a <strong>parent meeting in the library immediately following Friday's practice.</strong> All parents and guardians are encouraged to attend. This is a great opportunity to connect with the coaching staff, ask questions, and stay informed about the upcoming season.
+        <div class="border-l-4 border-yellow-400 bg-yellow-50/60 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">Parent Meeting — Friday After Practice</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on March 5, 2026</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            There will be a <strong>parent meeting in the library immediately following Friday's practice.</strong> All parents and guardians are encouraged to attend. A great opportunity to connect with the coaching staff, ask questions, and stay informed about the upcoming season.
           </p>
         </div>
 
-        <!-- NEW: JV Scorebook Clinic -->
-        <div class="border-l-4 border-dt-yellow bg-yellow-50/60 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">JV Scorebook Clinic — Saturday After Practice</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on March 4, 2026</p>
-          <p class="text-gray-700 leading-relaxed">
-            Following <strong>Saturday's practice (9:00–11:30 AM)</strong>, all JV players are invited to stay for a <strong>"Learning the Book" clinic</strong>. Players will be taught how to keep the official scorebook during games — an important skill for supporting the team on match days. Plan to stay a little extra time after practice wraps up.
+        <div class="border-l-4 border-yellow-400 bg-yellow-50/60 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">JV Scorebook Clinic — Saturday After Practice</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on March 5, 2026</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            Following <strong>Saturday's practice (9:00–11:30 AM)</strong>, all JV players are invited to stay for a <strong>"Learning the Book" clinic</strong>. Players will be taught how to keep the official scorebook during games — an important skill for supporting the team on match days.
           </p>
         </div>
 
-        <!-- NEW: Activity Fee -->
-        <div class="border-l-4 border-dt-yellow bg-yellow-50/60 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">Activity Fee Payment Reminder</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on March 4, 2026</p>
-          <p class="text-gray-700 leading-relaxed">
-            All players are reminded to <strong>pay their activity fee</strong> as soon as possible if they have not already done so. Fees can be paid through the school's athletic office. Please reach out to <a href="/contact.html" class="text-dt-blue font-semibold hover:underline">Coach Shieh</a> if you have any questions about the payment process.
+        <div class="border-l-4 border-yellow-400 bg-yellow-50/60 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">Activity Fee Payment Reminder</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on March 5, 2026</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            All players are reminded to <strong>pay their activity fee</strong> as soon as possible if they have not done so. Fees can be paid through the school's athletic office. Reach out to <a href="/contact.html" class="text-dt-blue font-semibold hover:underline">Coach Shieh</a> with any questions.
           </p>
         </div>
 
-        <!-- EXISTING: Tryout Dates -->
-        <div class="border-l-4 border-dt-blue bg-blue-50/50 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">2026 Season Tryout Dates Announced</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on January 28, 2026</p>
-          <p class="text-gray-700 leading-relaxed">
-            The hunt for the next Cougars squad begins soon! Tryouts for the 2026 season will take place from <strong>March 2nd through March 4th</strong>. Please note that rosters will be finalized and announced at the conclusion of Day 3 (March 4th). All prospective players must have their physical forms submitted to the athletic office before stepping onto the court.
+        <div class="border-l-4 border-dt-blue bg-blue-50/50 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">2026 Season Tryout Dates Announced</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on January 28, 2026</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            Tryouts for the 2026 season took place from <strong>March 2nd through March 4th</strong>. Rosters were finalized at the conclusion of Day 3. All prospective players must have their physical forms submitted to the athletic office before stepping onto the court.
           </p>
         </div>
 
-        <!-- EXISTING: Graduating Seniors -->
-        <div class="border-l-4 border-gray-400 bg-gray-50/50 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">Congratulations to Our Graduating Seniors!</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on June 5, 2025</p>
-          <p class="text-gray-700 leading-relaxed">
-            A huge congratulations to the graduating class of 2025! We want to thank our senior players for their dedication, leadership, and hard work over the years. We wish you the best of luck in all your future endeavors!
+        <div class="border-l-4 border-gray-400 bg-gray-50/50 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">Congratulations to Our Graduating Seniors!</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on June 5, 2025</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            A huge congratulations to the graduating class of 2025! We thank our senior players for their dedication, leadership, and hard work over the years. Best of luck in all your future endeavors!
           </p>
         </div>
 
-        <!-- EXISTING: Pre-Season Meeting -->
-        <div class="border-l-4 border-gray-400 bg-gray-50/50 p-6 rounded-r-lg shadow-sm">
-          <h2 class="text-2xl font-bold text-gray-800">Parent & Player Pre-Season Meeting</h2>
-          <p class="text-gray-500 text-sm mb-3">Posted on February 15, 2026</p>
-          <p class="text-gray-700 leading-relaxed">
-            A mandatory pre-season meeting for all interested players and their parents will be held on February 25th at 7:00 PM in the school cafeteria. We will discuss the upcoming spring schedule and program expectations.
+        <div class="border-l-4 border-gray-400 bg-gray-50/50 p-4 md:p-6 rounded-r-lg shadow-sm">
+          <h2 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">Parent &amp; Player Pre-Season Meeting</h2>
+          <p class="text-gray-500 text-xs mb-2">Posted on February 15, 2026</p>
+          <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+            A mandatory pre-season meeting for all interested players and their parents was held on February 25th at 7:00 PM in the school cafeteria. The spring schedule and program expectations were discussed.
           </p>
         </div>
 
@@ -144,44 +127,48 @@
     </div>
   </main>
 
-  <footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-      <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+  <footer class="bg-dt-blue text-white mt-10">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
         <div>
-          <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-          <ul class="space-y-2">
-            <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
-            <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-            <li><a href="/roster.html" class="hover:text-dt-yellow">Roster</a></li>
-            <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-            <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/index.html" class="hover:text-yellow-300">Home</a></li>
+            <li><a href="/schedule.html" class="hover:text-yellow-300">Schedule</a></li>
+            <li><a href="/roster.html" class="hover:text-yellow-300">Roster</a></li>
+            <li><a href="/coaches.html" class="hover:text-yellow-300">Coaches</a></li>
+            <li><a href="/contact.html" class="hover:text-yellow-300">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-          <p>Downingtown East High School</p>
-          <p>50 Devon Dr, Exton, PA 19341</p>
-          <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Contact</h4>
+          <p class="text-sm">Downingtown East High School</p>
+          <p class="text-sm">50 Devon Dr, Exton, PA 19341</p>
+          <a href="/contact.html" class="hover:text-yellow-300 text-sm block mt-1">Contact the Coaches</a>
         </div>
         <div>
-          <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-          <ul class="space-y-2">
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Follow Us</h4>
+          <ul class="space-y-2 text-sm">
             <li>
-              <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>@deastboysvb</span>
+              <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2">
+                <svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @deastboysvb
               </a>
             </li>
             <li>
-              <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                <span>@devbboys</span>
+              <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2">
+                <svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                @devbboys
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <div class="text-center border-t border-white/20 mt-8 pt-6">
+      <div class="text-center border-t border-white/20 mt-6 pt-5 text-sm">
         <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
       </div>
     </div>
@@ -189,11 +176,9 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
-      }
+      const btn = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
     });
   </script>
 </body>
