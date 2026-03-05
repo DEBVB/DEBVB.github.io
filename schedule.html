@@ -42,9 +42,14 @@
         }
         .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
         .nav-link.active { background-color: var(--dt-blue); color: white; }
-        .game-row-home { border-left: 6px solid var(--dt-yellow); }
-        .game-row-away { border-left: 6px solid #e2e8f0; }
-        .game-row-next { background-color: #fffbeb; border-left: 6px solid #f59e0b !important; }
+
+        /* Home = soft blue tint, Away = plain white */
+        .game-row-home { background-color: #e8f0fb; }
+        .game-row-away { background-color: #ffffff; }
+
+        /* Next game overrides everything with amber */
+        .game-row-next { background-color: #fffbeb !important; }
+
         .tooltip-content {
             position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
             background-color: rgba(31, 41, 55, 0.9); color: #fff; padding: 0.25rem 0.5rem;
@@ -96,21 +101,21 @@
       <!-- Legend -->
       <div class="flex flex-wrap gap-4 mb-6 text-sm">
         <div class="flex items-center space-x-2">
-          <div class="w-4 h-4 rounded" style="background-color:#FFD700;"></div>
+          <div class="w-4 h-4 rounded" style="background-color:#e8f0fb; border: 1px solid #c7d9f5;"></div>
           <span class="text-gray-600">Home</span>
         </div>
         <div class="flex items-center space-x-2">
-          <div class="w-4 h-4 rounded bg-gray-200"></div>
+          <div class="w-4 h-4 rounded bg-white border border-gray-300"></div>
           <span class="text-gray-600">Away</span>
         </div>
         <div class="flex items-center space-x-2">
-          <div class="w-4 h-4 rounded bg-amber-400"></div>
+          <div class="w-4 h-4 rounded bg-amber-100 border border-amber-300"></div>
           <span class="text-gray-600">Next Game</span>
         </div>
       </div>
 
       <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
+        <table class="min-w-full bg-white rounded-lg overflow-hidden">
           <thead class="bg-dt-blue text-white text-base">
             <tr>
               <th class="text-left py-4 px-4 uppercase font-semibold">Date</th>
@@ -120,49 +125,49 @@
               <th class="text-center py-4 px-4 uppercase font-semibold">Result</th>
             </tr>
           </thead>
-          <tbody class="text-gray-700 text-base">
+          <tbody class="text-gray-700 text-base divide-y divide-gray-100">
 
-            <tr class="game-row-next game-row-home border-b hover:bg-yellow-100 transition">
+            <tr class="game-row-next game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4 font-bold">Mar 10, 2026 <span class="ml-2 inline-block bg-amber-400 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">Next</span></td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Souderton</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center">
-                <span class="tooltip text-gray-400 font-mono text-sm cursor-help" tabindex="0">
+                <span class="tooltip relative text-gray-400 font-mono text-sm cursor-help" tabindex="0">
                   SCRIM <span class="tooltip-content">JV @ 3:30 PM</span>
                 </span>
               </td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 13, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Bensalem</td>
+              <td class="py-4 px-4">@ Bensalem</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center">
-                <span class="tooltip text-gray-400 font-mono text-sm cursor-help" tabindex="0">
+                <span class="tooltip relative text-gray-400 font-mono text-sm cursor-help" tabindex="0">
                   SCRIM <span class="tooltip-content">JV @ 3:45 PM</span>
                 </span>
               </td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 14, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Wilson (Reading)</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">11:00 AM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 16, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Lansdale Catholic</td>
+              <td class="py-4 px-4">@ Lansdale Catholic</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -170,9 +175,9 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 18, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Henderson</td>
+              <td class="py-4 px-4">@ Henderson</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -180,9 +185,9 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 24, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Downingtown West</td>
+              <td class="py-4 px-4">@ Downingtown West</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -190,29 +195,29 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 26, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Kennett</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 27, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Dock Mennonite</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 30, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Council Rock South</td>
+              <td class="py-4 px-4">@ Council Rock South</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -220,19 +225,19 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Mar 31, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. WC Rustin</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">3:45 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 7, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Avon Grove</td>
+              <td class="py-4 px-4">@ Avon Grove</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -240,9 +245,9 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 9, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Unionville</td>
+              <td class="py-4 px-4">@ Unionville</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -250,49 +255,49 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 10, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. CB South</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 14, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Bishop Shanahan</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 16, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Downingtown West</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 18, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Lower Merion</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">11:30 AM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 20, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Quakertown</td>
+              <td class="py-4 px-4">@ Quakertown</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -300,9 +305,9 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 23, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Kennett</td>
+              <td class="py-4 px-4">@ Kennett</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -310,19 +315,19 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 28, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Unionville</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">5:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">Apr 30, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Bishop Shanahan</td>
+              <td class="py-4 px-4">@ Bishop Shanahan</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -330,19 +335,19 @@
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-home border-b hover:bg-gray-50 transition">
+            <tr class="game-row-home hover:brightness-95 transition">
               <td class="py-4 px-4">May 1, 2026</td>
               <td class="py-4 px-4 font-black text-dt-blue uppercase">vs. Spring-Ford</td>
               <td class="py-4 px-4 hidden md:table-cell">
-                <span class="inline-block w-20 text-center bg-dt-yellow text-dt-blue text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
+                <span class="inline-block w-20 text-center bg-dt-blue text-white text-[10px] font-black py-1 rounded shadow-sm">HOME</span>
               </td>
               <td class="py-4 px-4">7:00 PM</td>
               <td class="py-4 px-4 text-center text-sm font-mono text-gray-400 italic">Upcoming</td>
             </tr>
 
-            <tr class="game-row-away border-b hover:bg-gray-50 transition">
+            <tr class="game-row-away hover:brightness-95 transition">
               <td class="py-4 px-4">May 4, 2026</td>
-              <td class="py-4 px-4 font-normal">@ Lower Merion</td>
+              <td class="py-4 px-4">@ Lower Merion</td>
               <td class="py-4 px-4 hidden md:table-cell">
                 <span class="inline-block w-20 text-center bg-gray-200 text-gray-600 text-[10px] font-bold py-1 rounded shadow-sm">AWAY</span>
               </td>
@@ -378,7 +383,12 @@
         <div>
           <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
           <ul class="space-y-2">
-            <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-dt-yellow">Instagram: @deastboysvb</a></li>
+            <li>
+              <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span>@deastboysvb</span>
+              </a>
+            </li>
             <li>
               <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
