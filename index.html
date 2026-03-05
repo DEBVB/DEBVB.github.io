@@ -4,24 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home - Downingtown East Boys Volleyball</title>
-
   <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, news, and highlights for the Cougars.">
   <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
   <meta name="author" content="Downingtown East Boys Volleyball">
-
   <meta property="og:type" content="website">
   <meta property="og:title" content="Downingtown East Boys Volleyball">
   <meta property="og:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
   <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
   <meta property="og:url" content="https://debvb.github.io/index.html">
   <meta property="og:site_name" content="Downingtown East Boys Volleyball">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@devbboys">
   <meta name="twitter:title" content="Downingtown East Boys Volleyball">
   <meta name="twitter:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
   <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,38 +38,45 @@
     .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
     .nav-link.active { background-color: var(--dt-blue); color: white; }
     .nav-link.active:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
-    .hero-slideshow { position: relative; width: 100%; height: 60vh; overflow: hidden; }
+    .mobile-nav-link {
+      display: block; padding: 0.9rem 1rem; color: var(--dt-blue);
+      font-size: 1rem; font-weight: 600; text-align: center;
+      border-radius: 0.375rem; transition: background-color 0.2s;
+    }
+    .mobile-nav-link:hover, .mobile-nav-link:active { background-color: var(--dt-yellow); }
+    .mobile-nav-link.active { background-color: var(--dt-blue); color: white; }
+    .hero-slideshow { position: relative; width: 100%; height: 50vh; min-height: 260px; overflow: hidden; }
     .hero-slideshow img {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
     }
     .hero-slideshow img.active { opacity: 1; }
     #donate-bubble {
-      position: fixed; bottom: 20px; right: 20px; background-color: #003366;
+      position: fixed; bottom: 16px; right: 16px; background-color: #003366;
       color: white; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.25);
       font-family: 'Roboto', sans-serif; overflow: hidden; cursor: pointer;
-      transition: all 0.3s ease; z-index: 9999; width: 120px; text-align: center;
+      transition: all 0.3s ease; z-index: 9999; width: 110px; text-align: center;
     }
-    #donate-header { padding: 12px; font-weight: 600; }
-    #donate-content { background: white; color: #1a1a1a; padding: 15px; display: none; }
-    #donate-content img { max-width: 120px; margin: 10px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
-    .venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 10px 18px; font-size: 0.9rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
+    #donate-header { padding: 11px 10px; font-weight: 600; font-size: 0.9rem; }
+    #donate-content { background: white; color: #1a1a1a; padding: 12px; display: none; }
+    #donate-content img { max-width: 110px; margin: 8px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
+    .venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 9px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
   </style>
 </head>
 <body class="bg-gray-100">
 
   <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-4">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East Boys Volleyball</span>
+      <a href="/index.html" class="flex items-center space-x-3">
+        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 w-auto object-contain mix-blend-multiply" />
+        <span class="text-dt-blue text-base font-bold hidden lg:block border-l-2 border-gray-200 pl-3">Downingtown East Boys Volleyball</span>
       </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
+      <button id="mobile-menu-button" class="md:hidden text-dt-blue p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-      <div class="hidden md:flex items-center space-x-2">
+      <div class="hidden md:flex items-center space-x-1">
         <a href="/index.html" class="nav-link active font-bold">Home</a>
         <a href="/schedule.html" class="nav-link">Schedule</a>
         <a href="/coaches.html" class="nav-link">Coaches</a>
@@ -82,13 +85,13 @@
         <a href="/news.html" class="nav-link">News</a>
       </div>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
-      <a href="/index.html" class="block nav-link active font-bold text-center">Home</a>
-      <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
-      <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
-      <a href="/contact.html" class="block nav-link text-center">Contact</a>
-      <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link text-center">News</a>
+    <div id="mobile-menu" class="hidden md:hidden px-3 pt-1 pb-3 space-y-1 bg-white border-t border-gray-100">
+      <a href="/index.html" class="mobile-nav-link active">Home</a>
+      <a href="/schedule.html" class="mobile-nav-link">Schedule</a>
+      <a href="/coaches.html" class="mobile-nav-link">Coaches</a>
+      <a href="/contact.html" class="mobile-nav-link">Contact</a>
+      <a href="/roster.html" class="mobile-nav-link">Roster</a>
+      <a href="/news.html" class="mobile-nav-link">News</a>
     </div>
   </header>
 
@@ -111,110 +114,104 @@
         <img src="/IMG_5964.jpeg" alt="Cougars volleyball action" />
       </div>
       <div class="absolute inset-0 bg-black/60 flex flex-col justify-center items-center p-4">
-        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider">ROLL COUGS!</h1>
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-wider">ROLL COUGS!</h1>
       </div>
     </section>
 
-    <div class="container mx-auto p-4 md:p-8">
-      <section class="grid md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-white rounded-lg shadow-xl p-6 text-center border-t-4 border-dt-blue">
-          <h3 class="text-2xl font-bold text-dt-blue mb-4">NEXT GAME</h3>
-          <p class="text-4xl font-black text-gray-800">MAR 10</p>
-          <p class="text-xl text-gray-600 mt-2">vs. Souderton (Scrimmage)</p>
-          <p class="text-md text-gray-500 mt-1">JV: 3:30 PM | Varsity: 5:00 PM</p>
-          <a href="/schedule.html" class="mt-6 inline-block w-full px-6 py-3 bg-dt-blue text-white font-bold rounded-lg hover:bg-blue-800 transition-colors">Full Schedule</a>
+    <div class="container mx-auto px-4 py-6 md:p-8">
+
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-dt-blue">
+          <h3 class="text-xl font-bold text-dt-blue mb-3">NEXT GAME</h3>
+          <p class="text-3xl font-black text-gray-800">MAR 10</p>
+          <p class="text-base text-gray-600 mt-1">vs. Souderton (Scrimmage)</p>
+          <p class="text-sm text-gray-500 mt-1">JV: 3:30 PM | Varsity: 5:00 PM</p>
+          <a href="/schedule.html" class="mt-4 inline-block w-full px-4 py-3 bg-dt-blue text-white font-bold rounded-lg hover:bg-blue-800 transition-colors text-sm">Full Schedule</a>
         </div>
-        <div class="bg-white rounded-lg shadow-xl p-6 text-center border-t-4 border-gray-400">
-          <h3 class="text-2xl font-bold text-gray-600 mb-4">LAST SEASON'S RECORD</h3>
-          <p class="text-4xl font-black text-gray-800">9-9</p>
-          <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block w-full px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors">View MaxPreps</a>
+        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-gray-400">
+          <h3 class="text-xl font-bold text-gray-600 mb-3">LAST SEASON</h3>
+          <p class="text-3xl font-black text-gray-800">11-9</p>
+          <p class="text-base text-gray-600 mt-1">2025 District Qualifier</p>
+          <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full px-4 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors text-sm">View MaxPreps</a>
         </div>
-        <div class="bg-white rounded-lg shadow-xl p-6 text-center border-t-4 border-dt-yellow">
-          <h3 class="text-2xl font-bold text-dt-blue mb-4">WATCH HIGHLIGHTS</h3>
-          <p class="text-4xl font-black text-dt-yellow">HUDL</p>
-          <p class="text-xl text-gray-600 mt-2">Catch up on all the action</p>
-          <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block w-full px-6 py-3 bg-dt-yellow text-dt-blue font-bold rounded-lg hover:bg-yellow-500 transition-colors">Go to Hudl</a>
+        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-dt-yellow">
+          <h3 class="text-xl font-bold text-dt-blue mb-3">WATCH HIGHLIGHTS</h3>
+          <p class="text-3xl font-black text-dt-yellow">HUDL</p>
+          <p class="text-base text-gray-600 mt-1">Catch up on all the action</p>
+          <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full px-4 py-3 bg-dt-yellow text-dt-blue font-bold rounded-lg hover:bg-yellow-500 transition-colors text-sm">Go to Hudl</a>
         </div>
       </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <section class="bg-white rounded-lg shadow-xl p-6 md:p-8 h-full">
-          <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">Team Announcements</h2>
-          <div class="space-y-6">
-            <div class="p-4 border-l-4 border-dt-blue bg-blue-50 rounded-r-lg opacity-0 transition-opacity duration-1000 transform translate-y-3" id="tryoutAnnouncement">
-              <h4 class="font-bold text-xl text-gray-800">2026 Season is Underway! 🏐</h4>
-              <p class="text-gray-500 text-sm mb-2">Posted on March 4, 2026</p>
-              <div class="text-gray-700 space-y-2">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <section class="bg-white rounded-lg shadow-lg p-5 md:p-7">
+          <h2 class="text-2xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-5">Team Announcements</h2>
+          <div class="space-y-4">
+            <div class="p-4 border-l-4 border-dt-blue bg-blue-50 rounded-r-lg" id="tryoutAnnouncement">
+              <h4 class="font-bold text-lg text-gray-800">2026 Season is Underway! 🏐</h4>
+              <p class="text-gray-500 text-xs mb-2">Posted on March 4, 2026</p>
+              <div class="text-gray-700 text-sm space-y-2">
                 <p>Tryouts have concluded and rosters are being finalized. Stay tuned for the official roster announcement.</p>
                 <p>First game is <strong>March 10 vs. Souderton</strong> — JV at 3:30 PM, Varsity at 5:00 PM.</p>
                 <p>Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" class="text-dt-blue font-semibold hover:underline">@BOYSDEVB</a> on Remind.</p>
               </div>
             </div>
             <div class="p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg">
-              <h4 class="font-bold text-xl text-gray-800">Support Cougar Volleyball</h4>
-              <p class="text-gray-500 text-sm mb-2">Posted on January 2026</p>
-              <p class="text-gray-700">Help support the program! Donations go toward equipment, uniforms, and travel. Use the Donate button in the bottom-right corner or follow us on Instagram <a href="https://instagram.com/deastboysvb" target="_blank" class="text-dt-blue font-semibold hover:underline">@deastboysvb</a> for updates all season.</p>
+              <h4 class="font-bold text-lg text-gray-800">Support Cougar Volleyball</h4>
+              <p class="text-gray-500 text-xs mb-2">Posted on January 2026</p>
+              <p class="text-gray-700 text-sm">Help support the program! Donations go toward equipment, uniforms, and travel. Use the Donate button or follow <a href="https://instagram.com/deastboysvb" target="_blank" class="text-dt-blue font-semibold hover:underline">@deastboysvb</a> for updates.</p>
             </div>
           </div>
         </section>
 
-        <section class="bg-white rounded-lg shadow-xl p-6 md:p-8 h-full">
-          <h2 class="text-3xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-6">Social Hub</h2>
-          <div class="mb-6 rounded-lg overflow-hidden border border-gray-200">
-            <a class="twitter-timeline" data-height="400" data-theme="light" href="https://twitter.com/devbboys?ref_src=twsrc%5Etfw">Tweets by devbboys</a>
+        <section class="bg-white rounded-lg shadow-lg p-5 md:p-7">
+          <h2 class="text-2xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-5">Social Hub</h2>
+          <div class="mb-5 rounded-lg overflow-hidden border border-gray-200">
+            <a class="twitter-timeline" data-height="360" data-theme="light" href="https://twitter.com/devbboys?ref_src=twsrc%5Etfw">Tweets by devbboys</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
-          <div class="rounded-lg overflow-hidden text-center bg-gray-50 p-6 border border-gray-200">
-            <p class="text-gray-600 font-semibold mb-3">Follow us on Instagram for game photos & highlights</p>
+          <div class="rounded-lg text-center bg-gray-50 p-5 border border-gray-200">
+            <p class="text-gray-600 font-semibold mb-3 text-sm">Follow us on Instagram for game photos & highlights</p>
             <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-bold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+               class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-bold px-5 py-3 rounded-lg hover:opacity-90 transition-opacity w-full sm:w-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
               <span>@deastboysvb</span>
             </a>
           </div>
         </section>
+
       </div>
     </div>
   </main>
 
-  <footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-      <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+  <footer class="bg-dt-blue text-white mt-10">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
         <div>
-          <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-          <ul class="space-y-2">
-            <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-            <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-            <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/schedule.html" class="hover:text-yellow-300">Schedule</a></li>
+            <li><a href="/coaches.html" class="hover:text-yellow-300">Coaches</a></li>
+            <li><a href="/contact.html" class="hover:text-yellow-300">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-          <p>Downingtown East High School</p>
-          <p>50 Devon Dr, Exton, PA 19341</p>
-          <p>610-363-6400</p>
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Contact</h4>
+          <p class="text-sm">Downingtown East High School</p>
+          <p class="text-sm">50 Devon Dr, Exton, PA 19341</p>
+          <p class="text-sm">610-363-6400</p>
         </div>
         <div>
-          <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-dt-yellow transition-colors">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>@deastboysvb</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-dt-yellow transition-colors">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                <span>@devbboys</span>
-              </a>
-            </li>
+          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Follow Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@deastboysvb</a></li>
+            <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@devbboys</a></li>
           </ul>
         </div>
       </div>
-      <div class="text-center border-t border-white/20 mt-8 pt-6">
+      <div class="text-center border-t border-white/20 mt-6 pt-5 text-sm">
         <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
       </div>
     </div>
@@ -222,45 +219,32 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      if (mobileMenuButton) {
-        mobileMenuButton.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
-      }
+      const btn = document.getElementById("mobile-menu-button");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+
       const slides = document.querySelectorAll(".hero-slideshow img");
       if (slides.length > 0) {
-        let currentSlide = 0;
-        function showSlide(index) { slides.forEach((slide, i) => slide.classList.toggle("active", i === index)); }
-        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
-        showSlide(currentSlide);
-        setInterval(nextSlide, 5000);
+        let current = 0;
+        function showSlide(i) { slides.forEach((s, idx) => s.classList.toggle("active", idx === i)); }
+        showSlide(current);
+        setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 5000);
       }
-      const target = document.getElementById("tryoutAnnouncement");
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            target.classList.remove("opacity-0", "translate-y-3");
-            target.classList.add("opacity-100", "translate-y-0");
-            observer.unobserve(target);
-          }
-        });
-      }, { threshold: 0.2 });
-      observer.observe(target);
-    });
-    document.getElementById("donate-header").addEventListener("click", function() {
-      const content = document.getElementById("donate-content");
-      content.style.display = content.style.display === "block" ? "none" : "block";
+
+      document.getElementById("donate-header").addEventListener("click", () => {
+        const c = document.getElementById("donate-content");
+        c.style.display = c.style.display === "block" ? "none" : "block";
+      });
     });
   </script>
 
   <div id="donate-bubble">
     <div id="donate-header">💛 Donate</div>
     <div id="donate-content">
-      <p>Support Cougar Volleyball!</p>
+      <p style="font-size:0.8rem;margin-bottom:6px;">Support Cougar Volleyball!</p>
       <img src="images/venmo-qr.png" alt="Venmo QR Code">
-      <a href="https://venmo.com/u/GrantShieh" target="_blank" class="venmo-button">Open Venmo</a>
+      <a href="https://venmo.com/u/DECougarsVB" target="_blank" class="venmo-button">Open Venmo</a>
     </div>
   </div>
 </body>
 </html>
-
