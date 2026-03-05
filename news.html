@@ -2,38 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Latest News & Updates - Downingtown East Boys Volleyball</title>
-    
-    <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, and news for the Cougars.">
-    <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball">
-    <meta name="author" content="Downingtown East Boys Volleyball">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Latest News & Updates - Downingtown East Boys Volleyball</title>
 
-    <meta property="og:title" content="Downingtown East Boys Volleyball">
-    <meta property="og:description" content="Follow the Cougars this season! Get the latest schedules, scores, and roster updates.">
-    <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-    <meta property="og:url" content="https://debvb.github.io">
-    <meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="Latest news and updates for Downingtown East Boys Volleyball. Season announcements, tryout info, and team highlights for the Cougars.">
+  <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
+  <meta name="author" content="Downingtown East Boys Volleyball">
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="News & Updates | Downingtown East Boys Volleyball">
+  <meta property="og:description" content="Latest news and updates for Downingtown East Boys Volleyball — season announcements, tryout info, and team highlights.">
+  <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+  <meta property="og:url" content="https://debvb.github.io/news.html">
+  <meta property="og:site_name" content="Downingtown East Boys Volleyball">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@devbboys">
+  <meta name="twitter:title" content="News & Updates | Downingtown East Boys Volleyball">
+  <meta name="twitter:description" content="Latest news and updates for Downingtown East Boys Volleyball — season announcements, tryout info, and team highlights.">
+  <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body { font-family: "Roboto", sans-serif; }
-    :root {
-      --dt-blue: #003366;
-      --dt-yellow: #ffd700;
-    }
+    :root { --dt-blue: #003366; --dt-yellow: #ffd700; }
     .bg-dt-blue { background-color: var(--dt-blue); }
     .text-dt-blue { color: var(--dt-blue); }
     .bg-dt-yellow { background-color: var(--dt-yellow); }
     .text-dt-yellow { color: var(--dt-yellow); }
     .border-dt-yellow { border-color: var(--dt-yellow); }
-    
-    /* Updated for white header */
     .nav-link {
       padding: 0.5rem 1rem;
       color: var(--dt-blue);
@@ -41,30 +42,19 @@
       transition: color 0.3s, background-color 0.3s;
       display: inline-block;
     }
-    .nav-link:hover {
-      background-color: var(--dt-yellow);
-      color: var(--dt-blue);
-    }
-    .nav-link.active {
-      background-color: var(--dt-blue);
-      color: white;
-    }
-    .nav-link.active:hover {
-      background-color: var(--dt-yellow);
-      color: var(--dt-blue);
-    }
+    .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
+    .nav-link.active { background-color: var(--dt-blue); color: white; }
+    .nav-link.active:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
   </style>
 </head>
 
 <body class="bg-gray-100">
-  
+
   <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
     <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
       <a href="/index.html" class="flex items-center space-x-4">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">
-          Downingtown East
-        </span>
+        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
+        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East</span>
       </a>
       <button id="mobile-menu-button" class="md:hidden text-dt-blue">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,7 +67,7 @@
         <a href="/coaches.html" class="nav-link">Coaches</a>
         <a href="/contact.html" class="nav-link">Contact</a>
         <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link active font-bold">News</a>    
+        <a href="/news.html" class="nav-link active font-bold">News</a>
       </div>
     </nav>
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
@@ -86,7 +76,7 @@
       <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
       <a href="/contact.html" class="block nav-link text-center">Contact</a>
       <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link active font-bold text-center">News</a>  
+      <a href="/news.html" class="block nav-link active font-bold text-center">News</a>
     </div>
   </header>
 
@@ -95,6 +85,7 @@
       <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Recent News</h1>
 
       <div class="space-y-8">
+
         <div class="border-l-4 border-dt-blue bg-blue-50/50 p-6 rounded-r-lg shadow-sm">
           <h2 class="text-2xl font-bold text-gray-800">2026 Season Tryout Dates Announced</h2>
           <p class="text-gray-500 text-sm mb-3">Posted on January 28, 2026</p>
@@ -118,8 +109,65 @@
             A mandatory pre-season meeting for all interested players and their parents will be held on February 25th at 7:00 PM in the school cafeteria. We will discuss the upcoming spring schedule and program expectations.
           </p>
         </div>
+
       </div>
     </div>
+  </main>
+
+  <footer class="bg-dt-blue text-white mt-12">
+    <div class="container mx-auto p-8">
+      <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+        <div>
+          <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
+          <ul class="space-y-2">
+            <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
+            <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
+            <li><a href="/roster.html" class="hover:text-dt-yellow">Roster</a></li>
+            <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
+            <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-3">CONTACT</h4>
+          <p>Downingtown East High School</p>
+          <p>50 Devon Dr, Exton, PA 19341</p>
+          <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span>@deastboysvb</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center md:justify-start space-x-2 hover:text-dt-yellow transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>@devbboys</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center border-t border-white/20 mt-8 pt-6">
+        <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
+      }
+    });
+  </script>
+</body>
+</html>
 
 
 
