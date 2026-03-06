@@ -1,250 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home - Downingtown East Boys Volleyball</title>
-  <meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, news, and highlights for the Cougars.">
-  <meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
-  <meta name="author" content="Downingtown East Boys Volleyball">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Downingtown East Boys Volleyball">
-  <meta property="og:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
-  <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-  <meta property="og:url" content="https://debvb.github.io/index.html">
-  <meta property="og:site_name" content="Downingtown East Boys Volleyball">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@devbboys">
-  <meta name="twitter:title" content="Downingtown East Boys Volleyball">
-  <meta name="twitter:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
-  <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: "Roboto", sans-serif; }
-    :root { --dt-blue: #003366; --dt-yellow: #ffd700; }
-    .bg-dt-blue { background-color: var(--dt-blue); }
-    .text-dt-blue { color: var(--dt-blue); }
-    .bg-dt-yellow { background-color: var(--dt-yellow); }
-    .text-dt-yellow { color: var(--dt-yellow); }
-    .border-dt-yellow { border-color: var(--dt-yellow); }
-    .nav-link {
-      padding: 0.5rem 1rem; color: var(--dt-blue); border-radius: 0.375rem;
-      transition: color 0.3s, background-color 0.3s; display: inline-block;
-    }
-    .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
-    .nav-link.active { background-color: var(--dt-blue); color: white; }
-    .nav-link.active:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
-    .mobile-nav-link {
-      display: block; padding: 0.9rem 1rem; color: var(--dt-blue);
-      font-size: 1rem; font-weight: 600; text-align: center;
-      border-radius: 0.375rem; transition: background-color 0.2s;
-    }
-    .mobile-nav-link:hover, .mobile-nav-link:active { background-color: var(--dt-yellow); }
-    .mobile-nav-link.active { background-color: var(--dt-blue); color: white; }
-    .hero-slideshow { position: relative; width: 100%; height: 50vh; min-height: 260px; overflow: hidden; }
-    .hero-slideshow img {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out;
-    }
-    .hero-slideshow img.active { opacity: 1; }
-    #donate-bubble {
-      position: fixed; bottom: 16px; right: 16px; background-color: #003366;
-      color: white; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      font-family: 'Roboto', sans-serif; overflow: hidden; cursor: pointer;
-      transition: all 0.3s ease; z-index: 9999; width: 110px; text-align: center;
-    }
-    #donate-header { padding: 11px 10px; font-weight: 600; font-size: 0.9rem; }
-    #donate-content { background: white; color: #1a1a1a; padding: 12px; display: none; }
-    #donate-content img { max-width: 110px; margin: 8px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
-    .venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 9px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home — Downingtown East Boys Volleyball</title>
+
+<!-- Primary Meta -->
+<meta name="description" content="Official home of Downingtown East Boys Volleyball. Schedules, rosters, news, and highlights for the Cougars.">
+<meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
+<meta name="author" content="Downingtown East Boys Volleyball">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e1e45">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Downingtown East Boys Volleyball">
+<meta property="og:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
+<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+<meta property="og:url" content="https://debvb.github.io/index.html">
+<meta property="og:site_name" content="Downingtown East Boys Volleyball">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@devbboys">
+<meta name="twitter:creator" content="@devbboys">
+<meta name="twitter:title" content="Downingtown East Boys Volleyball">
+<meta name="twitter:description" content="Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long.">
+<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://debvb.github.io/index.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo2.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0f14;
+  --navy: #0e1e45;
+  --gold: #e8b000;
+  --gold-light: #fdf3d0;
+  --cream: #faf8f3;
+  --white: #ffffff;
+  --rule: #d4cec3;
+  --muted: #7a7266;
+  --soft: #f2f0ea;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ─── NAV ─── */
+nav {
+  background: var(--white);
+  border-bottom: 3px solid var(--ink);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-brand img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.nav-brand-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--navy);
+  border-left: 2px solid var(--rule);
+  padding-left: 12px;
+  letter-spacing: -0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-links a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-left: 1px solid var(--rule);
+  transition: background 0.12s;
+}
+
+.nav-links a:hover { background: var(--soft); }
+.nav-links a.active { background: var(--navy); color: var(--white); }
+.nav-links a:last-child { border-right: 1px solid var(--rule); }
+
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-cta:hover { background: #d4a000 !important; }
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  padding: 0 48px;
+  display: flex;
+  align-items: stretch;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 5px solid var(--gold);
+  background: var(--navy);
+}
+
+.mast-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.mast-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.mast-slide.active { opacity: 1; }
+
+.mast-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 30, 69, 0.84);
+  z-index: 1;
+}
+
+.mast-stripes {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 500px; height: 600px;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent, transparent 18px,
+    rgba(255,255,255,0.025) 18px,
+    rgba(255,255,255,0.025) 19px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mast-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 48px;
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.mast-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.mast-dot.active { background: var(--gold); transform: scale(1.4); }
+
+.mast-left, .mast-right { position: relative; z-index: 3; }
+
+.mast-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 52px 56px 52px 0;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.mast-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.mast-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(60px, 7vw, 92px);
+  line-height: 0.92;
+  color: var(--white);
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+
+.mast-headline em { font-style: italic; color: var(--gold); }
+
+.mast-deck {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 420px;
+  margin-bottom: 36px;
+  border-left: 3px solid var(--gold);
+  padding-left: 16px;
+}
+
+.mast-btns { display: flex; gap: 10px; }
+
+.btn-solid {
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 24px;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-solid:hover { background: #d4a000; }
+
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 11px 22px;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline:hover { border-color: rgba(255,255,255,0.55); }
+
+.mast-right {
+  width: 340px;
+  flex-shrink: 0;
+  padding: 52px 0 52px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.score-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.next-game { margin-bottom: 32px; }
+
+.ng-date {
+  font-family: 'DM Serif Display', serif;
+  font-size: 72px;
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+}
+
+.ng-opponent { font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 5px; }
+
+.ng-times {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+}
+
+.record-row { display: flex; gap: 2px; margin-top: auto; }
+
+.rec-cell {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.rec-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 34px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.rec-val em { color: var(--gold); font-style: normal; }
+
+.rec-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-top: 5px;
+}
+
+/* ─── BODY GRID ─── */
+.body-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 48px 80px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+}
+
+.sec-rule { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.sec-rule-line { height: 3px; background: var(--ink); flex: 1; }
+.sec-rule-label { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); white-space: nowrap; }
+.sec-rule-more { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.sec-rule-more:hover { color: var(--navy); }
+
+.post { background: var(--white); padding: 28px 32px; border: 1px solid var(--rule); margin-bottom: 2px; transition: box-shadow 0.2s; }
+.post:hover { box-shadow: 4px 4px 0 var(--navy); }
+.post-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+
+.tag { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; }
+.tag-new { background: var(--navy); color: var(--white); }
+.tag-info { background: var(--gold-light); color: var(--navy); border: 1px solid var(--gold); }
+
+.post-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1.2; }
+.post-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+.post-body { font-size: 14.5px; color: #3d3830; line-height: 1.7; }
+.post-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
+
+/* ─── SIDEBAR ─── */
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+.side-block { background: var(--white); border: 1px solid var(--rule); }
+.side-head { font-family: 'DM Serif Display', serif; font-size: 17px; padding: 14px 18px; border-bottom: 2px solid var(--ink); color: var(--ink); }
+
+.ig-panel { background: linear-gradient(160deg, #405DE6, #833AB4 50%, #E1306C); padding: 22px 18px; text-align: center; }
+.ig-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.65); display: block; margin-bottom: 10px; }
+.ig-handle { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--white); text-decoration: none; display: block; }
+.ig-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+.qlinks { list-style: none; }
+.qlink { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+.qlink:last-child { border-bottom: none; }
+.qlink:hover { background: var(--soft); }
+.qlink-left { display: flex; align-items: center; gap: 10px; }
+.qlink-ico { width: 28px; height: 28px; background: var(--soft); border-radius: 6px; display: grid; place-items: center; font-size: 13px; }
+.qlink-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+.qlink-arr { color: var(--muted); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy);
+  color: var(--white);
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 48px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li + li { margin-top: 8px; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 48px 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ─── DONATE BUBBLE ─── */
+#donate-bubble {
+  position: fixed; bottom: 16px; right: 16px;
+  background-color: var(--navy);
+  color: white; border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  overflow: hidden; cursor: pointer;
+  transition: all 0.3s ease; z-index: 9999;
+  width: 110px; text-align: center;
+}
+
+#donate-header { padding: 11px 10px; font-weight: 600; font-size: 0.9rem; }
+#donate-content { background: white; color: #1a1a1a; padding: 12px; display: none; }
+#donate-content img { max-width: 110px; margin: 8px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
+.venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 9px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mast-kicker   { animation: fadeUp 0.4s 0.1s both; }
+.mast-headline { animation: fadeUp 0.5s 0.2s both; }
+.mast-deck     { animation: fadeUp 0.5s 0.3s both; }
+.mast-btns     { animation: fadeUp 0.5s 0.4s both; }
+.mast-right    { animation: fadeUp 0.5s 0.2s both; }
+.body-wrap     { animation: fadeUp 0.5s 0.15s both; }
+</style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-  <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
-    <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-3">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-base font-bold hidden lg:block border-l-2 border-gray-200 pl-3">Downingtown East Boys Volleyball</span>
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-brand">
+    <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+    <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+  </a>
+  <div class="nav-links">
+    <a href="/index.html" class="active">Home</a>
+    <a href="/schedule.html">Schedule</a>
+    <a href="/coaches.html">Coaches</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/roster.html">Roster</a>
+    <a href="/news.html">News</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+  </div>
+</nav>
+
+<!-- MASTHEAD with real team photos -->
+<div class="masthead">
+
+  <div class="mast-slides">
+    <img class="mast-slide active" src="/slide1.jpeg"     alt="Downingtown East Boys Volleyball team action">
+    <img class="mast-slide"        src="/slide2.jpeg"     alt="Cougars volleyball match highlight">
+    <img class="mast-slide"        src="/slide3.jpg"      alt="Cougars volleyball game">
+    <img class="mast-slide"        src="/slide4.jpeg"     alt="Downingtown East volleyball players">
+    <img class="mast-slide"        src="/slide5.jpeg"     alt="Cougars volleyball team">
+    <img class="mast-slide"        src="/slide6.jpeg"     alt="Boys volleyball match">
+    <img class="mast-slide"        src="/slide7.jpg"      alt="Cougars volleyball action shot">
+    <img class="mast-slide"        src="/slide8.jpeg"     alt="Downingtown East volleyball game">
+    <img class="mast-slide"        src="/slide9.jpeg"     alt="Boys volleyball team in action">
+    <img class="mast-slide"        src="/VB1.JPEG"        alt="Cougars volleyball team photo">
+    <img class="mast-slide"        src="/IMG_1446.JPG"    alt="Downingtown East volleyball players">
+    <img class="mast-slide"        src="/IMG_5919.jpeg"   alt="Boys volleyball match">
+    <img class="mast-slide"        src="/IMG_5948.jpeg"   alt="Cougars volleyball highlight">
+    <img class="mast-slide"        src="/IMG_5964.jpeg"   alt="Cougars volleyball action">
+  </div>
+
+  <div class="mast-overlay"></div>
+  <div class="mast-stripes"></div>
+
+  <div class="mast-dots" id="mast-dots"></div>
+
+  <div class="mast-left">
+    <div class="mast-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+    <h1 class="mast-headline">
+      Cougar<br>
+      Boys<br>
+      <em>Volleyball</em>
+    </h1>
+    <p class="mast-deck">Every point. Every match. Every moment — this is Downingtown East Boys Volleyball. Follow the Cougars all season long.</p>
+    <div class="mast-btns">
+      <a href="/schedule.html" class="btn-solid">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Full Schedule
       </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <div class="hidden md:flex items-center space-x-1">
-        <a href="/index.html" class="nav-link active font-bold">Home</a>
-        <a href="/schedule.html" class="nav-link">Schedule</a>
-        <a href="/coaches.html" class="nav-link">Coaches</a>
-        <a href="/contact.html" class="nav-link">Contact</a>
-        <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>
-      </div>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-3 pt-1 pb-3 space-y-1 bg-white border-t border-gray-100">
-      <a href="/index.html" class="mobile-nav-link active">Home</a>
-      <a href="/schedule.html" class="mobile-nav-link">Schedule</a>
-      <a href="/coaches.html" class="mobile-nav-link">Coaches</a>
-      <a href="/contact.html" class="mobile-nav-link">Contact</a>
-      <a href="/roster.html" class="mobile-nav-link">Roster</a>
-      <a href="/news.html" class="mobile-nav-link">News</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="relative text-white text-center">
-      <div class="hero-slideshow">
-        <img src="/slide1.jpeg" alt="Downingtown East Boys Volleyball team action" />
-        <img src="/slide2.jpeg" alt="Cougars volleyball match highlight" />
-        <img src="/slide3.jpg" alt="Cougars volleyball game" />
-        <img src="/slide4.jpeg" alt="Downingtown East volleyball players" />
-        <img src="/slide5.jpeg" alt="Cougars volleyball team" />
-        <img src="/slide6.jpeg" alt="Boys volleyball match" />
-        <img src="/slide7.jpg" alt="Cougars volleyball action shot" />
-        <img src="/slide8.jpeg" alt="Downingtown East volleyball game" />
-        <img src="/slide9.jpeg" alt="Boys volleyball team in action" />
-        <img src="/VB1.JPEG" alt="Cougars volleyball team photo" />
-        <img src="/IMG_1446.JPG" alt="Downingtown East volleyball players" />
-        <img src="/IMG_5919.jpeg" alt="Boys volleyball match" />
-        <img src="/IMG_5948.jpeg" alt="Cougars volleyball highlight" />
-        <img src="/IMG_5964.jpeg" alt="Cougars volleyball action" />
-      </div>
-      <div class="absolute inset-0 bg-black/60 flex flex-col justify-center items-center p-4">
-        <h1 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-wider">ROLL COUGS!</h1>
-      </div>
-    </section>
-
-    <div class="container mx-auto px-4 py-6 md:p-8">
-
-      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-dt-blue">
-          <h3 class="text-xl font-bold text-dt-blue mb-3">NEXT GAME</h3>
-          <p class="text-3xl font-black text-gray-800">MAR 10</p>
-          <p class="text-base text-gray-600 mt-1">vs. Souderton (Scrimmage)</p>
-          <p class="text-sm text-gray-500 mt-1">JV: 3:30 PM | Varsity: 5:00 PM</p>
-          <a href="/schedule.html" class="mt-4 inline-block w-full px-4 py-3 bg-dt-blue text-white font-bold rounded-lg hover:bg-blue-800 transition-colors text-sm">Full Schedule</a>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-gray-400">
-          <h3 class="text-xl font-bold text-gray-600 mb-3">LAST SEASON</h3>
-          <p class="text-3xl font-black text-gray-800">9-9</p>
-          <p class="text-base text-gray-600 mt-1">2025 Season</p>
-          <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full px-4 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors text-sm">View MaxPreps</a>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-5 text-center border-t-4 border-dt-yellow">
-          <h3 class="text-xl font-bold text-dt-blue mb-3">WATCH HIGHLIGHTS</h3>
-          <p class="text-3xl font-black text-dt-yellow">HUDL</p>
-          <p class="text-base text-gray-600 mt-1">Catch up on all the action</p>
-          <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="mt-4 inline-block w-full px-4 py-3 bg-dt-yellow text-dt-blue font-bold rounded-lg hover:bg-yellow-500 transition-colors text-sm">Go to Hudl</a>
-        </div>
-      </section>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <section class="bg-white rounded-lg shadow-lg p-5 md:p-7">
-          <h2 class="text-2xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-5">Team Announcements</h2>
-          <div class="space-y-4">
-            <div class="p-4 border-l-4 border-dt-blue bg-blue-50 rounded-r-lg" id="tryoutAnnouncement">
-              <h4 class="font-bold text-lg text-gray-800">2026 Season is Underway! 🏐</h4>
-              <p class="text-gray-500 text-xs mb-2">Posted on March 4, 2026</p>
-              <div class="text-gray-700 text-sm space-y-2">
-                <p>Tryouts have concluded and rosters are being finalized. Stay tuned for the official roster announcement.</p>
-                <p>First game is <strong>March 10 vs. Souderton</strong> — JV at 3:30 PM, Varsity at 5:00 PM.</p>
-                <p>Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" class="text-dt-blue font-semibold hover:underline">@BOYSDEVB</a> on Remind.</p>
-              </div>
-            </div>
-            <div class="p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg">
-              <h4 class="font-bold text-lg text-gray-800">Support Cougar Volleyball</h4>
-              <p class="text-gray-500 text-xs mb-2">Posted on January 2026</p>
-              <p class="text-gray-700 text-sm">Help support the program! Donations go toward equipment, uniforms, and travel. Use the Donate button or follow <a href="https://instagram.com/deastboysvb" target="_blank" class="text-dt-blue font-semibold hover:underline">@deastboysvb</a> for updates.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="bg-white rounded-lg shadow-lg p-5 md:p-7">
-          <h2 class="text-2xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-2 mb-5">Social Hub</h2>
-          <div class="mb-5 rounded-lg overflow-hidden border border-gray-200">
-            <a class="twitter-timeline" data-height="360" data-theme="light" href="https://twitter.com/devbboys?ref_src=twsrc%5Etfw">Tweets by devbboys</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-          <div class="rounded-lg text-center bg-gray-50 p-5 border border-gray-200">
-            <p class="text-gray-600 font-semibold mb-3 text-sm">Follow us on Instagram for game photos & highlights</p>
-            <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-bold px-5 py-3 rounded-lg hover:opacity-90 transition-opacity w-full sm:w-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              <span>@deastboysvb</span>
-            </a>
-          </div>
-        </section>
-
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-dt-blue text-white mt-10">
-    <div class="container mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Quick Links</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/schedule.html" class="hover:text-yellow-300">Schedule</a></li>
-            <li><a href="/coaches.html" class="hover:text-yellow-300">Coaches</a></li>
-            <li><a href="/contact.html" class="hover:text-yellow-300">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Contact</h4>
-          <p class="text-sm">Downingtown East High School</p>
-          <p class="text-sm">50 Devon Dr, Exton, PA 19341</p>
-          <p class="text-sm">610-363-6400</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Follow Us</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@deastboysvb</a></li>
-            <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@devbboys</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center border-t border-white/20 mt-6 pt-5 text-sm">
-        <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("mobile-menu-button");
-      const menu = document.getElementById("mobile-menu");
-      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
-
-      const slides = document.querySelectorAll(".hero-slideshow img");
-      if (slides.length > 0) {
-        let current = 0;
-        function showSlide(i) { slides.forEach((s, idx) => s.classList.toggle("active", idx === i)); }
-        showSlide(current);
-        setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 5000);
-      }
-
-      document.getElementById("donate-header").addEventListener("click", () => {
-        const c = document.getElementById("donate-content");
-        c.style.display = c.style.display === "block" ? "none" : "block";
-      });
-    });
-  </script>
-
-  <div id="donate-bubble">
-    <div id="donate-header">💛 Donate</div>
-    <div id="donate-content">
-      <p style="font-size:0.8rem;margin-bottom:6px;">Support Cougar Volleyball!</p>
-      <img src="images/venmo-qr.png" alt="Venmo QR Code">
-      <a href="https://venmo.com/u/DECougarsVB" target="_blank" class="venmo-button">Open Venmo</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="btn-outline">▶ Watch Highlights</a>
     </div>
   </div>
+
+  <div class="mast-right">
+    <div class="score-label">Season at a Glance</div>
+    <div class="next-game">
+      <div class="ng-date">MAR 10</div>
+      <div class="ng-opponent">vs. Souderton — Scrimmage</div>
+      <div class="ng-times">JV 3:30 · Varsity 5:00 · Home</div>
+      <a href="/schedule.html" class="btn-solid" style="font-size:11.5px; padding:9px 18px;">See Schedule →</a>
+    </div>
+    <div class="record-row">
+      <div class="rec-cell">
+        <div class="rec-val">9<em>–</em>9</div>
+        <div class="rec-key">2025 Record</div>
+      </div>
+      <div class="rec-cell">
+        <div class="rec-val">22<em>+</em></div>
+        <div class="rec-key">Games '26</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+  <div>
+    <div class="sec-rule">
+      <div class="sec-rule-label">Announcements</div>
+      <div class="sec-rule-line"></div>
+      <a href="/news.html" class="sec-rule-more">All posts →</a>
+    </div>
+
+    <div class="post">
+      <div class="post-top">
+        <span class="tag tag-new">New</span>
+        <div class="post-title">2026 Season is Underway! 🏐</div>
+      </div>
+      <div class="post-date">March 4, 2026</div>
+      <div class="post-body">
+        Tryouts have concluded and rosters are being finalized. First game is <strong>March 10 vs. Souderton</strong> — JV at 3:30 PM, Varsity at 5:00 PM. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-top">
+        <span class="tag tag-info">Info</span>
+        <div class="post-title">Support Cougar Volleyball</div>
+      </div>
+      <div class="post-date">January 2026</div>
+      <div class="post-body">
+        Help support the program! Donations go toward equipment, uniforms, and travel. Use the Donate button or follow <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">@deastboysvb</a> for updates.
+      </div>
+    </div>
+
+    <!-- Twitter embed -->
+    <div style="margin-top: 32px;">
+      <div class="sec-rule" style="margin-bottom: 16px;">
+        <div class="sec-rule-label">Latest from Twitter</div>
+        <div class="sec-rule-line"></div>
+        <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="sec-rule-more">@devbboys →</a>
+      </div>
+      <a class="twitter-timeline" data-height="360" data-theme="light" href="https://twitter.com/devbboys?ref_src=twsrc%5Etfw">Tweets by devbboys</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="ig-panel">
+      <span class="ig-tag">Instagram</span>
+      <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="ig-handle">@deastboysvb</a>
+      <div class="ig-sub">Game photos &amp; highlights</div>
+    </div>
+    <div class="side-block">
+      <div class="side-head">Quick Links</div>
+      <div class="qlinks">
+        <a href="/schedule.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">📅</div><span class="qlink-label">Full Schedule</span></div><span class="qlink-arr">›</span></a>
+        <a href="/roster.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">👥</div><span class="qlink-label">Roster</span></div><span class="qlink-arr">›</span></a>
+        <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">📊</div><span class="qlink-label">MaxPreps</span></div><span class="qlink-arr">›</span></a>
+        <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">🎬</div><span class="qlink-label">Hudl Highlights</span></div><span class="qlink-arr">›</span></a>
+        <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">🔔</div><span class="qlink-label">Join Remind</span></div><span class="qlink-arr">›</span></a>
+        <a href="#donate-bubble" onclick="document.getElementById('donate-content').style.display='block'" class="qlink"><div class="qlink-left"><div class="qlink-ico">💛</div><span class="qlink-label">Donate</span></div><span class="qlink-arr">›</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/roster.html">Roster</a></li>
+        <li><a href="/coaches.html">Coaches</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/news.html">News</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li>
+        <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li>
+        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li>
+        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved
+  </div>
+</footer>
+
+<!-- DONATE BUBBLE -->
+<div id="donate-bubble">
+  <div id="donate-header">💛 Donate</div>
+  <div id="donate-content">
+    <p style="font-size:0.8rem;margin-bottom:6px;">Support Cougar Volleyball!</p>
+    <img src="images/venmo-qr.png" alt="Venmo QR Code">
+    <a href="https://venmo.com/u/DECougarsVB" target="_blank" rel="noopener noreferrer" class="venmo-button">Open Venmo</a>
+  </div>
+</div>
+
+<script>
+  // Slideshow — build dots dynamically to match photo count
+  const slides = document.querySelectorAll('.mast-slide');
+  const dotsEl  = document.getElementById('mast-dots');
+  let current = 0, timer;
+
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'mast-dot' + (i === 0 ? ' active' : '');
+    btn.addEventListener('click', () => goSlide(i));
+    dotsEl.appendChild(btn);
+  });
+
+  const dots = dotsEl.querySelectorAll('.mast-dot');
+
+  function goSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goSlide(current + 1), 5000);
+  }
+
+  resetTimer();
+
+  // Donate bubble
+  document.getElementById('donate-header').addEventListener('click', () => {
+    const c = document.getElementById('donate-content');
+    c.style.display = c.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
 </body>
 </html>
