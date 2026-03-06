@@ -1,159 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact - Downingtown East Boys Volleyball</title>
-    <meta name="description" content="Contact the coaching staff of Downingtown East Boys Volleyball. Reach Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
-    <meta name="keywords" content="Downingtown East, Volleyball Contact, Grant Shieh, Boys Volleyball, Cougars Volleyball, Exton PA">
-    <meta name="author" content="Downingtown East Boys Volleyball">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Contact | Downingtown East Boys Volleyball">
-    <meta property="og:description" content="Get in touch with the Cougars coaching staff. Email Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
-    <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-    <meta property="og:url" content="https://debvb.github.io/contact.html">
-    <meta property="og:site_name" content="Downingtown East Boys Volleyball">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@devbboys">
-    <meta name="twitter:title" content="Contact | Downingtown East Boys Volleyball">
-    <meta name="twitter:description" content="Get in touch with the Cougars coaching staff. Email Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
-    <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-    <style>
-        body { font-family: 'Roboto', sans-serif; }
-        :root { --dt-blue: #003366; --dt-yellow: #FFD700; }
-        .bg-dt-blue { background-color: var(--dt-blue); }
-        .text-dt-blue { color: var(--dt-blue); }
-        .border-dt-yellow { border-color: var(--dt-yellow); }
-        .nav-link { padding: 0.5rem 1rem; color: var(--dt-blue); border-radius: 0.375rem; transition: color 0.3s, background-color 0.3s; display: inline-block; }
-        .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
-        .nav-link.active { background-color: var(--dt-blue); color: white; }
-        .mobile-nav-link { display: block; padding: 0.9rem 1rem; color: var(--dt-blue); font-size: 1rem; font-weight: 600; text-align: center; border-radius: 0.375rem; transition: background-color 0.2s; }
-        .mobile-nav-link:hover { background-color: var(--dt-yellow); }
-        .mobile-nav-link.active { background-color: var(--dt-blue); color: white; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Downingtown East Boys Volleyball</title>
+
+<!-- Primary Meta -->
+<meta name="description" content="Contact the coaching staff of Downingtown East Boys Volleyball. Reach Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
+<meta name="keywords" content="Downingtown East, Volleyball Contact, Grant Shieh, Boys Volleyball, Cougars Volleyball, Exton PA">
+<meta name="author" content="Downingtown East Boys Volleyball">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e1e45">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact | Downingtown East Boys Volleyball">
+<meta property="og:description" content="Get in touch with the Cougars coaching staff. Email Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
+<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+<meta property="og:url" content="https://debvb.github.io/contact.html">
+<meta property="og:site_name" content="Downingtown East Boys Volleyball">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@devbboys">
+<meta name="twitter:creator" content="@devbboys">
+<meta name="twitter:title" content="Contact | Downingtown East Boys Volleyball">
+<meta name="twitter:description" content="Get in touch with the Cougars coaching staff. Email Head Coach Grant Shieh or Assistant Coach Chris D'Amore.">
+<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://debvb.github.io/contact.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo2.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0f14;
+  --navy: #0e1e45;
+  --gold: #e8b000;
+  --gold-light: #fdf3d0;
+  --cream: #faf8f3;
+  --white: #ffffff;
+  --rule: #d4cec3;
+  --muted: #7a7266;
+  --soft: #f2f0ea;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav-wrap {
+  background: var(--white);
+  border-bottom: 3px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.nav-inner {
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-brand img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.nav-brand-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--navy);
+  border-left: 2px solid var(--rule);
+  padding-left: 12px;
+  letter-spacing: -0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-left: 1px solid var(--rule);
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover  { background: var(--soft); }
+.nav-links a.active { background: var(--navy); color: var(--white); }
+.nav-links a:last-child { border-right: 1px solid var(--rule); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-cta:hover { background: #d4a000 !important; }
+
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--navy);
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-burger:hover { background: var(--soft); }
+
+.nav-drawer {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+.nav-drawer.open { display: flex; }
+
+.nav-drawer a {
+  display: block;
+  padding: 15px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.12s;
+}
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a:hover  { background: var(--soft); }
+.nav-drawer a.active { background: var(--navy); color: var(--white); }
+.nav-drawer .nav-cta-mobile {
+  background: var(--gold);
+  color: var(--ink) !important;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════════ */
+.page-header {
+  background: var(--navy);
+  border-bottom: 5px solid var(--gold);
+  padding: 40px 48px 36px;
+}
+
+.page-header-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.page-header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════
+   MAIN WRAP
+═══════════════════════════════════════ */
+.page-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 48px 80px;
+}
+
+/* ═══════════════════════════════════════
+   CONTACT CARDS
+═══════════════════════════════════════ */
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 28px 32px;
+  transition: box-shadow 0.2s;
+}
+
+.contact-card:hover { box-shadow: 4px 4px 0 var(--navy); }
+
+.contact-card-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--navy);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+}
+
+.contact-card-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.email-row svg {
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.email-row a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  transition: color 0.15s;
+}
+
+.email-row a:hover { color: var(--ink); }
+
+/* Full-width email button (always visible, not just mobile) */
+.email-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.email-btn:hover { background: #1a3060; }
+.email-btn.secondary { background: var(--soft); color: var(--ink); border: 1.5px solid var(--rule); }
+.email-btn.secondary:hover { background: var(--rule); }
+
+/* Note */
+.contact-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer { background: var(--navy); color: var(--white); }
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 48px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li + li { margin-top: 8px; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 48px 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-header { animation: fadeUp 0.4s 0.05s both; }
+.page-wrap   { animation: fadeUp 0.4s 0.15s both; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET (≤900px)
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-brand-text { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+
+  .page-header { padding: 28px 20px 24px; }
+  .page-wrap { padding: 36px 20px 60px; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤600px)
+═══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .contact-card { padding: 20px 18px; }
+  .contact-card-name { font-size: 22px; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    padding: 36px 20px 24px;
+    gap: 28px;
+    text-align: center;
+  }
+  .footer-bottom { padding: 14px 20px 20px; }
+}
+</style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-  <header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
-    <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-3">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East</span>
-      </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+<!-- ═══ NAV ═══ -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/schedule.html">Schedule</a>
+      <a href="/coaches.html">Coaches</a>
+      <a href="/contact.html" class="active">Contact</a>
+      <a href="/roster.html">Roster</a>
+      <a href="/news.html">News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+    </div>
+  </div>
+
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+    <a href="/index.html">Home</a>
+    <a href="/schedule.html">Schedule</a>
+    <a href="/coaches.html">Coaches</a>
+    <a href="/contact.html" class="active">Contact</a>
+    <a href="/roster.html">Roster</a>
+    <a href="/news.html">News</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+  </nav>
+</div>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="page-header">
+  <div class="page-header-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+  <h1>Contact the <em>Coaches</em></h1>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="page-wrap">
+
+  <div class="contact-cards">
+
+    <!-- Grant Shieh -->
+    <div class="contact-card">
+      <div class="contact-card-role">Head Coach</div>
+      <div class="contact-card-name">Grant Shieh</div>
+      <div class="email-row">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
         </svg>
-      </button>
-      <div class="hidden md:flex items-center space-x-1">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/schedule.html" class="nav-link">Schedule</a>
-        <a href="/coaches.html" class="nav-link">Coaches</a>
-        <a href="/contact.html" class="nav-link active font-bold">Contact</a>
-        <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>
+        <a href="mailto:gshieh@dasd.org">gshieh@dasd.org</a>
       </div>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-3 pt-1 pb-3 space-y-1 bg-white border-t border-gray-100">
-      <a href="/index.html" class="mobile-nav-link">Home</a>
-      <a href="/schedule.html" class="mobile-nav-link">Schedule</a>
-      <a href="/coaches.html" class="mobile-nav-link">Coaches</a>
-      <a href="/contact.html" class="mobile-nav-link active">Contact</a>
-      <a href="/roster.html" class="mobile-nav-link">Roster</a>
-      <a href="/news.html" class="mobile-nav-link">News</a>
+      <a href="mailto:gshieh@dasd.org" class="email-btn">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+        Email Coach Shieh
+      </a>
     </div>
-  </header>
 
-  <main class="container mx-auto px-4 py-6 md:p-8">
-    <div class="bg-white rounded-lg shadow-xl p-4 md:p-8">
-      <h1 class="text-2xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Contact the Coaches</h1>
-
-      <div class="max-w-xl mx-auto space-y-5">
-
-        <div class="bg-blue-50 border-l-4 border-dt-blue p-5 rounded-r-lg">
-          <h2 class="text-xl md:text-2xl font-bold text-gray-800">Grant Shieh</h2>
-          <p class="text-base text-dt-blue font-semibold mb-3">Head Coach</p>
-          <a href="mailto:gshieh@dasd.org" class="flex items-center gap-3 text-gray-700 hover:text-dt-blue transition-colors py-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-dt-blue flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-            <span class="text-sm md:text-base">gshieh@dasd.org</span>
-          </a>
-          <a href="mailto:gshieh@dasd.org" class="mt-3 flex items-center justify-center gap-2 bg-dt-blue text-white font-bold py-3 px-5 rounded-lg text-sm hover:bg-blue-900 transition-colors md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-            Email Coach Shieh
-          </a>
-        </div>
-
-        <div class="bg-gray-50 border-l-4 border-gray-400 p-5 rounded-r-lg">
-          <h2 class="text-xl md:text-2xl font-bold text-gray-800">Chris D'Amore</h2>
-          <p class="text-base text-gray-600 font-semibold mb-3">Assistant Coach</p>
-          <a href="mailto:cdamore@dasd.org" class="flex items-center gap-3 text-gray-700 hover:text-dt-blue transition-colors py-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-            <span class="text-sm md:text-base">cdamore@dasd.org</span>
-          </a>
-          <a href="mailto:cdamore@dasd.org" class="mt-3 flex items-center justify-center gap-2 bg-gray-600 text-white font-bold py-3 px-5 rounded-lg text-sm hover:bg-gray-700 transition-colors md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-            </svg>
-            Email Coach D'Amore
-          </a>
-        </div>
-
-        <p class="text-center text-gray-500 text-sm pt-2">For general inquiries, please contact Head Coach Grant Shieh.</p>
+    <!-- Chris D'Amore -->
+    <div class="contact-card">
+      <div class="contact-card-role">Assistant Coach</div>
+      <div class="contact-card-name">Chris D'Amore</div>
+      <div class="email-row">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+        <a href="mailto:cdamore@dasd.org">cdamore@dasd.org</a>
       </div>
+      <a href="mailto:cdamore@dasd.org" class="email-btn secondary">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+        Email Coach D'Amore
+      </a>
     </div>
-  </main>
 
-  <footer class="bg-dt-blue text-white mt-10">
-    <div class="container mx-auto px-4 py-8">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Quick Links</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/index.html" class="hover:text-yellow-300">Home</a></li>
-            <li><a href="/schedule.html" class="hover:text-yellow-300">Schedule</a></li>
-            <li><a href="/roster.html" class="hover:text-yellow-300">Roster</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Contact</h4>
-          <p class="text-sm">Downingtown East High School</p>
-          <p class="text-sm">50 Devon Dr, Exton, PA 19341</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-sm mb-3 uppercase tracking-wide">Follow Us</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>@deastboysvb</a></li>
-            <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-300 flex items-center justify-center sm:justify-start gap-2"><svg class="h-4 w-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H4.68l4.717 6.231L13.427 2.25h4.817zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@devbboys</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center border-t border-white/20 mt-6 pt-5 text-sm">
-        <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-      </div>
+  </div>
+
+  <p class="contact-note">For general inquiries, please contact Head Coach Grant Shieh.</p>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/roster.html">Roster</a></li>
+        <li><a href="/coaches.html">Coaches</a></li>
+        <li><a href="/news.html">News</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li>
+        <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li>
+        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li>
+        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved
+  </div>
+</footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("mobile-menu-button");
-      const menu = document.getElementById("mobile-menu");
-      btn.addEventListener("click", () => menu.classList.toggle("hidden"));
-    });
-  </script>
+<script>
+  const burger     = document.getElementById('nav-burger');
+  const drawer     = document.getElementById('nav-drawer');
+  const burgerIcon = document.getElementById('burger-icon');
+  const openPath   = 'M4 6h16M4 12h16M4 18h16';
+  const closePath  = 'M6 18L18 6M6 6l12 12';
+
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+    burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+  });
+</script>
 </body>
 </html>
