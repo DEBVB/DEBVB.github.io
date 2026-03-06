@@ -1,187 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Meet the Coaches - Downingtown East Boys Volleyball</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet the Coaches — Downingtown East Boys Volleyball</title>
 
-    <meta name="description" content="Meet the coaches of Downingtown East Boys Volleyball. Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore.">
-    <meta name="keywords" content="Downingtown East, Volleyball Coaches, Grant Shieh, Chris D'Amore, Boys Volleyball, Cougars Volleyball, Exton PA">
-    <meta name="author" content="Downingtown East Boys Volleyball">
+<!-- Primary Meta -->
+<meta name="description" content="Meet the coaches of Downingtown East Boys Volleyball. Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore.">
+<meta name="keywords" content="Downingtown East, Volleyball Coaches, Grant Shieh, Chris D'Amore, Boys Volleyball, Cougars Volleyball, Exton PA">
+<meta name="author" content="Downingtown East Boys Volleyball">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e1e45">
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Meet the Coaches | Downingtown East Boys Volleyball">
-    <meta property="og:description" content="Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars.">
-    <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-    <meta property="og:url" content="https://debvb.github.io/coaches.html">
-    <meta property="og:site_name" content="Downingtown East Boys Volleyball">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meet the Coaches | Downingtown East Boys Volleyball">
+<meta property="og:description" content="Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars.">
+<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+<meta property="og:url" content="https://debvb.github.io/coaches.html">
+<meta property="og:site_name" content="Downingtown East Boys Volleyball">
+<meta property="og:locale" content="en_US">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@devbboys">
-    <meta name="twitter:title" content="Meet the Coaches | Downingtown East Boys Volleyball">
-    <meta name="twitter:description" content="Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars.">
-    <meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@devbboys">
+<meta name="twitter:creator" content="@devbboys">
+<meta name="twitter:title" content="Meet the Coaches | Downingtown East Boys Volleyball">
+<meta name="twitter:description" content="Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars.">
+<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-    <style>
-        body { font-family: 'Roboto', sans-serif; }
-        :root { --dt-blue: #003366; --dt-yellow: #FFD700; }
-        .bg-dt-blue { background-color: var(--dt-blue); }
-        .text-dt-blue { color: var(--dt-blue); }
-        .bg-dt-yellow { background-color: var(--dt-yellow); }
-        .text-dt-yellow { color: var(--dt-yellow); }
-        .border-dt-yellow { border-color: var(--dt-yellow); }
-        .nav-link {
-            padding: 0.5rem 1rem; color: var(--dt-blue); border-radius: 0.375rem;
-            transition: color 0.3s, background-color 0.3s; display: inline-block;
-        }
-        .nav-link:hover { background-color: var(--dt-yellow); color: var(--dt-blue); }
-        .nav-link.active { background-color: var(--dt-blue); color: white; }
-        .coach-profile {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6; color: #333; margin-bottom: 20px; padding: 20px;
-            border-left: 5px solid #004488; background-color: #f9f9f9;
-        }
-        .coach-profile h2 { color: #004488; margin-top: 0; font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
-        .coach-profile h3 { border-bottom: 2px solid #ddd; padding-bottom: 5px; font-size: 1.25rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        .philosophy-list { background: #fff; padding: 15px 15px 15px 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); list-style-type: disc; }
-        .philosophy-list li { margin-bottom: 10px; }
-        @media (min-width: 768px) { .sticky-photo { position: sticky; top: 100px; } }
-    </style>
+<!-- Canonical -->
+<link rel="canonical" href="https://debvb.github.io/coaches.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo2.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0f14;
+  --navy: #0e1e45;
+  --gold: #e8b000;
+  --gold-light: #fdf3d0;
+  --cream: #faf8f3;
+  --white: #ffffff;
+  --rule: #d4cec3;
+  --muted: #7a7266;
+  --soft: #f2f0ea;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav-wrap {
+  background: var(--white);
+  border-bottom: 3px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.nav-inner {
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-brand img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.nav-brand-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--navy);
+  border-left: 2px solid var(--rule);
+  padding-left: 12px;
+  letter-spacing: -0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-left: 1px solid var(--rule);
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover  { background: var(--soft); }
+.nav-links a.active { background: var(--navy); color: var(--white); }
+.nav-links a:last-child { border-right: 1px solid var(--rule); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-cta:hover { background: #d4a000 !important; }
+
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--navy);
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-burger:hover { background: var(--soft); }
+
+.nav-drawer {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+.nav-drawer.open { display: flex; }
+
+.nav-drawer a {
+  display: block;
+  padding: 15px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.12s;
+}
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a:hover  { background: var(--soft); }
+.nav-drawer a.active { background: var(--navy); color: var(--white); }
+.nav-drawer .nav-cta-mobile {
+  background: var(--gold);
+  color: var(--ink) !important;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   PAGE HEADER
+═══════════════════════════════════════ */
+.page-header {
+  background: var(--navy);
+  border-bottom: 5px solid var(--gold);
+  padding: 40px 48px 36px;
+}
+
+.page-header-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.page-header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════════════
+   MAIN WRAP
+═══════════════════════════════════════ */
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 52px 48px 80px;
+}
+
+/* ═══════════════════════════════════════
+   COACH CARD
+═══════════════════════════════════════ */
+.coach-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.coach-card + .coach-card {
+  padding-top: 64px;
+  border-top: 3px solid var(--ink);
+}
+
+.coach-photo {
+  position: sticky;
+  top: 80px;
+}
+
+.coach-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--navy);
+}
+
+.coach-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--navy);
+  display: inline-block;
+  padding: 5px 12px;
+  margin-bottom: 14px;
+}
+
+.coach-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 28px;
+}
+
+/* Section heading inside bio */
+.bio-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--navy);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.bio-sub {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--ink);
+  margin: 24px 0 10px;
+}
+
+.bio-text {
+  font-size: 14.5px;
+  color: #3d3830;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.bio-text strong { color: var(--navy); font-weight: 700; }
+
+/* Philosophy list */
+.phil-list {
+  list-style: none;
+  margin: 16px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phil-list li {
+  background: var(--soft);
+  border-left: 4px solid var(--gold);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #3d3830;
+  line-height: 1.6;
+}
+
+.phil-list li strong { color: var(--navy); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer { background: var(--navy); color: var(--white); }
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 48px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li + li { margin-top: 8px; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 48px 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-header { animation: fadeUp 0.4s 0.05s both; }
+.page-wrap   { animation: fadeUp 0.4s 0.15s both; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET (≤900px)
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-brand-text { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+
+  .page-header { padding: 28px 20px 24px; }
+  .page-wrap { padding: 36px 20px 60px; }
+
+  .coach-card {
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .coach-card + .coach-card { padding-top: 48px; }
+
+  .coach-photo { position: static; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤600px)
+═══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .coach-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .coach-card + .coach-card { padding-top: 40px; }
+
+  .coach-photo {
+    max-width: 200px;
+  }
+
+  .coach-name { font-size: 32px; margin-bottom: 20px; }
+
+  .bio-heading { font-size: 19px; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    padding: 36px 20px 24px;
+    gap: 28px;
+    text-align: center;
+  }
+  .footer-bottom { padding: 14px 20px 20px; }
+}
+</style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-<header class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-dt-yellow">
-    <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
-      <a href="/index.html" class="flex items-center space-x-4">
-        <img src="logo2.jpg" alt="Cougars Volleyball Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" />
-        <span class="text-dt-blue text-lg font-bold hidden lg:block border-l-2 border-gray-200 pl-4">Downingtown East</span>
-      </a>
-      <button id="mobile-menu-button" class="md:hidden text-dt-blue">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4" />
-        </svg>
-      </button>
-      <div class="hidden md:flex items-center space-x-2">
-        <a href="/index.html" class="nav-link">Home</a>
-        <a href="/schedule.html" class="nav-link">Schedule</a>
-        <a href="/coaches.html" class="nav-link active">Coaches</a>
-        <a href="/contact.html" class="nav-link">Contact</a>
-        <a href="/roster.html" class="nav-link">Roster</a>
-        <a href="/news.html" class="nav-link">News</a>
-      </div>
-    </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-gray-50 border-t border-gray-200">
-      <a href="/index.html" class="block nav-link text-center">Home</a>
-      <a href="/schedule.html" class="block nav-link text-center">Schedule</a>
-      <a href="/coaches.html" class="block nav-link text-center">Coaches</a>
-      <a href="/contact.html" class="block nav-link text-center">Contact</a>
-      <a href="/roster.html" class="block nav-link text-center">Roster</a>
-      <a href="/news.html" class="block nav-link text-center">News</a>
+<!-- ═══ NAV ═══ -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/schedule.html">Schedule</a>
+      <a href="/coaches.html" class="active">Coaches</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/roster.html">Roster</a>
+      <a href="/news.html">News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
     </div>
-</header>
+  </div>
 
-<main class="container mx-auto p-4 md:p-8">
-    <div class="bg-white rounded-lg shadow-xl p-6 md:p-8">
-        <h1 class="text-3xl md:text-4xl font-bold text-dt-blue border-b-4 border-dt-yellow pb-4 mb-8">Meet the Coaches</h1>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+    <a href="/index.html">Home</a>
+    <a href="/schedule.html">Schedule</a>
+    <a href="/coaches.html" class="active">Coaches</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/roster.html">Roster</a>
+    <a href="/news.html">News</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+  </nav>
+</div>
 
-        <div class="space-y-12">
-            <div class="grid md:grid-cols-4 gap-8 items-start">
-                <div class="md:col-span-1 sticky-photo">
-                    <img src="/headshot.JPEG" alt="Grant Shieh Head Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
-                </div>
-                <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold text-gray-800">Grant Shieh</h2>
-                    <p class="text-xl text-dt-blue font-semibold mb-6">Head Coach</p>
-                    <div class="coach-profile">
-                        <h2>Building the Local Volleyball Community</h2>
-                        <p>For <strong>Grant Shieh</strong>, volleyball is more than a game—it's the cornerstone of a thriving local community. While he spends his days as a history teacher at Lionville Middle School, his primary mission on the court is to develop a high-level standard of play and cultivate a strong community within the Downingtown area.</p>
-                        <p>Grant currently leads the Downingtown East boys' program and is the assistant coach for the girls' program. His journey began in Bucks County as a libero for Council Rock North High School, continued through Temple University's club team, and finally coaching at the high school and club level in 2021.</p>
-                        <br>
-                        <p>Grant's coaching is built on the <strong>"Student-Athlete" Growth Model</strong>, emphasizing that sustainable success is the result of intentional, small shifts:</p>
-                        <ul class="philosophy-list">
-                            <li><strong>Community Impact:</strong> Creating a pipeline of talent where local players feel connected to their teammates and their town.</li>
-                            <li><strong>Incremental Growth:</strong> Breaking down complex skills into manageable steps to ensure players see consistent, measurable progress.</li>
-                            <li><strong>Confidence Through Sport:</strong> Using the court as a space where young athletes can test their limits and find their voice.</li>
-                        </ul>
-                        <br>
-                        <p>When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, skiing around the Northeast or cheering for the Philadelphia sports scene.</p>
-                    </div>
-                </div>
-            </div>
+<!-- ═══ PAGE HEADER ═══ -->
+<div class="page-header">
+  <div class="page-header-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+  <h1>Meet the <em>Coaches</em></h1>
+</div>
 
-            <hr class="border-t-2 border-gray-200" />
+<!-- ═══ MAIN ═══ -->
+<div class="page-wrap">
 
-            <div class="grid md:grid-cols-4 gap-8 items-start">
-                <div class="md:col-span-1 sticky-photo">
-                    <img src="ac1.jpg" alt="Chris D'Amore Assistant Coach" class="rounded-lg shadow-md w-full h-auto object-cover" />
-                </div>
-                <div class="md:col-span-3">
-                    <h2 class="text-3xl font-bold text-gray-800">Chris D'Amore</h2>
-                    <p class="text-xl text-dt-blue font-semibold mb-6">Assistant Coach</p>
-                    <div class="coach-profile">
-                        <h2>Three Decades of Competitive Excellence</h2>
-                        <p>Born and raised in <strong>Texas</strong>, Chris D'Amore brings a wealth of knowledge and elite-level experience to Downingtown East. A graduate of <strong>Twin Valley</strong> and <strong>California University of PA</strong>, Chris has spent over <strong>30 years</strong> immersed in the sport, developing a deep understanding of the technical and mental aspects of winning volleyball.</p>
-                        <br>
-                        <p>Chris's extensive playing career spans from local dominance to the national collegiate stage:</p>
-                        <ul class="philosophy-list">
-                            <li><strong>Championship Pedigree:</strong> A former County Champion during his high school career at Twin Valley.</li>
-                            <li><strong>Collegiate Success:</strong> Played for a nationally ranked NCAA Division II program at California University of PA.</li>
-                            <li><strong>Active Competitor:</strong> Continues to compete at a high level, most recently with the Shamona Creek Volleyball team.</li>
-                        </ul>
-                        <br>
-                        <p>With a career rooted in high-stakes competition, Coach D'Amore is focused on instilling a championship mindset in our players, emphasizing the precision and discipline required to succeed at the next level.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Grant Shieh -->
+  <div class="coach-card">
+    <div class="coach-photo">
+      <img src="/headshot.JPEG" alt="Grant Shieh — Head Coach">
     </div>
-</main>
+    <div>
+      <div class="coach-role">Head Coach</div>
+      <div class="coach-name">Grant Shieh</div>
 
-<footer class="bg-dt-blue text-white mt-12">
-    <div class="container mx-auto p-8">
-        <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-                <h4 class="font-bold text-lg mb-3">QUICK LINKS</h4>
-                <ul class="space-y-2">
-                    <li><a href="/index.html" class="hover:text-dt-yellow">Home</a></li>
-                    <li><a href="/schedule.html" class="hover:text-dt-yellow">Schedule</a></li>
-                    <li><a href="/coaches.html" class="hover:text-dt-yellow">Coaches</a></li>
-                    <li><a href="/contact.html" class="hover:text-dt-yellow">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-3">CONTACT</h4>
-                <p>Downingtown East High School</p>
-                <p>50 Devon Dr, Exton, PA 19341</p>
-                <a href="/contact.html" class="hover:text-dt-yellow block mt-2">Contact the Coaches</a>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-3">FOLLOW US</h4>
-                <ul class="space-y-2">
-                    <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="hover:text-dt-yellow">Instagram: @deastboysvb</a></li>
-                    <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" class="hover:text-dt-yellow">X: @devbboys</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center border-t border-white/20 mt-8 pt-6">
-            <p>&copy; 2026 Downingtown East Boys Volleyball. All Rights Reserved.</p>
-        </div>
+      <div class="bio-heading">Building the Local Volleyball Community</div>
+
+      <p class="bio-text">For <strong>Grant Shieh</strong>, volleyball is more than a game — it's the cornerstone of a thriving local community. While he spends his days as a history teacher at Lionville Middle School, his primary mission on the court is to develop a high-level standard of play and cultivate a strong community within the Downingtown area.</p>
+
+      <p class="bio-text">Grant currently leads the Downingtown East boys' program and is the assistant coach for the girls' program. His journey began in Bucks County as a libero for Council Rock North High School, continued through Temple University's club team, and finally coaching at the high school and club level in 2021.</p>
+
+      <div class="bio-sub">Coaching Philosophy</div>
+      <p class="bio-text">Grant's coaching is built on the <strong>"Student-Athlete" Growth Model</strong>, emphasizing that sustainable success is the result of intentional, small shifts:</p>
+
+      <ul class="phil-list">
+        <li><strong>Community Impact:</strong> Creating a pipeline of talent where local players feel connected to their teammates and their town.</li>
+        <li><strong>Incremental Growth:</strong> Breaking down complex skills into manageable steps to ensure players see consistent, measurable progress.</li>
+        <li><strong>Confidence Through Sport:</strong> Using the court as a space where young athletes can test their limits and find their voice.</li>
+      </ul>
+
+      <p class="bio-text">When the whistle blows and the school day ends, Grant stays busy. You might find him under the hood of his car, hiking a local trail, skiing around the Northeast, or cheering for the Philadelphia sports scene.</p>
     </div>
+  </div>
+
+  <!-- Chris D'Amore -->
+  <div class="coach-card">
+    <div class="coach-photo">
+      <img src="ac1.jpg" alt="Chris D'Amore — Assistant Coach">
+    </div>
+    <div>
+      <div class="coach-role">Assistant Coach</div>
+      <div class="coach-name">Chris D'Amore</div>
+
+      <div class="bio-heading">Three Decades of Competitive Excellence</div>
+
+      <p class="bio-text">Born and raised in <strong>Texas</strong>, Chris D'Amore brings a wealth of knowledge and elite-level experience to Downingtown East. A graduate of <strong>Twin Valley</strong> and <strong>California University of PA</strong>, Chris has spent over <strong>30 years</strong> immersed in the sport, developing a deep understanding of the technical and mental aspects of winning volleyball.</p>
+
+      <div class="bio-sub">Playing Career</div>
+      <p class="bio-text">Chris's extensive career spans from local dominance to the national collegiate stage:</p>
+
+      <ul class="phil-list">
+        <li><strong>Championship Pedigree:</strong> A former County Champion during his high school career at Twin Valley.</li>
+        <li><strong>Collegiate Success:</strong> Played for a nationally ranked NCAA Division II program at California University of PA.</li>
+        <li><strong>Active Competitor:</strong> Continues to compete at a high level, most recently with the Shamona Creek Volleyball team.</li>
+      </ul>
+
+      <p class="bio-text">With a career rooted in high-stakes competition, Coach D'Amore is focused on instilling a championship mindset in our players, emphasizing the precision and discipline required to succeed at the next level.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/roster.html">Roster</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/news.html">News</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li>
+        <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li>
+        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li>
+        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved
+  </div>
 </footer>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const mobileMenuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener("click", () => { mobileMenu.classList.toggle("hidden"); });
-        }
-    });
+  const burger     = document.getElementById('nav-burger');
+  const drawer     = document.getElementById('nav-drawer');
+  const burgerIcon = document.getElementById('burger-icon');
+  const openPath   = 'M4 6h16M4 12h16M4 18h16';
+  const closePath  = 'M6 18L18 6M6 6l12 12';
+
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+    burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+  });
 </script>
 </body>
 </html>
