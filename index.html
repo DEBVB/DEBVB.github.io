@@ -59,18 +59,23 @@ body {
   min-height: 100vh;
 }
 
-/* ─── NAV ─── */
-nav {
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+.nav-wrap {
   background: var(--white);
   border-bottom: 3px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.nav-inner {
   padding: 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 58px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
 .nav-brand {
@@ -78,6 +83,7 @@ nav {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .nav-brand img {
@@ -96,10 +102,10 @@ nav {
   letter-spacing: -0.2px;
 }
 
+/* Desktop links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
 .nav-links a {
@@ -112,16 +118,61 @@ nav {
   letter-spacing: 0.08em;
   border-left: 1px solid var(--rule);
   transition: background 0.12s;
+  white-space: nowrap;
 }
 
-.nav-links a:hover { background: var(--soft); }
+.nav-links a:hover  { background: var(--soft); }
 .nav-links a.active { background: var(--navy); color: var(--white); }
 .nav-links a:last-child { border-right: 1px solid var(--rule); }
-
-.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-cta  { background: var(--gold) !important; color: var(--ink) !important; }
 .nav-cta:hover { background: #d4a000 !important; }
 
-/* ─── MASTHEAD ─── */
+/* Hamburger button */
+.nav-burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--navy);
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-burger:hover { background: var(--soft); }
+
+/* Mobile drawer */
+.nav-drawer {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+.nav-drawer.open { display: flex; }
+
+.nav-drawer a {
+  display: block;
+  padding: 15px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.12s;
+}
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a:hover  { background: var(--soft); }
+.nav-drawer a.active { background: var(--navy); color: var(--white); }
+.nav-drawer .nav-cta-mobile {
+  background: var(--gold);
+  color: var(--ink) !important;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   MASTHEAD
+═══════════════════════════════════════ */
 .masthead {
   padding: 0 48px;
   display: flex;
@@ -148,7 +199,6 @@ nav {
   opacity: 0;
   transition: opacity 1.4s ease;
 }
-
 .mast-slide.active { opacity: 1; }
 
 .mast-overlay {
@@ -174,7 +224,7 @@ nav {
 
 .mast-dots {
   position: absolute;
-  bottom: 20px;
+  bottom: 16px;
   left: 48px;
   display: flex;
   gap: 8px;
@@ -190,7 +240,6 @@ nav {
   padding: 0;
   transition: background 0.25s, transform 0.25s;
 }
-
 .mast-dot.active { background: var(--gold); transform: scale(1.4); }
 
 .mast-left, .mast-right { position: relative; z-index: 3; }
@@ -215,13 +264,12 @@ nav {
 
 .mast-headline {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(60px, 7vw, 92px);
+  font-size: clamp(52px, 7vw, 92px);
   line-height: 0.92;
   color: var(--white);
   letter-spacing: -1px;
   margin-bottom: 24px;
 }
-
 .mast-headline em { font-style: italic; color: var(--gold); }
 
 .mast-deck {
@@ -235,7 +283,7 @@ nav {
   padding-left: 16px;
 }
 
-.mast-btns { display: flex; gap: 10px; }
+.mast-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .btn-solid {
   background: var(--gold);
@@ -250,8 +298,8 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
-
 .btn-solid:hover { background: #d4a000; }
 
 .btn-outline {
@@ -267,17 +315,17 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
-
 .btn-outline:hover { border-color: rgba(255,255,255,0.55); }
 
+/* Scoreboard panel */
 .mast-right {
-  width: 340px;
+  width: 300px;
   flex-shrink: 0;
-  padding: 52px 0 52px 56px;
+  padding: 52px 0 52px 48px;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .score-label {
@@ -295,14 +343,19 @@ nav {
 
 .ng-date {
   font-family: 'DM Serif Display', serif;
-  font-size: 72px;
+  font-size: 64px;
   line-height: 0.9;
   color: var(--white);
   letter-spacing: -2px;
   margin-bottom: 10px;
 }
 
-.ng-opponent { font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 5px; }
+.ng-opponent {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 5px;
+}
 
 .ng-times {
   font-family: 'JetBrains Mono', monospace;
@@ -323,12 +376,11 @@ nav {
 
 .rec-val {
   font-family: 'DM Serif Display', serif;
-  font-size: 34px;
+  font-size: 32px;
   color: var(--white);
   line-height: 1;
   letter-spacing: -1px;
 }
-
 .rec-val em { color: var(--gold); font-style: normal; }
 
 .rec-key {
@@ -340,60 +392,195 @@ nav {
   margin-top: 5px;
 }
 
-/* ─── BODY GRID ─── */
+/* ═══════════════════════════════════════
+   STAT STRIP — mobile only
+═══════════════════════════════════════ */
+.stat-strip {
+  display: none;
+  background: var(--navy);
+  border-bottom: 3px solid var(--gold);
+  padding: 20px 20px 0;
+  gap: 2px;
+}
+
+.stat-cell {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  padding: 14px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.stat-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.stat-val em { color: var(--gold); font-style: normal; }
+
+.stat-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════
+   BODY GRID
+═══════════════════════════════════════ */
 .body-wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 48px 80px;
+  padding: 48px 48px 80px;
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: 48px;
 }
 
-.sec-rule { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+/* Section headers */
+.sec-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
 .sec-rule-line { height: 3px; background: var(--ink); flex: 1; }
-.sec-rule-label { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); white-space: nowrap; }
-.sec-rule-more { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.sec-rule-label {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.sec-rule-more {
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
 .sec-rule-more:hover { color: var(--navy); }
 
-.post { background: var(--white); padding: 28px 32px; border: 1px solid var(--rule); margin-bottom: 2px; transition: box-shadow 0.2s; }
+/* Posts */
+.post {
+  background: var(--white);
+  padding: 28px 32px;
+  border: 1px solid var(--rule);
+  margin-bottom: 2px;
+  transition: box-shadow 0.2s;
+}
 .post:hover { box-shadow: 4px 4px 0 var(--navy); }
-.post-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
 
-.tag { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; }
-.tag-new { background: var(--navy); color: var(--white); }
+.post-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+.tag-new  { background: var(--navy); color: var(--white); }
 .tag-info { background: var(--gold-light); color: var(--navy); border: 1px solid var(--gold); }
 
-.post-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1.2; }
-.post-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
+.post-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.post-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
 .post-body { font-size: 14.5px; color: #3d3830; line-height: 1.7; }
 .post-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
 
-/* ─── SIDEBAR ─── */
+/* ═══════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════ */
 .sidebar { display: flex; flex-direction: column; gap: 24px; }
-.side-block { background: var(--white); border: 1px solid var(--rule); }
-.side-head { font-family: 'DM Serif Display', serif; font-size: 17px; padding: 14px 18px; border-bottom: 2px solid var(--ink); color: var(--ink); }
 
-.ig-panel { background: linear-gradient(160deg, #405DE6, #833AB4 50%, #E1306C); padding: 22px 18px; text-align: center; }
-.ig-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.65); display: block; margin-bottom: 10px; }
-.ig-handle { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--white); text-decoration: none; display: block; }
+.side-block { background: var(--white); border: 1px solid var(--rule); }
+
+.side-head {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+
+.ig-panel {
+  background: linear-gradient(160deg, #405DE6, #833AB4 50%, #E1306C);
+  padding: 22px 18px;
+  text-align: center;
+}
+.ig-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  display: block;
+  margin-bottom: 10px;
+}
+.ig-handle {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+}
 .ig-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 
 .qlinks { list-style: none; }
-.qlink { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+.qlink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
 .qlink:last-child { border-bottom: none; }
 .qlink:hover { background: var(--soft); }
 .qlink-left { display: flex; align-items: center; gap: 10px; }
-.qlink-ico { width: 28px; height: 28px; background: var(--soft); border-radius: 6px; display: grid; place-items: center; font-size: 13px; }
-.qlink-label { font-size: 13px; font-weight: 600; color: var(--ink); }
-.qlink-arr { color: var(--muted); }
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--navy);
-  color: var(--white);
-  margin-top: 0;
+.qlink-ico {
+  width: 30px; height: 30px;
+  background: var(--soft);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  flex-shrink: 0;
 }
+.qlink-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+.qlink-arr { color: var(--muted); font-size: 18px; line-height: 1; }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer { background: var(--navy); color: var(--white); }
 
 .footer-inner {
   max-width: 1200px;
@@ -412,7 +599,6 @@ footer {
   color: rgba(255,255,255,0.4);
   margin-bottom: 14px;
 }
-
 .footer-col ul { list-style: none; }
 .footer-col ul li + li { margin-top: 8px; }
 .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
@@ -431,7 +617,9 @@ footer {
   text-align: center;
 }
 
-/* ─── DONATE BUBBLE ─── */
+/* ═══════════════════════════════════════
+   DONATE BUBBLE
+═══════════════════════════════════════ */
 #donate-bubble {
   position: fixed; bottom: 16px; right: 16px;
   background-color: var(--navy);
@@ -441,70 +629,169 @@ footer {
   transition: all 0.3s ease; z-index: 9999;
   width: 110px; text-align: center;
 }
-
 #donate-header { padding: 11px 10px; font-weight: 600; font-size: 0.9rem; }
 #donate-content { background: white; color: #1a1a1a; padding: 12px; display: none; }
 #donate-content img { max-width: 110px; margin: 8px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
 .venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 9px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
 
-/* ─── ANIMATIONS ─── */
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .mast-kicker   { animation: fadeUp 0.4s 0.1s both; }
 .mast-headline { animation: fadeUp 0.5s 0.2s both; }
 .mast-deck     { animation: fadeUp 0.5s 0.3s both; }
 .mast-btns     { animation: fadeUp 0.5s 0.4s both; }
 .mast-right    { animation: fadeUp 0.5s 0.2s both; }
 .body-wrap     { animation: fadeUp 0.5s 0.15s both; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TABLET  (≤900px)
+═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-brand-text { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+
+  /* Masthead: stack vertically */
+  .masthead {
+    flex-direction: column;
+    padding: 36px 20px 48px;
+    min-height: 0;
+  }
+
+  .mast-left {
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 28px;
+    margin-bottom: 0;
+    justify-content: flex-start;
+  }
+
+  .mast-headline { font-size: clamp(44px, 11vw, 68px); }
+
+  .mast-deck { font-size: 14px; max-width: 100%; }
+
+  .mast-btns { flex-direction: column; gap: 10px; }
+  .btn-solid, .btn-outline { width: 100%; justify-content: center; padding: 14px 20px; font-size: 13px; }
+
+  /* Hide the sidebar scoreboard panel — show stat strip instead */
+  .mast-right { display: none; }
+  .stat-strip { display: flex; }
+
+  .mast-dots { left: 20px; bottom: 12px; }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — MOBILE  (≤640px)
+═══════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Body becomes single column */
+  .body-wrap {
+    grid-template-columns: 1fr;
+    padding: 24px 16px 60px;
+    gap: 32px;
+  }
+
+  /* Sidebar reorders to come after main content */
+  .sidebar { order: 2; }
+
+  .post { padding: 20px 18px; }
+  .post-title { font-size: 18px; }
+
+  /* Quick links — bigger tap targets */
+  .qlink { padding: 15px 16px; }
+  .qlink-ico { width: 34px; height: 34px; font-size: 16px; }
+
+  /* Footer stacks */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    padding: 36px 20px 24px;
+    gap: 28px;
+    text-align: center;
+  }
+  .footer-bottom { padding: 14px 20px 20px; }
+
+  /* Donate bubble — slightly smaller on mobile */
+  #donate-bubble { width: 96px; right: 12px; bottom: 12px; }
+  #donate-header { font-size: 0.8rem; }
+
+  .sec-rule-label { font-size: 18px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="/index.html" class="nav-brand">
-    <img src="logo2.jpg" alt="Cougars Volleyball Logo">
-    <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
-  </a>
-  <div class="nav-links">
+<!-- ═══ NAV ═══ -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <!-- Desktop links -->
+    <div class="nav-links">
+      <a href="/index.html" class="active">Home</a>
+      <a href="/schedule.html">Schedule</a>
+      <a href="/coaches.html">Coaches</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/roster.html">Roster</a>
+      <a href="/news.html">News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
     <a href="/index.html" class="active">Home</a>
     <a href="/schedule.html">Schedule</a>
     <a href="/coaches.html">Coaches</a>
     <a href="/contact.html">Contact</a>
     <a href="/roster.html">Roster</a>
     <a href="/news.html">News</a>
-    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
-  </div>
-</nav>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+  </nav>
+</div>
 
-<!-- MASTHEAD with real team photos -->
+<!-- ═══ MASTHEAD ═══ -->
 <div class="masthead">
 
+  <!-- Slideshow photos -->
   <div class="mast-slides">
-    <img class="mast-slide active" src="/slide1.jpeg"     alt="Downingtown East Boys Volleyball team action">
-    <img class="mast-slide"        src="/slide2.jpeg"     alt="Cougars volleyball match highlight">
-    <img class="mast-slide"        src="/slide3.jpg"      alt="Cougars volleyball game">
-    <img class="mast-slide"        src="/slide4.jpeg"     alt="Downingtown East volleyball players">
-    <img class="mast-slide"        src="/slide5.jpeg"     alt="Cougars volleyball team">
-    <img class="mast-slide"        src="/slide6.jpeg"     alt="Boys volleyball match">
-    <img class="mast-slide"        src="/slide7.jpg"      alt="Cougars volleyball action shot">
-    <img class="mast-slide"        src="/slide8.jpeg"     alt="Downingtown East volleyball game">
-    <img class="mast-slide"        src="/slide9.jpeg"     alt="Boys volleyball team in action">
-    <img class="mast-slide"        src="/VB1.JPEG"        alt="Cougars volleyball team photo">
-    <img class="mast-slide"        src="/IMG_1446.JPG"    alt="Downingtown East volleyball players">
-    <img class="mast-slide"        src="/IMG_5919.jpeg"   alt="Boys volleyball match">
-    <img class="mast-slide"        src="/IMG_5948.jpeg"   alt="Cougars volleyball highlight">
-    <img class="mast-slide"        src="/IMG_5964.jpeg"   alt="Cougars volleyball action">
+    <img class="mast-slide active" src="/slide1.jpeg"   alt="Downingtown East Boys Volleyball team action">
+    <img class="mast-slide"        src="/slide2.jpeg"   alt="Cougars volleyball match highlight">
+    <img class="mast-slide"        src="/slide3.jpg"    alt="Cougars volleyball game">
+    <img class="mast-slide"        src="/slide4.jpeg"   alt="Downingtown East volleyball players">
+    <img class="mast-slide"        src="/slide5.jpeg"   alt="Cougars volleyball team">
+    <img class="mast-slide"        src="/slide6.jpeg"   alt="Boys volleyball match">
+    <img class="mast-slide"        src="/slide7.jpg"    alt="Cougars volleyball action shot">
+    <img class="mast-slide"        src="/slide8.jpeg"   alt="Downingtown East volleyball game">
+    <img class="mast-slide"        src="/slide9.jpeg"   alt="Boys volleyball team in action">
+    <img class="mast-slide"        src="/VB1.JPEG"      alt="Cougars volleyball team photo">
+    <img class="mast-slide"        src="/IMG_1446.JPG"  alt="Downingtown East volleyball players">
+    <img class="mast-slide"        src="/IMG_5919.jpeg" alt="Boys volleyball match">
+    <img class="mast-slide"        src="/IMG_5948.jpeg" alt="Cougars volleyball highlight">
+    <img class="mast-slide"        src="/IMG_5964.jpeg" alt="Cougars volleyball action">
   </div>
 
   <div class="mast-overlay"></div>
   <div class="mast-stripes"></div>
-
   <div class="mast-dots" id="mast-dots"></div>
 
+  <!-- Left: headline + CTA -->
   <div class="mast-left">
     <div class="mast-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
     <h1 class="mast-headline">
@@ -512,7 +799,7 @@ footer {
       Boys<br>
       <em>Volleyball</em>
     </h1>
-    <p class="mast-deck">Every point. Every match. Every moment — this is Downingtown East Boys Volleyball. Follow the Cougars all season long.</p>
+    <p class="mast-deck">Every point. Every match. Every moment — this is Downingtown East Boys Volleyball.</p>
     <div class="mast-btns">
       <a href="/schedule.html" class="btn-solid">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -522,6 +809,7 @@ footer {
     </div>
   </div>
 
+  <!-- Right: scoreboard (desktop only) -->
   <div class="mast-right">
     <div class="score-label">Season at a Glance</div>
     <div class="next-game">
@@ -544,8 +832,26 @@ footer {
 
 </div>
 
-<!-- BODY -->
+<!-- Stat strip — shown on mobile instead of the right panel -->
+<div class="stat-strip">
+  <div class="stat-cell">
+    <div class="stat-val">MAR<em> 10</em></div>
+    <div class="stat-key">Next Game</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-val">9<em>–</em>9</div>
+    <div class="stat-key">2025 Record</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-val">22<em>+</em></div>
+    <div class="stat-key">Games '26</div>
+  </div>
+</div>
+
+<!-- ═══ BODY ═══ -->
 <div class="body-wrap">
+
+  <!-- Main column -->
   <div>
     <div class="sec-rule">
       <div class="sec-rule-label">Announcements</div>
@@ -575,7 +881,7 @@ footer {
       </div>
     </div>
 
-    <!-- Twitter embed -->
+    <!-- Twitter -->
     <div style="margin-top: 32px;">
       <div class="sec-rule" style="margin-bottom: 16px;">
         <div class="sec-rule-label">Latest from Twitter</div>
@@ -602,13 +908,14 @@ footer {
         <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">📊</div><span class="qlink-label">MaxPreps</span></div><span class="qlink-arr">›</span></a>
         <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">🎬</div><span class="qlink-label">Hudl Highlights</span></div><span class="qlink-arr">›</span></a>
         <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">🔔</div><span class="qlink-label">Join Remind</span></div><span class="qlink-arr">›</span></a>
-        <a href="#donate-bubble" onclick="document.getElementById('donate-content').style.display='block'" class="qlink"><div class="qlink-left"><div class="qlink-ico">💛</div><span class="qlink-label">Donate</span></div><span class="qlink-arr">›</span></a>
+        <a href="#" onclick="document.getElementById('donate-content').style.display='block';return false;" class="qlink"><div class="qlink-left"><div class="qlink-ico">💛</div><span class="qlink-label">Donate</span></div><span class="qlink-arr">›</span></a>
       </div>
     </div>
   </div>
+
 </div>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
@@ -651,9 +958,23 @@ footer {
 </div>
 
 <script>
-  // Slideshow — build dots dynamically to match photo count
+  /* ── Hamburger ── */
+  const burger  = document.getElementById('nav-burger');
+  const drawer  = document.getElementById('nav-drawer');
+  const burgerIcon = document.getElementById('burger-icon');
+
+  const openPath  = 'M4 6h16M4 12h16M4 18h16';
+  const closePath = 'M6 18L18 6M6 6l12 12';
+
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+    burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+  });
+
+  /* ── Slideshow ── */
   const slides = document.querySelectorAll('.mast-slide');
-  const dotsEl  = document.getElementById('mast-dots');
+  const dotsEl = document.getElementById('mast-dots');
   let current = 0, timer;
 
   slides.forEach((_, i) => {
@@ -681,7 +1002,7 @@ footer {
 
   resetTimer();
 
-  // Donate bubble
+  /* ── Donate bubble ── */
   document.getElementById('donate-header').addEventListener('click', () => {
     const c = document.getElementById('donate-content');
     c.style.display = c.style.display === 'block' ? 'none' : 'block';
