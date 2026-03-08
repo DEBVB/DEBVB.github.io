@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Volleyball Score Sheet Training — 2025 NCAA Championship</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: #f4f5f7; min-height: 100vh; }
+
+  /* Header */
+  #app-header {
+    background: linear-gradient(90deg, #003366 0%, #001a33 100%);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  #app-header .title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 17px; }
+  #app-header .subtitle { color: #FFC72C; font-size: 12px; font-weight: 600; }
+  #app-header .phase-count { margin-left: auto; font-size: 13px; color: #aaa; }
+
+  /* Layout */
+  #layout { display: flex; max-width: 1100px; margin: 0 auto; padding: 24px 16px; gap: 24px; }
+
+  /* Sidebar */
+  #sidebar { min-width: 190px; flex-shrink: 0; }
+  #nav { background: #fff; border-radius: 12px; border: 1.5px solid #e0e0e0; overflow: hidden; position: sticky; top: 80px; }
+  .nav-btn {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 11px 14px; background: transparent; color: #333;
+    border: none; border-bottom: 1px solid #f0f0f0;
+    cursor: pointer; font-size: 13px; font-weight: 500;
+    text-align: left; transition: all 0.1s; font-family: 'Source Sans 3', sans-serif;
+  }
+  .nav-btn:last-child { border-bottom: none; }
+  .nav-btn.active { background: #003366; color: #fff; font-weight: 700; }
+  .nav-btn .icon { font-size: 16px; }
+
+  /* Content */
+  #content { flex: 1; min-width: 0; }
+  .phase { display: none; }
+  .phase.active { display: block; }
+
+  /* Nav footer buttons */
+  #nav-footer { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 20px; border-top: 1.5px solid #e0e0e0; }
+  .nav-prev, .nav-next {
+    padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 700;
+    cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: opacity 0.15s;
+  }
+  .nav-prev { border: 1.5px solid #ddd; background: #fff; color: #333; }
+  .nav-prev:disabled { background: #f5f5f5; color: #aaa; cursor: default; }
+  .nav-next { border: none; background: #003366; color: #fff; }
+  .nav-next:disabled { background: #ccc; cursor: default; }
+
+  /* Reusable elements */
+  h2 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 6px; }
+  .lead { color: #555; margin-bottom: 24px; }
+  .card { background: #fff; border: 1.5px solid #ddd; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+  .card-header { padding: 10px 18px; font-weight: 700; font-size: 14px; color: #fff; }
+  .card-body { padding: 16px 18px; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; padding: 6px 12px; border-radius: 6px; }
+  .mono-green { background: #f0fff0; color: #1a7a1a; }
+  .mono-red { background: #fff0f0; color: #CC0000; }
+  .mono-blue { background: #e0f5ff; color: #006080; }
+  .mono-amber { background: #fef3e2; color: #7f5200; }
+  .mono-purple { background: #f5e8ff; color: #5a0080; }
+  .tip { background: #fffbe6; border: 2px solid #FFC72C; border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+  .warn { background: #fff0f0; border: 2px solid #CC0000; border-radius: 10px; padding: 14px 18px; font-size: 14px; }
+  .warn ul, .tip ul { margin: 8px 0 0; padding-left: 20px; line-height: 2; color: #444; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .step-circle {
+    min-width: 40px; height: 40px; border-radius: 50%;
+    background: #003366; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 18px; font-family: 'Playfair Display', serif; flex-shrink: 0;
+  }
+  .step-row { display: flex; gap: 18px; margin-bottom: 20px; background: #fff; border: 1.5px solid #e0e0e0; border-radius: 12px; padding: 18px 20px; }
+
+  /* Intro */
+  .intro-hero {
+    background: linear-gradient(135deg, #003366 0%, #001a33 60%, #000 100%);
+    border-radius: 16px; padding: 40px 36px; color: #fff;
+    margin-bottom: 28px; position: relative; overflow: hidden;
+  }
+  .intro-hero::before { content: "🏐"; position: absolute; right: -20px; top: -20px; font-size: 120px; opacity: 0.07; }
+  .badge {
+    display: inline-block; background: #FFC72C; color: #000;
+    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 11px;
+    letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .intro-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(24px,5vw,38px); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+  .intro-hero .match { color: #FFC72C; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; margin-bottom: 18px; }
+  .intro-hero .desc { color: #ccc; font-size: 15px; max-width: 520px; line-height: 1.6; }
+  .info-card { background: #fff; border: 2px solid #e0e0e0; border-radius: 12px; padding: 18px 20px; }
+  .info-card .emoji { font-size: 28px; margin-bottom: 8px; }
+  .info-card .card-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+  .info-card p { color: #555; font-size: 14px; line-height: 1.5; }
+  .match-box { background: #fffbe6; border: 2px solid #FFC72C; border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
+  .match-box .lbl { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .match-box .details { font-size: 14px; line-height: 1.8; color: #333; }
+  .btn-start {
+    background: #003366; color: #fff; border: none;
+    padding: 14px 32px; border-radius: 8px; font-size: 16px; font-weight: 700;
+    cursor: pointer; width: 100%; font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.15s;
+  }
+  .btn-start:hover { background: #002244; }
+
+  /* Symbols */
+  .symbols-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sym-card {
+    border: 2px solid #ddd; border-radius: 10px; padding: 14px 16px;
+    cursor: pointer; background: #fff; transition: all 0.15s;
+  }
+  .sym-card:hover { border-color: #999; }
+  .sym-card.open { background: #f8f8ff; }
+  .sym-inner { display: flex; align-items: center; gap: 12px; }
+  .sym-badge { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 900; min-width: 80px; background: #f5f5f5; padding: 4px 10px; border-radius: 6px; text-align: center; }
+  .sym-label { font-weight: 600; font-size: 13px; }
+  .sym-desc { margin-top: 10px; font-size: 13px; color: #444; line-height: 1.5; display: none; }
+  .sym-card.open .sym-desc { display: block; }
+  .ink-tip { margin-top: 20px; background: #f0f4ff; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #444; line-height: 1.7; }
+
+  /* Lineup table */
+  .lineup-table { width: 100%; border-collapse: collapse; }
+  .lineup-table th { padding: 8px 12px; text-align: left; font-size: 12px; color: #666; background: #f5f5f5; }
+  .lineup-table td { padding: 8px 12px; border-top: 1px solid #eee; font-size: 14px; }
+  .lineup-table td.pos { font-weight: 700; font-size: 16px; }
+  .lineup-table td.num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px; }
+
+  /* Scoring visual table */
+  .score-vis { width: 100%; border-collapse: collapse; border: 1.5px solid #ccc; border-radius: 8px; overflow: hidden; font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+  .score-vis th { background: #f5f5f5; padding: 8px 12px; font-size: 12px; border-right: 1px solid #ccc; }
+  .score-vis td { padding: 8px 12px; border-top: 1px solid #ccc; border-right: 1px solid #ccc; }
+
+  /* Live checklist */
+  .checklist-section { margin-bottom: 18px; background: #fff; border: 1.5px solid #ddd; border-radius: 12px; overflow: hidden; }
+  .checklist-header { padding: 10px 18px; font-weight: 700; font-size: 14px; color: #fff; }
+  .checklist-body { padding: 12px 18px; }
+  .check-row { display: flex; align-items: flex-start; gap: 10px; padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+  .check-row:last-child { border-bottom: none; }
+  .checkbox { min-width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 4px; margin-top: 1px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .checkbox.checked { background: #003366; border-color: #003366; color: #fff; font-size: 13px; }
+  .check-label { font-size: 14px; color: #333; line-height: 1.5; }
+
+  /* Finish card */
+  .finish-card {
+    background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+    border-radius: 12px; padding: 22px 24px; color: #fff; text-align: center;
+  }
+  .finish-card h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin: 8px 0; }
+  .finish-card p { color: #ccc; font-size: 15px; line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    #layout { flex-direction: column; }
+    #sidebar { min-width: unset; }
+    #nav { position: static; display: flex; flex-wrap: wrap; }
+    .nav-btn { width: auto; flex: 1 0 30%; border-bottom: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0; }
+    .grid2, .symbols-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app-header">
+  <span style="font-size:24px">🏐</span>
+  <div>
+    <div class="title">Volleyball Score Sheet Training</div>
+    <div class="subtitle">2025 NCAA Championship · LBSU vs. UCLA</div>
+  </div>
+  <div class="phase-count" id="phase-count">Phase 1 of 11</div>
+</div>
+
+<div id="layout">
+  <div id="sidebar">
+    <div id="nav"></div>
+  </div>
+  <div id="content">
+    <div id="phases-container"></div>
+    <div id="nav-footer">
+      <button class="nav-prev" id="btn-prev" onclick="navigate(-1)">← Previous</button>
+      <button class="nav-next" id="btn-next" onclick="navigate(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const LBSU = "#003366", UCLA = "#2774AE", GOLD = "#FFC72C", RED = "#CC0000";
+
+const phases = [
+  { id:"intro", label:"Start Here", icon:"🏐" },
+  { id:"symbols", label:"Symbol Key", icon:"🔑" },
+  { id:"setup", label:"Before the Game", icon:"📋" },
+  { id:"lineups", label:"Lineups", icon:"👥" },
+  { id:"points", label:"Scoring Points", icon:"✅" },
+  { id:"lossrally", label:"Loss of Rally", icon:"❌" },
+  { id:"subs", label:"Substitutions", icon:"🔄" },
+  { id:"timeouts", label:"Time-Outs", icon:"⏱️" },
+  { id:"libero", label:"Libero Rules", icon:"🔵" },
+  { id:"endset", label:"End of Set", icon:"🏆" },
+  { id:"liveguide", label:"Live Game Guide", icon:"📺" },
+];
+
+let currentIdx = 0;
+
+// --- Build nav ---
+const nav = document.getElementById("nav");
+phases.forEach((p, i) => {
+  const btn = document.createElement("button");
+  btn.className = "nav-btn" + (i === 0 ? " active" : "");
+  btn.dataset.idx = i;
+  btn.innerHTML = `<span class="icon">${p.icon}</span><span>${p.label}</span>`;
+  btn.onclick = () => goTo(i);
+  nav.appendChild(btn);
+});
+
+// --- Phase content builders ---
+function buildIntro() {
+  return `
+    <div style="max-width:720px;margin:0 auto">
+      <div class="intro-hero">
+        <div class="badge">2025 NCAA Men's Volleyball Championship</div>
+        <h1>Score Sheet &<br>Libero Tracker</h1>
+        <div class="match">Long Beach State vs. UCLA — May 12, 2025</div>
+        <div class="desc">A step-by-step training guide for JV and Varsity players. Follow along while watching the championship match to learn NFHS scoring notation from the real thing.</div>
+      </div>
+      <div class="grid2" style="margin-bottom:28px">
+        ${[
+          {e:"📋",t:"What You Need",b:"Blank NFHS score sheet, two pens (blue/black + red), this guide."},
+          {e:"🎯",t:"Your Goal",b:"Accurately fill in Set 1 of the championship match from start to finish."},
+          {e:"👥",t:"JV Players",b:"Focus on Phases 1–6. Master points, substitutions, and time-outs first."},
+          {e:"⭐",t:"Varsity Players",b:"Complete all phases including libero tracking and the full live checklist."},
+        ].map(c=>`<div class="info-card"><div class="emoji">${c.e}</div><div class="card-title">${c.t}</div><p>${c.b}</p></div>`).join("")}
+      </div>
+      <div style="background:#fff;border:2px solid #003366;border-radius:12px;padding:18px 22px;margin-bottom:20px">
+        <div style="font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">🖨️</span> Download & Print Before You Watch
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <a href="https://dvboc.net/wp-content/uploads/2016/06/NFHS-Score-Sheets.pdf" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;gap:10px;background:#003366;color:#fff;border-radius:8px;padding:12px 16px;text-decoration:none;font-weight:700;font-size:14px;transition:opacity 0.15s"
+            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            <span style="font-size:22px">📄</span>
+            <div><div>NFHS Score Sheet</div><div style="font-weight:400;font-size:11px;color:#FFC72C;margin-top:2px">Click to download PDF → Print</div></div>
+          </a>
+          <a href="https://www.goldmedalsquared.com/post/volleyball-scoresheet" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;gap:10px;background:#1a7a1a;color:#fff;border-radius:8px;padding:12px 16px;text-decoration:none;font-weight:700;font-size:14px;transition:opacity 0.15s"
+            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            <span style="font-size:22px">📄</span>
+            <div><div>Score Sheet + Libero Tracker</div><div style="font-weight:400;font-size:11px;color:#b8ffb8;margin-top:2px">Gold Medal Squared — free download</div></div>
+          </a>
+        </div>
+        <div style="font-size:12px;color:#888;margin-top:10px">
+          Print one score sheet per set (3 for JV, 5 for Varsity). Print at least one libero tracker per match.
+        </div>
+      </div>
+        <div class="lbl">🏆 About This Match</div>
+        <div class="details">
+          <strong>No. 1 Long Beach State Beach</strong> swept <strong>No. 3 UCLA Bruins</strong> to claim their 4th national title.<br>
+          <strong>Final Score:</strong> LBSU def. UCLA — 25-17, 25-23, 25-21 (3-0 sweep)<br>
+          <strong>MVP:</strong> Moni Nikolov (LBSU) — 27 assists, 6 kills, 4 aces<br>
+          <strong>Site:</strong> Covelli Center, Columbus, Ohio
+        </div>
+      </div>
+      <button class="btn-start" onclick="goTo(1)">Start Learning → Symbol Key</button>
+    </div>`;
+}
+
+const symbols = [
+  { sym:"1 2 3 …", label:"Rally Point (Win)", desc:"Write the next point number in the current server's row.", color:"#1a7a1a" },
+  { sym:"-|", label:"End of Term (Dash-Bar)", desc:"Serving team lost the rally. Server's turn is over.", color:RED },
+  { sym:"[ 4 ]", label:"Loss of Rally Point (Boxed)", desc:"Box the receiving team's first point when they earn serve.", color:RED },
+  { sym:"/ 5 /", label:"Running Score Slash", desc:"Slash the matching number in the Running Score column when a point is won.", color:"#1a7a1a" },
+  { sym:"S 7/3", label:"Sub (Serving Team)", desc:"S + entering player / leaving player", color:"#7f5200" },
+  { sym:"Sx 9/4", label:"Sub (Receiving Team)", desc:"Sx + entering player / leaving player", color:"#7f5200" },
+  { sym:"T", label:"Time-Out (Serving)", desc:"Write 'T' in current server's row; note score in Time-Out box.", color:"#5a0080" },
+  { sym:"Tx", label:"Time-Out (Receiving)", desc:"Write 'Tx' in current server's row; note score in Time-Out box.", color:"#5a0080" },
+  { sym:"△ 8 △", label:"Libero Serve Point (NFHS only)", desc:"NFHS high school only — not used in NCAA men's volleyball. The libero cannot serve in NCAA men's.", color:"#aaa" },
+  { sym:"△ -| △", label:"Libero Serve Loss (NFHS only)", desc:"NFHS high school only — not used in NCAA men's volleyball.", color:"#aaa" },
+  { sym:"○ 12 ○", label:"Penalty Point", desc:"Circle the point number — awarded for opponent's penalty.", color:RED },
+  { sym:"RS", label:"Re-Serve", desc:"First toss that is caught or dropped is a re-serve. No point change.", color:"#444" },
+  { sym:"R", label:"Replay", desc:"Referee interrupts the rally. No point awarded.", color:"#444" },
+  { sym:"△ on Roman", label:"Libero Replacement (NFHS only)", desc:"NFHS only — triangle around Roman numeral when libero serves. Not used in NCAA men's; libero replacements go on the separate libero tracker sheet.", color:"#aaa" },
+];
+
+function buildSymbols() {
+  return `
+    <div style="max-width:760px">
+      <h2>🔑 Scoring Symbol Reference</h2>
+      <p class="lead">These are the only symbols you'll ever need. Click any card to see details.</p>
+      <div class="symbols-grid" id="sym-grid">
+        ${symbols.map((s,i)=>`
+          <div class="sym-card" id="sym-${i}" onclick="toggleSym(${i})" style="--sym-color:${s.color}">
+            <div class="sym-inner">
+              <div class="sym-badge" style="color:${s.color}">${s.sym}</div>
+              <div class="sym-label">${s.label}</div>
+            </div>
+            <div class="sym-desc">${s.desc}</div>
+          </div>`).join("")}
+      </div>
+      <div class="ink-tip"><strong>💡 Ink Tip:</strong> Use <strong>blue or black ink</strong> for the first rotation. Switch to <strong>red ink</strong> when the first server returns for a second turn. Switch back to blue/black for the third rotation.</div>
+    </div>`;
+}
+
+function toggleSym(i) {
+  const el = document.getElementById("sym-" + i);
+  const wasOpen = el.classList.contains("open");
+  document.querySelectorAll(".sym-card").forEach(c => c.classList.remove("open"));
+  if (!wasOpen) el.classList.add("open");
+}
+
+const setupSteps = [
+  { n:1, title:"Circle the Set Number", detail:"Circle '1' for Set 1. Circle '2' for Set 2, etc.", ex:"Set Number: ①  2  3  4  5", tip:"For JV: best of 3 (circle 1–3). For Varsity: best of 5 (all five)." },
+  { n:2, title:"Circle the Level", detail:"Circle 'Varsity' or 'Jr Varsity' to identify which team is scoring.", ex:"Level: Varsity  ⓙ Junior Varsity", tip:"You can fill this out on ALL sheets before the match begins." },
+  { n:3, title:"Write in the Header", detail:"Date, Home team, Visitor, Site, and Start Time.", ex:"Date: 5/12/25  Home: UCLA  Visitor: LBSU  Site: Covelli Center, Columbus, OH  Start: 7:00 PM ET", tip:"Fill this in on multiple score sheets before the match — saves time later!" },
+  { n:4, title:"Write Team Names on Correct Sides", detail:"The team on the LEFT side of the court goes on the LEFT side of the sheet. Teams SWITCH sides between sets — update accordingly!", ex:"Left side: LONG BEACH STATE  |  Right side: UCLA", tip:"If you mix up the sides, you'll award points to the wrong team. Double-check!" },
+  { n:5, title:"Mark First Serve with 'X'", detail:"After the coin toss, write an 'X' in the First Serve box for the team serving first.", ex:"LONG BEACH STATE [X] First Serve  |  UCLA [ ] First Serve", tip:"Ask the R2 (floor referee) after warmups who won the toss." },
+];
+
+function buildSetup() {
+  return `
+    <div style="max-width:720px">
+      <h2>📋 Before the Game — Setup Steps</h2>
+      <p class="lead">Do these steps <strong>before</strong> the first whistle. Arrive 20 minutes early!</p>
+      ${setupSteps.map(s=>`
+        <div class="step-row">
+          <div class="step-circle">${s.n}</div>
+          <div>
+            <div style="font-weight:700;font-size:16px;margin-bottom:4px">${s.title}</div>
+            <div style="color:#333;font-size:14px;margin-bottom:8px;line-height:1.5">${s.detail}</div>
+            <div class="mono mono-blue" style="margin-bottom:8px">${s.ex}</div>
+            <div style="background:#fffbe6;border-radius:6px;padding:6px 12px;font-size:13px;color:#7a5a00">💡 <strong>Tip:</strong> ${s.tip}</div>
+          </div>
+        </div>`).join("")}
+    </div>`;
+}
+
+function buildLineups() {
+  const teams = [
+    { name:"LBSU", libero:"11", liberoName:"Kellen Larson", color:LBSU, players:[
+      {pos:"I",num:"1",name:"Nikolov, Moni"},{pos:"II",num:"12",name:"Kandev, Alex"},
+      {pos:"III",num:"18",name:"Dickinson, Nato"},{pos:"IV",num:"5",name:"Preuitt, Isaiah"},
+      {pos:"V",num:"4",name:"Varga, Skyler"},{pos:"VI",num:"19",name:"McRaven, DiAeris"},
+    ], subs:[
+      {num:"10",name:"Bloom, Connor"},{num:"20",name:"Binev, Georgi"},
+      {num:"25",name:"Peluso, Ryan"},{num:"28",name:"Connelly, Chris"},
+    ]},
+    { name:"UCLA", libero:"14", liberoName:"Aziz, Matthew", color:UCLA, players:[
+      {pos:"I",num:"7",name:"Rowan, Andrew"},{pos:"II",num:"11",name:"Robinson, Cooper"},
+      {pos:"III",num:"21",name:"Rama, Zach"},{pos:"IV",num:"1",name:"Thorne, Cameron"},
+      {pos:"V",num:"10",name:"McQuiggan, Sean"},{pos:"VI",num:"16",name:"David, Ido"},
+    ], subs:[
+      {num:"3",name:"Curci, Luca"},{num:"12",name:"Kelly, Sean"},
+      {num:"24",name:"Clini, Kahale"},
+    ]},
+  ];
+  return `
+    <div style="max-width:760px">
+      <h2>👥 Entering the Lineups</h2>
+      <p class="lead">Jersey numbers and names below are <strong>confirmed from the official championship box score</strong>. Serve order (rotation I–VI) is a placeholder — fill in the actual starting rotation from the lineup card shown on screen before each set.</p>
+      <div class="grid2" style="margin-bottom:24px">
+        ${teams.map(t=>`
+          <div style="background:#fff;border:2px solid ${t.color};border-radius:12px;overflow:hidden">
+            <div style="background:${t.color};color:#fff;padding:10px 16px;font-weight:700;font-size:15px;display:flex;justify-content:space-between">
+              <span>${t.name} Starters</span>
+              <span style="background:rgba(255,255,255,0.2);border-radius:6px;padding:2px 10px;font-size:13px">Libero: #${t.libero} ${t.liberoName}</span>
+            </div>
+            <table class="lineup-table">
+              <thead><tr><th>Pos*</th><th>#</th><th>Name</th></tr></thead>
+              <tbody>${t.players.map(p=>`<tr><td class="pos" style="color:${t.color}">${p.pos}</td><td class="num">${p.num}</td><td>${p.name}</td></tr>`).join("")}</tbody>
+            </table>
+            <div style="background:#f9f9f9;border-top:1px solid #eee;padding:10px 14px">
+              <div style="font-size:12px;color:#888;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px">Substitutes Used</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                ${t.subs.map(s=>`<span style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:3px 10px;font-size:13px;font-weight:600">#${s.num} ${s.name}</span>`).join("")}
+              </div>
+            </div>
+          </div>`).join("")}
+      </div>
+      <div style="font-size:12px;color:#888;margin-bottom:16px">*Serve order shown is placeholder only — get the actual rotation from the R2 lineup card before the set begins.</div>
+      <div class="warn" style="margin-bottom:20px">
+        <strong>⚠️ Check Before You Write!</strong>
+        <ul><li>All numbers entered match the official lineup card given by R2?</li><li>Captain marked with 'c' after their number?</li><li>Libero (#11 Larson for LBSU, #14 Aziz for UCLA) entered in the Libero box?</li><li>Substitute players cross-referenced with the Player Numbers column when they enter?</li></ul>
+      </div>
+    </div>`;
+}
+
+function buildPoints() {
+  const examples = [
+    { rally:"Rally 1", scenario:"Nikolov (#1) serves — SERVICE ACE! Score: LBSU 1 – UCLA 0", action:"In Nikolov's row, write '1'. In the Running Score column, slash '1'.", notation:"Row I: | 1 |    Running Score: /1", type:"win" },
+    { rally:"Rally 2", scenario:"Nikolov serves again — UCLA wins the rally! Score: LBSU 1 – UCLA 1 (side-out)", action:"Draw dash-bar (-|) in Nikolov's row. Box '1' in UCLA's Running Score. In UCLA's Row I (first server), write boxed '1'.", notation:"Row I (LBSU/Nikolov): | 1  -| |    UCLA Running Score: [1]    UCLA Row I: | [1] |", type:"loss" },
+    { rally:"Rally 3", scenario:"UCLA serves — LBSU wins the rally! Score: LBSU 2 – UCLA 1", action:"Dash-bar in UCLA Row I. Box '2' in LBSU Running Score. In LBSU's next server row (Kandev, Row II), write boxed '2'.", notation:"UCLA Row I: | [1]  -| |    LBSU Running Score: [2]    LBSU Row II (Kandev): | [2] |", type:"win" },
+    { rally:"Rally 4", scenario:"Kandev (LBSU Row II) serves — UCLA wins! Score: LBSU 2 – UCLA 2 (tied 2-2)", action:"Dash-bar in Kandev's row. Box '2' in UCLA Running Score. In UCLA's next server row, write boxed '2'. From here LBSU never gave up the lead!", notation:"LBSU Row II: | [2]  -| |    UCLA Running Score: [2]    UCLA next server: | [2] |", type:"loss" },
+  ];
+  return `
+    <div style="max-width:720px">
+      <h2>✅ Recording a Win (Rally Point)</h2>
+      <p class="lead">When the <strong>serving team wins</strong> a rally, do these 2 things:</p>
+      <div style="display:grid;grid-template-columns:auto 1fr;background:#fff;border:1.5px solid #ddd;border-radius:12px;overflow:hidden;margin-bottom:24px">
+        <div style="background:#1a7a1a;color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;font-family:'Playfair Display',serif">1</div>
+        <div style="padding:16px 20px">
+          <div style="font-weight:700;margin-bottom:4px">Write the point number in the current server's Individual Scoring row</div>
+          <div class="mono mono-green">Row I (Nikolov): | 1 |</div>
+        </div>
+        <div style="background:#1a7a1a;color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;font-family:'Playfair Display',serif;border-top:1px solid rgba(255,255,255,0.2)">2</div>
+        <div style="padding:16px 20px;border-top:1px solid #eee">
+          <div style="font-weight:700;margin-bottom:4px">Slash ( / ) the same number in your Running Score column</div>
+          <div class="mono mono-green">Running Score: /1  /2  /3 ...</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" style="background:${LBSU}">🎮 Set 1 — Opening Sequence (LBSU Serves First)</div>
+        <div class="card-body">
+          ${examples.map((ex,i)=>`
+            <div style="padding:${i>0?'14px 0 0':'0 0 14px'};${i>0&&i<examples.length?'border-top:1px solid #eee;':''}">
+              <div style="font-weight:600;font-size:14px;margin-bottom:6px">${ex.rally}: ${ex.scenario}</div>
+              <div style="font-size:13px;color:#555;margin-bottom:6px">→ ${ex.action}</div>
+              <div class="mono ${ex.type==='win'?'mono-green':'mono-red'}">${ex.notation}</div>
+            </div>`).join("")}
+        </div>
+      </div>
+      <div class="tip"><strong>💡 Pro Tip:</strong> Use your left pinky to point to the current server's number, and your left index finger to point to where you'll write the next action. This keeps you from writing in the wrong row!</div>
+    </div>`;
+}
+
+function buildLossRally() {
+  return `
+    <div style="max-width:720px">
+      <h2>❌ Loss of Rally — Side Out!</h2>
+      <p class="lead">When the <strong>serving team loses</strong> a rally, do these 3 things:</p>
+      <div style="display:grid;grid-template-columns:auto 1fr;background:#fff;border:1.5px solid #ddd;border-radius:12px;overflow:hidden;margin-bottom:24px">
+        ${[
+          {n:1, t:"Draw a dash-bar ( -| ) in the current server's row", c:"Row I (Nikolov): | 1  2  3  -| |"},
+          {n:2, t:"Box the next point in the RECEIVING team's Running Score column", c:"UCLA Running Score: [1]"},
+          {n:3, t:"Write that boxed point number in the NEXT server's Individual Scoring row", c:"Row I (UCLA: David #2c): | [1] |"},
+        ].map((s,i)=>`
+          <div style="background:${RED};color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;font-family:'Playfair Display',serif;${i>0?'border-top:1px solid rgba(255,255,255,0.2)':''}">${s.n}</div>
+          <div style="padding:16px 20px;${i>0?'border-top:1px solid #eee':''}">
+            <div style="font-weight:700;margin-bottom:6px">${s.t}</div>
+            <div class="mono mono-red">${s.c}</div>
+          </div>`).join("")}
+      </div>
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header" style="background:#333">Visual Example — Set 1: Nikolov ace (1-0), then LBSU loses Rally 2 → tied 1-1</div>
+        <div class="card-body">
+          <table class="score-vis" style="margin-bottom:12px">
+            <thead><tr><th>Serve Ord.</th><th>Individual Scoring</th><th style="text-align:center">Run. Score</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;color:${LBSU}">I (LBSU/Nikolov)</td>
+                <td><span style="color:#1a7a1a">1&nbsp;&nbsp;</span><span style="color:${RED}">-|</span></td>
+                <td style="text-align:center;color:#1a7a1a">/1</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;color:${UCLA}">I (UCLA)</td>
+                <td><span style="border:1.5px solid ${RED};border-radius:3px;padding:0 4px;color:${RED};font-family:'JetBrains Mono',monospace">1</span></td>
+                <td style="text-align:center"><span style="border:1.5px solid ${RED};border-radius:3px;padding:0 4px;color:${RED};font-family:'JetBrains Mono',monospace">1</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="font-size:13px;color:#555;line-height:1.7">Nikolov's ace scores point 1 for LBSU (/1 in Running Score). On the very next rally LBSU loses serve — dash-bar ends Nikolov's term. UCLA earns serve; their Row I shows a boxed <span style="border:1.5px solid ${RED};border-radius:3px;padding:0 3px;font-size:12px;font-family:'JetBrains Mono',monospace;color:${RED}">1</span> (score now tied 1-1). The game would also tie at 2-2 before LBSU pulled ahead for good.</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function buildSubs() {
+  return `
+    <div style="max-width:720px">
+      <h2>🔄 Recording Substitutions</h2>
+      <p class="lead">Substitutions are recorded in <strong>3 places</strong> simultaneously.</p>
+      <div style="display:grid;gap:16px;margin-bottom:24px">
+        ${[
+          {t:"1. Individual Scoring Row", where:"Current server's row — write it right after the last point/event", how:"Write S if the serving team is subbing, or Sx if the receiving team is subbing. Then write: entering player # / leaving player #", ex:"S 20/19  means LBSU (serving) subs Binev #20 IN for McRaven #19"},
+          {t:"2. Player Numbers Column", where:"Find the leaving player's number in the column", how:"Draw a line through the leaving player's number, then write the entering player's number immediately beside it", ex:"⌀19  20  (slash 19, write 20 next to it)"},
+          {t:"3. Substitution Count", where:"Bottom of your team's side of the sheet", how:"Slash the next available number in the Sub Count row. Each slash = 1 sub used. Max 18 per team per set!", ex:"Subs: ✗ ✗ 3 4 5 ... (two subs used so far)"},
+        ].map((s,i)=>`
+          <div style="background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:16px 20px;display:flex;gap:16px">
+            <div style="min-width:32px;height:32px;border-radius:50%;background:#7f5200;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0">${i+1}</div>
+            <div>
+              <div style="font-weight:700;margin-bottom:4px">${s.t}</div>
+              <div style="font-size:13px;color:#666;margin-bottom:4px">📍 ${s.where}</div>
+              <div style="font-size:14px;color:#333;margin-bottom:6px">${s.how}</div>
+              <div class="mono mono-amber">${s.ex}</div>
+            </div>
+          </div>`).join("")}
+      </div>
+
+      <div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;margin-bottom:20px">
+        <div style="background:#7f5200;color:#fff;padding:10px 18px;font-weight:700;font-size:14px;border-radius:10px 10px 0 0">
+          🎮 Real Subs from the 2025 Championship — Watch for These!
+        </div>
+        <div style="padding:18px">
+          <p style="font-size:13px;color:#666;margin-bottom:14px">These players appeared in the match per the official box score. The exact timing and scores of each sub must be filled in from the broadcast — record them below as you watch.</p>
+          <div style="margin-bottom:16px">
+            <div style="font-weight:700;color:${LBSU};font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="background:${LBSU};color:#fff;border-radius:4px;padding:1px 8px;font-size:12px">LBSU</span> Substitutes Used</div>
+            <div style="display:grid;gap:8px">
+              ${[
+                {entering:"#10 Bloom, Connor",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+                {entering:"#20 Binev, Georgi",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+                {entering:"#25 Peluso, Ryan",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+                {entering:"#28 Connelly, Chris",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+              ].map(s=>`
+                <div style="background:#f0f4ff;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                  <div>
+                    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:${LBSU}">IN: ${s.entering}</span>
+                    <span style="color:#888;font-size:13px;margin:0 8px">for</span>
+                    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#555">OUT: ${s.leaving}</span>
+                  </div>
+                  <div style="font-size:12px;color:#888;background:#fff;border-radius:4px;padding:2px 8px;border:1px solid #ddd">${s.note}</div>
+                </div>`).join("")}
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:${UCLA};font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:8px"><span style="background:${UCLA};color:#fff;border-radius:4px;padding:1px 8px;font-size:12px">UCLA</span> Substitutes Used</div>
+            <div style="display:grid;gap:8px">
+              ${[
+                {entering:"#3 Curci, Luca",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+                {entering:"#12 Kelly, Sean",leaving:"? (watch broadcast)",note:"3 kills, 1 ace, 2 assists"},
+                {entering:"#24 Clini, Kahale",leaving:"? (watch broadcast)",note:"Appeared all 3 sets"},
+              ].map(s=>`
+                <div style="background:#e8f4ff;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+                  <div>
+                    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:${UCLA}">IN: ${s.entering}</span>
+                    <span style="color:#888;font-size:13px;margin:0 8px">for</span>
+                    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#555">OUT: ${s.leaving}</span>
+                  </div>
+                  <div style="font-size:12px;color:#888;background:#fff;border-radius:4px;padding:2px 8px;border:1px solid #ddd">${s.note}</div>
+                </div>`).join("")}
+            </div>
+          </div>
+          <div style="margin-top:14px;background:#fffbe6;border-radius:8px;padding:10px 14px;font-size:13px;color:#7a5a00">
+            <strong>📝 Your job while watching:</strong> The moment you see a sub signal (referee raises a board or players switch), write it in the current server's row immediately — before the next rally starts! Note the score at the time on your score sheet so you can verify later.
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1.5px solid #ddd;border-radius:12px;margin-bottom:20px">
+        <div style="background:#333;color:#fff;padding:10px 18px;font-weight:700;font-size:14px;border-radius:10px 10px 0 0">
+          ✏️ What a Sub Looks Like on the Sheet
+        </div>
+        <div style="padding:18px">
+          <p style="font-size:14px;margin-bottom:12px">Example: LBSU subs <strong>Binev #20 IN for McRaven #19</strong> while LBSU is serving at 12–8 in Set 1.</p>
+          <div style="display:grid;gap:8px">
+            <div class="mono mono-amber">In current LBSU server's row: write "S 20/19" after the last point</div>
+            <div class="mono mono-amber">In LBSU's Player Numbers column: draw a line through #19, write #20 beside it</div>
+            <div class="mono mono-amber">In LBSU's Sub Count: slash the next number (e.g. if this is sub #1, slash the "1")</div>
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:#555">If UCLA had been serving when the sub was signaled, you'd write <strong>Sx 20/19</strong> instead (lowercase x = receiving team).</div>
+        </div>
+      </div>
+
+      <div class="warn"><strong>⚠️ Remember:</strong> NCAA men's volleyball allows only <strong>15 substitutions per team per set</strong> (not 18 — that's high school). Alert the R2 at the <strong>12th, 13th, 14th, and 15th</strong> substitutions. Never allow a 16th!</div>
+    </div>`;
+}
+
+function buildTimeouts() {
+  return `
+    <div style="max-width:720px">
+      <h2>⏱️ Recording Time-Outs</h2>
+      <p class="lead">Each team gets <strong>2 time-outs per set</strong> (max 60 seconds each). Record them in 2 places.</p>
+      <div class="grid2" style="margin-bottom:24px">
+        <div style="background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:16px">
+          <div style="font-weight:700;color:#5a0080;margin-bottom:8px;font-size:14px">Step 1: Individual Scoring Row</div>
+          <div style="font-size:13px;color:#444;line-height:1.6">Write 'T' if the serving team called the TO. Write 'Tx' if the receiving team called it.</div>
+        </div>
+        <div style="background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:16px">
+          <div style="font-weight:700;color:#5a0080;margin-bottom:8px;font-size:14px">Step 2: Time-Out Box</div>
+          <div style="font-size:13px;color:#444;line-height:1.6">In the requesting team's Time-Out box, write the score with their points FIRST.<br>Example: '7–15' means the team that called the TO has 7 points.</div>
+        </div>
+      </div>
+      ${[
+        {sit:"UCLA calls a time-out in Set 2 after LBSU's Nikolov serves an ace (score: LBSU 19–UCLA 19, Nikolov at the line)",not:"In Nikolov's Individual Scoring row, write 'Tx' (receiving team called it — UCLA was not serving). In UCLA's Time-Out box, write '19-19'.",note:"The requesting team's score is listed FIRST in the time-out box."},
+        {sit:"LBSU calls a time-out in Set 2 when trailing 13–18 UCLA",not:"Write 'T' in UCLA's current server row (LBSU is receiving and calling the TO, so it's actually Tx for UCLA's scorer; on LBSU's sheet, write 'T'). In LBSU's Time-Out box, write '13-18'.",note:"Each team gets 2 time-outs per set. LBSU burned both TOs in Set 2 during the comeback!"},
+      ].map(ex=>`
+        <div style="background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:16px 18px;margin-bottom:14px">
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px">📌 ${ex.sit}</div>
+          <div class="mono mono-purple" style="margin-bottom:8px">${ex.not}</div>
+          <div style="font-size:13px;color:#666">ℹ️ ${ex.note}</div>
+        </div>`).join("")}
+      <div class="tip"><strong>💡 During every time-out:</strong> Tell the R2 how many TOs each team has used. Double-check your score matches the scoreboard. Verify that all the same players who left the court come back on.</div>
+    </div>`;
+}
+
+function buildLibero() {
+  return `
+    <div style="max-width:720px">
+      <h2>△ Libero Tracker</h2>
+      <div style="background:#fff0f0;border:2px solid ${RED};border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:14px">
+        ⚠️ <strong>Critical NCAA Men's Rule:</strong> The libero is <strong>NOT allowed to serve</strong> in NCAA men's volleyball — no exceptions. All the "libero serving" triangle notation you may have learned from NFHS/high school does <em>not</em> apply here. The libero only enters as a back-row replacement.
+      </div>
+      <div style="background:#e0f5ff;border-radius:8px;padding:10px 16px;margin-bottom:20px;font-size:14px">
+        🔵 <strong>LBSU Libero:</strong> #11 Kellen Larson &nbsp;&nbsp;|&nbsp;&nbsp; 🔵 <strong>UCLA Libero:</strong> #14 Matthew Aziz
+      </div>
+
+      <h3 style="font-size:18px;margin-bottom:12px">What the Libero Does</h3>
+      <p style="font-size:14px;color:#444;margin-bottom:20px;line-height:1.7">The libero is a back-row defensive specialist who can freely replace any back-row player without it counting as a substitution. Libero replacements happen in the replacement zone (end of the bench side between the attack line and end line) — not the substitution zone. They wear a different color jersey so you can spot them easily.</p>
+
+      <div style="display:grid;gap:16px;margin-bottom:24px">
+        ${[
+          {n:"On the Libero Tracker Sheet", icon:"📋", content:"The libero tracker (a separate form filled in by a dedicated tracker at the scoring table) records every time the libero enters and exits. As the main scorer, you do NOT record libero replacements on the score sheet — that's the tracker's job. However, you should be aware of who the libero is so you don't confuse their entry with a regular substitution."},
+          {n:"Libero Cannot Serve", icon:"🚫", content:"If you ever see the libero step into the serving zone, flag it immediately for the R2. This is an illegal action in NCAA men's volleyball and results in a penalty."},
+          {n:"Libero Cannot Attack Above Net Height", icon:"🚫", content:"The libero may not attack the ball above the height of the net. If they do, flag it. This is another illegal action."},
+          {n:"Libero in the Front Row", icon:"🚫", content:"The libero may only play in back-row positions (positions 1, 6, 5). They cannot rotate to the front row — when the rotation would bring them to the front, the player they replaced returns."},
+          {n:"What You Watch For", icon:"👁️", content:"Watch for the different-colored jersey entering and leaving the court between rallies. If you see #11 (Larson, LBSU) or #14 (Aziz, UCLA) — that's the libero. If this happens while a substitution is also being signaled at the same time, they are separate actions. The sub goes on the score sheet; the libero replacement goes on the libero tracker."},
+        ].map(s=>`
+          <div class="card">
+            <div class="card-header" style="background:#006080">${s.icon} ${s.n}</div>
+            <div class="card-body" style="font-size:14px;color:#333;line-height:1.6">${s.content}</div>
+          </div>`).join("")}
+      </div>
+
+      <div style="background:#fffbe6;border:2px solid ${GOLD};border-radius:10px;padding:14px 18px;font-size:14px">
+        <strong>💡 High School vs. NCAA Men's — Key Differences:</strong>
+        <table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:13px">
+          <thead><tr style="background:#f5f5f5"><th style="padding:6px 10px;text-align:left;border:1px solid #ddd">Rule</th><th style="padding:6px 10px;text-align:left;border:1px solid #ddd">NFHS (High School)</th><th style="padding:6px 10px;text-align:left;border:1px solid #ddd">NCAA Men's</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:6px 10px;border:1px solid #ddd">Libero Serving</td><td style="padding:6px 10px;border:1px solid #ddd;color:#1a7a1a">✅ Allowed</td><td style="padding:6px 10px;border:1px solid #ddd;color:${RED}">❌ Not Allowed</td></tr>
+            <tr style="background:#f9f9f9"><td style="padding:6px 10px;border:1px solid #ddd">Subs per set</td><td style="padding:6px 10px;border:1px solid #ddd">18</td><td style="padding:6px 10px;border:1px solid #ddd">15</td></tr>
+            <tr><td style="padding:6px 10px;border:1px solid #ddd">Notify R2 at sub #</td><td style="padding:6px 10px;border:1px solid #ddd">15, 16, 17, 18</td><td style="padding:6px 10px;border:1px solid #ddd">12, 13, 14, 15</td></tr>
+            <tr style="background:#f9f9f9"><td style="padding:6px 10px;border:1px solid #ddd">Libero replacement recorded on</td><td style="padding:6px 10px;border:1px solid #ddd">Score sheet</td><td style="padding:6px 10px;border:1px solid #ddd">Libero tracker only</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+function buildEndSet() {
+  return `
+    <div style="max-width:720px">
+      <h2>🏆 End of Set Checklist</h2>
+      <p class="lead">When the final point is scored, complete these steps quickly.</p>
+      <div style="display:grid;gap:12px;margin-bottom:24px">
+        ${[
+          {n:1,t:"Record the End Time",d:"Write the time in the header field when the last point is awarded."},
+          {n:2,t:"Fill in Set Results",d:"Write the Winning Team name and their final point total. Then the Losing Team and their points."},
+          {n:3,t:"Wait for R2 to initial the sheet",d:"The floor referee checks your sheet and initials it. Sign your own name if there's a scorer signature field."},
+          {n:4,t:"Championship Set Results (Set 1)",d:"Winning Team: Long Beach State — 25 pts. Losing Team: UCLA — 17 pts."},
+          {n:5,t:"Switch team sides for Set 2!",d:"Teams switch sides between sets. Move team names to the OPPOSITE side on your Set 2 score sheet."},
+        ].map(s=>`
+          <div style="display:flex;gap:16px;background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:14px 18px;align-items:flex-start">
+            <div class="step-circle">${s.n}</div>
+            <div><div style="font-weight:700;font-size:15px">${s.t}</div><div style="font-size:14px;color:#555;margin-top:4px">${s.d}</div></div>
+          </div>`).join("")}
+      </div>
+      <div style="background:#f0fff4;border:2px solid #1a7a1a;border-radius:12px;padding:18px 20px">
+        <div style="font-weight:700;font-size:16px;margin-bottom:12px;color:#1a7a1a">🏆 Full Match Results to Record</div>
+        <div class="grid3">
+          ${[{s:"Set 1",w:"LBSU 25",l:"UCLA 17"},{s:"Set 2",w:"LBSU 25",l:"UCLA 23"},{s:"Set 3",w:"LBSU 25",l:"UCLA 21"}].map(s=>`
+            <div style="background:#fff;border-radius:8px;padding:12px;text-align:center;border:1px solid #ddd">
+              <div style="font-weight:700;color:${LBSU};margin-bottom:4px">${s.s}</div>
+              <div style="font-size:16px;font-weight:900;color:#1a7a1a">${s.w}</div>
+              <div style="font-size:13px;color:#888">${s.l}</div>
+            </div>`).join("")}
+        </div>
+      </div>
+    </div>`;
+}
+
+const liveChecklist = [
+  { time:"20 min before", color:LBSU, items:["Fill in headers on all score sheets","Write team names","Get officials' names (R1, R2)","Record coin toss result — mark First Serve X"] },
+  { time:"5 min before", color:"#5a0080", items:["Receive lineups from R2","Enter player numbers in Serve Order (I–VI)","Write libero number in Libero box","Verify captain is marked with 'c'"] },
+  { time:"When R1 beckons first serve", color:"#1a7a1a", items:["Write Start Time in header","Watch who serves — confirm it matches Row I on your sheet!"] },
+  { time:"Every rally", color:"#1a7a1a", items:["Win → write next point number in current server's row + slash Running Score","Loss → dash-bar in server's row + box opponent's point + boxed number in next server's row"] },
+  { time:"Each substitution", color:"#7f5200", items:["Write S or Sx + entering/leaving numbers in current server's row","Cross out leaving player in Player Numbers column, write entering player","Slash next Substitution Count number"] },
+  { time:"Each time-out", color:"#5a0080", items:["Write T or Tx in current server's row","Note score (requesting team first) in Time-Out box","Tell R2 how many TOs each team has used"] },
+  { time:"Libero replacements", color:"#006080", items:["Libero (#11 Larson / #14 Aziz) enters/exits via the replacement zone — NOT the sub zone","This is recorded on the libero tracker, NOT the score sheet","Do NOT count libero replacements toward the substitution total","Libero CANNOT serve in NCAA men's volleyball — flag immediately if they attempt to"] },
+  { time:"End of Set", color:"#1a7a1a", items:["Record End Time","Fill in Set Results (Winning Team, Points)","Watch for R2 to initial the sheet"] },
+];
+
+let checkStates = {};
+
+function buildLiveGuide() {
+  const rows = liveChecklist.map((section, si) =>
+    `<div class="checklist-section">
+      <div class="checklist-header" style="background:${section.color}">⏰ ${section.time}</div>
+      <div class="checklist-body">
+        ${section.items.map((item,ii) => {
+          const key = `${si}-${ii}`;
+          return `<div class="check-row">
+            <div class="checkbox${checkStates[key]?' checked':''}" id="chk-${key}" onclick="toggleCheck('${key}')">
+              ${checkStates[key]?'✓':''}
+            </div>
+            <div class="check-label">${item}</div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`).join("");
+
+  return `
+    <div style="max-width:760px">
+      <h2>📺 Live Game Master Checklist</h2>
+      <p class="lead">Use this as your go-to reference during the match. Check off items as you complete them!</p>
+      ${rows}
+      <div class="finish-card">
+        <div style="font-size:36px">🏐</div>
+        <h3>You're Ready!</h3>
+        <p>Watch <strong style="color:${GOLD}">Long Beach State vs. UCLA</strong> and fill in every rally, sub, and time-out. Remember: libero replacements go on the tracker sheet, not the score sheet — and the libero cannot serve!<br>Compare your completed sheet with a partner and discuss any differences.</p>
+      </div>
+    </div>`;
+}
+
+function toggleCheck(key) {
+  checkStates[key] = !checkStates[key];
+  goTo(currentIdx); // re-render current phase
+}
+
+const builders = [buildIntro, buildSymbols, buildSetup, buildLineups, buildPoints, buildLossRally, buildSubs, buildTimeouts, buildLibero, buildEndSet, buildLiveGuide];
+
+function goTo(idx) {
+  currentIdx = idx;
+  // Update nav buttons
+  document.querySelectorAll(".nav-btn").forEach((btn, i) => {
+    btn.classList.toggle("active", i === idx);
+  });
+  // Render content
+  document.getElementById("phases-container").innerHTML = `<div class="phase active">${builders[idx]()}</div>`;
+  // Update phase count
+  document.getElementById("phase-count").textContent = `Phase ${idx + 1} of ${phases.length}`;
+  // Update prev/next
+  document.getElementById("btn-prev").disabled = idx === 0;
+  document.getElementById("btn-next").disabled = idx === phases.length - 1;
+  // Scroll to top of content
+  document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function navigate(dir) {
+  const newIdx = currentIdx + dir;
+  if (newIdx >= 0 && newIdx < phases.length) goTo(newIdx);
+}
+
+// Init
+goTo(0);
+</script>
+</body>
+</html>
