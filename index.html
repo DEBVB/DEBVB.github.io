@@ -59,9 +59,6 @@ body {
   min-height: 100vh;
 }
 
-/* ═══════════════════════════════════════
-   NAV
-═══════════════════════════════════════ */
 .nav-wrap {
   background: var(--white);
   border-bottom: 3px solid var(--ink);
@@ -102,7 +99,6 @@ body {
   letter-spacing: -0.2px;
 }
 
-/* Desktop links */
 .nav-links {
   display: flex;
   align-items: center;
@@ -127,7 +123,6 @@ body {
 .nav-cta  { background: var(--gold) !important; color: var(--ink) !important; }
 .nav-cta:hover { background: #d4a000 !important; }
 
-/* Hamburger button */
 .nav-burger {
   display: none;
   background: none;
@@ -141,7 +136,6 @@ body {
 }
 .nav-burger:hover { background: var(--soft); }
 
-/* Mobile drawer */
 .nav-drawer {
   display: none;
   flex-direction: column;
@@ -170,9 +164,6 @@ body {
   font-weight: 700;
 }
 
-/* ═══════════════════════════════════════
-   MASTHEAD
-═══════════════════════════════════════ */
 .masthead {
   padding: 0 48px;
   display: flex;
@@ -319,7 +310,6 @@ body {
 }
 .btn-outline:hover { border-color: rgba(255,255,255,0.55); }
 
-/* Scoreboard panel */
 .mast-right {
   width: 300px;
   flex-shrink: 0;
@@ -392,9 +382,6 @@ body {
   margin-top: 5px;
 }
 
-/* ═══════════════════════════════════════
-   STAT STRIP — mobile only
-═══════════════════════════════════════ */
 .stat-strip {
   display: none;
   background: var(--navy);
@@ -429,9 +416,6 @@ body {
   margin-top: 4px;
 }
 
-/* ═══════════════════════════════════════
-   BODY GRID
-═══════════════════════════════════════ */
 .body-wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -441,7 +425,6 @@ body {
   gap: 48px;
 }
 
-/* Section headers */
 .sec-rule {
   display: flex;
   align-items: center;
@@ -466,7 +449,6 @@ body {
 }
 .sec-rule-more:hover { color: var(--navy); }
 
-/* Posts */
 .post {
   background: var(--white);
   padding: 28px 32px;
@@ -513,9 +495,6 @@ body {
 .post-body { font-size: 14.5px; color: #3d3830; line-height: 1.7; }
 .post-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
 
-/* ═══════════════════════════════════════
-   SIDEBAR
-═══════════════════════════════════════ */
 .sidebar { display: flex; flex-direction: column; gap: 24px; }
 
 .side-block { background: var(--white); border: 1px solid var(--rule); }
@@ -577,9 +556,12 @@ body {
 .qlink-label { font-size: 13px; font-weight: 600; color: var(--ink); }
 .qlink-arr { color: var(--muted); font-size: 18px; line-height: 1; }
 
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
+/* ── Score Sheet Guide highlight ── */
+.qlink-featured { background: var(--gold-light); border-left: 3px solid var(--gold); }
+.qlink-featured:hover { background: #faefc5; }
+.qlink-featured .qlink-ico { background: var(--gold); }
+.qlink-featured .qlink-label { color: var(--navy); }
+
 footer { background: var(--navy); color: var(--white); }
 
 .footer-inner {
@@ -617,9 +599,6 @@ footer { background: var(--navy); color: var(--white); }
   text-align: center;
 }
 
-/* ═══════════════════════════════════════
-   DONATE BUBBLE
-═══════════════════════════════════════ */
 #donate-bubble {
   position: fixed; bottom: 16px; right: 16px;
   background-color: var(--navy);
@@ -634,9 +613,6 @@ footer { background: var(--navy); color: var(--white); }
 #donate-content img { max-width: 110px; margin: 8px auto; display: block; border: 2px solid #ccc; border-radius: 8px; }
 .venmo-button { display: inline-block; background-color: #3D95CE; color: white; padding: 9px 14px; font-size: 0.85rem; font-weight: 600; border-radius: 6px; text-decoration: none; }
 
-/* ═══════════════════════════════════════
-   ANIMATIONS
-═══════════════════════════════════════ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -648,16 +624,12 @@ footer { background: var(--navy); color: var(--white); }
 .mast-right    { animation: fadeUp 0.5s 0.2s both; }
 .body-wrap     { animation: fadeUp 0.5s 0.15s both; }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE — TABLET  (≤900px)
-═══════════════════════════════════════ */
 @media (max-width: 900px) {
   .nav-inner { padding: 0 20px; }
   .nav-brand-text { display: none; }
   .nav-links { display: none; }
   .nav-burger { display: block; }
 
-  /* Masthead: stack vertically */
   .masthead {
     flex-direction: column;
     padding: 36px 20px 48px;
@@ -674,41 +646,25 @@ footer { background: var(--navy); color: var(--white); }
   }
 
   .mast-headline { font-size: clamp(44px, 11vw, 68px); }
-
   .mast-deck { font-size: 14px; max-width: 100%; }
-
   .mast-btns { flex-direction: column; gap: 10px; }
   .btn-solid, .btn-outline { width: 100%; justify-content: center; padding: 14px 20px; font-size: 13px; }
-
-  /* Hide the sidebar scoreboard panel — show stat strip instead */
   .mast-right { display: none; }
   .stat-strip { display: flex; }
-
   .mast-dots { left: 20px; bottom: 12px; }
 }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE — MOBILE  (≤640px)
-═══════════════════════════════════════ */
 @media (max-width: 640px) {
-  /* Body becomes single column */
   .body-wrap {
     grid-template-columns: 1fr;
     padding: 24px 16px 60px;
     gap: 32px;
   }
-
-  /* Sidebar reorders to come after main content */
   .sidebar { order: 2; }
-
   .post { padding: 20px 18px; }
   .post-title { font-size: 18px; }
-
-  /* Quick links — bigger tap targets */
   .qlink { padding: 15px 16px; }
   .qlink-ico { width: 34px; height: 34px; font-size: 16px; }
-
-  /* Footer stacks */
   .footer-inner {
     grid-template-columns: 1fr;
     padding: 36px 20px 24px;
@@ -716,11 +672,8 @@ footer { background: var(--navy); color: var(--white); }
     text-align: center;
   }
   .footer-bottom { padding: 14px 20px 20px; }
-
-  /* Donate bubble — slightly smaller on mobile */
   #donate-bubble { width: 96px; right: 12px; bottom: 12px; }
   #donate-header { font-size: 0.8rem; }
-
   .sec-rule-label { font-size: 18px; }
 }
 </style>
@@ -735,14 +688,12 @@ footer { background: var(--navy); color: var(--white); }
       <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
     </a>
 
-    <!-- Hamburger (mobile) -->
     <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
       <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
 
-    <!-- Desktop links -->
     <div class="nav-links">
       <a href="/index.html" class="active">Home</a>
       <a href="/schedule.html">Schedule</a>
@@ -754,7 +705,6 @@ footer { background: var(--navy); color: var(--white); }
     </div>
   </div>
 
-  <!-- Mobile drawer -->
   <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
     <a href="/index.html" class="active">Home</a>
     <a href="/schedule.html">Schedule</a>
@@ -768,8 +718,6 @@ footer { background: var(--navy); color: var(--white); }
 
 <!-- ═══ MASTHEAD ═══ -->
 <div class="masthead">
-
-  <!-- Slideshow photos -->
   <div class="mast-slides">
     <img class="mast-slide active" src="/slide1.jpeg"   alt="Downingtown East Boys Volleyball team action">
     <img class="mast-slide"        src="/slide2.jpeg"   alt="Cougars volleyball match highlight">
@@ -791,7 +739,6 @@ footer { background: var(--navy); color: var(--white); }
   <div class="mast-stripes"></div>
   <div class="mast-dots" id="mast-dots"></div>
 
-  <!-- Left: headline + CTA -->
   <div class="mast-left">
     <div class="mast-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
     <h1 class="mast-headline">
@@ -809,7 +756,6 @@ footer { background: var(--navy); color: var(--white); }
     </div>
   </div>
 
-  <!-- Right: scoreboard (desktop only) -->
   <div class="mast-right">
     <div class="score-label">Season at a Glance</div>
     <div class="next-game">
@@ -829,10 +775,8 @@ footer { background: var(--navy); color: var(--white); }
       </div>
     </div>
   </div>
-
 </div>
 
-<!-- Stat strip — shown on mobile instead of the right panel -->
 <div class="stat-strip">
   <div class="stat-cell">
     <div class="stat-val">MAR<em> 10</em></div>
@@ -851,7 +795,6 @@ footer { background: var(--navy); color: var(--white); }
 <!-- ═══ BODY ═══ -->
 <div class="body-wrap">
 
-  <!-- Main column -->
   <div>
     <div class="sec-rule">
       <div class="sec-rule-label">Announcements</div>
@@ -881,7 +824,6 @@ footer { background: var(--navy); color: var(--white); }
       </div>
     </div>
 
-    <!-- Twitter -->
     <div style="margin-top: 32px;">
       <div class="sec-rule" style="margin-bottom: 16px;">
         <div class="sec-rule-label">Latest from Twitter</div>
@@ -903,6 +845,8 @@ footer { background: var(--navy); color: var(--white); }
     <div class="side-block">
       <div class="side-head">Quick Links</div>
       <div class="qlinks">
+        <!-- ★ Score Sheet Guide — new ★ -->
+        <a href="/volleyball-scoring-guide.html" class="qlink qlink-featured"><div class="qlink-left"><div class="qlink-ico">📋</div><span class="qlink-label">Score Sheet Guide</span></div><span class="qlink-arr">›</span></a>
         <a href="/schedule.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">📅</div><span class="qlink-label">Full Schedule</span></div><span class="qlink-arr">›</span></a>
         <a href="/roster.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">👥</div><span class="qlink-label">Roster</span></div><span class="qlink-arr">›</span></a>
         <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico">📊</div><span class="qlink-label">MaxPreps</span></div><span class="qlink-arr">›</span></a>
@@ -926,6 +870,7 @@ footer { background: var(--navy); color: var(--white); }
         <li><a href="/coaches.html">Coaches</a></li>
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="/news.html">News</a></li>
+        <li><a href="/volleyball-scoring-guide.html">Score Sheet Guide</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -958,7 +903,6 @@ footer { background: var(--navy); color: var(--white); }
 </div>
 
 <script>
-  /* ── Hamburger ── */
   const burger  = document.getElementById('nav-burger');
   const drawer  = document.getElementById('nav-drawer');
   const burgerIcon = document.getElementById('burger-icon');
@@ -972,7 +916,6 @@ footer { background: var(--navy); color: var(--white); }
     burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
   });
 
-  /* ── Slideshow ── */
   const slides = document.querySelectorAll('.mast-slide');
   const dotsEl = document.getElementById('mast-dots');
   let current = 0, timer;
@@ -1002,7 +945,6 @@ footer { background: var(--navy); color: var(--white); }
 
   resetTimer();
 
-  /* ── Donate bubble ── */
   document.getElementById('donate-header').addEventListener('click', () => {
     const c = document.getElementById('donate-content');
     c.style.display = c.style.display === 'block' ? 'none' : 'block';
