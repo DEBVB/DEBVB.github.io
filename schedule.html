@@ -229,7 +229,6 @@ nav {
 /* Row types */
 .row-home { background: #eef3fb; }
 .row-away { background: var(--white); }
-.row-next { background: #fffbea; }
 
 .sched-table td {
   padding: 13px 16px;
@@ -282,7 +281,6 @@ nav {
 
 .badge-home { background: var(--navy); color: var(--white); }
 .badge-away { background: var(--soft); color: var(--muted); border: 1px solid var(--rule); }
-.badge-next { background: var(--gold); color: var(--ink); }
 .badge-scrim { background: #e0e7ef; color: #5a6a7e; }
 .badge-win { background: #dcfce7; color: #166534; }
 .badge-loss { background: #fee2e2; color: #991b1b; }
@@ -482,10 +480,6 @@ footer { background: var(--navy); color: var(--white); }
       <div class="legend-swatch" style="background:var(--white); border:1px solid var(--rule);"></div>
       Away
     </div>
-    <div class="legend-item">
-      <div class="legend-swatch" style="background:#fffbea; border:1px solid #fcd34d;"></div>
-      Next Game
-    </div>
   </div>
 
   <!-- Table -->
@@ -502,9 +496,9 @@ footer { background: var(--navy); color: var(--white); }
       </thead>
       <tbody>
 
-        <!-- Mar 10 — NEXT -->
-        <tr class="row-next">
-          <td class="td-date">Mar 10, 2026 &nbsp;<span class="badge badge-next">Next</span></td>
+        <!-- Mar 10 — Home scrimmage -->
+        <tr class="row-home">
+          <td class="td-date">Mar 10, 2026</td>
           <td class="td-opponent home-game">vs. Souderton</td>
           <td class="td-location">
             <a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer">
@@ -711,6 +705,7 @@ footer { background: var(--navy); color: var(--white); }
           <td class="td-time">5:00 PM</td>
           <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
         </tr>
+
         <!-- Apr 20 — Away -->
         <tr class="row-away">
           <td class="td-date">Apr 20, 2026</td>
