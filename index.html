@@ -759,9 +759,10 @@ footer { background: var(--navy); color: var(--white); }
   <div class="mast-right">
     <div class="score-label">Season at a Glance</div>
     <div class="next-game">
-      <div class="ng-date">MAR 10</div>
-      <div class="ng-opponent">vs. Souderton — Scrimmage</div>
-      <div class="ng-times">JV 3:30 · Varsity 5:00 · Home</div>
+      <!-- These are populated by JS below -->
+      <div class="ng-date" id="ng-date">—</div>
+      <div class="ng-opponent" id="ng-opponent">Schedule TBD</div>
+      <div class="ng-times" id="ng-times">&nbsp;</div>
       <a href="/schedule.html" class="btn-solid" style="font-size:11.5px; padding:9px 18px;">See Schedule →</a>
     </div>
     <div class="record-row">
@@ -777,9 +778,10 @@ footer { background: var(--navy); color: var(--white); }
   </div>
 </div>
 
-<div class="stat-strip">
+<div class="stat-strip" id="stat-strip">
   <div class="stat-cell">
-    <div class="stat-val">MAR<em> 10</em></div>
+    <!-- Populated by JS -->
+    <div class="stat-val" id="stat-next-val">—</div>
     <div class="stat-key">Next Game</div>
   </div>
   <div class="stat-cell">
@@ -845,7 +847,6 @@ footer { background: var(--navy); color: var(--white); }
     <div class="side-block">
       <div class="side-head">Quick Links</div>
       <div class="qlinks">
-        <!-- ★ Score Sheet Guide — new ★ -->
         <a href="/volleyball-scoring-guide.html" class="qlink qlink-featured"><div class="qlink-left"><div class="qlink-ico">📋</div><span class="qlink-label">Score Sheet Guide</span></div><span class="qlink-arr">›</span></a>
         <a href="/schedule.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">📅</div><span class="qlink-label">Full Schedule</span></div><span class="qlink-arr">›</span></a>
         <a href="/roster.html" class="qlink"><div class="qlink-left"><div class="qlink-ico">👥</div><span class="qlink-label">Roster</span></div><span class="qlink-arr">›</span></a>
@@ -903,10 +904,10 @@ footer { background: var(--navy); color: var(--white); }
 </div>
 
 <script>
+  // ── Nav burger ──────────────────────────────────────────────
   const burger  = document.getElementById('nav-burger');
   const drawer  = document.getElementById('nav-drawer');
   const burgerIcon = document.getElementById('burger-icon');
-
   const openPath  = 'M4 6h16M4 12h16M4 18h16';
   const closePath = 'M6 18L18 6M6 6l12 12';
 
@@ -916,6 +917,7 @@ footer { background: var(--navy); color: var(--white); }
     burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
   });
 
+  // ── Slideshow ────────────────────────────────────────────────
   const slides = document.querySelectorAll('.mast-slide');
   const dotsEl = document.getElementById('mast-dots');
   let current = 0, timer;
@@ -945,10 +947,68 @@ footer { background: var(--navy); color: var(--white); }
 
   resetTimer();
 
+  // ── Donate bubble ────────────────────────────────────────────
   document.getElementById('donate-header').addEventListener('click', () => {
     const c = document.getElementById('donate-content');
     c.style.display = c.style.display === 'block' ? 'none' : 'block';
   });
+
+  // ── Next game auto-update ────────────────────────────────────
+  // Month values are 1-based for readability; JS Date uses 0-based months internally.
+  const SCHEDULE = [
+    { year:2026, month:3,  day:10, label:'MAR 10', opponent:'vs. Souderton',       type:'Scrimmage', time:'5:00 PM', home:true  },
+    { year:2026, month:3,  day:13, label:'MAR 13', opponent:'@ Bensalem',           type:'Scrimmage', time:'5:00 PM', home:false },
+    { year:2026, month:3,  day:14, label:'MAR 14', opponent:'vs. Wilson (Reading)', type:'',          time:'11:00 AM',home:true  },
+    { year:2026, month:3,  day:16, label:'MAR 16', opponent:'@ Lansdale Catholic',  type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:3,  day:18, label:'MAR 18', opponent:'@ Henderson',          type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:3,  day:24, label:'MAR 24', opponent:'@ Downingtown West',   type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:3,  day:26, label:'MAR 26', opponent:'vs. Kennett',          type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:3,  day:27, label:'MAR 27', opponent:'vs. Dock Mennonite',   type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:3,  day:30, label:'MAR 30', opponent:'@ Council Rock South', type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:3,  day:31, label:'MAR 31', opponent:'vs. WC Rustin',        type:'',          time:'3:45 PM', home:true  },
+    { year:2026, month:4,  day:7,  label:'APR 7',  opponent:'@ Avon Grove',         type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:4,  day:9,  label:'APR 9',  opponent:'@ Unionville',         type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:4,  day:10, label:'APR 10', opponent:'vs. CB South',         type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:4,  day:14, label:'APR 14', opponent:'vs. Bishop Shanahan',  type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:4,  day:16, label:'APR 16', opponent:'vs. Downingtown West', type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:4,  day:20, label:'APR 20', opponent:'@ Quakertown',         type:'',          time:'6:30 PM', home:false },
+    { year:2026, month:4,  day:23, label:'APR 23', opponent:'@ Kennett',            type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:4,  day:28, label:'APR 28', opponent:'vs. Unionville',       type:'',          time:'5:00 PM', home:true  },
+    { year:2026, month:4,  day:30, label:'APR 30', opponent:'@ Bishop Shanahan',    type:'',          time:'5:00 PM', home:false },
+    { year:2026, month:5,  day:1,  label:'MAY 1',  opponent:'vs. Spring-Ford',      type:'',          time:'7:00 PM', home:true  },
+    { year:2026, month:5,  day:4,  label:'MAY 4',  opponent:'@ Lower Merion',       type:'',          time:'5:30 PM', home:false },
+  ];
+
+  (function updateNextGame() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const next = SCHEDULE.find(g => {
+      // month is 1-based in our array; Date() expects 0-based
+      return new Date(g.year, g.month - 1, g.day) >= today;
+    });
+
+    if (!next) {
+      // Season over
+      document.getElementById('ng-date').textContent     = 'SEE';
+      document.getElementById('ng-opponent').textContent = 'You next season!';
+      document.getElementById('ng-times').textContent    = '2027 Season';
+      document.getElementById('stat-next-val').innerHTML = 'OFF<em>-</em>SZN';
+      return;
+    }
+
+    const location = next.home ? 'Home' : 'Away';
+    const detail   = [next.time, location, next.type].filter(Boolean).join(' · ');
+
+    document.getElementById('ng-date').textContent     = next.label;
+    document.getElementById('ng-opponent').textContent = next.opponent;
+    document.getElementById('ng-times').textContent    = detail;
+
+    // Stat strip: split label into month + day for styled display
+    const parts = next.label.split(' '); // e.g. ["MAR", "13"]
+    document.getElementById('stat-next-val').innerHTML =
+      parts[0] + '<em> ' + parts[1] + '</em>';
+  })();
 </script>
 </body>
 </html>
