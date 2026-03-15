@@ -65,6 +65,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .psc-val.pos{color:#166534}
 .psc-key{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-top:4px}
 .post-standout{background:var(--gold-light);border-left:4px solid var(--gold);padding:12px 16px;margin:14px 0;font-size:13.5px;color:var(--navy);line-height:1.6}
+/* accordion posts */
+.post-accordion{background:var(--white);border:1px solid var(--rule);margin-bottom:2px;transition:box-shadow .2s}
+.post-accordion:hover{box-shadow:2px 2px 0 var(--navy)}
+.acc-trigger{width:100%;background:none;border:none;padding:16px 24px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent}
+.acc-trigger:focus{outline:2px solid var(--gold);outline-offset:-2px}
+.acc-tags{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.acc-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);line-height:1.2;flex:1}
+.acc-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.acc-chevron{flex-shrink:0;transition:transform .25s ease;color:var(--muted)}
+.post-accordion.open .acc-chevron{transform:rotate(180deg)}
+.acc-body{display:none;padding:0 24px 20px;font-size:14px;color:#3d3830;line-height:1.75;border-top:1px solid var(--rule)}
+.post-accordion.open .acc-body{display:block}
+.acc-body a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
+.acc-body strong{font-weight:700;color:var(--ink)}
+/* older posts section divider */
+.older-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);padding:20px 0 10px;display:flex;align-items:center;gap:12px}
+.older-label::before,.older-label::after{content:'';flex:1;height:1px;background:var(--rule)}
 footer{background:var(--navy);color:var(--white)}
 .footer-inner{max-width:1100px;margin:0 auto;padding:48px 48px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .footer-col h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
@@ -171,79 +188,88 @@ footer{background:var(--navy);color:var(--white)}
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-new">New</span>
-        <div class="post-title">Parent Meeting &mdash; Friday After Practice</div>
-      </div>
-      <div class="post-date">March 5, 2026</div>
-      <div class="post-body">
+    <div class="older-label">Earlier Posts</div>
+
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-new">New</span></div>
+        <div class="acc-title">Parent Meeting &mdash; Friday After Practice</div>
+        <div class="acc-meta">Mar 5, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
         There will be a <strong>parent meeting in the library immediately following Friday's practice.</strong> All parents and guardians are encouraged to attend. A great opportunity to connect with the coaching staff, ask questions, and stay informed about the upcoming season.
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-new">New</span>
-        <div class="post-title">JV Scorebook Clinic &mdash; Saturday After Practice</div>
-      </div>
-      <div class="post-date">March 5, 2026</div>
-      <div class="post-body">
-        Following <strong>Saturday's practice (9:00&ndash;11:30 AM)</strong>, all JV players are invited to stay for a <strong>"Learning the Book" clinic</strong>. Players will be taught how to keep the official scorebook during games &mdash; an important skill for supporting the team on match days.
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-new">New</span>
-        <div class="post-title">Activity Fee Payment Reminder</div>
-      </div>
-      <div class="post-date">March 5, 2026</div>
-      <div class="post-body">
-        All players are reminded to <strong>pay their activity fee</strong> as soon as possible if they have not done so. Fees can be paid through the school's athletic office. Reach out to <a href="/contact.html">Coach Shieh</a> with any questions.
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-new">New</span></div>
+        <div class="acc-title">JV Scorebook Clinic &mdash; Saturday After Practice</div>
+        <div class="acc-meta">Mar 5, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
+        Following <strong>Saturday's practice (9:00&ndash;11:30 AM)</strong>, all JV players are invited to stay for a <strong>&ldquo;Learning the Book&rdquo; clinic</strong>. Players will be taught how to keep the official scorebook during games &mdash; an important skill for supporting the team on match days.
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-info">Info</span>
-        <div class="post-title">2026 Season is Underway! &#127952;</div>
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-new">New</span></div>
+        <div class="acc-title">Activity Fee Payment Reminder</div>
+        <div class="acc-meta">Mar 5, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
+        All players are reminded to <strong>pay their activity fee</strong> as soon as possible if they have not done so. Fees can be paid through the school&rsquo;s athletic office. Reach out to <a href="/contact.html">Coach Shieh</a> with any questions.
       </div>
-      <div class="post-date">March 4, 2026</div>
-      <div class="post-body">
+    </div>
+
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-info">Info</span></div>
+        <div class="acc-title">2026 Season is Underway! &#127952;</div>
+        <div class="acc-meta">Mar 4, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
         Tryouts have concluded and rosters are finalized. First game is <strong>March 10 vs. Souderton</strong> &mdash; JV at 3:30 PM, Varsity at 5:00 PM. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-info">Info</span>
-        <div class="post-title">2026 Season Tryout Dates Announced</div>
-      </div>
-      <div class="post-date">January 28, 2026</div>
-      <div class="post-body">
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-info">Info</span></div>
+        <div class="acc-title">2026 Season Tryout Dates Announced</div>
+        <div class="acc-meta">Jan 28, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
         Tryouts for the 2026 season took place from <strong>March 2nd through March 4th</strong>. Rosters were finalized at the conclusion of Day 3. All prospective players must have their physical forms submitted to the athletic office before stepping onto the court.
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-info">Info</span>
-        <div class="post-title">Parent &amp; Player Pre-Season Meeting</div>
-      </div>
-      <div class="post-date">February 15, 2026</div>
-      <div class="post-body">
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-info">Info</span></div>
+        <div class="acc-title">Parent &amp; Player Pre-Season Meeting</div>
+        <div class="acc-meta">Feb 15, 2026</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
         A mandatory pre-season meeting for all interested players and their parents was held on February 25th at 7:00 PM in the school cafeteria. The spring schedule and program expectations were discussed.
       </div>
     </div>
 
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-archive">Archive</span>
-        <div class="post-title">Congratulations to Our Graduating Seniors!</div>
-      </div>
-      <div class="post-date">June 5, 2025</div>
-      <div class="post-body">
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)">
+        <div class="acc-tags"><span class="tag tag-archive">Archive</span></div>
+        <div class="acc-title">Congratulations to Our Graduating Seniors!</div>
+        <div class="acc-meta">Jun 5, 2025</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
         A huge congratulations to the graduating class of 2025! We thank our senior players for their dedication, leadership, and hard work over the years. Best of luck in all your future endeavors!
       </div>
     </div>
@@ -262,6 +288,12 @@ footer{background:var(--navy);color:var(--white)}
 <script>
 const burger=document.getElementById('nav-burger'),drawer=document.getElementById('nav-drawer'),bIcon=document.getElementById('burger-icon');
 burger.addEventListener('click',()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);bIcon.querySelector('path').setAttribute('d',o?'M6 18L18 6M6 6l12 12':'M4 6h16M4 12h16M4 18h16');});
+
+function toggleAcc(btn) {
+  var acc = btn.closest('.post-accordion');
+  var isOpen = acc.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+}
 </script>
 </body>
 </html>
