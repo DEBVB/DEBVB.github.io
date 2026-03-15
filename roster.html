@@ -4,42 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 Roster — Downingtown East Boys Volleyball</title>
-
-<!-- Primary Meta -->
-<meta name="description" content="2026 roster for Downingtown East Boys Volleyball. View varsity and JV players for the Cougars season.">
-<meta name="keywords" content="Downingtown East, Volleyball Roster, Boys Volleyball, Cougars Volleyball, Exton PA, PIAA District 1">
-<meta name="author" content="Downingtown East Boys Volleyball">
-<meta name="robots" content="index, follow">
+<meta name="description" content="2026 roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats.">
 <meta name="theme-color" content="#0e1e45">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="2026 Roster | Downingtown East Boys Volleyball">
-<meta property="og:description" content="Meet the 2026 Cougars — varsity and JV rosters for Downingtown East Boys Volleyball.">
-<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-<meta property="og:url" content="https://debvb.github.io/roster.html">
-<meta property="og:site_name" content="Downingtown East Boys Volleyball">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@devbboys">
-<meta name="twitter:creator" content="@devbboys">
-<meta name="twitter:title" content="2026 Roster | Downingtown East Boys Volleyball">
-<meta name="twitter:description" content="Meet the 2026 Cougars — varsity and JV rosters for Downingtown East Boys Volleyball.">
-<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-
-<!-- Canonical -->
-<link rel="canonical" href="https://debvb.github.io/roster.html">
-
-<!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/logo2.jpg">
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --ink: #0d0f14;
   --navy: #0e1e45;
@@ -50,400 +21,219 @@
   --rule: #d4cec3;
   --muted: #7a7266;
   --soft: #f2f0ea;
+  --green: #166534;
+  --green-bg: #dcfce7;
+  --red: #991b1b;
+  --red-bg: #fee2e2;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  min-height: 100vh;
-}
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
 
-/* ═══════════════════════════════════════
-   NAV
-═══════════════════════════════════════ */
-.nav-wrap {
-  background: var(--white);
-  border-bottom: 3px solid var(--ink);
-  position: sticky;
-  top: 0;
-  z-index: 200;
-}
-
-.nav-inner {
-  padding: 0 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 58px;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.nav-brand img {
-  height: 36px;
-  width: auto;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-}
-
-.nav-brand-text {
-  font-family: 'DM Serif Display', serif;
-  font-size: 17px;
-  color: var(--navy);
-  border-left: 2px solid var(--rule);
-  padding-left: 12px;
-  letter-spacing: -0.2px;
-}
-
+/* ── NAV ── */
+.nav-wrap { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 0; z-index: 200; }
+.nav-inner { padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.nav-brand img { height: 36px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+.nav-brand-text { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); border-left: 2px solid var(--rule); padding-left: 12px; }
 .nav-links { display: flex; align-items: center; }
-
-.nav-links a {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 6px 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-left: 1px solid var(--rule);
-  transition: background 0.12s;
-  white-space: nowrap;
-}
-
-.nav-links a:hover  { background: var(--soft); }
+.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 6px 14px; text-transform: uppercase; letter-spacing: 0.08em; border-left: 1px solid var(--rule); transition: background 0.12s; white-space: nowrap; }
+.nav-links a:hover { background: var(--soft); }
 .nav-links a.active { background: var(--navy); color: var(--white); }
 .nav-links a:last-child { border-right: 1px solid var(--rule); }
 .nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
 .nav-cta:hover { background: #d4a000 !important; }
-
-.nav-burger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--navy);
-  padding: 6px;
-  border-radius: 6px;
-  transition: background 0.12s;
-  -webkit-tap-highlight-color: transparent;
-}
-.nav-burger:hover { background: var(--soft); }
-
-.nav-drawer {
-  display: none;
-  flex-direction: column;
-  border-top: 1px solid var(--rule);
-}
+.nav-burger { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 6px; border-radius: 6px; }
+.nav-drawer { display: none; flex-direction: column; border-top: 1px solid var(--rule); }
 .nav-drawer.open { display: flex; }
-
-.nav-drawer a {
-  display: block;
-  padding: 15px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--rule);
-  transition: background 0.12s;
-}
-.nav-drawer a:last-child { border-bottom: none; }
-.nav-drawer a:hover  { background: var(--soft); }
+.nav-drawer a { display: block; padding: 15px 20px; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+.nav-drawer a:hover { background: var(--soft); }
 .nav-drawer a.active { background: var(--navy); color: var(--white); }
-.nav-drawer .nav-cta-mobile {
-  background: var(--gold);
-  color: var(--ink) !important;
-  font-weight: 700;
-}
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
 
-/* ═══════════════════════════════════════
-   PAGE HEADER
-═══════════════════════════════════════ */
-.page-header {
-  background: var(--navy);
-  border-bottom: 5px solid var(--gold);
-  padding: 40px 48px 36px;
-}
-
-.page-header-kicker {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-
-.page-header h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(36px, 5vw, 56px);
-  color: var(--white);
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
+/* ── PAGE HEADER ── */
+.page-header { background: var(--navy); border-bottom: 5px solid var(--gold); padding: 40px 48px 36px; }
+.kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); color: var(--white); line-height: 1; letter-spacing: -1px; }
 .page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header-sub { margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
-/* ═══════════════════════════════════════
-   MAIN WRAP
-═══════════════════════════════════════ */
-.page-wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 52px 48px 80px;
-}
-
-/* ═══════════════════════════════════════
-   ROSTER SECTION HEADER
-═══════════════════════════════════════ */
+/* ── MAIN WRAP ── */
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 52px 48px 80px; }
 .roster-section { margin-bottom: 56px; }
 .roster-section:last-child { margin-bottom: 0; }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 6px;
-}
-
-.section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  color: var(--ink);
-  white-space: nowrap;
-  letter-spacing: -0.5px;
-}
-
+.section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 6px; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink); white-space: nowrap; letter-spacing: -0.5px; }
 .section-rule { height: 3px; background: var(--ink); flex: 1; }
+.section-count { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.section-coaches { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 8px; }
+.stats-note { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 20px; text-transform: uppercase; }
+.stats-note span { color: var(--navy); font-weight: 500; }
 
-.section-count {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
+/* ── PLAYER GRID ── */
+.player-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
 
-.section-coaches {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 24px;
-}
-
-/* ═══════════════════════════════════════
-   PLAYER GRID
-═══════════════════════════════════════ */
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-/* ═══════════════════════════════════════
-   PLAYER CARD — Magazine stat card
-═══════════════════════════════════════ */
+/* ── PLAYER CARD ── */
 .player-card {
   background: var(--white);
   border: 1px solid var(--rule);
-  padding: 0;
   overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.15s;
+  transition: box-shadow 0.18s, transform 0.15s;
+  position: relative;
 }
+.player-card.clickable { cursor: pointer; }
+.player-card.clickable:hover { box-shadow: 4px 4px 0 var(--navy); transform: translateY(-2px); }
+.card-bar { height: 5px; background: var(--gold); }
+.card-body { padding: 14px 14px 12px; }
 
-.player-card:hover {
-  box-shadow: 4px 4px 0 var(--navy);
-  transform: translateY(-2px);
-}
-
-.player-card.jv:hover { box-shadow: 4px 4px 0 var(--navy); }
-
-.player-card-bar {
-  height: 5px;
+/* Gold dot = has stats */
+.player-card.has-stats::after {
+  content: '';
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
   background: var(--gold);
 }
-.player-card.jv .player-card-bar { background: var(--gold); }
 
-.player-card-body {
-  padding: 14px 14px 12px;
+.card-jersey { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--navy); line-height: 1; letter-spacing: -1px; margin-bottom: 4px; }
+.card-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; background: var(--navy); color: var(--white); margin-bottom: 8px; }
+.card-name { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+.card-divider { height: 1px; background: var(--rule); margin-bottom: 10px; }
+.card-stats { display: flex; }
+.cs { flex: 1; text-align: center; padding: 0 3px; border-right: 1px solid var(--rule); }
+.cs:last-child { border-right: none; }
+.cs-val { font-family: 'DM Serif Display', serif; font-size: 13px; color: var(--navy); line-height: 1; display: block; }
+.cs-key { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 3px; }
+.card-hint { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; margin-top: 8px; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(13,15,20,0.7);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--white);
+  max-width: 560px; width: 100%;
+  border: 1px solid var(--rule);
+  max-height: 90vh; overflow-y: auto;
+  animation: mIn 0.2s ease;
+}
+@keyframes mIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.modal-top-bar { height: 6px; background: var(--gold); }
+
+.modal-header {
+  padding: 22px 26px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
+}
+.mh-left { display: flex; align-items: flex-start; gap: 14px; flex: 1; }
+.mh-num { font-family: 'DM Serif Display', serif; font-size: 60px; color: var(--navy); line-height: 1; letter-spacing: -2px; margin-top: -4px; }
+.mh-info { flex: 1; }
+.mh-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; background: var(--navy); color: var(--white); margin-bottom: 6px; }
+.mh-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--ink); line-height: 1.1; }
+.mh-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 5px; letter-spacing: 0.04em; }
+.modal-close {
+  background: none; border: 1px solid var(--rule); cursor: pointer;
+  font-size: 16px; color: var(--muted); padding: 5px 9px; border-radius: 4px;
+  transition: all 0.15s; flex-shrink: 0; line-height: 1;
+}
+.modal-close:hover { background: var(--soft); color: var(--ink); }
+
+.modal-body { padding: 22px 26px; }
+
+/* stat section */
+.ms-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--muted);
+  padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 12px;
+}
+.ms-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 18px; }
+.ms-cell { background: var(--soft); padding: 11px 8px; text-align: center; }
+.ms-val { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); line-height: 1; letter-spacing: -0.5px; }
+.ms-val.good { color: var(--green); }
+.ms-val.bad  { color: var(--red); }
+.ms-val.warn { color: #92400e; }
+.ms-key { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+/* progress bars */
+.bar-wrap { margin-bottom: 18px; }
+.bar-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.bar-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.bar-value { font-family: 'DM Serif Display', serif; font-size: 15px; line-height: 1; }
+.bar-track { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+.bar-fill  { height: 100%; border-radius: 3px; }
+
+/* no stats state */
+.no-stats { padding: 28px; text-align: center; background: var(--soft); }
+.no-stats p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.modal-footer {
+  padding: 12px 26px; background: var(--soft);
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
 }
 
-.role-badge {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  background: var(--navy);
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.player-card.jv .role-badge {
-  background: var(--navy);
-  color: var(--white);
-}
-
-.player-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 16px;
-  color: var(--ink);
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-
-.player-divider {
-  height: 1px;
-  background: var(--rule);
-  margin-bottom: 10px;
-}
-
-.player-stats {
-  display: flex;
-}
-
-.stat-item {
-  flex: 1;
-  text-align: center;
-  padding: 0 4px;
-  border-right: 1px solid var(--rule);
-}
-.stat-item:last-child { border-right: none; }
-
-.stat-val {
-  font-family: 'DM Serif Display', serif;
-  font-size: 13px;
-  color: var(--navy);
-  line-height: 1;
-  display: block;
-}
-
-.player-card.jv .stat-val { color: var(--navy); }
-
-.stat-key {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 7.5px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: block;
-  margin-top: 3px;
-}
-
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
+/* ── FOOTER ── */
 footer { background: var(--navy); color: var(--white); }
-
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 48px 48px 32px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
-.footer-col h4 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 14px;
-}
+.footer-inner { max-width: 1100px; margin: 0 auto; padding: 48px 48px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
 .footer-col ul { list-style: none; }
 .footer-col ul li + li { margin-top: 8px; }
 .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
 .footer-col a:hover { color: var(--gold); }
 .footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
 
-.footer-bottom {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px 48px 24px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 12px;
-  color: rgba(255,255,255,0.3);
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.05em;
-  text-align: center;
-}
-
-/* ═══════════════════════════════════════
-   ANIMATIONS
-═══════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 .page-header { animation: fadeUp 0.4s 0.05s both; }
 .page-wrap   { animation: fadeUp 0.4s 0.15s both; }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE — TABLET (≤900px)
-═══════════════════════════════════════ */
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-inner { padding: 0 20px; }
   .nav-brand-text { display: none; }
   .nav-links { display: none; }
   .nav-burger { display: block; }
-
   .page-header { padding: 28px 20px 24px; }
   .page-wrap { padding: 36px 24px 60px; }
-
-  .player-grid { grid-template-columns: repeat(4, 1fr); }
+  .player-grid { grid-template-columns: repeat(4,1fr); }
 }
-
-/* ═══════════════════════════════════════
-   RESPONSIVE — MOBILE (≤600px)
-═══════════════════════════════════════ */
 @media (max-width: 600px) {
   .page-wrap { padding: 28px 16px 60px; }
-
+  .player-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
   .section-title { font-size: 22px; }
-  .player-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .player-card { padding: 14px 10px; }
-  .player-name { font-size: 13px; }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-    padding: 36px 20px 24px;
-    gap: 28px;
-    text-align: center;
-  }
+  .ms-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
   .footer-bottom { padding: 14px 20px 20px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+<!-- NAV -->
 <div class="nav-wrap">
   <div class="nav-inner">
     <a href="/index.html" class="nav-brand">
       <img src="logo2.jpg" alt="Cougars Volleyball Logo">
       <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
     </a>
-
     <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
       <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
-
     <div class="nav-links">
       <a href="/index.html">Home</a>
       <a href="/schedule.html">Schedule</a>
@@ -451,10 +241,9 @@ footer { background: var(--navy); color: var(--white); }
       <a href="/contact.html">Contact</a>
       <a href="/roster.html" class="active">Roster</a>
       <a href="/news.html">News</a>
-      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
     </div>
   </div>
-
   <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
     <a href="/index.html">Home</a>
     <a href="/schedule.html">Schedule</a>
@@ -462,46 +251,51 @@ footer { background: var(--navy); color: var(--white); }
     <a href="/contact.html">Contact</a>
     <a href="/roster.html" class="active">Roster</a>
     <a href="/news.html">News</a>
-    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
   </nav>
 </div>
 
-<!-- ═══ PAGE HEADER ═══ -->
+<!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-header-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+  <div class="kicker">Downingtown East &middot; PIAA District 1 &middot; 2026 Season</div>
   <h1>2026 Season <em>Roster</em></h1>
+  <div class="page-header-sub">Click any player card to view season stats &middot; Gold dot = stats available</div>
 </div>
 
-<!-- ═══ MAIN ═══ -->
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-top-bar"></div>
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-num" id="mNum"></div>
+        <div class="mh-info">
+          <div class="mh-role" id="mRole"></div>
+          <div class="mh-name" id="mName"></div>
+          <div class="mh-meta" id="mMeta"></div>
+        </div>
+      </div>
+      <button class="modal-close" id="modalClose">&#10005;</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-footer" id="mFooter"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
 <div class="page-wrap">
 
-  <!-- VARSITY -->
   <div class="roster-section">
     <div class="section-header">
       <div class="section-title">Varsity</div>
       <div class="section-rule"></div>
       <div class="section-count">13 Players</div>
     </div>
-    <div class="section-coaches">Head Coach: Grant Shieh &nbsp;·&nbsp; Asst. Coach: Chris D'Amore</div>
-
-    <div class="player-grid">
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Middle</span><div class="player-name">Adrian Liu</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'3"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Sr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Sritan Bhumireddy</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'0"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Sr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Libero</span><div class="player-name">Ritvik Adoni</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'9"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Sr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">DS</span><div class="player-name">Divyansh Ajmera</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'5"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Sr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">DS</span><div class="player-name">Samuel Joshy</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'6"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Sr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Setter</span><div class="player-name">Arjun Sankar</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'10"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Parker Laverya</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'2"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Right Side</span><div class="player-name">Anish Yasa</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'7"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Middle</span><div class="player-name">Sidd Madipadaga</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'3"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Middle</span><div class="player-name">Anish Dachepalli</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'9"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Aadi Kurukunda</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'7"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Middle</span><div class="player-name">Gavin Tulloch</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'10"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Right Side</span><div class="player-name">Arjun Potankar</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'8"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-    </div>
+    <div class="section-coaches">Head Coach: Grant Shieh &nbsp;&middot;&nbsp; Asst. Coach: Chris D'Amore</div>
+    <div class="stats-note">&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>1 GP logged (vs. Wilson, Mar 14)</span></div>
+    <div class="player-grid" id="varsityGrid"></div>
   </div>
 
-  <!-- JV -->
   <div class="roster-section">
     <div class="section-header">
       <div class="section-title">Junior Varsity</div>
@@ -509,26 +303,12 @@ footer { background: var(--navy); color: var(--white); }
       <div class="section-count">12 Players</div>
     </div>
     <div class="section-coaches">Coach: Chris D'Amore</div>
-
-    <div class="player-grid">
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Right Side</span><div class="player-name">Shreyan Potdar</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'10"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Jr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">DS</span><div class="player-name">Nehan Madankumar</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'7"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">So</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Sreekar Pasupulati</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'10"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">So</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Tyler McGowan</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'10"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">So</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Anish Sugan</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'0"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Setter</span><div class="player-name">Avanish Rao</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'3"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Right Side</span><div class="player-name">David Son</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'6"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">DS</span><div class="player-name">Mason Gulotta</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'5"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Setter</span><div class="player-name">Rishaan Kesari</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'7"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">DS</span><div class="player-name">Samrudh Ghanta</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'6"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Outside</span><div class="player-name">Srithan Ravula</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">6'0"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-      <div class="player-card jv"><div class="player-card-bar"></div><div class="player-card-body"><span class="role-badge">Setter</span><div class="player-name">Vivaan Adiga</div><div class="player-divider"></div><div class="player-stats"><div class="stat-item"><span class="stat-val">5'3"</span><span class="stat-key">Height</span></div><div class="stat-item"><span class="stat-val">Fr</span><span class="stat-key">Year</span></div></div></div></div>
-    </div>
+    <div class="player-grid" id="jvGrid"></div>
   </div>
 
 </div>
 
-<!-- ═══ FOOTER ═══ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
@@ -555,23 +335,336 @@ footer { background: var(--navy); color: var(--white); }
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
-    &copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved
-  </div>
+  <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball &middot; All Rights Reserved</div>
 </footer>
 
 <script>
-  const burger     = document.getElementById('nav-burger');
-  const drawer     = document.getElementById('nav-drawer');
-  const burgerIcon = document.getElementById('burger-icon');
-  const openPath   = 'M4 6h16M4 12h16M4 18h16';
-  const closePath  = 'M6 18L18 6M6 6l12 12';
+// ─── DATA ───────────────────────────────────────────────────────────────────
+var VARSITY = [
+  {
+    jersey: '9', name: 'Adrian Liu', role: 'Middle',
+    height: "6'3\"", year: 'Sr',
+    stats: { gp:1, kills:3, errors:4, attempts:18, aces:0, svcErr:0, svcAtt:0,
+             blocks:2, digs:2, srRtg:null, srAtt:0, assists:0 }
+  },
+  {
+    jersey: '1', name: 'Sritan Bhumireddy', role: 'Outside',
+    height: "6'0\"", year: 'Sr',
+    stats: { gp:1, kills:6, errors:5, attempts:29, aces:0, svcErr:4, svcAtt:19,
+             blocks:1, digs:9, srRtg:2.42, srAtt:19, assists:1 }
+  },
+  {
+    jersey: '7', name: 'Ritvik Adoni', role: 'Setter',
+    height: "5'9\"", year: 'Sr',
+    stats: { gp:1, kills:0, errors:2, attempts:3, aces:4, svcErr:2, svcAtt:15,
+             blocks:1, digs:8, srRtg:null, srAtt:1, assists:17, setAtt:84, setPct:0.202 }
+  },
+  {
+    jersey: '18', name: 'Divyansh Ajmera', role: 'DS / Libero',
+    height: "5'5\"", year: 'Sr',
+    stats: { gp:1, kills:0, errors:0, attempts:0, aces:1, svcErr:3, svcAtt:15,
+             blocks:0, digs:8, srRtg:1.54, srAtt:28, assists:1 }
+  },
+  {
+    jersey: '3', name: 'Samuel Joshy', role: 'DS',
+    height: "5'6\"", year: 'Sr',
+    stats: { gp:1, kills:0, errors:0, attempts:0, aces:0, svcErr:1, svcAtt:1,
+             blocks:0, digs:1, srRtg:1.50, srAtt:4, assists:0 }
+  },
+  {
+    jersey: '—', name: 'Arjun Sankar', role: 'Setter',
+    height: "5'10\"", year: 'Jr',
+    stats: null
+  },
+  {
+    jersey: '4', name: 'Parker LaVeyra', role: 'Outside',
+    height: "6'2\"", year: 'Jr',
+    stats: { gp:1, kills:7, errors:8, attempts:32, aces:2, svcErr:4, svcAtt:16,
+             blocks:6, digs:4, srRtg:2.18, srAtt:22, assists:1 }
+  },
+  {
+    jersey: '8', name: 'Anish Yasa', role: 'Right Side',
+    height: "5'7\"", year: 'Jr',
+    stats: { gp:1, kills:7, errors:1, attempts:17, aces:1, svcErr:4, svcAtt:21,
+             blocks:1, digs:10, srRtg:1.50, srAtt:8, assists:1 }
+  },
+  {
+    jersey: '28', name: 'Sidd Madipadaga', role: 'Middle',
+    height: "6'3\"", year: 'Jr',
+    stats: { gp:1, kills:0, errors:4, attempts:14, aces:0, svcErr:3, svcAtt:14,
+             blocks:4, digs:1, srRtg:0.50, srAtt:2, assists:0 }
+  },
+  {
+    jersey: '—', name: 'Anish Dachepalli', role: 'Middle',
+    height: "5'9\"", year: 'Jr',
+    stats: null
+  },
+  {
+    jersey: '—', name: 'Aadi Kurukunda', role: 'Outside',
+    height: "5'7\"", year: 'Jr',
+    stats: null
+  },
+  {
+    jersey: '—', name: 'Gavin Tulloch', role: 'Middle',
+    height: "6'10\"", year: 'Jr',
+    stats: null
+  },
+  {
+    jersey: '—', name: 'Arjun Potankar', role: 'Right Side',
+    height: "5'8\"", year: 'Jr',
+    stats: null
+  }
+];
 
-  burger.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    burger.setAttribute('aria-expanded', isOpen);
-    burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
-  });
+var JV = [
+  { jersey:'—', name:'Shreyan Potdar',     role:'Right Side', height:"5'10\"", year:'Jr', stats:null },
+  { jersey:'—', name:'Nehan Madankumar',   role:'DS',         height:"5'7\"",  year:'So', stats:null },
+  { jersey:'—', name:'Sreekar Pasupulati', role:'Outside',    height:"5'10\"", year:'So', stats:null },
+  { jersey:'—', name:'Tyler McGowan',      role:'Outside',    height:"5'10\"", year:'So', stats:null },
+  { jersey:'—', name:'Anish Sugan',        role:'Outside',    height:"6'0\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Avanish Rao',        role:'Setter',     height:"5'3\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'David Son',          role:'Right Side', height:"5'6\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Mason Gulotta',      role:'DS',         height:"5'5\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Rishaan Kesari',     role:'Setter',     height:"5'7\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Samrudh Ghanta',     role:'DS',         height:"5'6\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Srithan Ravula',     role:'Outside',    height:"6'0\"",  year:'Fr', stats:null },
+  { jersey:'—', name:'Vivaan Adiga',       role:'Setter',     height:"5'3\"",  year:'Fr', stats:null }
+];
+
+// ─── HELPERS ────────────────────────────────────────────────────────────────
+function calcEff(k, e, a) {
+  if (!a || a === 0) return null;
+  return (k - e) / a;
+}
+
+function fmtEff(e) {
+  if (e === null) return '—';
+  return (e >= 0 ? '+' : '') + (e * 100).toFixed(1) + '%';
+}
+
+function effColor(e) {
+  if (e === null) return '#888780';
+  if (e >= 0.25) return '#166534';
+  if (e >= 0.05) return '#92400e';
+  if (e < 0) return '#991b1b';
+  return '#0e1e45';
+}
+
+function effClass(e) {
+  if (e === null) return '';
+  if (e >= 0.25) return 'good';
+  if (e < 0) return 'bad';
+  return 'warn';
+}
+
+function srColor(r) {
+  if (!r || r === null) return '#888780';
+  if (r >= 2.3) return '#166534';
+  if (r >= 1.8) return '#92400e';
+  return '#991b1b';
+}
+
+function srClass(r) {
+  if (!r || r === null) return '';
+  if (r >= 2.3) return 'good';
+  if (r >= 1.8) return 'warn';
+  return 'bad';
+}
+
+function srGrade(r) {
+  if (!r) return '—';
+  if (r >= 2.5) return 'A';
+  if (r >= 2.0) return 'B';
+  if (r >= 1.5) return 'C';
+  return 'D';
+}
+
+// ─── BUILD CARD ──────────────────────────────────────────────────────────────
+function buildCard(p) {
+  var s = p.stats;
+  var hasStats = s !== null;
+  var eff = hasStats ? calcEff(s.kills, s.errors, s.attempts) : null;
+
+  // Pick 4 preview stats based on role
+  var cols = [];
+  cols.push({ val: p.height, key: 'Ht' });
+  cols.push({ val: p.year,   key: 'Yr' });
+
+  if (hasStats) {
+    if (p.role === 'Setter') {
+      cols.push({ val: s.assists, key: 'Ast' });
+      cols.push({ val: s.digs,    key: 'Dig' });
+    } else if (p.role === 'DS' || p.role === 'DS / Libero') {
+      cols.push({ val: s.digs,                           key: 'Dig' });
+      cols.push({ val: s.srRtg ? s.srRtg.toFixed(2) : '—', key: 'SR'  });
+    } else {
+      cols.push({ val: s.kills, key: 'K' });
+      cols.push({ val: eff !== null ? fmtEff(eff) : '—', key: 'Eff' });
+    }
+  } else {
+    cols.push({ val: '—', key: 'Stats' });
+    cols.push({ val: 'Soon', key: '' });
+  }
+
+  var statsHTML = cols.map(function(c) {
+    return '<div class="cs"><span class="cs-val">' + c.val + '</span><span class="cs-key">' + c.key + '</span></div>';
+  }).join('');
+
+  var div = document.createElement('div');
+  div.className = 'player-card' + (hasStats ? ' has-stats clickable' : '');
+  div.innerHTML =
+    '<div class="card-bar"></div>' +
+    '<div class="card-body">' +
+      '<div class="card-jersey">' + (p.jersey !== '—' ? '#' + p.jersey : p.jersey) + '</div>' +
+      '<div class="card-role">' + p.role + '</div>' +
+      '<div class="card-name">' + p.name + '</div>' +
+      '<div class="card-divider"></div>' +
+      '<div class="card-stats">' + statsHTML + '</div>' +
+      (hasStats ? '<div class="card-hint">View stats &#8250;</div>' : '') +
+    '</div>';
+
+  if (hasStats) {
+    div.addEventListener('click', function() { openModal(p); });
+  }
+  return div;
+}
+
+// ─── RENDER GRIDS ────────────────────────────────────────────────────────────
+function renderGrid(players, id) {
+  var grid = document.getElementById(id);
+  players.forEach(function(p) { grid.appendChild(buildCard(p)); });
+}
+renderGrid(VARSITY, 'varsityGrid');
+renderGrid(JV,      'jvGrid');
+
+// ─── OPEN MODAL ──────────────────────────────────────────────────────────────
+function openModal(p) {
+  var s = p.stats;
+  document.getElementById('mNum').textContent  = p.jersey !== '—' ? '#' + p.jersey : p.jersey;
+  document.getElementById('mRole').textContent = p.role;
+  document.getElementById('mName').textContent = p.name;
+  document.getElementById('mMeta').textContent = p.height + ' \u00b7 ' + p.year;
+  document.getElementById('mFooter').textContent =
+    '2026 Season \u00b7 ' + (s ? s.gp + ' GP' : '0 GP') + ' \u00b7 vs. Wilson (Reading) \u2014 Mar 14, 2026';
+
+  var body = document.getElementById('mBody');
+  body.innerHTML = '';
+
+  if (!s) {
+    body.innerHTML = '<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';
+    document.getElementById('modalOverlay').classList.add('open');
+    return;
+  }
+
+  var eff = calcEff(s.kills, s.errors, s.attempts);
+  var html = '';
+
+  // ── ATTACK (anyone with attempts > 0) ──
+  if (s.attempts > 0) {
+    var killPct = ((s.kills / s.attempts) * 100).toFixed(1);
+    var errPct  = ((s.errors / s.attempts) * 100).toFixed(1);
+    var effBarW = Math.max(2, Math.min(100, ((eff + 0.5) / 1.0) * 100));
+
+    html += '<div class="ms-title">Attacking</div>' +
+      '<div class="ms-grid">' +
+        cell(s.kills,                      'Kills',    '') +
+        cell(s.errors,                     'Atk Err',  s.errors >= 6 ? 'bad' : '') +
+        cell(s.attempts,                   'Attempts', '') +
+        cell(s.blocks,                     'Blocks',   '') +
+        cell(fmtEff(eff),                  'Hit Eff.', effClass(eff)) +
+        cell(killPct + '%',                'Kill %',   '') +
+        cell(errPct + '%',                 'Error %',  parseFloat(errPct) > 25 ? 'bad' : '') +
+        cell(s.digs,                       'Digs',     '') +
+      '</div>' +
+      bar('Hitting Efficiency', fmtEff(eff), effBarW, effColor(eff));
+  }
+
+  // ── SETTING (setter role) ──
+  if (p.role === 'Setter' && s.assists !== undefined) {
+    var setPctStr = s.setPct !== undefined ? (s.setPct * 100).toFixed(1) + '%' : '—';
+    html += '<div class="ms-title">Setting</div>' +
+      '<div class="ms-grid">' +
+        cell(s.assists,          'Assists',  s.assists >= 15 ? 'good' : '') +
+        cell(s.setAtt || '—',   'Set Att',  '') +
+        cell(setPctStr,          'Set %',    '') +
+        cell(s.kills + ' / ' + s.errors, 'Dump K/E', '') +
+      '</div>';
+  }
+
+  // ── SERVING ──
+  var svcTotal = (s.aces || 0) + (s.svcErr || 0);
+  var acePctStr = svcTotal > 0 ? ((s.aces / svcTotal) * 100).toFixed(1) + '%' : '—';
+  html += '<div class="ms-title">Serving</div>' +
+    '<div class="ms-grid">' +
+      cell(s.aces,                     'Aces',     s.aces >= 2 ? 'good' : '') +
+      cell(s.svcErr,                   'Svc Err',  s.svcErr >= 4 ? 'bad' : '') +
+      cell(acePctStr,                  'Ace Rate', '') +
+      cell(s.svcAtt || svcTotal || '—','Serve Att','') +
+    '</div>';
+
+  // ── SERVE RECEIVE (only if they have receptions) ──
+  if (s.srAtt > 0 && s.srRtg !== null) {
+    var srBarW = (s.srRtg / 3.0) * 100;
+    html += '<div class="ms-title">Serve Receive</div>' +
+      '<div class="ms-grid">' +
+        cell(s.srRtg.toFixed(2),  'SR Rating', srClass(s.srRtg)) +
+        cell(srGrade(s.srRtg),    'SR Grade',  srClass(s.srRtg)) +
+        cell(s.srAtt,             'Receptions','') +
+        cell(s.digs,              'Digs',      '') +
+      '</div>' +
+      bar('Pass Rating (0 – 3 scale)', s.srRtg.toFixed(2) + ' / 3.00', srBarW, srColor(s.srRtg));
+  } else if (s.attempts === 0 && s.digs > 0) {
+    // DS/libero with no attack data — show defense summary
+    html += '<div class="ms-title">Defense</div>' +
+      '<div class="ms-grid">' +
+        cell(s.digs,   'Digs',   '') +
+        cell(s.blocks, 'Blocks', '') +
+      '</div>';
+  }
+
+  body.innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function cell(val, key, cls) {
+  return '<div class="ms-cell"><div class="ms-val ' + cls + '">' + val + '</div><div class="ms-key">' + key + '</div></div>';
+}
+
+function bar(label, valStr, widthPct, color) {
+  return '<div class="bar-wrap">' +
+    '<div class="bar-label-row">' +
+      '<span class="bar-label">' + label + '</span>' +
+      '<span class="bar-value" style="color:' + color + '">' + valStr + '</span>' +
+    '</div>' +
+    '<div class="bar-track"><div class="bar-fill" style="width:' + widthPct.toFixed(1) + '%;background:' + color + '"></div></div>' +
+  '</div>';
+}
+
+// ─── CLOSE MODAL ─────────────────────────────────────────────────────────────
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ─── NAV BURGER ──────────────────────────────────────────────────────────────
+var burger     = document.getElementById('nav-burger');
+var drawer     = document.getElementById('nav-drawer');
+var burgerIcon = document.getElementById('burger-icon');
+var openPath   = 'M4 6h16M4 12h16M4 18h16';
+var closePath  = 'M6 18L18 6M6 6l12 12';
+
+burger.addEventListener('click', function() {
+  var isOpen = drawer.classList.toggle('open');
+  burger.setAttribute('aria-expanded', isOpen);
+  burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+});
 </script>
 </body>
 </html>
