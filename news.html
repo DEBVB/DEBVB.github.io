@@ -4,161 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>News & Updates — Downingtown East Boys Volleyball</title>
-<meta name="description" content="Latest news and updates for Downingtown East Boys Volleyball. Season announcements, match recaps, and team highlights for the Cougars.">
-<meta name="keywords" content="Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA">
-<meta name="author" content="Downingtown East Boys Volleyball">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Latest news and updates for Downingtown East Boys Volleyball.">
 <meta name="theme-color" content="#0e1e45">
-<meta property="og:type" content="website">
 <meta property="og:title" content="News & Updates | Downingtown East Boys Volleyball">
-<meta property="og:description" content="Latest news and updates for Downingtown East Boys Volleyball — match recaps, season announcements, and team highlights.">
 <meta property="og:image" content="https://debvb.github.io/logo2.jpg">
 <meta property="og:url" content="https://debvb.github.io/news.html">
-<meta property="og:site_name" content="Downingtown East Boys Volleyball">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@devbboys">
-<meta name="twitter:creator" content="@devbboys">
-<meta name="twitter:title" content="News & Updates | Downingtown East Boys Volleyball">
-<meta name="twitter:description" content="Latest news and updates for Downingtown East Boys Volleyball — match recaps, season announcements, and team highlights.">
-<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
 <link rel="canonical" href="https://debvb.github.io/news.html">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/logo2.jpg">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #0d0f14; --navy: #0e1e45; --gold: #e8b000; --gold-light: #fdf3d0;
-  --cream: #faf8f3; --white: #ffffff; --rule: #d4cec3; --muted: #7a7266; --soft: #f2f0ea;
-}
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-
-/* NAV */
-.nav-wrap { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 0; z-index: 200; }
-.nav-inner { padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
-.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-.nav-brand img { height: 36px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
-.nav-brand-text { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); border-left: 2px solid var(--rule); padding-left: 12px; letter-spacing: -0.2px; }
-.nav-links { display: flex; align-items: center; }
-.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 6px 14px; text-transform: uppercase; letter-spacing: 0.08em; border-left: 1px solid var(--rule); transition: background 0.12s; white-space: nowrap; }
-.nav-links a:hover { background: var(--soft); }
-.nav-links a.active { background: var(--navy); color: var(--white); }
-.nav-links a:last-child { border-right: 1px solid var(--rule); }
-.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
-.nav-cta:hover { background: #d4a000 !important; }
-.nav-burger { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 6px; border-radius: 6px; transition: background 0.12s; -webkit-tap-highlight-color: transparent; }
-.nav-burger:hover { background: var(--soft); }
-.nav-drawer { display: none; flex-direction: column; border-top: 1px solid var(--rule); }
-.nav-drawer.open { display: flex; }
-.nav-drawer a { display: block; padding: 15px 20px; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
-.nav-drawer a:last-child { border-bottom: none; }
-.nav-drawer a:hover { background: var(--soft); }
-.nav-drawer a.active { background: var(--navy); color: var(--white); }
-.nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
-
-/* PAGE HEADER */
-.page-header { background: var(--navy); border-bottom: 5px solid var(--gold); padding: 40px 48px 36px; }
-.page-header-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-.page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); color: var(--white); line-height: 1; letter-spacing: -1px; }
-.page-header h1 em { font-style: italic; color: var(--gold); }
-
-/* MAIN */
-.page-wrap { max-width: 780px; margin: 0 auto; padding: 52px 48px 80px; }
-.posts { display: flex; flex-direction: column; gap: 2px; }
-
-/* POST */
-.post { background: var(--white); border: 1px solid var(--rule); padding: 28px 32px; transition: box-shadow 0.2s; }
-.post:hover { box-shadow: 4px 4px 0 var(--navy); }
-.post-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-.tag { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; flex-shrink: 0; }
-.tag-new     { background: var(--navy);      color: var(--white); }
-.tag-info    { background: var(--gold-light); color: var(--navy); border: 1px solid var(--gold); }
-.tag-archive { background: var(--soft);       color: var(--muted); border: 1px solid var(--rule); }
-.tag-recap   { background: #fee2e2;           color: #991b1b; border: 1px solid #fecaca; }
-.post-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); line-height: 1.2; }
-.post-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
-.post-body { font-size: 14.5px; color: #3d3830; line-height: 1.75; }
-.post-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
-.post-body a:hover { color: var(--ink); }
-.post-body strong { font-weight: 700; color: var(--ink); }
-
-/* MATCH RECAP STYLES */
-.recap-score {
-  display: flex; align-items: stretch; margin: 18px 0 16px;
-  border: 1px solid var(--rule); overflow: hidden;
-}
-.recap-team { flex: 1; padding: 16px 18px; }
-.recap-team-name { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 4px; }
-.recap-team-score { font-family: 'DM Serif Display', serif; font-size: 44px; line-height: 1; letter-spacing: -1.5px; }
-.recap-team.winner .recap-team-score { color: var(--navy); }
-.recap-team.loser  .recap-team-score { color: #ccc; }
-.recap-divider { width: 1px; background: var(--rule); }
-.recap-vs { padding: 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); display: flex; align-items: center; letter-spacing: 0.1em; }
-
-/* Team stats boxes inside recap */
-.recap-team-stats {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 0 0 16px;
-}
-.recap-ts { background: var(--soft); padding: 10px 8px; text-align: center; }
-.recap-ts-val { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--navy); line-height: 1; }
-.recap-ts-val.neg { color: #991b1b; }
-.recap-ts-val.pos { color: #166534; }
-.recap-ts-key { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
-
-/* Top performer strip */
-.performer-strip {
-  background: var(--gold-light); border: 1px solid var(--gold);
-  padding: 12px 16px; margin: 16px 0;
-  display: flex; align-items: center; gap: 12px;
-}
-.performer-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #7a6000; flex-shrink: 0; }
-.performer-name { font-weight: 700; color: var(--navy); font-size: 14px; }
-.performer-stats { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
-
-/* Key stat bullets */
-.key-bullets { list-style: none; margin: 14px 0; }
-.key-bullets li { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 13.5px; color: #3d3830; line-height: 1.5; }
-.key-bullets li:last-child { border-bottom: none; }
-.bullet-icon { width: 20px; flex-shrink: 0; text-align: center; margin-top: 1px; font-size: 12px; }
-
-/* FOOTER */
-footer { background: var(--navy); color: var(--white); }
-.footer-inner { max-width: 1100px; margin: 0 auto; padding: 48px 48px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
-.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
-.footer-col ul { list-style: none; }
-.footer-col ul li + li { margin-top: 8px; }
-.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
-.footer-col a:hover { color: var(--gold); }
-.footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
-.footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-.page-header { animation: fadeUp 0.4s 0.05s both; }
-.page-wrap   { animation: fadeUp 0.4s 0.15s both; }
-
-@media (max-width: 900px) {
-  .nav-inner { padding: 0 20px; }
-  .nav-brand-text { display: none; }
-  .nav-links { display: none; }
-  .nav-burger { display: block; }
-  .page-header { padding: 28px 20px 24px; }
-  .page-wrap { padding: 36px 20px 60px; }
-}
-@media (max-width: 600px) {
-  .post { padding: 20px 18px; }
-  .post-title { font-size: 19px; }
-  .post-body { font-size: 14px; }
-  .recap-team-stats { grid-template-columns: repeat(2,1fr); }
-  .recap-team-score { font-size: 36px; }
-  .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
-  .footer-bottom { padding: 14px 20px 20px; }
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0d0f14;--navy:#0e1e45;--gold:#e8b000;--gold-light:#fdf3d0;--cream:#faf8f3;--white:#ffffff;--rule:#d4cec3;--muted:#7a7266;--soft:#f2f0ea}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.nav-wrap{background:var(--white);border-bottom:3px solid var(--ink);position:sticky;top:0;z-index:200}
+.nav-inner{padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-brand img{height:36px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.nav-brand-text{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);border-left:2px solid var(--rule);padding-left:12px}
+.nav-links{display:flex;align-items:center}
+.nav-links a{font-size:12.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 14px;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid var(--rule);transition:background .12s;white-space:nowrap}
+.nav-links a:hover{background:var(--soft)}
+.nav-links a.active{background:var(--navy);color:var(--white)}
+.nav-links a:last-child{border-right:1px solid var(--rule)}
+.nav-cta{background:var(--gold)!important;color:var(--ink)!important}
+.nav-cta:hover{background:#d4a000!important}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;color:var(--navy);padding:6px;border-radius:6px;transition:background .12s;-webkit-tap-highlight-color:transparent}
+.nav-burger:hover{background:var(--soft)}
+.nav-drawer{display:none;flex-direction:column;border-top:1px solid var(--rule)}
+.nav-drawer.open{display:flex}
+.nav-drawer a{display:block;padding:15px 20px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--rule);transition:background .12s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover{background:var(--soft)}
+.nav-drawer a.active{background:var(--navy);color:var(--white)}
+.nav-drawer .nav-cta-mobile{background:var(--gold);color:var(--ink)!important;font-weight:700}
+.page-header{background:var(--navy);border-bottom:5px solid var(--gold);padding:40px 48px 36px}
+.page-header-kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.page-header h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,56px);color:var(--white);line-height:1;letter-spacing:-1px}
+.page-header h1 em{font-style:italic;color:var(--gold)}
+.page-wrap{max-width:780px;margin:0 auto;padding:52px 48px 80px}
+.posts{display:flex;flex-direction:column;gap:2px}
+.post{background:var(--white);border:1px solid var(--rule);padding:28px 32px;transition:box-shadow .2s}
+.post:hover{box-shadow:4px 4px 0 var(--navy)}
+.post-top{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.tag{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;flex-shrink:0}
+.tag-new{background:var(--navy);color:var(--white)}
+.tag-result{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.tag-info{background:var(--gold-light);color:var(--navy);border:1px solid var(--gold)}
+.tag-archive{background:var(--soft);color:var(--muted);border:1px solid var(--rule)}
+.post-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);line-height:1.2}
+.post-date{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
+.post-body{font-size:14.5px;color:#3d3830;line-height:1.75}
+.post-body a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
+.post-body a:hover{color:var(--ink)}
+.post-body strong{font-weight:700;color:var(--ink)}
+/* stat box inside post */
+.post-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:16px 0}
+.post-stat-cell{background:var(--soft);padding:12px 8px;text-align:center;border:1px solid var(--rule)}
+.psc-val{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);line-height:1;display:block}
+.psc-val.neg{color:#991b1b}
+.psc-val.pos{color:#166534}
+.psc-key{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-top:4px}
+.post-standout{background:var(--gold-light);border-left:4px solid var(--gold);padding:12px 16px;margin:14px 0;font-size:13.5px;color:var(--navy);line-height:1.6}
+footer{background:var(--navy);color:var(--white)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:48px 48px 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col ul li+li{margin-top:8px}
+.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;transition:color .15s}
+.footer-col a:hover{color:var(--gold)}
+.footer-col p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
+.footer-bottom{max-width:1100px;margin:0 auto;padding:16px 48px 24px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.3);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;text-align:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-header{animation:fadeUp .4s .05s both}
+.page-wrap{animation:fadeUp .4s .15s both}
+@media(max-width:900px){.nav-inner{padding:0 20px}.nav-brand-text{display:none}.nav-links{display:none}.nav-burger{display:block}.page-header{padding:28px 20px 24px}.page-wrap{padding:36px 20px 60px}}
+@media(max-width:600px){.post{padding:20px 18px}.post-title{font-size:19px}.post-body{font-size:14px}.post-stat-row{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr;padding:36px 20px 24px;gap:28px;text-align:center}.footer-bottom{padding:14px 20px 20px}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <div class="nav-wrap">
   <div class="nav-inner">
     <a href="/index.html" class="nav-brand">
@@ -166,9 +89,7 @@ footer { background: var(--navy); color: var(--white); }
       <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
     </a>
     <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
-      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
     <div class="nav-links">
       <a href="/index.html">Home</a>
@@ -177,93 +98,83 @@ footer { background: var(--navy); color: var(--white); }
       <a href="/contact.html">Contact</a>
       <a href="/roster.html">Roster</a>
       <a href="/news.html" class="active">News</a>
-      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
     </div>
   </div>
-  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <nav class="nav-drawer" id="nav-drawer">
     <a href="/index.html">Home</a>
     <a href="/schedule.html">Schedule</a>
     <a href="/coaches.html">Coaches</a>
     <a href="/contact.html">Contact</a>
     <a href="/roster.html">Roster</a>
     <a href="/news.html" class="active">News</a>
-    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
   </nav>
 </div>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
-  <div class="page-header-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+  <div class="page-header-kicker">Downingtown East &middot; PIAA District 1 &middot; 2026 Season</div>
   <h1>Recent <em>News</em></h1>
 </div>
 
-<!-- MAIN -->
 <div class="page-wrap">
   <div class="posts">
 
-    <!-- ═══ WILSON RECAP ═══ -->
+    <!-- WILSON RECAP -->
     <div class="post">
       <div class="post-top">
-        <span class="tag tag-recap">Match Recap</span>
-        <div class="post-title">Cougars Drop Season Opener to Wilson (Reading) 18–25</div>
+        <span class="tag tag-result">Match Result</span>
+        <div class="post-title">Match Recap: Cougars Battle Back but Fall to Wilson 2&ndash;3</div>
       </div>
-      <div class="post-date">March 14, 2026 · Home · Season Record: 0–1</div>
+      <div class="post-date">March 14, 2026 &middot; Home &middot; Season Record: 0&ndash;1</div>
       <div class="post-body">
 
-        <div class="recap-score">
-          <div class="recap-team loser">
-            <div class="recap-team-name">Downingtown East</div>
-            <div class="recap-team-score">18</div>
+        <!-- 5-set scoreboard -->
+        <div style="margin:16px 0 18px;border:1px solid var(--rule);overflow:hidden">
+          <div style="background:var(--navy);padding:8px 14px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45)">Final &mdash; Wilson wins 3&ndash;2</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.3);text-transform:uppercase">S1 &nbsp; S2 &nbsp; S3 &nbsp; S4 &nbsp; S5</span>
           </div>
-          <div class="recap-divider"></div>
-          <div class="recap-vs">SET 1</div>
-          <div class="recap-divider"></div>
-          <div class="recap-team winner">
-            <div class="recap-team-name">Wilson (Reading)</div>
-            <div class="recap-team-score">25</div>
+          <div style="display:flex;border-bottom:1px solid var(--rule)">
+            <div style="padding:14px 16px;font-weight:700;font-size:13.5px;flex:1;border-right:1px solid var(--rule)">Downingtown East</div>
+            <div style="display:flex">
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:#999;width:52px;text-align:center;border-right:1px solid var(--rule)">18</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:#999;width:52px;text-align:center;border-right:1px solid var(--rule)">22</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);width:52px;text-align:center;border-right:1px solid var(--rule);font-weight:700">27</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);width:52px;text-align:center;border-right:1px solid var(--rule);font-weight:700">25</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:#999;width:52px;text-align:center">7</div>
+            </div>
           </div>
-        </div>
-
-        <div class="recap-team-stats">
-          <div class="recap-ts"><div class="recap-ts-val">23</div><div class="recap-ts-key">Kills</div></div>
-          <div class="recap-ts"><div class="recap-ts-val neg">21</div><div class="recap-ts-key">Svc Err</div></div>
-          <div class="recap-ts"><div class="recap-ts-val">15</div><div class="recap-ts-key">Blocks</div></div>
-          <div class="recap-ts"><div class="recap-ts-val">43</div><div class="recap-ts-key">Digs</div></div>
-          <div class="recap-ts"><div class="recap-ts-val neg">-.009</div><div class="recap-ts-key">Hit Eff.</div></div>
-          <div class="recap-ts"><div class="recap-ts-val">4</div><div class="recap-ts-key">Aces</div></div>
-          <div class="recap-ts"><div class="recap-ts-val">1.81</div><div class="recap-ts-key">SR Rating</div></div>
-          <div class="recap-ts"><div class="recap-ts-val">88</div><div class="recap-ts-key">Receptions</div></div>
-        </div>
-
-        <div class="performer-strip">
-          <div class="performer-label">Top Performer</div>
-          <div>
-            <div class="performer-name">Anish Yasa &nbsp;·&nbsp; #8 &nbsp;·&nbsp; Right Side</div>
-            <div class="performer-stats">7 K · 1 Err · 17 Att · .353 Eff. · 10 Digs · 1 Block</div>
+          <div style="display:flex;background:#fafafa">
+            <div style="padding:14px 16px;font-weight:600;font-size:13.5px;color:var(--navy);flex:1;border-right:1px solid var(--rule)">Wilson (Reading)</div>
+            <div style="display:flex">
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);width:52px;text-align:center;border-right:1px solid var(--rule);font-weight:700">25</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);width:52px;text-align:center;border-right:1px solid var(--rule);font-weight:700">25</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:#999;width:52px;text-align:center;border-right:1px solid var(--rule)">25</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:#999;width:52px;text-align:center;border-right:1px solid var(--rule)">23</div>
+              <div style="padding:14px 16px;font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);width:52px;text-align:center;font-weight:700">15</div>
+            </div>
           </div>
         </div>
 
-        DE fell to Wilson in a tough season opener that was defined more by self-inflicted errors than by the opponent's performance. The Cougars competed hard — 15 blocks and 43 digs show genuine defensive effort — but 21 service errors spotted Wilson free points that the offense could never fully recover.
+        <p>DE opened the 2026 season at home against Wilson (Reading) in a five-set battle that showcased both the character and the potential of this group. Down 0&ndash;2 after the first two sets, the Cougars did something that matters &mdash; they didn&rsquo;t fold. Sets 3 and 4 belonged to Downingtown East, forcing a deciding fifth set and showing real resolve under pressure.</p>
 
-        <ul class="key-bullets">
-          <li><span class="bullet-icon">⚡</span><span><strong>Yasa was the one bright spot.</strong> His .353 hitting efficiency was the only player in positive territory and he did it on 17 attempts — the fewest of any primary attacker. Distribution needs to shift his way going forward.</span></li>
-          <li><span class="bullet-icon">⚠</span><span><strong>Service errors were the game's defining stat.</strong> 21 errors on 101 attempts — a 20.8% error rate — handed Wilson an estimated 17+ free sideouts. At 5 service errors, the math simply doesn't work in DE's favor.</span></li>
-          <li><span class="bullet-icon">⚠</span><span><strong>Hitting efficiency was near zero as a team (-.009).</strong> 23 kills were nearly cancelled out by 24 attack errors on 113 attempts. Madipadaga (#28) went 0 kills on 14 attempts; LaVeyra (#4) went 7 kills but with 8 errors on 32 swings.</span></li>
-          <li><span class="bullet-icon">✓</span><span><strong>The block was excellent.</strong> 15 total blocks (4 solo, 11 assisted) is a strong number and shows the front row was reading the game. Liu (#9) and Madipadaga each contributed despite offensive struggles.</span></li>
-          <li><span class="bullet-icon">✓</span><span><strong>Bhumireddy (#1) was the team's best passer</strong> with a 2.42 serve receive rating on 19 attempts — 12 perfect receptions. He was the platform the offense should have been built around.</span></li>
-        </ul>
+        <div class="post-standout">
+          <strong>Sets 3 &amp; 4 were outstanding.</strong> Winning back-to-back sets against a strong Wilson program after falling behind 0&ndash;2 is a significant mental and physical achievement. The Cougars showed they can compete at this level when they&rsquo;re locked in.
+        </div>
 
-        The Cougars have the tools to compete. The path forward is clear: reduce service errors to under 10 per set, redistribute attack attempts toward Yasa, and tighten the serve receive formation to protect Ajmera on deep balls. Next up: <a href="/schedule.html">@ Lansdale Catholic — Sunday, March 16, 5:00 PM</a>.
+        <p>The fifth set didn&rsquo;t go DE&rsquo;s way, but this match tells a real story about a team with fight in it. <strong>Anish Yasa (#8)</strong> was the standout performer, leading the offense with efficiency and contributing in every phase of the game. The front row was active all night, putting up an impressive block total that disrupted Wilson&rsquo;s rhythm throughout.</p>
 
+        <p style="margin-top:14px;">The Cougars head to Lansdale Catholic on Monday looking to carry the momentum from those middle sets into the next match. The foundation is there.</p>
+
+        <p style="margin-top:14px;">Next up: <strong><a href="/schedule.html">@ Lansdale Catholic &mdash; Monday, March 16, 5:00 PM</a></strong></p>
       </div>
     </div>
-
-    <!-- ═══ EXISTING POSTS ═══ -->
 
     <div class="post">
       <div class="post-top">
         <span class="tag tag-new">New</span>
-        <div class="post-title">Parent Meeting — Friday After Practice</div>
+        <div class="post-title">Parent Meeting &mdash; Friday After Practice</div>
       </div>
       <div class="post-date">March 5, 2026</div>
       <div class="post-body">
@@ -274,11 +185,11 @@ footer { background: var(--navy); color: var(--white); }
     <div class="post">
       <div class="post-top">
         <span class="tag tag-new">New</span>
-        <div class="post-title">JV Scorebook Clinic — Saturday After Practice</div>
+        <div class="post-title">JV Scorebook Clinic &mdash; Saturday After Practice</div>
       </div>
       <div class="post-date">March 5, 2026</div>
       <div class="post-body">
-        Following <strong>Saturday's practice (9:00–11:30 AM)</strong>, all JV players are invited to stay for a <strong>"Learning the Book" clinic</strong>. Players will be taught how to keep the official scorebook during games — an important skill for supporting the team on match days.
+        Following <strong>Saturday's practice (9:00&ndash;11:30 AM)</strong>, all JV players are invited to stay for a <strong>"Learning the Book" clinic</strong>. Players will be taught how to keep the official scorebook during games &mdash; an important skill for supporting the team on match days.
       </div>
     </div>
 
@@ -290,6 +201,17 @@ footer { background: var(--navy); color: var(--white); }
       <div class="post-date">March 5, 2026</div>
       <div class="post-body">
         All players are reminded to <strong>pay their activity fee</strong> as soon as possible if they have not done so. Fees can be paid through the school's athletic office. Reach out to <a href="/contact.html">Coach Shieh</a> with any questions.
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-top">
+        <span class="tag tag-info">Info</span>
+        <div class="post-title">2026 Season is Underway! &#127952;</div>
+      </div>
+      <div class="post-date">March 4, 2026</div>
+      <div class="post-body">
+        Tryouts have concluded and rosters are finalized. First game is <strong>March 10 vs. Souderton</strong> &mdash; JV at 3:30 PM, Varsity at 5:00 PM. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
       </div>
     </div>
 
@@ -329,27 +251,17 @@ footer { background: var(--navy); color: var(--white); }
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="/index.html">Home</a></li><li><a href="/schedule.html">Schedule</a></li><li><a href="/roster.html">Roster</a></li><li><a href="/coaches.html">Coaches</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Contact</h4><p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p></div>
     <div class="footer-col"><h4>Follow Us</h4><ul><li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li><li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li><li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li><li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li></ul></div>
   </div>
-  <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved</div>
+  <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball &middot; All Rights Reserved</div>
 </footer>
-
 <script>
-const burger     = document.getElementById('nav-burger');
-const drawer     = document.getElementById('nav-drawer');
-const burgerIcon = document.getElementById('burger-icon');
-const openPath   = 'M4 6h16M4 12h16M4 18h16';
-const closePath  = 'M6 18L18 6M6 6l12 12';
-burger.addEventListener('click', () => {
-  const isOpen = drawer.classList.toggle('open');
-  burger.setAttribute('aria-expanded', isOpen);
-  burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
-});
+const burger=document.getElementById('nav-burger'),drawer=document.getElementById('nav-drawer'),bIcon=document.getElementById('burger-icon');
+burger.addEventListener('click',()=>{const o=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',o);bIcon.querySelector('path').setAttribute('d',o?'M6 18L18 6M6 6l12 12':'M4 6h16M4 12h16M4 18h16');});
 </script>
 </body>
 </html>
