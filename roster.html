@@ -495,13 +495,13 @@ function effClass(e) {
   return 'warn';
 }
 function srColor(r) {
-  if (!r) return '#888780';
+  if (r === null || r === undefined) return '#888780';
   if (r >= 2.0) return '#166534';
   if (r >= 1.5) return '#92400e';
   return '#991b1b';
 }
 function srClass(r) {
-  if (!r) return '';
+  if (r === null || r === undefined) return '';
   if (r >= 2.0) return 'good';
   if (r >= 1.5) return 'warn';
   return 'bad';
@@ -534,8 +534,14 @@ function buildCard(p) {
       cols.push({ val: s.digs,                               key: 'Dig' });
       cols.push({ val: s.srRtg ? s.srRtg.toFixed(2) : '—',  key: 'SR'  });
     } else {
-      cols.push({ val: s.kills,                              key: 'K'   });
-      cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff' });
+      // For hitters: prefer blocks as primary if kills is 0 (e.g. pure blocker)
+      if (s.kills === 0 && s.blocks > 0) {
+        cols.push({ val: s.blocks,                             key: 'Blk'  });
+        cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff'  });
+      } else {
+        cols.push({ val: s.kills,                              key: 'K'    });
+        cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff'  });
+      }
     }
   } else {
     cols.push({ val: '—',    key: 'Stats' });
@@ -595,8 +601,8 @@ function openModal(p) {
   var eff = calcEff(s.kills, s.errors, s.attempts);
   var html = '';
 
-  // ── ATTACK ──
-  if (s.attempts > 0) {
+  // ── ATTACK — suppress for setters (dump stats covered by Dump K/E in Setting) ──
+  if (s.attempts > 0 && p.role !== 'Setter') {
     var killPct = ((s.kills / s.attempts) * 100).toFixed(1);
     var errPct  = ((s.errors / s.attempts) * 100).toFixed(1);
     var effBarW = Math.max(2, Math.min(100, ((eff + 0.5) / 1.0) * 100));
@@ -629,17 +635,17 @@ function openModal(p) {
   }
 
   // ── SERVING ──
-  var svcTotal = (s.aces || 0) + (s.svcErr || 0);
+  var svcAttDisplay = (s.svcAtt !== null && s.svcAtt !== undefined) ? s.svcAtt : '—';
   html += '<div class="ms-title">Serving</div>' +
     '<div class="ms-grid">' +
-      cell(s.aces,                          'Aces',     s.aces >= 3 ? 'good' : '') +
-      cell(s.svcErr,                        'Svc Err',  s.svcErr >= 8 ? 'bad' : s.svcErr >= 5 ? 'warn' : '') +
-      cell(s.svcAtt || '—',               'Serve Att','') +
-      cell(s.sRtg ? s.sRtg.toFixed(2) : '—', 'Srv Rtg', '') +
+      cell(s.aces,                                          'Aces',     s.aces >= 3 ? 'good' : '') +
+      cell(s.svcErr,                                        'Svc Err',  s.svcErr >= 8 ? 'bad' : s.svcErr >= 5 ? 'warn' : '') +
+      cell(svcAttDisplay,                                   'Serve Att','') +
+      cell(s.sRtg ? s.sRtg.toFixed(2) : '—',              'Srv Rtg',  '') +
     '</div>';
 
-  // ── SERVE RECEIVE ──
-  if (s.srAtt > 0 && s.srRtg !== null) {
+  // ── SERVE RECEIVE — require min 5 receptions for a meaningful rating bar ──
+  if (s.srAtt >= 5 && s.srRtg !== null) {
     var srBarW = (s.srRtg / 3.0) * 100;
     html += '<div class="ms-title">Serve Receive</div>' +
       '<div class="ms-grid">' +
@@ -650,10 +656,13 @@ function openModal(p) {
       '</div>' +
       bar('Pass Rating (0 – 3 scale)', s.srRtg.toFixed(2) + ' / 3.00', srBarW, srColor(s.srRtg));
   } else if (s.attempts === 0 && (s.digs > 0 || s.blocks > 0)) {
+    // Bug 3 fix: Defense fallback — use 4 cells to match ms-grid repeat(4,1fr)
     html += '<div class="ms-title">Defense</div>' +
       '<div class="ms-grid">' +
-        cell(s.digs,   'Digs',   '') +
-        cell(s.blocks, 'Blocks', s.blocks >= 5 ? 'good' : '') +
+        cell(s.digs,   'Digs',          '') +
+        cell(s.blocks, 'Blocks',        s.blocks >= 5 ? 'good' : '') +
+        cell(s.srAtt || '—', 'SR Att',  '') +
+        cell(s.srRtg ? s.srRtg.toFixed(2) : '—', 'SR Rtg', s.srRtg ? srClass(s.srRtg) : '') +
       '</div>';
   }
 
