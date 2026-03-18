@@ -87,7 +87,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .card-bar { height: 5px; background: var(--gold); }
 .card-body { padding: 14px 14px 12px; }
 
-/* Gold dot = has stats */
 .player-card.has-stats::after {
   content: '';
   position: absolute;
@@ -119,7 +118,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   padding: 20px;
 }
 .modal-overlay.open { display: flex; }
-
 .modal {
   background: var(--white);
   max-width: 560px; width: 100%;
@@ -128,9 +126,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   animation: mIn 0.2s ease;
 }
 @keyframes mIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
-
 .modal-top-bar { height: 6px; background: var(--gold); }
-
 .modal-header {
   padding: 22px 26px 18px;
   border-bottom: 1px solid var(--rule);
@@ -148,10 +144,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
   transition: all 0.15s; flex-shrink: 0; line-height: 1;
 }
 .modal-close:hover { background: var(--soft); color: var(--ink); }
-
 .modal-body { padding: 22px 26px; }
-
-/* stat section */
 .ms-title {
   font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em;
   text-transform: uppercase; color: var(--muted);
@@ -164,19 +157,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .ms-val.bad  { color: var(--red); }
 .ms-val.warn { color: #92400e; }
 .ms-key { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-
-/* progress bars */
 .bar-wrap { margin-bottom: 18px; }
 .bar-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
 .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .bar-value { font-family: 'DM Serif Display', serif; font-size: 15px; line-height: 1; }
 .bar-track { height: 5px; background: var(--rule); border-radius: 3px; overflow: hidden; }
 .bar-fill  { height: 100%; border-radius: 3px; }
-
-/* no stats state */
 .no-stats { padding: 28px; text-align: center; background: var(--soft); }
 .no-stats p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
 .modal-footer {
   padding: 12px 26px; background: var(--soft);
   border-top: 1px solid var(--rule);
@@ -195,12 +183,10 @@ footer { background: var(--navy); color: var(--white); }
 .footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
 .footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 .page-header { animation: fadeUp 0.4s 0.05s both; }
 .page-wrap   { animation: fadeUp 0.4s 0.15s both; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-inner { padding: 0 20px; }
   .nav-brand-text { display: none; }
@@ -292,7 +278,7 @@ footer { background: var(--navy); color: var(--white); }
       <div class="section-count">13 Players</div>
     </div>
     <div class="section-coaches">Head Coach: Grant Shieh &nbsp;&middot;&nbsp; Asst. Coach: Chris D'Amore</div>
-    <div class="stats-note">&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>1 GP logged (vs. Wilson, Mar 14)</span></div>
+    <div class="stats-note">&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>3 GP logged &mdash; cumulative season totals</span></div>
     <div class="player-grid" id="varsityGrid"></div>
   </div>
 
@@ -339,60 +325,115 @@ footer { background: var(--navy); color: var(--white); }
 </footer>
 
 <script>
-// ─── DATA ───────────────────────────────────────────────────────────────────
+// ─── DATA (3-match cumulative totals) ────────────────────────────────────────
 var VARSITY = [
   {
-    jersey: '9', name: 'Adrian Liu', role: 'Middle',
-    height: "6'3\"", year: 'Sr',
-    stats: { gp:1, kills:3, errors:4, attempts:18, aces:0, svcErr:0, svcAtt:0,
-             blocks:2, digs:2, srRtg:null, srAtt:0, assists:0 }
+    jersey: '7', name: 'Ritvik Adoni', role: 'Setter',
+    height: "5'9\"", year: 'Sr',
+    stats: {
+      gp: 3, sp: 11,
+      kills: 1, errors: 2, attempts: 7,
+      aces: 1, svcErr: 6, svcAtt: 34, sRtg: 1.62,
+      srRtg: 1.59, srAtt: 17,
+      assists: 42, setAtt: 173, setPct: 0.243,
+      blocks: 1, digs: 28
+    }
   },
   {
     jersey: '1', name: 'Sritan Bhumireddy', role: 'Outside',
     height: "6'0\"", year: 'Sr',
-    stats: { gp:1, kills:6, errors:5, attempts:29, aces:0, svcErr:4, svcAtt:19,
-             blocks:1, digs:9, srRtg:2.42, srAtt:19, assists:1 }
+    stats: {
+      gp: 3, sp: 12,
+      kills: 17, errors: 15, attempts: 75,
+      aces: 2, svcErr: 12, svcAtt: 39, sRtg: 1.21,
+      srRtg: 2.12, srAtt: 58,
+      assists: 2, setAtt: 16,
+      blocks: 1, digs: 22
+    }
   },
   {
-    jersey: '7', name: 'Ritvik Adoni', role: 'Setter',
-    height: "5'9\"", year: 'Sr',
-    stats: { gp:1, kills:0, errors:2, attempts:3, aces:4, svcErr:2, svcAtt:15,
-             blocks:1, digs:8, srRtg:null, srAtt:1, assists:17, setAtt:84, setPct:0.202 }
+    jersey: '13', name: 'Arjun Sankar', role: 'Setter',
+    height: "5'10\"", year: 'Jr',
+    stats: {
+      gp: 1, sp: 3,
+      kills: 0, errors: 1, attempts: 3,
+      aces: 4, svcErr: 1, svcAtt: 14, sRtg: 2.29,
+      srRtg: null, srAtt: 0,
+      assists: 13, setAtt: 50, setPct: 0.260,
+      blocks: 0, digs: 5
+    }
   },
   {
     jersey: '18', name: 'Divyansh Ajmera', role: 'DS / Libero',
     height: "5'5\"", year: 'Sr',
-    stats: { gp:1, kills:0, errors:0, attempts:0, aces:1, svcErr:3, svcAtt:15,
-             blocks:0, digs:8, srRtg:1.54, srAtt:28, assists:1 }
+    stats: {
+      gp: 3, sp: 10,
+      kills: 0, errors: 0, attempts: 0,
+      aces: 3, svcErr: 4, svcAtt: 29, sRtg: 1.59,
+      srRtg: 1.63, srAtt: 48,
+      assists: 2, setAtt: 10,
+      blocks: 0, digs: 17
+    }
   },
   {
     jersey: '3', name: 'Samuel Joshy', role: 'DS',
     height: "5'6\"", year: 'Sr',
-    stats: { gp:1, kills:0, errors:0, attempts:0, aces:0, svcErr:1, svcAtt:1,
-             blocks:0, digs:1, srRtg:1.50, srAtt:4, assists:0 }
-  },
-  {
-    jersey: '—', name: 'Arjun Sankar', role: 'Setter',
-    height: "5'10\"", year: 'Jr',
-    stats: null
+    stats: {
+      gp: 2, sp: 4,
+      kills: 0, errors: 0, attempts: 0,
+      aces: 0, svcErr: 1, svcAtt: 1, sRtg: null,
+      srRtg: 1.43, srAtt: 7,
+      assists: 0, setAtt: 0,
+      blocks: 0, digs: 1
+    }
   },
   {
     jersey: '4', name: 'Parker LaVeyra', role: 'Outside',
     height: "6'2\"", year: 'Jr',
-    stats: { gp:1, kills:7, errors:8, attempts:32, aces:2, svcErr:4, svcAtt:16,
-             blocks:6, digs:4, srRtg:2.18, srAtt:22, assists:1 }
+    stats: {
+      gp: 3, sp: 12,
+      kills: 27, errors: 21, attempts: 84,
+      aces: 6, svcErr: 8, svcAtt: 36, sRtg: 1.86,
+      srRtg: 1.95, srAtt: 61,
+      assists: 3, setAtt: 13,
+      blocks: 8, digs: 16
+    }
   },
   {
     jersey: '8', name: 'Anish Yasa', role: 'Right Side',
     height: "5'7\"", year: 'Jr',
-    stats: { gp:1, kills:7, errors:1, attempts:17, aces:1, svcErr:4, svcAtt:21,
-             blocks:1, digs:10, srRtg:1.50, srAtt:8, assists:1 }
+    stats: {
+      gp: 3, sp: 12,
+      kills: 12, errors: 6, attempts: 47,
+      aces: 4, svcErr: 6, svcAtt: 56, sRtg: 1.86,
+      srRtg: 1.24, srAtt: 17,
+      assists: 2, setAtt: 10,
+      blocks: 1, digs: 23
+    }
   },
   {
-    jersey: '28', name: 'Sidd Madipadaga', role: 'Middle',
+    jersey: '28', name: 'Siddhanth Madipadaga', role: 'Middle',
     height: "6'3\"", year: 'Jr',
-    stats: { gp:1, kills:0, errors:4, attempts:14, aces:0, svcErr:3, svcAtt:14,
-             blocks:4, digs:1, srRtg:0.50, srAtt:2, assists:0 }
+    stats: {
+      gp: 3, sp: 12,
+      kills: 0, errors: 8, attempts: 29,
+      aces: 0, svcErr: 5, svcAtt: 28, sRtg: 1.32,
+      srRtg: 0.67, srAtt: 3,
+      assists: 0, setAtt: 0,
+      blocks: 7, digs: 7
+    }
+  },
+  {
+    jersey: '9', name: 'Adrian Liu', role: 'Middle',
+    height: "6'3\"", year: 'Sr',
+    stats: {
+      gp: 3, sp: 11,
+      kills: 11, errors: 9, attempts: 38,
+      aces: 0, svcErr: 2, svcAtt: 4, sRtg: 1.00,
+      srRtg: null, srAtt: 0,
+      assists: 0, setAtt: 3,
+      blocks: 5, digs: 3
+    }
   },
   {
     jersey: '—', name: 'Anish Dachepalli', role: 'Middle',
@@ -431,51 +472,47 @@ var JV = [
   { jersey:'—', name:'Vivaan Adiga',       role:'Setter',     height:"5'3\"",  year:'Fr', stats:null }
 ];
 
-// ─── HELPERS ────────────────────────────────────────────────────────────────
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
 function calcEff(k, e, a) {
   if (!a || a === 0) return null;
   return (k - e) / a;
 }
-
 function fmtEff(e) {
   if (e === null) return '—';
   return (e >= 0 ? '+' : '') + (e * 100).toFixed(1) + '%';
 }
-
 function effColor(e) {
   if (e === null) return '#888780';
   if (e >= 0.25) return '#166534';
   if (e >= 0.05) return '#92400e';
-  if (e < 0) return '#991b1b';
+  if (e < 0)     return '#991b1b';
   return '#0e1e45';
 }
-
 function effClass(e) {
   if (e === null) return '';
   if (e >= 0.25) return 'good';
-  if (e < 0) return 'bad';
+  if (e < 0)     return 'bad';
   return 'warn';
 }
-
 function srColor(r) {
-  if (!r || r === null) return '#888780';
-  if (r >= 2.3) return '#166534';
-  if (r >= 1.8) return '#92400e';
+  if (!r) return '#888780';
+  if (r >= 2.0) return '#166534';
+  if (r >= 1.5) return '#92400e';
   return '#991b1b';
 }
-
 function srClass(r) {
-  if (!r || r === null) return '';
-  if (r >= 2.3) return 'good';
-  if (r >= 1.8) return 'warn';
+  if (!r) return '';
+  if (r >= 2.0) return 'good';
+  if (r >= 1.5) return 'warn';
   return 'bad';
 }
-
 function srGrade(r) {
   if (!r) return '—';
   if (r >= 2.5) return 'A';
-  if (r >= 2.0) return 'B';
-  if (r >= 1.5) return 'C';
+  if (r >= 2.0) return 'B+';
+  if (r >= 1.7) return 'B';
+  if (r >= 1.4) return 'C+';
+  if (r >= 1.0) return 'C';
   return 'D';
 }
 
@@ -485,7 +522,6 @@ function buildCard(p) {
   var hasStats = s !== null;
   var eff = hasStats ? calcEff(s.kills, s.errors, s.attempts) : null;
 
-  // Pick 4 preview stats based on role
   var cols = [];
   cols.push({ val: p.height, key: 'Ht' });
   cols.push({ val: p.year,   key: 'Yr' });
@@ -495,15 +531,15 @@ function buildCard(p) {
       cols.push({ val: s.assists, key: 'Ast' });
       cols.push({ val: s.digs,    key: 'Dig' });
     } else if (p.role === 'DS' || p.role === 'DS / Libero') {
-      cols.push({ val: s.digs,                           key: 'Dig' });
-      cols.push({ val: s.srRtg ? s.srRtg.toFixed(2) : '—', key: 'SR'  });
+      cols.push({ val: s.digs,                               key: 'Dig' });
+      cols.push({ val: s.srRtg ? s.srRtg.toFixed(2) : '—',  key: 'SR'  });
     } else {
-      cols.push({ val: s.kills, key: 'K' });
-      cols.push({ val: eff !== null ? fmtEff(eff) : '—', key: 'Eff' });
+      cols.push({ val: s.kills,                              key: 'K'   });
+      cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff' });
     }
   } else {
-    cols.push({ val: '—', key: 'Stats' });
-    cols.push({ val: 'Soon', key: '' });
+    cols.push({ val: '—',    key: 'Stats' });
+    cols.push({ val: 'Soon', key: ''      });
   }
 
   var statsHTML = cols.map(function(c) {
@@ -529,7 +565,7 @@ function buildCard(p) {
   return div;
 }
 
-// ─── RENDER GRIDS ────────────────────────────────────────────────────────────
+// ─── RENDER GRIDS ─────────────────────────────────────────────────────────────
 function renderGrid(players, id) {
   var grid = document.getElementById(id);
   players.forEach(function(p) { grid.appendChild(buildCard(p)); });
@@ -537,7 +573,7 @@ function renderGrid(players, id) {
 renderGrid(VARSITY, 'varsityGrid');
 renderGrid(JV,      'jvGrid');
 
-// ─── OPEN MODAL ──────────────────────────────────────────────────────────────
+// ─── OPEN MODAL ───────────────────────────────────────────────────────────────
 function openModal(p) {
   var s = p.stats;
   document.getElementById('mNum').textContent  = p.jersey !== '—' ? '#' + p.jersey : p.jersey;
@@ -545,7 +581,7 @@ function openModal(p) {
   document.getElementById('mName').textContent = p.name;
   document.getElementById('mMeta').textContent = p.height + ' \u00b7 ' + p.year;
   document.getElementById('mFooter').textContent =
-    '2026 Season \u00b7 ' + (s ? s.gp + ' GP' : '0 GP') + ' \u00b7 vs. Wilson (Reading) \u2014 Mar 14, 2026';
+    '2026 Season \u00b7 ' + (s ? s.gp + ' GP \u00b7 ' + s.sp + ' Sets Played' : '0 GP') + ' \u00b7 Cumulative Totals';
 
   var body = document.getElementById('mBody');
   body.innerHTML = '';
@@ -559,7 +595,7 @@ function openModal(p) {
   var eff = calcEff(s.kills, s.errors, s.attempts);
   var html = '';
 
-  // ── ATTACK (anyone with attempts > 0) ──
+  // ── ATTACK ──
   if (s.attempts > 0) {
     var killPct = ((s.kills / s.attempts) * 100).toFixed(1);
     var errPct  = ((s.errors / s.attempts) * 100).toFixed(1);
@@ -567,58 +603,57 @@ function openModal(p) {
 
     html += '<div class="ms-title">Attacking</div>' +
       '<div class="ms-grid">' +
-        cell(s.kills,                      'Kills',    '') +
-        cell(s.errors,                     'Atk Err',  s.errors >= 6 ? 'bad' : '') +
-        cell(s.attempts,                   'Attempts', '') +
-        cell(s.blocks,                     'Blocks',   '') +
-        cell(fmtEff(eff),                  'Hit Eff.', effClass(eff)) +
-        cell(killPct + '%',                'Kill %',   '') +
-        cell(errPct + '%',                 'Error %',  parseFloat(errPct) > 25 ? 'bad' : '') +
-        cell(s.digs,                       'Digs',     '') +
+        cell(s.kills,             'Kills',    '') +
+        cell(s.errors,            'Atk Err',  s.errors >= 8 ? 'bad' : '') +
+        cell(s.attempts,          'Attempts', '') +
+        cell(s.blocks,            'Blocks',   s.blocks >= 5 ? 'good' : '') +
+        cell(fmtEff(eff),         'Hit Eff.', effClass(eff)) +
+        cell(killPct + '%',       'Kill %',   '') +
+        cell(errPct + '%',        'Error %',  parseFloat(errPct) > 28 ? 'bad' : '') +
+        cell(s.digs,              'Digs',     '') +
       '</div>' +
       bar('Hitting Efficiency', fmtEff(eff), effBarW, effColor(eff));
   }
 
-  // ── SETTING (setter role) ──
-  if (p.role === 'Setter' && s.assists !== undefined) {
-    var setPctStr = s.setPct !== undefined ? (s.setPct * 100).toFixed(1) + '%' : '—';
+  // ── SETTING ──
+  if (p.role === 'Setter' && s.assists > 0) {
+    var setPctStr = s.setPct !== undefined && s.setPct !== null
+      ? (s.setPct * 100).toFixed(1) + '%' : '—';
     html += '<div class="ms-title">Setting</div>' +
       '<div class="ms-grid">' +
-        cell(s.assists,          'Assists',  s.assists >= 15 ? 'good' : '') +
-        cell(s.setAtt || '—',   'Set Att',  '') +
-        cell(setPctStr,          'Set %',    '') +
-        cell(s.kills + ' / ' + s.errors, 'Dump K/E', '') +
+        cell(s.assists,                      'Assists',  s.assists >= 20 ? 'good' : '') +
+        cell(s.setAtt || '—',               'Set Att',  '') +
+        cell(setPctStr,                      'Set %',    '') +
+        cell(s.kills + ' / ' + s.errors,    'Dump K/E', '') +
       '</div>';
   }
 
   // ── SERVING ──
   var svcTotal = (s.aces || 0) + (s.svcErr || 0);
-  var acePctStr = svcTotal > 0 ? ((s.aces / svcTotal) * 100).toFixed(1) + '%' : '—';
   html += '<div class="ms-title">Serving</div>' +
     '<div class="ms-grid">' +
-      cell(s.aces,                     'Aces',     s.aces >= 2 ? 'good' : '') +
-      cell(s.svcErr,                   'Svc Err',  s.svcErr >= 4 ? 'bad' : '') +
-      cell(acePctStr,                  'Ace Rate', '') +
-      cell(s.svcAtt || svcTotal || '—','Serve Att','') +
+      cell(s.aces,                          'Aces',     s.aces >= 3 ? 'good' : '') +
+      cell(s.svcErr,                        'Svc Err',  s.svcErr >= 8 ? 'bad' : s.svcErr >= 5 ? 'warn' : '') +
+      cell(s.svcAtt || '—',               'Serve Att','') +
+      cell(s.sRtg ? s.sRtg.toFixed(2) : '—', 'Srv Rtg', '') +
     '</div>';
 
-  // ── SERVE RECEIVE (only if they have receptions) ──
+  // ── SERVE RECEIVE ──
   if (s.srAtt > 0 && s.srRtg !== null) {
     var srBarW = (s.srRtg / 3.0) * 100;
     html += '<div class="ms-title">Serve Receive</div>' +
       '<div class="ms-grid">' +
-        cell(s.srRtg.toFixed(2),  'SR Rating', srClass(s.srRtg)) +
-        cell(srGrade(s.srRtg),    'SR Grade',  srClass(s.srRtg)) +
-        cell(s.srAtt,             'Receptions','') +
-        cell(s.digs,              'Digs',      '') +
+        cell(s.srRtg.toFixed(2), 'SR Rating',   srClass(s.srRtg)) +
+        cell(srGrade(s.srRtg),   'SR Grade',    srClass(s.srRtg)) +
+        cell(s.srAtt,            'Receptions',  '') +
+        cell(s.digs,             'Digs',        '') +
       '</div>' +
       bar('Pass Rating (0 – 3 scale)', s.srRtg.toFixed(2) + ' / 3.00', srBarW, srColor(s.srRtg));
-  } else if (s.attempts === 0 && s.digs > 0) {
-    // DS/libero with no attack data — show defense summary
+  } else if (s.attempts === 0 && (s.digs > 0 || s.blocks > 0)) {
     html += '<div class="ms-title">Defense</div>' +
       '<div class="ms-grid">' +
         cell(s.digs,   'Digs',   '') +
-        cell(s.blocks, 'Blocks', '') +
+        cell(s.blocks, 'Blocks', s.blocks >= 5 ? 'good' : '') +
       '</div>';
   }
 
@@ -629,7 +664,6 @@ function openModal(p) {
 function cell(val, key, cls) {
   return '<div class="ms-cell"><div class="ms-val ' + cls + '">' + val + '</div><div class="ms-key">' + key + '</div></div>';
 }
-
 function bar(label, valStr, widthPct, color) {
   return '<div class="bar-wrap">' +
     '<div class="bar-label-row">' +
@@ -640,11 +674,10 @@ function bar(label, valStr, widthPct, color) {
   '</div>';
 }
 
-// ─── CLOSE MODAL ─────────────────────────────────────────────────────────────
+// ─── CLOSE MODAL ──────────────────────────────────────────────────────────────
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
 }
-
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
@@ -653,13 +686,12 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 
-// ─── NAV BURGER ──────────────────────────────────────────────────────────────
+// ─── NAV BURGER ───────────────────────────────────────────────────────────────
 var burger     = document.getElementById('nav-burger');
 var drawer     = document.getElementById('nav-drawer');
 var burgerIcon = document.getElementById('burger-icon');
 var openPath   = 'M4 6h16M4 12h16M4 18h16';
 var closePath  = 'M6 18L18 6M6 6l12 12';
-
 burger.addEventListener('click', function() {
   var isOpen = drawer.classList.toggle('open');
   burger.setAttribute('aria-expanded', isOpen);
