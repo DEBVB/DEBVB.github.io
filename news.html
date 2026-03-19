@@ -60,6 +60,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;padding:3px 7px;flex-shrink:0;line-height:1.4}
 .tag-new{background:var(--navy);color:var(--white)}
 .tag-result{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.tag-win{background:#dcfce7;color:#166534;border:1px solid #86efac}
 .tag-info{background:var(--gold-light);color:var(--navy);border:1px solid var(--gold)}
 .tag-archive{background:var(--soft);color:var(--muted);border:1px solid var(--rule)}
 .post-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);line-height:1.2;flex:1;min-width:0}
@@ -71,7 +72,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .post-body strong{font-weight:700;color:var(--ink)}
 
 /* SCOREBOARD */
-.scoreboard{border:1px solid var(--rule);overflow:hidden;margin:14px 0 16px;width:100%}
+.scoreboard{border:1px solid var(--rule);overflow:hidden;margin:14px 0 0;width:100%}
 .sb-header{background:var(--navy);padding:7px 10px;display:flex;align-items:center;justify-content:space-between;gap:6px}
 .sb-final{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .sb-set-labels{display:flex;flex-shrink:0}
@@ -96,21 +97,36 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 /* STANDOUT CALLOUT */
 .post-standout{background:var(--gold-light);border-left:4px solid var(--gold);padding:11px 13px;margin:13px 0;font-size:13.5px;color:var(--navy);line-height:1.6}
 
-/* ACCORDION */
+/* SECTION DIVIDER */
 .older-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:18px 0 10px;display:flex;align-items:center;gap:10px}
 .older-label::before,.older-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+
+/* ACCORDION — shared by both match recaps and info posts */
 .post-accordion{background:var(--white);border:1px solid var(--rule);margin-bottom:2px}
 .acc-trigger{width:100%;background:none;border:none;padding:13px 14px;display:flex;align-items:center;gap:9px;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;min-height:50px}
 .acc-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 .acc-tags{flex-shrink:0}
 .acc-title{font-family:'DM Serif Display',serif;font-size:15px;color:var(--ink);line-height:1.2;flex:1;min-width:0}
 .acc-meta{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;flex-shrink:0}
-.acc-chevron{flex-shrink:0;transition:transform .22s ease;color:var(--muted)}
+.acc-chevron{flex-shrink:0;transition:transform .25s ease;color:var(--muted)}
 .post-accordion.open .acc-chevron{transform:rotate(180deg)}
-.acc-body{display:none;font-size:13.5px;color:#3d3830;line-height:1.75;border-top:1px solid var(--rule);padding:13px 14px 16px}
+.acc-body{display:none;border-top:1px solid var(--rule);padding:14px 14px 18px}
 .post-accordion.open .acc-body{display:block}
-.acc-body a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
-.acc-body strong{font-weight:700;color:var(--ink)}
+
+/* Text content inside accordion bodies */
+.acc-body-text{font-size:13.5px;color:#3d3830;line-height:1.75}
+.acc-body-text p{margin-bottom:12px}
+.acc-body-text p:last-child{margin-bottom:0}
+.acc-body-text a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
+.acc-body-text strong{font-weight:700;color:var(--ink)}
+
+/* Simple accordion body (info/admin posts) */
+.acc-body-simple{font-size:13.5px;color:#3d3830;line-height:1.75}
+.acc-body-simple a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
+.acc-body-simple strong{font-weight:700;color:var(--ink)}
+
+/* Recap meta line inside accordion */
+.acc-recap-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:4px;padding-top:2px}
 
 /* FOOTER */
 footer{background:var(--navy);color:var(--white)}
@@ -137,7 +153,7 @@ footer{background:var(--navy);color:var(--white)}
 .post-title{font-size:20px}
 .acc-trigger{padding:14px 18px}
 .acc-title{font-size:16px}
-.acc-body{padding:13px 18px 16px}
+.acc-body{padding:16px 18px 20px}
 .sb-team{font-size:13px;padding:12px 14px}
 .sb-cell{font-size:20px;min-width:42px;padding:11px 4px}
 }
@@ -155,7 +171,8 @@ footer{background:var(--navy);color:var(--white)}
 .post-body{font-size:14.5px}
 .acc-trigger{padding:16px 24px}
 .acc-title{font-size:17px}
-.acc-body{padding:13px 24px 20px;font-size:14.5px}
+.acc-body{padding:16px 24px 22px}
+.acc-body-text{font-size:14.5px}
 .footer-inner{grid-template-columns:repeat(3,1fr);padding:48px 48px 32px;text-align:left}
 .footer-bottom{padding:16px 48px 24px}
 }
@@ -205,92 +222,102 @@ footer{background:var(--navy);color:var(--white)}
 <!-- MAIN -->
 <div class="page-wrap">
   <div class="posts">
-    
-    <!-- HENDERSON RECAP — most recent, shown first -->
-<div class="post">
-  <div class="post-top">
-    <span class="tag tag-result" style="background:#dcfce7;color:#166534;border:1px solid #86efac;">Match Result</span>
-    <div class="post-title">Cougars Roll to First Win of the Season, Sweep Henderson 3&ndash;0</div>
-  </div>
-  <div class="post-date">March 19, 2026 &middot; Home &middot; Season Record: 1&ndash;2</div>
-  <div class="post-body">
 
-    <div class="scoreboard">
-      <div class="sb-header">
-        <span class="sb-final">Final &mdash; Downingtown East wins 3&ndash;0</span>
-        <div class="sb-set-labels">
-          <div class="sb-sl">S1</div>
-          <div class="sb-sl">S2</div>
-          <div class="sb-sl">S3</div>
-        </div>
-      </div>
-      <div class="sb-row">
-        <div class="sb-team">
-          <span class="t-full">Downingtown East</span>
-          <span class="t-abbr">DE</span>
-        </div>
-        <div class="sb-scores">
-          <div class="sb-cell won">25</div>
-          <div class="sb-cell won">25</div>
-          <div class="sb-cell won">25</div>
-        </div>
-      </div>
-      <div class="sb-row">
-        <div class="sb-team" style="color:var(--navy)">
-          <span class="t-full">Henderson</span>
-          <span class="t-abbr">HEN</span>
-        </div>
-        <div class="sb-scores">
-          <div class="sb-cell">7</div>
-          <div class="sb-cell">5</div>
-          <div class="sb-cell">8</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stat-strip">
-      <div class="stat-item">
-        <div class="stat-num">21</div>
-        <div class="stat-label">Kills</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">19</div>
-        <div class="stat-label">Assists</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">9</div>
-        <div class="stat-label">Aces</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Blocks</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Digs</div>
-      </div>
-    </div>
-
-    <p>The Cougars earned their first win of the 2026 season Wednesday night, sweeping Henderson in three sets in a match that was never in doubt. Against a program in its first year of varsity competition, Downingtown East controlled every aspect of play &mdash; managing a steady stream of freeballs cleanly and cashing in on a high volume of Henderson service errors to keep rallies short and points quick.</p>
-
-    <div class="post-standout">
-      <strong>A clean, efficient three sets.</strong> With Henderson still finding its footing as a first-year program, the Cougars never faced meaningful defensive pressure &mdash; the back row had little to do. The focus became execution: clean passing, organized offense, and staying sharp throughout.
-    </div>
-
-    <p>The box score reflects the nature of the night &mdash; relatively modest kill numbers in a match where the opposition&rsquo;s own errors did much of the work. The more valuable takeaway is rhythm. After two competitive, draining road and home tests to open the season, a match like this offered the entire roster time on the court, settled energy through three sets, and a chance to build routine and confidence heading into league play.</p>
-
-    <p>Credit to Henderson for competing &mdash; building a program from scratch is no small thing. The Cougars can now turn the page to 1&ndash;2 and shift focus back to the grind of Ches-Mont play.</p>
-
-  </div>
-</div>
-    <!-- LANSDALE CATHOLIC RECAP — most recent, shown first -->
+    <!-- ═══════════════════════════════════════════
+         HENDERSON RECAP — pinned full post (most recent)
+         ═══════════════════════════════════════════ -->
     <div class="post">
       <div class="post-top">
-        <span class="tag tag-result">Match Result</span>
-        <div class="post-title">Cougars Fall 3&ndash;1 at Lansdale Catholic in Competitive Road Test</div>
+        <span class="tag tag-win">Match Result</span>
+        <div class="post-title">Cougars Roll to First Win of the Season, Sweep Henderson 3&ndash;0</div>
       </div>
-      <div class="post-date">March 17, 2026 &middot; Away &middot; Season Record: 0&ndash;2</div>
+      <div class="post-date">March 19, 2026 &middot; Home &middot; Season Record: 1&ndash;2</div>
       <div class="post-body">
+
+        <div class="scoreboard">
+          <div class="sb-header">
+            <span class="sb-final">Final &mdash; Downingtown East wins 3&ndash;0</span>
+            <div class="sb-set-labels">
+              <div class="sb-sl">S1</div>
+              <div class="sb-sl">S2</div>
+              <div class="sb-sl">S3</div>
+            </div>
+          </div>
+          <div class="sb-row">
+            <div class="sb-team">
+              <span class="t-full">Downingtown East</span>
+              <span class="t-abbr">DE</span>
+            </div>
+            <div class="sb-scores">
+              <div class="sb-cell won">25</div>
+              <div class="sb-cell won">25</div>
+              <div class="sb-cell won">25</div>
+            </div>
+          </div>
+          <div class="sb-row">
+            <div class="sb-team" style="color:var(--navy)">
+              <span class="t-full">Henderson</span>
+              <span class="t-abbr">HEN</span>
+            </div>
+            <div class="sb-scores">
+              <div class="sb-cell">7</div>
+              <div class="sb-cell">5</div>
+              <div class="sb-cell">8</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat-item">
+            <div class="stat-num">21</div>
+            <div class="stat-label">Kills</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">19</div>
+            <div class="stat-label">Assists</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">9</div>
+            <div class="stat-label">Aces</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Blocks</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Digs</div>
+          </div>
+        </div>
+
+        <p>The Cougars earned their first win of the 2026 season Wednesday night, sweeping Henderson in three sets in a match that was never in doubt. Against a program in its first year of varsity competition, Downingtown East controlled every aspect of play &mdash; managing a steady stream of freeballs cleanly and cashing in on a high volume of Henderson service errors to keep rallies short and points quick.</p>
+
+        <div class="post-standout">
+          <strong>A clean, efficient three sets.</strong> With Henderson still finding its footing as a first-year program, the Cougars never faced meaningful defensive pressure &mdash; the back row had little to do. The focus became execution: clean passing, organized offense, and staying sharp throughout.
+        </div>
+
+        <p>The box score reflects the nature of the night &mdash; relatively modest kill numbers in a match where the opposition&rsquo;s own errors did much of the work. The more valuable takeaway is rhythm. After two competitive, draining road and home tests to open the season, a match like this offered the entire roster time on the court, settled energy through three sets, and a chance to build routine and confidence heading into league play.</p>
+
+        <p>Credit to Henderson for competing &mdash; building a program from scratch is no small thing. The Cougars can now turn the page to 1&ndash;2 and shift focus back to the grind of Ches-Mont play.</p>
+
+      </div>
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="older-label">Previous Results</div>
+
+    <!-- ═══════════════════════════════════════════
+         LANSDALE CATHOLIC — collapsible recap
+         ═══════════════════════════════════════════ -->
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+        <div class="acc-tags"><span class="tag tag-result">Match Result</span></div>
+        <div class="acc-title">Cougars Fall 3&ndash;1 at Lansdale Catholic in Competitive Road Test</div>
+        <div class="acc-meta">Mar 17 &middot; 0&ndash;2</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
+        <div class="acc-recap-meta">March 17, 2026 &middot; Away &middot; Season Record: 0&ndash;2</div>
 
         <div class="scoreboard">
           <div class="sb-header">
@@ -351,26 +378,32 @@ footer{background:var(--navy);color:var(--white)}
           </div>
         </div>
 
-        <p>Downingtown East dropped a 3&ndash;1 decision on the road at Lansdale Catholic, with the Crusaders taking sets one, three, and four to close it out. The Cougars&rsquo; lone set win came in set two &mdash; a hard-earned 25&ndash;23 answer that showed they could fight back. The effort across all four sets was genuine, and the statistical output speaks to a team that competed the full night.</p>
+        <div class="acc-body-text">
+          <p>Downingtown East dropped a 3&ndash;1 decision on the road at Lansdale Catholic, with the Crusaders taking sets one, three, and four to close it out. The Cougars&rsquo; lone set win came in set two &mdash; a hard-earned 25&ndash;23 answer that showed they could fight back. The effort across all four sets was genuine, and the statistical output speaks to a team that competed the full night.</p>
 
-        <div class="post-standout">
-          <strong>Parker LaVeyra (#4) was the offensive engine.</strong> LaVeyra paced the attack with 15 kills on a .162 hitting percentage &mdash; doing the heavy lifting throughout and consistently creating opportunities when the team needed a spark.
+          <div class="post-standout">
+            <strong>Parker LaVeyra (#4) was the offensive engine.</strong> LaVeyra paced the attack with 15 kills on a .162 hitting percentage &mdash; doing the heavy lifting throughout and consistently creating opportunities when the team needed a spark.
+          </div>
+
+          <p><strong>Ritvik Adoni (#7)</strong> orchestrated the offense with 25 assists, keeping the attack varied and forcing Lansdale Catholic to adjust throughout. Behind the ten-foot line, <strong>Anish Yasa (#8)</strong> was a stabilizing presence with 12 digs, and <strong>Sritan Bhumireddy (#1)</strong> contributed 7 kills and 8 digs in a well-rounded performance. The team&rsquo;s 56-dig total speaks to a back row that competed on every ball.</p>
+
+          <p>Two matches in, two competitive results against quality opponents. The record doesn&rsquo;t reflect the kind of volleyball this team is capable of playing &mdash; but the experience from these close matches will add up. The standard is there. The next step is finishing.</p>
         </div>
-
-        <p><strong>Ritvik Adoni (#7)</strong> orchestrated the offense with 25 assists, keeping the attack varied and forcing Lansdale Catholic to adjust throughout. Behind the ten-foot line, <strong>Anish Yasa (#8)</strong> was a stabilizing presence with 12 digs, and <strong>Sritan Bhumireddy (#1)</strong> contributed 7 kills and 8 digs in a well-rounded performance. The team&rsquo;s 56-dig total speaks to a back row that competed on every ball.</p>
-
-        <p>Two matches in, two competitive results against quality opponents. The record doesn&rsquo;t reflect the kind of volleyball this team is capable of playing &mdash; but the experience from these close matches will add up. The standard is there. The next step is finishing.</p>
       </div>
     </div>
 
-    <!-- WILSON RECAP -->
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-result">Match Result</span>
-        <div class="post-title">Match Recap: Cougars Battle Back but Fall to Wilson 2&ndash;3</div>
-      </div>
-      <div class="post-date">March 14, 2026 &middot; Home &middot; Season Record: 0&ndash;1</div>
-      <div class="post-body">
+    <!-- ═══════════════════════════════════════════
+         WILSON — collapsible recap
+         ═══════════════════════════════════════════ -->
+    <div class="post-accordion">
+      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+        <div class="acc-tags"><span class="tag tag-result">Match Result</span></div>
+        <div class="acc-title">Match Recap: Cougars Battle Back but Fall to Wilson 2&ndash;3</div>
+        <div class="acc-meta">Mar 14 &middot; 0&ndash;1</div>
+        <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="acc-body">
+        <div class="acc-recap-meta">March 14, 2026 &middot; Home &middot; Season Record: 0&ndash;1</div>
 
         <div class="scoreboard">
           <div class="sb-header">
@@ -411,21 +444,47 @@ footer{background:var(--navy);color:var(--white)}
           </div>
         </div>
 
-        <p>DE opened the 2026 season at home against Wilson (Reading) in a five-set battle that showcased both the character and potential of this group. Down 0&ndash;2 after the first two sets, the Cougars did something that matters &mdash; they didn&rsquo;t fold. Sets 3 and 4 belonged to Downingtown East, forcing a deciding fifth set and showing real resolve under pressure.</p>
-
-        <div class="post-standout">
-          <strong>Sets 3 &amp; 4 were outstanding.</strong> Winning back-to-back sets against a strong Wilson program after falling behind 0&ndash;2 is a significant mental and physical achievement. The Cougars showed they can compete at this level when they&rsquo;re locked in.
+        <div class="stat-strip" style="margin-bottom:14px">
+          <div class="stat-item">
+            <div class="stat-num">&mdash;</div>
+            <div class="stat-label">Kills</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">&mdash;</div>
+            <div class="stat-label">Digs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">&mdash;</div>
+            <div class="stat-label">Assists</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">&mdash;</div>
+            <div class="stat-label">Aces</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">&mdash;</div>
+            <div class="stat-label">Blocks</div>
+          </div>
         </div>
 
-        <p>The fifth set didn&rsquo;t go DE&rsquo;s way, but this match tells a real story about a team with fight in it. <strong>Anish Yasa (#8)</strong> was the standout performer, leading the offense with efficiency and contributing in every phase of the game. The front row was active all night, putting up an impressive block total that disrupted Wilson&rsquo;s rhythm throughout.</p>
+        <div class="acc-body-text">
+          <p>DE opened the 2026 season at home against Wilson (Reading) in a five-set battle that showcased both the character and potential of this group. Down 0&ndash;2 after the first two sets, the Cougars did something that matters &mdash; they didn&rsquo;t fold. Sets 3 and 4 belonged to Downingtown East, forcing a deciding fifth set and showing real resolve under pressure.</p>
 
-        <p>Next up: <strong><a href="/schedule.html">@ Lansdale Catholic &mdash; Mon, Mar 16, 5:00 PM</a></strong></p>
+          <div class="post-standout">
+            <strong>Sets 3 &amp; 4 were outstanding.</strong> Winning back-to-back sets against a strong Wilson program after falling behind 0&ndash;2 is a significant mental and physical achievement. The Cougars showed they can compete at this level when they&rsquo;re locked in.
+          </div>
+
+          <p>The fifth set didn&rsquo;t go DE&rsquo;s way, but this match tells a real story about a team with fight in it. <strong>Anish Yasa (#8)</strong> was the standout performer, leading the offense with efficiency and contributing in every phase of the game. The front row was active all night, putting up an impressive block total that disrupted Wilson&rsquo;s rhythm throughout.</p>
+        </div>
       </div>
     </div>
 
-    <!-- ACCORDION — earlier posts -->
+    <!-- DIVIDER -->
     <div class="older-label">Earlier Posts</div>
 
+    <!-- ═══════════════════════════════════════════
+         ADMIN / INFO ACCORDIONS
+         ═══════════════════════════════════════════ -->
     <div class="post-accordion">
       <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-new">New</span></div>
@@ -434,7 +493,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        There will be a <strong>parent meeting in the library immediately following Friday&rsquo;s practice.</strong> All parents and guardians are encouraged to attend &mdash; a great opportunity to connect with the coaching staff and stay informed about the season.
+        <div class="acc-body-simple">
+          There will be a <strong>parent meeting in the library immediately following Friday&rsquo;s practice.</strong> All parents and guardians are encouraged to attend &mdash; a great opportunity to connect with the coaching staff and stay informed about the season.
+        </div>
       </div>
     </div>
 
@@ -446,7 +507,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        Following <strong>Saturday&rsquo;s practice (9:00&ndash;11:30 AM)</strong>, all JV players are invited to stay for a <strong>&ldquo;Learning the Book&rdquo; clinic</strong>. Players will be taught how to keep the official scorebook during games.
+        <div class="acc-body-simple">
+          Following <strong>Saturday&rsquo;s practice (9:00&ndash;11:30 AM)</strong>, all JV players are invited to stay for a <strong>&ldquo;Learning the Book&rdquo; clinic</strong>. Players will be taught how to keep the official scorebook during games.
+        </div>
       </div>
     </div>
 
@@ -458,7 +521,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        All players are reminded to <strong>pay their activity fee</strong> as soon as possible. Fees can be paid through the school&rsquo;s athletic office. Reach out to <a href="/contact.html">Coach Shieh</a> with any questions.
+        <div class="acc-body-simple">
+          All players are reminded to <strong>pay their activity fee</strong> as soon as possible. Fees can be paid through the school&rsquo;s athletic office. Reach out to <a href="/contact.html">Coach Shieh</a> with any questions.
+        </div>
       </div>
     </div>
 
@@ -470,7 +535,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        Tryouts have concluded and rosters are finalized. First game is <strong>March 10 vs. Souderton</strong> &mdash; JV at 3:30 PM, Varsity at 5:00 PM. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
+        <div class="acc-body-simple">
+          Tryouts have concluded and rosters are finalized. First game is <strong>March 10 vs. Souderton</strong> &mdash; JV at 3:30 PM, Varsity at 5:00 PM. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
+        </div>
       </div>
     </div>
 
@@ -482,7 +549,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        Tryouts for the 2026 season took place from <strong>March 2nd through March 4th</strong>. Rosters were finalized at the conclusion of Day 3. All prospective players must have their physical forms submitted to the athletic office before stepping onto the court.
+        <div class="acc-body-simple">
+          Tryouts for the 2026 season took place from <strong>March 2nd through March 4th</strong>. Rosters were finalized at the conclusion of Day 3. All prospective players must have their physical forms submitted to the athletic office before stepping onto the court.
+        </div>
       </div>
     </div>
 
@@ -494,7 +563,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        A mandatory pre-season meeting for all interested players and their parents was held on February 25th at 7:00 PM in the school cafeteria. The spring schedule and program expectations were discussed.
+        <div class="acc-body-simple">
+          A mandatory pre-season meeting for all interested players and their parents was held on February 25th at 7:00 PM in the school cafeteria. The spring schedule and program expectations were discussed.
+        </div>
       </div>
     </div>
 
@@ -506,7 +577,9 @@ footer{background:var(--navy);color:var(--white)}
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div class="acc-body">
-        A huge congratulations to the graduating class of 2025! We thank our senior players for their dedication, leadership, and hard work over the years. Best of luck in all your future endeavors!
+        <div class="acc-body-simple">
+          A huge congratulations to the graduating class of 2025! We thank our senior players for their dedication, leadership, and hard work over the years. Best of luck in all your future endeavors!
+        </div>
       </div>
     </div>
 
