@@ -12,24 +12,11 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --ink: #0d0f14;
-  --navy: #0e1e45;
-  --gold: #e8b000;
-  --gold-light: #fdf3d0;
-  --cream: #faf8f3;
-  --white: #ffffff;
-  --rule: #d4cec3;
-  --muted: #7a7266;
-  --soft: #f2f0ea;
-  --green: #166534;
-  --green-bg: #dcfce7;
-  --red: #991b1b;
-  --red-bg: #fee2e2;
+  --ink: #0d0f14; --navy: #0e1e45; --gold: #e8b000; --gold-light: #fdf3d0;
+  --cream: #faf8f3; --white: #ffffff; --rule: #d4cec3; --muted: #7a7266;
+  --soft: #f2f0ea; --green: #166534; --green-bg: #dcfce7; --red: #991b1b; --red-bg: #fee2e2;
 }
-
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-
-/* ── NAV ── */
 .nav-wrap { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 0; z-index: 200; }
 .nav-inner { padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
@@ -50,19 +37,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .nav-drawer a.active { background: var(--navy); color: var(--white); }
 .nav-drawer a:last-child { border-bottom: none; }
 .nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
-
-/* ── PAGE HEADER ── */
 .page-header { background: var(--navy); border-bottom: 5px solid var(--gold); padding: 40px 48px 36px; }
 .kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 .page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); color: var(--white); line-height: 1; letter-spacing: -1px; }
 .page-header h1 em { font-style: italic; color: var(--gold); }
 .page-header-sub { margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
-
-/* ── MAIN WRAP ── */
 .page-wrap { max-width: 1100px; margin: 0 auto; padding: 52px 48px 80px; }
 .roster-section { margin-bottom: 56px; }
 .roster-section:last-child { margin-bottom: 0; }
-
 .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 6px; }
 .section-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink); white-space: nowrap; letter-spacing: -0.5px; }
 .section-rule { height: 3px; background: var(--ink); flex: 1; }
@@ -70,32 +52,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .section-coaches { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 8px; }
 .stats-note { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 20px; text-transform: uppercase; }
 .stats-note span { color: var(--navy); font-weight: 500; }
-
-/* ── PLAYER GRID ── */
 .player-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
-
-/* ── PLAYER CARD ── */
-.player-card {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  transition: box-shadow 0.18s, transform 0.15s;
-  position: relative;
-}
+.player-card { background: var(--white); border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.18s, transform 0.15s; position: relative; }
 .player-card.clickable { cursor: pointer; }
 .player-card.clickable:hover { box-shadow: 4px 4px 0 var(--navy); transform: translateY(-2px); }
 .card-bar { height: 5px; background: var(--gold); }
 .card-body { padding: 14px 14px 12px; }
-
-.player-card.has-stats::after {
-  content: '';
-  position: absolute;
-  top: 10px; right: 10px;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--gold);
-}
-
+.player-card.has-stats::after { content: ''; position: absolute; top: 10px; right: 10px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
 .card-jersey { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--navy); line-height: 1; letter-spacing: -1px; margin-bottom: 4px; }
 .card-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; background: var(--navy); color: var(--white); margin-bottom: 8px; }
 .card-name { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
@@ -106,50 +69,22 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .cs-val { font-family: 'DM Serif Display', serif; font-size: 13px; color: var(--navy); line-height: 1; display: block; }
 .cs-key { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 3px; }
 .card-hint { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; margin-top: 8px; }
-
-/* ── MODAL ── */
-.modal-overlay {
-  position: fixed; inset: 0;
-  background: rgba(13,15,20,0.7);
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+.modal-overlay { position: fixed; inset: 0; background: rgba(13,15,20,0.7); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: var(--white);
-  max-width: 560px; width: 100%;
-  border: 1px solid var(--rule);
-  max-height: 90vh; overflow-y: auto;
-  animation: mIn 0.2s ease;
-}
+.modal { background: var(--white); max-width: 560px; width: 100%; border: 1px solid var(--rule); max-height: 90vh; overflow-y: auto; animation: mIn 0.2s ease; }
 @keyframes mIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 .modal-top-bar { height: 6px; background: var(--gold); }
-.modal-header {
-  padding: 22px 26px 18px;
-  border-bottom: 1px solid var(--rule);
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
-}
+.modal-header { padding: 22px 26px 18px; border-bottom: 1px solid var(--rule); display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
 .mh-left { display: flex; align-items: flex-start; gap: 14px; flex: 1; }
 .mh-num { font-family: 'DM Serif Display', serif; font-size: 60px; color: var(--navy); line-height: 1; letter-spacing: -2px; margin-top: -4px; }
 .mh-info { flex: 1; }
 .mh-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; background: var(--navy); color: var(--white); margin-bottom: 6px; }
 .mh-name { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--ink); line-height: 1.1; }
 .mh-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 5px; letter-spacing: 0.04em; }
-.modal-close {
-  background: none; border: 1px solid var(--rule); cursor: pointer;
-  font-size: 16px; color: var(--muted); padding: 5px 9px; border-radius: 4px;
-  transition: all 0.15s; flex-shrink: 0; line-height: 1;
-}
+.modal-close { background: none; border: 1px solid var(--rule); cursor: pointer; font-size: 16px; color: var(--muted); padding: 5px 9px; border-radius: 4px; transition: all 0.15s; flex-shrink: 0; line-height: 1; }
 .modal-close:hover { background: var(--soft); color: var(--ink); }
 .modal-body { padding: 22px 26px; }
-.ms-title {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em;
-  text-transform: uppercase; color: var(--muted);
-  padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 12px;
-}
+.ms-title { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--rule); margin-bottom: 12px; }
 .ms-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 18px; }
 .ms-cell { background: var(--soft); padding: 11px 8px; text-align: center; }
 .ms-val { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); line-height: 1; letter-spacing: -0.5px; }
@@ -165,14 +100,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .bar-fill  { height: 100%; border-radius: 3px; }
 .no-stats { padding: 28px; text-align: center; background: var(--soft); }
 .no-stats p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-.modal-footer {
-  padding: 12px 26px; background: var(--soft);
-  border-top: 1px solid var(--rule);
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
-}
-
-/* ── FOOTER ── */
+.modal-footer { padding: 12px 26px; background: var(--soft); border-top: 1px solid var(--rule); font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 footer { background: var(--navy); color: var(--white); }
 .footer-inner { max-width: 1100px; margin: 0 auto; padding: 48px 48px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
 .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
@@ -182,33 +110,25 @@ footer { background: var(--navy); color: var(--white); }
 .footer-col a:hover { color: var(--gold); }
 .footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
 .footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
-
 @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 .page-header { animation: fadeUp 0.4s 0.05s both; }
 .page-wrap   { animation: fadeUp 0.4s 0.15s both; }
-
 @media (max-width: 900px) {
-  .nav-inner { padding: 0 20px; }
-  .nav-brand-text { display: none; }
-  .nav-links { display: none; }
-  .nav-burger { display: block; }
-  .page-header { padding: 28px 20px 24px; }
-  .page-wrap { padding: 36px 24px 60px; }
+  .nav-inner { padding: 0 20px; } .nav-brand-text { display: none; }
+  .nav-links { display: none; } .nav-burger { display: block; }
+  .page-header { padding: 28px 20px 24px; } .page-wrap { padding: 36px 24px 60px; }
   .player-grid { grid-template-columns: repeat(4,1fr); }
 }
 @media (max-width: 600px) {
   .page-wrap { padding: 28px 16px 60px; }
   .player-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
-  .section-title { font-size: 22px; }
-  .ms-grid { grid-template-columns: repeat(2,1fr); }
+  .section-title { font-size: 22px; } .ms-grid { grid-template-columns: repeat(2,1fr); }
   .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
   .footer-bottom { padding: 14px 20px 20px; }
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <div class="nav-wrap">
   <div class="nav-inner">
     <a href="/index.html" class="nav-brand">
@@ -221,34 +141,24 @@ footer { background: var(--navy); color: var(--white); }
       </svg>
     </button>
     <div class="nav-links">
-      <a href="/index.html">Home</a>
-      <a href="/schedule.html">Schedule</a>
-      <a href="/coaches.html">Coaches</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/roster.html" class="active">Roster</a>
-      <a href="/news.html">News</a>
+      <a href="/index.html">Home</a><a href="/schedule.html">Schedule</a>
+      <a href="/coaches.html">Coaches</a><a href="/contact.html">Contact</a>
+      <a href="/roster.html" class="active">Roster</a><a href="/news.html">News</a>
       <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
     </div>
   </div>
   <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
-    <a href="/index.html">Home</a>
-    <a href="/schedule.html">Schedule</a>
-    <a href="/coaches.html">Coaches</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/roster.html" class="active">Roster</a>
-    <a href="/news.html">News</a>
+    <a href="/index.html">Home</a><a href="/schedule.html">Schedule</a>
+    <a href="/coaches.html">Coaches</a><a href="/contact.html">Contact</a>
+    <a href="/roster.html" class="active">Roster</a><a href="/news.html">News</a>
     <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
   </nav>
 </div>
-
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="kicker">Downingtown East &middot; PIAA District 1 &middot; 2026 Season</div>
   <h1>2026 Season <em>Roster</em></h1>
   <div class="page-header-sub">Click any player card to view season stats &middot; Gold dot = stats available</div>
 </div>
-
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
     <div class="modal-top-bar"></div>
@@ -267,10 +177,7 @@ footer { background: var(--navy); color: var(--white); }
     <div class="modal-footer" id="mFooter"></div>
   </div>
 </div>
-
-<!-- MAIN -->
 <div class="page-wrap">
-
   <div class="roster-section">
     <div class="section-header">
       <div class="section-title">Varsity</div>
@@ -278,10 +185,9 @@ footer { background: var(--navy); color: var(--white); }
       <div class="section-count">13 Players</div>
     </div>
     <div class="section-coaches">Head Coach: Grant Shieh &nbsp;&middot;&nbsp; Asst. Coach: Chris D'Amore</div>
-    <div class="stats-note">&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>3 GP logged &mdash; cumulative season totals</span></div>
+    <div class="stats-note">&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>4 GP logged &mdash; cumulative season totals</span></div>
     <div class="player-grid" id="varsityGrid"></div>
   </div>
-
   <div class="roster-section">
     <div class="section-header">
       <div class="section-title">Junior Varsity</div>
@@ -291,19 +197,14 @@ footer { background: var(--navy); color: var(--white); }
     <div class="section-coaches">Coach: Chris D'Amore</div>
     <div class="player-grid" id="jvGrid"></div>
   </div>
-
 </div>
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/schedule.html">Schedule</a></li>
-        <li><a href="/coaches.html">Coaches</a></li>
-        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/index.html">Home</a></li><li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/coaches.html">Coaches</a></li><li><a href="/contact.html">Contact</a></li>
         <li><a href="/news.html">News</a></li>
       </ul>
     </div>
@@ -323,140 +224,32 @@ footer { background: var(--navy); color: var(--white); }
   </div>
   <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball &middot; All Rights Reserved</div>
 </footer>
-
 <script>
-// ─── DATA (3-match cumulative totals) ────────────────────────────────────────
 var VARSITY = [
-  {
-    jersey: '7', name: 'Ritvik Adoni', role: 'Setter',
-    height: "5'9\"", year: 'Sr',
-    stats: {
-      gp: 3, sp: 11,
-      kills: 1, errors: 2, attempts: 7,
-      aces: 1, svcErr: 6, svcAtt: 34, sRtg: 1.62,
-      srRtg: 1.59, srAtt: 17,
-      assists: 42, setAtt: 173, setPct: 0.243,
-      blocks: 1, digs: 28
-    }
-  },
-  {
-    jersey: '1', name: 'Sritan Bhumireddy', role: 'Outside',
-    height: "6'0\"", year: 'Sr',
-    stats: {
-      gp: 3, sp: 12,
-      kills: 17, errors: 15, attempts: 75,
-      aces: 2, svcErr: 12, svcAtt: 39, sRtg: 1.21,
-      srRtg: 2.12, srAtt: 58,
-      assists: 2, setAtt: 16,
-      blocks: 1, digs: 22
-    }
-  },
-  {
-    jersey: '13', name: 'Arjun Sankar', role: 'Setter',
-    height: "5'10\"", year: 'Jr',
-    stats: {
-      gp: 1, sp: 3,
-      kills: 0, errors: 1, attempts: 3,
-      aces: 4, svcErr: 1, svcAtt: 14, sRtg: 2.29,
-      srRtg: null, srAtt: 0,
-      assists: 13, setAtt: 50, setPct: 0.260,
-      blocks: 0, digs: 5
-    }
-  },
-  {
-    jersey: '18', name: 'Divyansh Ajmera', role: 'DS / Libero',
-    height: "5'5\"", year: 'Sr',
-    stats: {
-      gp: 3, sp: 10,
-      kills: 0, errors: 0, attempts: 0,
-      aces: 3, svcErr: 4, svcAtt: 29, sRtg: 1.59,
-      srRtg: 1.63, srAtt: 48,
-      assists: 2, setAtt: 10,
-      blocks: 0, digs: 17
-    }
-  },
-  {
-    jersey: '3', name: 'Samuel Joshy', role: 'DS',
-    height: "5'6\"", year: 'Sr',
-    stats: {
-      gp: 2, sp: 4,
-      kills: 0, errors: 0, attempts: 0,
-      aces: 0, svcErr: 1, svcAtt: 1, sRtg: null,
-      srRtg: 1.43, srAtt: 7,
-      assists: 0, setAtt: 0,
-      blocks: 0, digs: 1
-    }
-  },
-  {
-    jersey: '4', name: 'Parker LaVeyra', role: 'Outside',
-    height: "6'2\"", year: 'Jr',
-    stats: {
-      gp: 3, sp: 12,
-      kills: 27, errors: 21, attempts: 84,
-      aces: 6, svcErr: 8, svcAtt: 36, sRtg: 1.86,
-      srRtg: 1.95, srAtt: 61,
-      assists: 3, setAtt: 13,
-      blocks: 8, digs: 16
-    }
-  },
-  {
-    jersey: '8', name: 'Anish Yasa', role: 'Right Side',
-    height: "5'7\"", year: 'Jr',
-    stats: {
-      gp: 3, sp: 12,
-      kills: 12, errors: 6, attempts: 47,
-      aces: 4, svcErr: 6, svcAtt: 56, sRtg: 1.86,
-      srRtg: 1.24, srAtt: 17,
-      assists: 2, setAtt: 10,
-      blocks: 1, digs: 23
-    }
-  },
-  {
-    jersey: '28', name: 'Siddhanth Madipadaga', role: 'Middle',
-    height: "6'3\"", year: 'Jr',
-    stats: {
-      gp: 3, sp: 12,
-      kills: 0, errors: 8, attempts: 29,
-      aces: 0, svcErr: 5, svcAtt: 28, sRtg: 1.32,
-      srRtg: 0.67, srAtt: 3,
-      assists: 0, setAtt: 0,
-      blocks: 7, digs: 7
-    }
-  },
-  {
-    jersey: '9', name: 'Adrian Liu', role: 'Middle',
-    height: "6'3\"", year: 'Sr',
-    stats: {
-      gp: 3, sp: 11,
-      kills: 11, errors: 9, attempts: 38,
-      aces: 0, svcErr: 2, svcAtt: 4, sRtg: 1.00,
-      srRtg: null, srAtt: 0,
-      assists: 0, setAtt: 3,
-      blocks: 5, digs: 3
-    }
-  },
-  {
-    jersey: '—', name: 'Anish Dachepalli', role: 'Middle',
-    height: "5'9\"", year: 'Jr',
-    stats: null
-  },
-  {
-    jersey: '—', name: 'Aadi Kurukunda', role: 'Outside',
-    height: "5'7\"", year: 'Jr',
-    stats: null
-  },
-  {
-    jersey: '—', name: 'Gavin Tulloch', role: 'Middle',
-    height: "6'10\"", year: 'Jr',
-    stats: null
-  },
-  {
-    jersey: '—', name: 'Arjun Potankar', role: 'Right Side',
-    height: "5'8\"", year: 'Jr',
-    stats: null
-  }
+  { jersey:'7', name:'Ritvik Adoni', role:'Setter', height:"5'9\"", year:'Sr',
+    stats:{ gp:4, sp:15, kills:1, errors:2, attempts:7, aces:3, svcErr:9, svcAtt:57, sRtg:1.68, srRtg:2.03, srAtt:62, assists:45, setAtt:183, setPct:0.246, blocks:1, digs:46 } },
+  { jersey:'1', name:'Sritan Bhumireddy', role:'Outside', height:"6'0\"", year:'Sr',
+    stats:{ gp:4, sp:16, kills:32, errors:24, attempts:119, aces:3, svcErr:14, svcAtt:53, sRtg:1.40, srRtg:2.11, srAtt:66, assists:2, setAtt:21, blocks:2, digs:29 } },
+  { jersey:'13', name:'Arjun Sankar', role:'Setter', height:"5'10\"", year:'Jr',
+    stats:{ gp:2, sp:7, kills:1, errors:1, attempts:6, aces:6, svcErr:6, svcAtt:35, sRtg:1.77, srRtg:null, srAtt:0, assists:48, setAtt:153, setPct:0.314, blocks:0, digs:18 } },
+  { jersey:'18', name:'Divyansh Ajmera', role:'DS / Libero', height:"5'5\"", year:'Sr',
+    stats:{ gp:3, sp:10, kills:0, errors:0, attempts:0, aces:3, svcErr:4, svcAtt:29, sRtg:1.59, srRtg:1.63, srAtt:48, assists:2, setAtt:10, blocks:0, digs:17 } },
+  { jersey:'3', name:'Samuel Joshy', role:'DS', height:"5'6\"", year:'Sr',
+    stats:{ gp:2, sp:4, kills:0, errors:0, attempts:0, aces:0, svcErr:1, svcAtt:1, sRtg:null, srRtg:1.43, srAtt:7, assists:0, setAtt:0, blocks:0, digs:1 } },
+  { jersey:'4', name:'Parker LaVeyra', role:'Outside', height:"6'2\"", year:'Jr',
+    stats:{ gp:4, sp:16, kills:40, errors:28, attempts:126, aces:8, svcErr:10, svcAtt:49, sRtg:1.81, srRtg:2.01, srAtt:72, assists:4, setAtt:18, blocks:11, digs:34 } },
+  { jersey:'8', name:'Anish Yasa', role:'Right Side', height:"5'7\"", year:'Jr',
+    stats:{ gp:4, sp:16, kills:15, errors:8, attempts:63, aces:4, svcErr:7, svcAtt:64, sRtg:1.80, srRtg:1.48, srAtt:21, assists:3, setAtt:11, blocks:1, digs:31 } },
+  { jersey:'28', name:'Siddhanth Madipadaga', role:'Middle', height:"6'3\"", year:'Jr',
+    stats:{ gp:4, sp:16, kills:9, errors:10, attempts:45, aces:0, svcErr:6, svcAtt:45, sRtg:1.47, srRtg:0.67, srAtt:3, assists:0, setAtt:0, blocks:7, digs:9 } },
+  { jersey:'9', name:'Adrian Liu', role:'Middle', height:"6'3\"", year:'Sr',
+    stats:{ gp:3, sp:11, kills:11, errors:9, attempts:38, aces:0, svcErr:2, svcAtt:4, sRtg:1.00, srRtg:null, srAtt:0, assists:0, setAtt:3, blocks:5, digs:3 } },
+  { jersey:'—', name:'Anish Dachepalli', role:'Middle', height:"5'9\"", year:'Jr', stats:null },
+  { jersey:'—', name:'Aadi Kurukunda', role:'Outside', height:"5'7\"", year:'Jr', stats:null },
+  { jersey:'30', name:'Gavin Tulloch', role:'Middle', height:"6'10\"", year:'Jr',
+    stats:{ gp:1, sp:4, kills:2, errors:3, attempts:12, aces:0, svcErr:0, svcAtt:0, sRtg:null, srRtg:2.00, srAtt:2, assists:0, setAtt:1, blocks:3, digs:1 } },
+  { jersey:'—', name:'Arjun Potankar', role:'Right Side', height:"5'8\"", year:'Jr', stats:null }
 ];
-
 var JV = [
   { jersey:'—', name:'Shreyan Potdar',     role:'Right Side', height:"5'10\"", year:'Jr', stats:null },
   { jersey:'—', name:'Nehan Madankumar',   role:'DS',         height:"5'7\"",  year:'So', stats:null },
@@ -471,241 +264,82 @@ var JV = [
   { jersey:'—', name:'Srithan Ravula',     role:'Outside',    height:"6'0\"",  year:'Fr', stats:null },
   { jersey:'—', name:'Vivaan Adiga',       role:'Setter',     height:"5'3\"",  year:'Fr', stats:null }
 ];
-
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-function calcEff(k, e, a) {
-  if (!a || a === 0) return null;
-  return (k - e) / a;
-}
-function fmtEff(e) {
-  if (e === null) return '—';
-  return (e >= 0 ? '+' : '') + (e * 100).toFixed(1) + '%';
-}
-function effColor(e) {
-  if (e === null) return '#888780';
-  if (e >= 0.25) return '#166534';
-  if (e >= 0.05) return '#92400e';
-  if (e < 0)     return '#991b1b';
-  return '#0e1e45';
-}
-function effClass(e) {
-  if (e === null) return '';
-  if (e >= 0.25) return 'good';
-  if (e < 0)     return 'bad';
-  return 'warn';
-}
-function srColor(r) {
-  if (r === null || r === undefined) return '#888780';
-  if (r >= 2.0) return '#166534';
-  if (r >= 1.5) return '#92400e';
-  return '#991b1b';
-}
-function srClass(r) {
-  if (r === null || r === undefined) return '';
-  if (r >= 2.0) return 'good';
-  if (r >= 1.5) return 'warn';
-  return 'bad';
-}
-function srGrade(r) {
-  if (!r) return '—';
-  if (r >= 2.5) return 'A';
-  if (r >= 2.0) return 'B+';
-  if (r >= 1.7) return 'B';
-  if (r >= 1.4) return 'C+';
-  if (r >= 1.0) return 'C';
-  return 'D';
-}
-
-// ─── BUILD CARD ──────────────────────────────────────────────────────────────
-function buildCard(p) {
-  var s = p.stats;
-  var hasStats = s !== null;
-  var eff = hasStats ? calcEff(s.kills, s.errors, s.attempts) : null;
-
-  var cols = [];
-  cols.push({ val: p.height, key: 'Ht' });
-  cols.push({ val: p.year,   key: 'Yr' });
-
-  if (hasStats) {
-    if (p.role === 'Setter') {
-      cols.push({ val: s.assists, key: 'Ast' });
-      cols.push({ val: s.digs,    key: 'Dig' });
-    } else if (p.role === 'DS' || p.role === 'DS / Libero') {
-      cols.push({ val: s.digs,                               key: 'Dig' });
-      cols.push({ val: s.srRtg ? s.srRtg.toFixed(2) : '—',  key: 'SR'  });
-    } else {
-      // For hitters: prefer blocks as primary if kills is 0 (e.g. pure blocker)
-      if (s.kills === 0 && s.blocks > 0) {
-        cols.push({ val: s.blocks,                             key: 'Blk'  });
-        cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff'  });
-      } else {
-        cols.push({ val: s.kills,                              key: 'K'    });
-        cols.push({ val: eff !== null ? fmtEff(eff) : '—',    key: 'Eff'  });
-      }
-    }
-  } else {
-    cols.push({ val: '—',    key: 'Stats' });
-    cols.push({ val: 'Soon', key: ''      });
-  }
-
-  var statsHTML = cols.map(function(c) {
-    return '<div class="cs"><span class="cs-val">' + c.val + '</span><span class="cs-key">' + c.key + '</span></div>';
-  }).join('');
-
-  var div = document.createElement('div');
-  div.className = 'player-card' + (hasStats ? ' has-stats clickable' : '');
-  div.innerHTML =
-    '<div class="card-bar"></div>' +
-    '<div class="card-body">' +
-      '<div class="card-jersey">' + (p.jersey !== '—' ? '#' + p.jersey : p.jersey) + '</div>' +
-      '<div class="card-role">' + p.role + '</div>' +
-      '<div class="card-name">' + p.name + '</div>' +
-      '<div class="card-divider"></div>' +
-      '<div class="card-stats">' + statsHTML + '</div>' +
-      (hasStats ? '<div class="card-hint">View stats &#8250;</div>' : '') +
-    '</div>';
-
-  if (hasStats) {
-    div.addEventListener('click', function() { openModal(p); });
-  }
+function calcEff(k,e,a){if(!a||a===0)return null;return(k-e)/a;}
+function fmtEff(e){if(e===null)return'—';return(e>=0?'+':'')+(e*100).toFixed(1)+'%';}
+function effColor(e){if(e===null)return'#888780';if(e>=0.25)return'#166534';if(e>=0.05)return'#92400e';if(e<0)return'#991b1b';return'#0e1e45';}
+function effClass(e){if(e===null)return'';if(e>=0.25)return'good';if(e<0)return'bad';return'warn';}
+function srColor(r){if(r===null||r===undefined)return'#888780';if(r>=2.0)return'#166534';if(r>=1.5)return'#92400e';return'#991b1b';}
+function srClass(r){if(r===null||r===undefined)return'';if(r>=2.0)return'good';if(r>=1.5)return'warn';return'bad';}
+function srGrade(r){if(!r)return'—';if(r>=2.5)return'A';if(r>=2.0)return'B+';if(r>=1.7)return'B';if(r>=1.4)return'C+';if(r>=1.0)return'C';return'D';}
+function buildCard(p){
+  var s=p.stats,hasStats=s!==null,eff=hasStats?calcEff(s.kills,s.errors,s.attempts):null;
+  var cols=[];cols.push({val:p.height,key:'Ht'});cols.push({val:p.year,key:'Yr'});
+  if(hasStats){
+    if(p.role==='Setter'){cols.push({val:s.assists,key:'Ast'});cols.push({val:s.digs,key:'Dig'});}
+    else if(p.role==='DS'||p.role==='DS / Libero'){cols.push({val:s.digs,key:'Dig'});cols.push({val:s.srRtg?s.srRtg.toFixed(2):'—',key:'SR'});}
+    else{if(s.kills===0&&s.blocks>0){cols.push({val:s.blocks,key:'Blk'});cols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}
+    else{cols.push({val:s.kills,key:'K'});cols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}}
+  }else{cols.push({val:'—',key:'Stats'});cols.push({val:'Soon',key:''});}
+  var statsHTML=cols.map(function(c){return'<div class="cs"><span class="cs-val">'+c.val+'</span><span class="cs-key">'+c.key+'</span></div>';}).join('');
+  var div=document.createElement('div');div.className='player-card'+(hasStats?' has-stats clickable':'');
+  div.innerHTML='<div class="card-bar"></div><div class="card-body"><div class="card-jersey">'+(p.jersey!=='—'?'#'+p.jersey:p.jersey)+'</div><div class="card-role">'+p.role+'</div><div class="card-name">'+p.name+'</div><div class="card-divider"></div><div class="card-stats">'+statsHTML+'</div>'+(hasStats?'<div class="card-hint">View stats &#8250;</div>':'')+'</div>';
+  if(hasStats){div.addEventListener('click',function(){openModal(p);});}
   return div;
 }
-
-// ─── RENDER GRIDS ─────────────────────────────────────────────────────────────
-function renderGrid(players, id) {
-  var grid = document.getElementById(id);
-  players.forEach(function(p) { grid.appendChild(buildCard(p)); });
-}
-renderGrid(VARSITY, 'varsityGrid');
-renderGrid(JV,      'jvGrid');
-
-// ─── OPEN MODAL ───────────────────────────────────────────────────────────────
-function openModal(p) {
-  var s = p.stats;
-  document.getElementById('mNum').textContent  = p.jersey !== '—' ? '#' + p.jersey : p.jersey;
-  document.getElementById('mRole').textContent = p.role;
-  document.getElementById('mName').textContent = p.name;
-  document.getElementById('mMeta').textContent = p.height + ' \u00b7 ' + p.year;
-  document.getElementById('mFooter').textContent =
-    '2026 Season \u00b7 ' + (s ? s.gp + ' GP \u00b7 ' + s.sp + ' Sets Played' : '0 GP') + ' \u00b7 Cumulative Totals';
-
-  var body = document.getElementById('mBody');
-  body.innerHTML = '';
-
-  if (!s) {
-    body.innerHTML = '<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';
-    document.getElementById('modalOverlay').classList.add('open');
-    return;
+function renderGrid(players,id){var grid=document.getElementById(id);players.forEach(function(p){grid.appendChild(buildCard(p));});}
+renderGrid(VARSITY,'varsityGrid');renderGrid(JV,'jvGrid');
+function openModal(p){
+  var s=p.stats;
+  document.getElementById('mNum').textContent=p.jersey!=='—'?'#'+p.jersey:p.jersey;
+  document.getElementById('mRole').textContent=p.role;
+  document.getElementById('mName').textContent=p.name;
+  document.getElementById('mMeta').textContent=p.height+' \u00b7 '+p.year;
+  document.getElementById('mFooter').textContent='2026 Season \u00b7 '+(s?s.gp+' GP \u00b7 '+s.sp+' Sets Played':'0 GP')+' \u00b7 Cumulative Totals';
+  var body=document.getElementById('mBody');body.innerHTML='';
+  if(!s){body.innerHTML='<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';document.getElementById('modalOverlay').classList.add('open');return;}
+  var eff=calcEff(s.kills,s.errors,s.attempts),html='';
+  if(s.attempts>0&&p.role!=='Setter'){
+    var killPct=((s.kills/s.attempts)*100).toFixed(1),errPct=((s.errors/s.attempts)*100).toFixed(1);
+    var effBarW=Math.max(2,Math.min(100,((eff+0.5)/1.0)*100));
+    html+='<div class="ms-title">Attacking</div><div class="ms-grid">'+
+      cell(s.kills,'Kills','')+cell(s.errors,'Atk Err',s.errors>=8?'bad':'')+
+      cell(s.attempts,'Attempts','')+cell(s.blocks,'Blocks',s.blocks>=5?'good':'')+
+      cell(fmtEff(eff),'Hit Eff.',effClass(eff))+cell(killPct+'%','Kill %','')+
+      cell(errPct+'%','Error %',parseFloat(errPct)>28?'bad':'')+cell(s.digs,'Digs','')+'</div>'+
+      bar('Hitting Efficiency',fmtEff(eff),effBarW,effColor(eff));
   }
-
-  var eff = calcEff(s.kills, s.errors, s.attempts);
-  var html = '';
-
-  // ── ATTACK — suppress for setters (dump stats covered by Dump K/E in Setting) ──
-  if (s.attempts > 0 && p.role !== 'Setter') {
-    var killPct = ((s.kills / s.attempts) * 100).toFixed(1);
-    var errPct  = ((s.errors / s.attempts) * 100).toFixed(1);
-    var effBarW = Math.max(2, Math.min(100, ((eff + 0.5) / 1.0) * 100));
-
-    html += '<div class="ms-title">Attacking</div>' +
-      '<div class="ms-grid">' +
-        cell(s.kills,             'Kills',    '') +
-        cell(s.errors,            'Atk Err',  s.errors >= 8 ? 'bad' : '') +
-        cell(s.attempts,          'Attempts', '') +
-        cell(s.blocks,            'Blocks',   s.blocks >= 5 ? 'good' : '') +
-        cell(fmtEff(eff),         'Hit Eff.', effClass(eff)) +
-        cell(killPct + '%',       'Kill %',   '') +
-        cell(errPct + '%',        'Error %',  parseFloat(errPct) > 28 ? 'bad' : '') +
-        cell(s.digs,              'Digs',     '') +
-      '</div>' +
-      bar('Hitting Efficiency', fmtEff(eff), effBarW, effColor(eff));
+  if(p.role==='Setter'&&s.assists>0){
+    var setPctStr=s.setPct!==undefined&&s.setPct!==null?(s.setPct*100).toFixed(1)+'%':'—';
+    html+='<div class="ms-title">Setting</div><div class="ms-grid">'+
+      cell(s.assists,'Assists',s.assists>=20?'good':'')+cell(s.setAtt||'—','Set Att','')+
+      cell(setPctStr,'Set %','')+cell(s.kills+' / '+s.errors,'Dump K/E','')+'</div>';
   }
-
-  // ── SETTING ──
-  if (p.role === 'Setter' && s.assists > 0) {
-    var setPctStr = s.setPct !== undefined && s.setPct !== null
-      ? (s.setPct * 100).toFixed(1) + '%' : '—';
-    html += '<div class="ms-title">Setting</div>' +
-      '<div class="ms-grid">' +
-        cell(s.assists,                      'Assists',  s.assists >= 20 ? 'good' : '') +
-        cell(s.setAtt || '—',               'Set Att',  '') +
-        cell(setPctStr,                      'Set %',    '') +
-        cell(s.kills + ' / ' + s.errors,    'Dump K/E', '') +
-      '</div>';
+  var svcAttDisplay=(s.svcAtt!==null&&s.svcAtt!==undefined)?s.svcAtt:'—';
+  html+='<div class="ms-title">Serving</div><div class="ms-grid">'+
+    cell(s.aces,'Aces',s.aces>=3?'good':'')+cell(s.svcErr,'Svc Err',s.svcErr>=8?'bad':s.svcErr>=5?'warn':'')+
+    cell(svcAttDisplay,'Serve Att','')+cell(s.sRtg?s.sRtg.toFixed(2):'—','Srv Rtg','')+'</div>';
+  if(s.srAtt>=5&&s.srRtg!==null){
+    var srBarW=(s.srRtg/3.0)*100;
+    html+='<div class="ms-title">Serve Receive</div><div class="ms-grid">'+
+      cell(s.srRtg.toFixed(2),'SR Rating',srClass(s.srRtg))+cell(srGrade(s.srRtg),'SR Grade',srClass(s.srRtg))+
+      cell(s.srAtt,'Receptions','')+cell(s.digs,'Digs','')+'</div>'+
+      bar('Pass Rating (0 – 3 scale)',s.srRtg.toFixed(2)+' / 3.00',srBarW,srColor(s.srRtg));
+  }else if(s.attempts===0&&(s.digs>0||s.blocks>0)){
+    html+='<div class="ms-title">Defense</div><div class="ms-grid">'+
+      cell(s.digs,'Digs','')+cell(s.blocks,'Blocks',s.blocks>=5?'good':'')+
+      cell(s.srAtt||'—','SR Att','')+cell(s.srRtg?s.srRtg.toFixed(2):'—','SR Rtg',s.srRtg?srClass(s.srRtg):'')+'</div>';
   }
-
-  // ── SERVING ──
-  var svcAttDisplay = (s.svcAtt !== null && s.svcAtt !== undefined) ? s.svcAtt : '—';
-  html += '<div class="ms-title">Serving</div>' +
-    '<div class="ms-grid">' +
-      cell(s.aces,                                          'Aces',     s.aces >= 3 ? 'good' : '') +
-      cell(s.svcErr,                                        'Svc Err',  s.svcErr >= 8 ? 'bad' : s.svcErr >= 5 ? 'warn' : '') +
-      cell(svcAttDisplay,                                   'Serve Att','') +
-      cell(s.sRtg ? s.sRtg.toFixed(2) : '—',              'Srv Rtg',  '') +
-    '</div>';
-
-  // ── SERVE RECEIVE — require min 5 receptions for a meaningful rating bar ──
-  if (s.srAtt >= 5 && s.srRtg !== null) {
-    var srBarW = (s.srRtg / 3.0) * 100;
-    html += '<div class="ms-title">Serve Receive</div>' +
-      '<div class="ms-grid">' +
-        cell(s.srRtg.toFixed(2), 'SR Rating',   srClass(s.srRtg)) +
-        cell(srGrade(s.srRtg),   'SR Grade',    srClass(s.srRtg)) +
-        cell(s.srAtt,            'Receptions',  '') +
-        cell(s.digs,             'Digs',        '') +
-      '</div>' +
-      bar('Pass Rating (0 – 3 scale)', s.srRtg.toFixed(2) + ' / 3.00', srBarW, srColor(s.srRtg));
-  } else if (s.attempts === 0 && (s.digs > 0 || s.blocks > 0)) {
-    // Bug 3 fix: Defense fallback — use 4 cells to match ms-grid repeat(4,1fr)
-    html += '<div class="ms-title">Defense</div>' +
-      '<div class="ms-grid">' +
-        cell(s.digs,   'Digs',          '') +
-        cell(s.blocks, 'Blocks',        s.blocks >= 5 ? 'good' : '') +
-        cell(s.srAtt || '—', 'SR Att',  '') +
-        cell(s.srRtg ? s.srRtg.toFixed(2) : '—', 'SR Rtg', s.srRtg ? srClass(s.srRtg) : '') +
-      '</div>';
-  }
-
-  body.innerHTML = html;
-  document.getElementById('modalOverlay').classList.add('open');
+  body.innerHTML=html;document.getElementById('modalOverlay').classList.add('open');
 }
-
-function cell(val, key, cls) {
-  return '<div class="ms-cell"><div class="ms-val ' + cls + '">' + val + '</div><div class="ms-key">' + key + '</div></div>';
-}
-function bar(label, valStr, widthPct, color) {
-  return '<div class="bar-wrap">' +
-    '<div class="bar-label-row">' +
-      '<span class="bar-label">' + label + '</span>' +
-      '<span class="bar-value" style="color:' + color + '">' + valStr + '</span>' +
-    '</div>' +
-    '<div class="bar-track"><div class="bar-fill" style="width:' + widthPct.toFixed(1) + '%;background:' + color + '"></div></div>' +
-  '</div>';
-}
-
-// ─── CLOSE MODAL ──────────────────────────────────────────────────────────────
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-}
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
-
-// ─── NAV BURGER ───────────────────────────────────────────────────────────────
-var burger     = document.getElementById('nav-burger');
-var drawer     = document.getElementById('nav-drawer');
-var burgerIcon = document.getElementById('burger-icon');
-var openPath   = 'M4 6h16M4 12h16M4 18h16';
-var closePath  = 'M6 18L18 6M6 6l12 12';
-burger.addEventListener('click', function() {
-  var isOpen = drawer.classList.toggle('open');
-  burger.setAttribute('aria-expanded', isOpen);
-  burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
-});
+function cell(val,key,cls){return'<div class="ms-cell"><div class="ms-val '+cls+'">'+val+'</div><div class="ms-key">'+key+'</div></div>';}
+function bar(label,valStr,widthPct,color){return'<div class="bar-wrap"><div class="bar-label-row"><span class="bar-label">'+label+'</span><span class="bar-value" style="color:'+color+'">'+valStr+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+widthPct.toFixed(1)+'%;background:'+color+'"></div></div></div>';}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+var burger=document.getElementById('nav-burger'),drawer=document.getElementById('nav-drawer'),burgerIcon=document.getElementById('burger-icon');
+var openPath='M4 6h16M4 12h16M4 18h16',closePath='M6 18L18 6M6 6l12 12';
+burger.addEventListener('click',function(){var isOpen=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',isOpen);burgerIcon.querySelector('path').setAttribute('d',isOpen?closePath:openPath);});
 </script>
 </body>
 </html>
