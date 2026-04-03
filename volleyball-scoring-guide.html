@@ -189,8 +189,8 @@
   <div id="content">
     <div id="phases-container"></div>
     <div id="nav-footer">
-      <button class="nav-prev" id="btn-prev" onclick="navigate(-1)">← Previous</button>
-      <button class="nav-next" id="btn-next" onclick="navigate(1)">Next →</button>
+      <button class="nav-prev" id="btn-prev">← Previous</button>
+      <button class="nav-next" id="btn-next">Next →</button>
     </div>
   </div>
 </div>
@@ -221,7 +221,7 @@ phases.forEach((p, i) => {
   btn.className = "nav-btn" + (i === 0 ? " active" : "");
   btn.dataset.idx = i;
   btn.innerHTML = `<span class="icon">${p.icon}</span><span>${p.label}</span>`;
-  btn.onclick = () => goTo(i);
+  btn.addEventListener('click', () => goTo(i));
   nav.appendChild(btn);
 });
 
@@ -273,7 +273,7 @@ function buildIntro() {
           <strong>Site:</strong> Covelli Center, Columbus, Ohio
         </div>
       </div>
-      <button class="btn-start" onclick="goTo(1)">Start Learning → Symbol Key</button>
+      <button class="btn-start" data-action="goTo" data-idx="1">Start Learning → Symbol Key</button>
     </div>`;
 }
 
@@ -301,7 +301,7 @@ function buildSymbols() {
       <p class="lead">These are the only symbols you'll ever need. Click any card to see details.</p>
       <div class="symbols-grid" id="sym-grid">
         ${symbols.map((s,i)=>`
-          <div class="sym-card" id="sym-${i}" onclick="toggleSym(${i})" style="--sym-color:${s.color}">
+          <div class="sym-card" id="sym-${i}" data-action="toggleSym" data-idx="${i}" style="--sym-color:${s.color}">
             <div class="sym-inner">
               <div class="sym-badge" style="color:${s.color}">${s.sym}</div>
               <div class="sym-label">${s.label}</div>
@@ -702,7 +702,7 @@ function buildLiveGuide() {
         ${section.items.map((item,ii) => {
           const key = `${si}-${ii}`;
           return `<div class="check-row">
-            <div class="checkbox${checkStates[key]?' checked':''}" id="chk-${key}" onclick="toggleCheck('${key}')">
+            <div class="checkbox${checkStates[key]?' checked':''}" id="chk-${key}" data-action="toggleCheck" data-key="${key}">
               ${checkStates[key]?'✓':''}
             </div>
             <div class="check-label">${item}</div>
@@ -755,6 +755,20 @@ function navigate(dir) {
 
 // Init
 goTo(0);
+
+// Nav footer button listeners (replaces inline onclick)
+document.getElementById('btn-prev').addEventListener('click', function() { navigate(-1); });
+document.getElementById('btn-next').addEventListener('click', function() { navigate(1); });
+
+// Event delegation for dynamically rendered phase content (replaces inline onclick)
+document.getElementById('content').addEventListener('click', function(e) {
+  const target = e.target.closest('[data-action]');
+  if (!target) return;
+  const action = target.dataset.action;
+  if (action === 'goTo') { goTo(parseInt(target.dataset.idx)); }
+  else if (action === 'toggleSym') { toggleSym(parseInt(target.dataset.idx)); }
+  else if (action === 'toggleCheck') { toggleCheck(target.dataset.key); }
+});
 </script>
 </body>
 </html>

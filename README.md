@@ -43,5 +43,5 @@ I am proud to lead the **Downingtown East Boys Volleyball** team. My goal is to 
 I'm always open to connecting with fellow developers, coaches, and tech enthusiasts.
 
 -   **Email:** [gshieh11@outlook.com](mailto:gshieh11@outlook.com)
--   **LinkedIn:** [linkedin.com/in/grantshieh].(https://www.linkedin.com/in/grantshieh/)
+-   **LinkedIn:** [linkedin.com/in/grantshieh](https://www.linkedin.com/in/grantshieh/)
 -   **GitHub:** [github.com/debvb](https://github.com/debvb)

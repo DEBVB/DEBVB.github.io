@@ -297,7 +297,7 @@ footer{background:var(--navy);color:var(--white)}
     <div class="older-label">Previous Results</div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-win">Match Result</span></div>
         <div class="acc-title">Cougars Roll to First Win of the Season, Sweep Henderson 3&ndash;0</div>
         <div class="acc-meta">Mar 19 &middot; 1&ndash;2</div>
@@ -344,7 +344,7 @@ footer{background:var(--navy);color:var(--white)}
     </div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-result">Match Result</span></div>
         <div class="acc-title">Cougars Fall 3&ndash;1 at Lansdale Catholic in Competitive Road Test</div>
         <div class="acc-meta">Mar 17 &middot; 0&ndash;2</div>
@@ -394,7 +394,7 @@ footer{background:var(--navy);color:var(--white)}
     </div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-result">Match Result</span></div>
         <div class="acc-title">Match Recap: Cougars Battle Back but Fall to Wilson 2&ndash;3</div>
         <div class="acc-meta">Mar 14 &middot; 0&ndash;1</div>
@@ -449,7 +449,7 @@ footer{background:var(--navy);color:var(--white)}
     <div class="older-label">Earlier Posts</div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-new">New</span></div>
         <div class="acc-title">Parent Meeting &mdash; Friday After Practice</div>
         <div class="acc-meta">Mar 5</div>
@@ -463,7 +463,7 @@ footer{background:var(--navy);color:var(--white)}
     </div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-new">New</span></div>
         <div class="acc-title">JV Scorebook Clinic &mdash; Saturday After Practice</div>
         <div class="acc-meta">Mar 5</div>
@@ -477,7 +477,7 @@ footer{background:var(--navy);color:var(--white)}
     </div>
 
     <div class="post-accordion">
-      <button class="acc-trigger" onclick="toggleAcc(this)" aria-expanded="false">
+      <button class="acc-trigger" aria-expanded="false">
         <div class="acc-tags"><span class="tag tag-info">Info</span></div>
         <div class="acc-title">2026 Season is Underway! &#127952;</div>
         <div class="acc-meta">Mar 4</div>
@@ -538,10 +538,17 @@ function toggleAcc(btn) {
 // Burger menu
 const burger = document.getElementById('nav-burger');
 const drawer = document.getElementById('nav-drawer');
-burger.onclick = () => {
-  const open = drawer.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open);
-};
+if (burger && drawer) {
+  burger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+}
+
+// Accordion event delegation (replaces inline onclick handlers)
+document.querySelectorAll('.acc-trigger').forEach(function(btn) {
+  btn.addEventListener('click', function() { toggleAcc(btn); });
+});
 </script>
 
 </body>
