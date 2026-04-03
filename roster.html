@@ -339,7 +339,7 @@ document.getElementById('modalOverlay').addEventListener('click',function(e){if(
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 var burger=document.getElementById('nav-burger'),drawer=document.getElementById('nav-drawer'),burgerIcon=document.getElementById('burger-icon');
 var openPath='M4 6h16M4 12h16M4 18h16',closePath='M6 18L18 6M6 6l12 12';
-burger.addEventListener('click',function(){var isOpen=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',isOpen);burgerIcon.querySelector('path').setAttribute('d',isOpen?closePath:openPath);});
+if(burger&&drawer){burger.addEventListener('click',function(){var isOpen=drawer.classList.toggle('open');burger.setAttribute('aria-expanded',isOpen);if(burgerIcon){burgerIcon.querySelector('path').setAttribute('d',isOpen?closePath:openPath);}});}
 </script>
 </body>
 </html>

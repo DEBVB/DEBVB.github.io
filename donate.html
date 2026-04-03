@@ -1,155 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Donate – Downingtown East Volleyball</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f5f5f5;
-      color: #1a1a1a;
-    }
-    header {
-      background-color: #0a2a56;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header img {
-      height: 50px;
-    }
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .hero {
-      background: url('images/volleyball-bg.jpg') center/cover no-repeat;
-      padding: 80px 20px;
-      text-align: center;
-      color: white;
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-    .donate-section {
-      max-width: 600px;
-      margin: 50px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .donate-section h2 {
-      font-size: 1.8rem;
-      text-align: center;
-      color: #0a2a56;
-      margin-bottom: 20px;
-    }
-    .preset-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-    .preset-buttons button {
-      background-color: #0a2a56;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .preset-buttons button:hover {
-      background-color: #133b7a;
-    }
-    .donate-form input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    .donate-form button {
-      width: 100%;
-      padding: 14px;
-      background-color: #f9c623; /* gold */
-      color: #0a2a56;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      border-radius: 6px;
-    }
-    .donate-form button:hover {
-      background-color: #e6b800;
-    }
-    footer {
-      background-color: #0a2a56;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support the Program — Downingtown East Boys Volleyball</title>
+<meta name="description" content="Support Downingtown East Boys Volleyball. Your donation funds equipment, uniforms, and tournament travel for the Cougars.">
+<meta name="keywords" content="Downingtown East, Volleyball Donate, Boys Volleyball, Support, Cougars Volleyball">
+<meta name="author" content="Downingtown East Boys Volleyball">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e1e45">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Support the Program | Downingtown East Boys Volleyball">
+<meta property="og:description" content="Help support the Cougars. Donations fund equipment, uniforms, and travel.">
+<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+<meta property="og:url" content="https://debvb.github.io/donate.html">
+<meta property="og:site_name" content="Downingtown East Boys Volleyball">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@devbboys">
+<meta name="twitter:creator" content="@devbboys">
+<meta name="twitter:title" content="Support the Program | Downingtown East Boys Volleyball">
+<meta name="twitter:description" content="Help support the Cougars. Donations fund equipment, uniforms, and travel.">
+<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+<link rel="canonical" href="https://debvb.github.io/donate.html">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/logo2.jpg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0d0f14; --navy: #0e1e45; --gold: #e8b000; --gold-light: #fdf3d0;
+  --cream: #faf8f3; --white: #ffffff; --rule: #d4cec3; --muted: #7a7266; --soft: #f2f0ea;
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+.nav-wrap { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 0; z-index: 200; }
+.nav-inner { padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.nav-brand img { height: 36px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+.nav-brand-text { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); border-left: 2px solid var(--rule); padding-left: 12px; letter-spacing: -0.2px; }
+.nav-links { display: flex; align-items: center; }
+.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 6px 14px; text-transform: uppercase; letter-spacing: 0.08em; border-left: 1px solid var(--rule); transition: background 0.12s; white-space: nowrap; }
+.nav-links a:hover { background: var(--soft); }
+.nav-links a.active { background: var(--navy); color: var(--white); }
+.nav-links a:last-child { border-right: 1px solid var(--rule); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
+.nav-cta:hover { background: #d4a000 !important; }
+.nav-burger { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 6px; border-radius: 6px; transition: background 0.12s; -webkit-tap-highlight-color: transparent; }
+.nav-burger:hover { background: var(--soft); }
+.nav-drawer { display: none; flex-direction: column; border-top: 1px solid var(--rule); }
+.nav-drawer.open { display: flex; }
+.nav-drawer a { display: block; padding: 15px 20px; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+.nav-drawer a:last-child { border-bottom: none; }
+.nav-drawer a:hover { background: var(--soft); }
+.nav-drawer a.active { background: var(--navy); color: var(--white); }
+.nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
+.page-header { background: var(--navy); border-bottom: 5px solid var(--gold); padding: 60px 48px 52px; text-align: center; }
+.page-header-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 6vw, 64px); color: var(--white); line-height: 1; letter-spacing: -1px; margin-bottom: 16px; }
+.page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.7; border-left: 3px solid var(--gold); padding-left: 16px; text-align: left; }
+.page-wrap { max-width: 640px; margin: 0 auto; padding: 52px 48px 80px; }
+.donate-card { background: var(--white); border: 1px solid var(--rule); padding: 36px; margin-bottom: 24px; }
+.donate-card h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ink); margin-bottom: 8px; }
+.donate-card .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+.preset-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.preset-btn { background: var(--soft); border: 1px solid var(--rule); color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 10px 20px; cursor: default; letter-spacing: 0.05em; }
+.donate-note { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 14px; }
+.btn-venmo { display: flex; align-items: center; justify-content: center; gap: 10px; background: #3D95CE; color: var(--white); font-size: 15px; font-weight: 700; padding: 16px 28px; text-decoration: none; transition: background 0.15s; width: 100%; }
+.btn-venmo:hover { background: #2d7fb0; }
+.btn-venmo-icon { font-size: 20px; }
+.info-strip { background: var(--gold-light); border: 1px solid var(--gold); padding: 16px 20px; margin-bottom: 24px; }
+.info-strip-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
+.info-strip p { font-size: 13px; color: var(--ink); line-height: 1.6; }
+footer { background: var(--navy); color: var(--white); }
+.footer-inner { max-width: 1200px; margin: 0 auto; padding: 48px 48px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li + li { margin-top: 8px; }
+.footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--gold); }
+.footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.page-header { animation: fadeUp 0.4s 0.05s both; }
+.page-wrap { animation: fadeUp 0.4s 0.15s both; }
+@media (max-width: 900px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-brand-text { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+  .page-header { padding: 40px 20px 36px; }
+  .page-wrap { padding: 36px 20px 60px; }
+}
+@media (max-width: 640px) {
+  .donate-card { padding: 24px 20px; }
+  .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
+  .footer-bottom { padding: 14px 20px 20px; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="Cougar Volleyball Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="coaches.html">Coaches</a>
-      <a href="roster.html">Roster</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html"><strong>Donate</strong></a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Support Cougar Volleyball</h1>
-    <p>Your donation directly funds equipment, uniforms, tournaments, and travel expenses. Thank you for helping our athletes succeed!</p>
-  </section>
-
-  <section class="donate-section">
-    <h2>Make a Donation</h2>
-    <div class="preset-buttons">
-      <button>$25</button>
-      <button>$50</button>
-      <button>$100</button>
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/schedule.html">Schedule</a>
+      <a href="/coaches.html">Coaches</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/roster.html">Roster</a>
+      <a href="/news.html">News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
     </div>
-    <form class="donate-form" action="#" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="number" name="customAmount" placeholder="Custom Amount ($)">
-      <button type="submit">Donate Now</button>
-    </form>
-  </section>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+    <a href="/index.html">Home</a>
+    <a href="/schedule.html">Schedule</a>
+    <a href="/coaches.html">Coaches</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/roster.html">Roster</a>
+    <a href="/news.html">News</a>
+    <a href="/donate.html" class="active">Donate</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
+  </nav>
+</div>
 
-  <footer>
-    © 2025 Downingtown East Volleyball. All Rights Reserved.
-  </footer>
+<div class="page-header">
+  <div class="page-header-kicker">Downingtown East &middot; Support the Program</div>
+  <h1>Support Cougar <em>Volleyball</em></h1>
+  <p>Your donation directly funds equipment, uniforms, tournaments, and travel expenses. Every contribution helps our athletes succeed.</p>
+</div>
+
+<div class="page-wrap">
+
+  <div class="info-strip">
+    <div class="info-strip-label">How donations are used</div>
+    <p>100% of donations go toward team equipment, uniform costs, tournament entry fees, and travel expenses for the Cougars program.</p>
+  </div>
+
+  <div class="donate-card">
+    <h2>Make a Donation</h2>
+    <div class="sub">Via Venmo &mdash; @DECougarsVB</div>
+    <div class="preset-row">
+      <div class="preset-btn">$25</div>
+      <div class="preset-btn">$50</div>
+      <div class="preset-btn">$100</div>
+    </div>
+    <p class="donate-note">All donations are processed through Venmo. Tap the button below to open Venmo and donate any amount to <strong>@DECougarsVB</strong>.</p>
+    <a href="https://venmo.com/u/DECougarsVB" target="_blank" rel="noopener noreferrer" class="btn-venmo">
+      <span class="btn-venmo-icon">&#9654;</span>
+      Donate via Venmo &mdash; @DECougarsVB
+    </a>
+  </div>
+
+  <div class="donate-card">
+    <h2>Other Ways to Help</h2>
+    <div class="sub">Support beyond donations</div>
+    <p class="donate-note">
+      Follow us on <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;">Instagram @deastboysvb</a> and <a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;">Twitter @devbboys</a> to stay up to date with the season.<br><br>
+      Join our Remind group at <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:600;">@BOYSDEVB</a> for schedule updates and announcements.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/schedule.html">Schedule</a></li>
+        <li><a href="/roster.html">Roster</a></li>
+        <li><a href="/coaches.html">Coaches</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/news.html">News</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li>
+        <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li>
+        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li>
+        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball &middot; All Rights Reserved</div>
+</footer>
+
+<script>
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  var burgerIcon = document.getElementById('burger-icon');
+  var openPath = 'M4 6h16M4 12h16M4 18h16';
+  var closePath = 'M6 18L18 6M6 6l12 12';
+  if (burger && drawer) {
+    burger.addEventListener('click', function() {
+      var isOpen = drawer.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+      if (burgerIcon) {
+        burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+      }
+    });
+  }
+</script>
 </body>
 </html>
