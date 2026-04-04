@@ -194,23 +194,47 @@ function resultBadge(row) {
   return '<span class="badge-upcoming">Upcoming</span>';
 }
 
+var _schedLastMonth = null;
+
 function renderScheduleRow(row) {
   var isHome  = (row.Location || '').toLowerCase() === 'home';
-  var oppText = isHome ? 'vs. ' + row.Opponent : '@ ' + row.Opponent;
-  var oppCls  = 'td-opponent' + (isHome ? ' home-game' : '');
   var addr    = row.Address || '';
   var mapsURL = addr
     ? 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(addr)
-    : '#';
-  var dirCell = addr
-    ? '<a class="dir-btn" href="' + mapsURL + '" target="_blank" rel="noopener noreferrer">' + _dirSVG + 'Directions</a>'
-    : '&mdash;';
-  return '<tr class="' + (isHome ? 'row-home' : 'row-away') + '">' +
-    '<td class="td-date">'        + fmtDateShort(row.Date) + '</td>' +
-    '<td class="' + oppCls + '">' + oppText + '</td>' +
-    '<td class="td-location">'    + dirCell + '</td>' +
-    '<td class="td-time">'        + (row.Time || '&mdash;') + '</td>' +
-    '<td class="td-result">'      + resultBadge(row) + '</td>' +
+    : '';
+
+  // Month separator row when the month changes between games
+  var sepHTML   = '';
+  var dateParts = (row.Date || '').split('-');
+  var rowMonth  = dateParts.length === 3 ? (+dateParts[1] - 1) : -1;
+  if (rowMonth !== -1 && rowMonth !== _schedLastMonth) {
+    if (_schedLastMonth !== null) {
+      sepHTML = '<tr class="row-month-sep"><td colspan="4">' +
+        '&#8212;&nbsp;&nbsp;' + _MONL[rowMonth].toUpperCase() + '&nbsp;&nbsp;&#8212;' +
+        '</td></tr>';
+    }
+    _schedLastMonth = rowMonth;
+  }
+
+  // Home/Away pill badge
+  var haPill = isHome
+    ? '<span class="ha-pill ha-pill-home">Home</span>'
+    : '<span class="ha-pill ha-pill-away">Away</span>';
+
+  // Directions link below opponent name (only when address provided)
+  var venueHTML = addr
+    ? '<span class="opp-venue"><a class="dir-btn" href="' + mapsURL +
+      '" target="_blank" rel="noopener noreferrer">' + _dirSVG + 'Directions</a></span>'
+    : '';
+
+  var oppInner = (row.Opponent || '&mdash;') + haPill + venueHTML;
+
+  return sepHTML +
+    '<tr class="' + (isHome ? 'row-home' : 'row-away') + '">' +
+    '<td class="td-date">'     + fmtDateShort(row.Date) + '</td>' +
+    '<td class="td-opponent">' + oppInner + '</td>' +
+    '<td class="td-time">'     + (row.Time || '&mdash;') + '</td>' +
+    '<td class="td-result">'   + resultBadge(row) + '</td>' +
     '</tr>';
 }
 
