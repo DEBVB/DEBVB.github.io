@@ -492,16 +492,22 @@ fetchSheet('Schedule', function(err, rows) {
 
   if (next) {
     var isHome = (next.Location || '').toLowerCase() === 'home';
-    var label  = fmtDateLabel(next.Date);
-    var parts  = label.split(' ');
     var opp    = isHome ? 'vs. ' + next.Opponent : '@ ' + next.Opponent;
     var detail = [next.Time, isHome ? 'Home' : 'Away',
                   (next.Type && next.Type.toLowerCase() !== 'regular' ? next.Type : '')]
                  .filter(Boolean).join(' \u00b7 ');
+
+    // Robust date label — works with YYYY-MM-DD, "Apr 7, 2026", etc.
+    var d = parseISODate(next.Date) || new Date(next.Date);
+    var MONS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    var label = (!isNaN(d) ? MONS[d.getMonth()] + ' ' + d.getDate() : next.Date) || '—';
+    var parts = label.split(' ');
+
     document.getElementById('ng-date').textContent     = label;
     document.getElementById('ng-opponent').textContent = opp;
     document.getElementById('ng-times').textContent    = detail;
-    document.getElementById('stat-next-val').innerHTML = parts[0] + '<em> ' + parts[1] + '</em>';
+    document.getElementById('stat-next-val').innerHTML =
+      parts.length > 1 ? parts[0] + '<em> ' + parts[1] + '</em>' : label;
   } else {
     document.getElementById('ng-date').textContent     = 'SEE';
     document.getElementById('ng-opponent').textContent = 'You next season!';
