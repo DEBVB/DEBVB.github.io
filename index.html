@@ -307,7 +307,7 @@ footer { background: var(--navy); color: var(--white); }
     </div>
     <div class="record-row">
       <div class="rec-cell">
-        <div class="rec-val">6<em>–</em>2</div>
+        <div class="rec-val" id="hero-record">—</div>
         <div class="rec-key">2026 Record</div>
       </div>
       <div class="rec-cell">
@@ -324,7 +324,7 @@ footer { background: var(--navy); color: var(--white); }
     <div class="stat-key">Next Game</div>
   </div>
   <div class="stat-cell">
-    <div class="stat-val">3<em>–</em>2</div>
+    <div class="stat-val" id="strip-record">—</div>
     <div class="stat-key">2026 Record</div>
   </div>
   <div class="stat-cell">
@@ -341,45 +341,27 @@ footer { background: var(--navy); color: var(--white); }
       <a href="/news.html" class="sec-rule-more">All posts →</a>
     </div>
 
-    <!-- Wilson Result -->
-    <div class="post post-result">
-      <div class="post-top">
-        <span class="tag tag-loss">Result · L 18–25</span>
-        <div class="post-title">Cougars Fall to Wilson (Reading) in Season Opener</div>
-      </div>
-      <div class="post-date">March 14, 2026 · Home · 11:00 AM</div>
-      <div class="post-body">
-        DE dropped their 2026 regular-season debut to Wilson (Reading) on Saturday morning. The Cougars showed resilience defensively — tallying <strong>15 blocks and 43 digs</strong> — but 21 service errors proved too costly, handing Wilson a wave of free points throughout the match. Anish Yasa (#8) was the offensive standout with 7 kills at a .353 efficiency. Sritan Bhumireddy (#1) anchored the back row with a 2.42 passing rating.
-        <div class="stat-pills">
-          <span class="pill">Kills <b>23</b></span>
-          <span class="pill">Blocks <b>15</b></span>
-          <span class="pill">Digs <b>43</b></span>
-          <span class="pill">Hit Eff. <b>-.009</b></span>
-          <span class="pill">Svc Err <b>21</b></span>
+    <!-- Announcements — replaced by Google Sheets when configured -->
+    <div id="home-posts">
+      <div class="post post-result">
+        <div class="post-top">
+          <span class="tag tag-loss">Result · L 2&ndash;3</span>
+          <div class="post-title">Cougars Fall to Wilson (Reading) in Season Opener</div>
         </div>
-        The Cougars travel to Lansdale Catholic on Monday at 5:00 PM. <a href="/news.html">Full recap →</a>
+        <div class="post-date">March 14, 2026 · Home</div>
+        <div class="post-body">
+          DE dropped their 2026 debut to Wilson (Reading). Tallied <strong>15 blocks and 43 digs</strong> but 21 service errors proved too costly. <a href="/news.html">Full recap →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-new">New</span>
-        <div class="post-title">2026 Season is Underway! 🏐</div>
-      </div>
-      <div class="post-date">March 4, 2026</div>
-      <div class="post-body">
-        Tryouts have concluded and rosters are finalized. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-top">
-        <span class="tag tag-info">Info</span>
-        <div class="post-title">Support Cougar Volleyball</div>
-      </div>
-      <div class="post-date">January 2026</div>
-      <div class="post-body">
-        Help support the program! Donations go toward equipment, uniforms, and travel. Use the Donate button or follow <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">@deastboysvb</a> for updates.
+      <div class="post">
+        <div class="post-top">
+          <span class="tag tag-new">New</span>
+          <div class="post-title">2026 Season is Underway!</div>
+        </div>
+        <div class="post-date">March 4, 2026</div>
+        <div class="post-body">
+          Rosters are finalized. Stay up to date by joining <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">@BOYSDEVB on Remind</a>.
+        </div>
       </div>
     </div>
 
@@ -490,46 +472,55 @@ footer { background: var(--navy); color: var(--white); }
     c.style.display = c.style.display === 'block' ? 'none' : 'block';
   });
 
-  const SCHEDULE = [
-    { year:2026,month:3, day:10,label:'MAR 10',opponent:'vs. Souderton',      type:'Scrimmage',time:'5:00 PM', home:true  },
-    { year:2026,month:3, day:13,label:'MAR 13',opponent:'@ Bensalem',          type:'Scrimmage',time:'5:00 PM', home:false },
-    { year:2026,month:3, day:14,label:'MAR 14',opponent:'vs. Wilson (Reading)',type:'',         time:'11:00 AM',home:true  },
-    { year:2026,month:3, day:16,label:'MAR 16',opponent:'@ Lansdale Catholic', type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:3, day:18,label:'MAR 18',opponent:'@ Henderson',         type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:3, day:24,label:'MAR 24',opponent:'@ Downingtown West',  type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:3, day:26,label:'MAR 26',opponent:'vs. Kennett',         type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:3, day:27,label:'MAR 27',opponent:'vs. Dock Mennonite',  type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:3, day:30,label:'MAR 30',opponent:'@ Council Rock South',type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:3, day:31,label:'MAR 31',opponent:'vs. WC Rustin',       type:'',         time:'3:45 PM', home:true  },
-    { year:2026,month:4, day:7, label:'APR 7', opponent:'@ Avon Grove',        type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:4, day:9, label:'APR 9', opponent:'@ Unionville',        type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:4, day:10,label:'APR 10',opponent:'vs. CB South',        type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:4, day:14,label:'APR 14',opponent:'vs. Bishop Shanahan', type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:4, day:16,label:'APR 16',opponent:'vs. Downingtown West',type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:4, day:20,label:'APR 20',opponent:'@ Quakertown',        type:'',         time:'6:30 PM', home:false },
-    { year:2026,month:4, day:23,label:'APR 23',opponent:'@ Kennett',           type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:4, day:28,label:'APR 28',opponent:'vs. Unionville',      type:'',         time:'5:00 PM', home:true  },
-    { year:2026,month:4, day:30,label:'APR 30',opponent:'@ Bishop Shanahan',   type:'',         time:'5:00 PM', home:false },
-    { year:2026,month:5, day:1, label:'MAY 1', opponent:'vs. Spring-Ford',     type:'',         time:'7:00 PM', home:true  },
-    { year:2026,month:5, day:4, label:'MAY 4', opponent:'@ Lower Merion',      type:'',         time:'5:30 PM', home:false },
-  ];
-  (function updateNextGame() {
-    const today = new Date(); today.setHours(0,0,0,0);
-    const next = SCHEDULE.find(g => new Date(g.year, g.month-1, g.day) >= today);
-    if (!next) {
-      document.getElementById('ng-date').textContent='SEE';
-      document.getElementById('ng-opponent').textContent='You next season!';
-      document.getElementById('ng-times').textContent='2027 Season';
-      document.getElementById('stat-next-val').innerHTML='OFF<em>-</em>SZN';
-      return;
-    }
-    const detail = [next.time, next.home?'Home':'Away', next.type].filter(Boolean).join(' · ');
-    document.getElementById('ng-date').textContent=next.label;
-    document.getElementById('ng-opponent').textContent=next.opponent;
-    document.getElementById('ng-times').textContent=detail;
-    const parts=next.label.split(' ');
-    document.getElementById('stat-next-val').innerHTML=parts[0]+'<em> '+parts[1]+'</em>';
-  })();
+</script>
+
+<script src="/js/sheets.js"></script>
+<script>
+// ── Schedule → next game + record ────────────────────────────
+fetchSheet('Schedule', function(err, rows) {
+  if (err) return; // keep placeholder dashes
+
+  var rec  = schedRecord(rows);
+  var next = schedNextGame(rows);
+
+  var recHTML = rec.w + '<em>&ndash;</em>' + rec.l;
+  document.getElementById('hero-record').innerHTML  = recHTML;
+  document.getElementById('strip-record').innerHTML = recHTML;
+
+  if (next) {
+    var isHome = (next.Location || '').toLowerCase() === 'home';
+    var label  = fmtDateLabel(next.Date);
+    var parts  = label.split(' ');
+    var opp    = isHome ? 'vs. ' + next.Opponent : '@ ' + next.Opponent;
+    var detail = [next.Time, isHome ? 'Home' : 'Away',
+                  (next.Type && next.Type.toLowerCase() !== 'regular' ? next.Type : '')]
+                 .filter(Boolean).join(' \u00b7 ');
+    document.getElementById('ng-date').textContent     = label;
+    document.getElementById('ng-opponent').textContent = opp;
+    document.getElementById('ng-times').textContent    = detail;
+    document.getElementById('stat-next-val').innerHTML = parts[0] + '<em> ' + parts[1] + '</em>';
+  } else {
+    document.getElementById('ng-date').textContent     = 'SEE';
+    document.getElementById('ng-opponent').textContent = 'You next season!';
+    document.getElementById('ng-times').textContent    = '2027 Season';
+    document.getElementById('stat-next-val').innerHTML = 'OFF<em>-</em>SZN';
+  }
+});
+
+// ── News → homepage announcements ────────────────────────────
+fetchSheet('News', function(err, rows) {
+  if (err) return; // keep static fallback
+
+  var posts = rows.filter(function(r) {
+    return (r.ShowOnHome || '').toLowerCase() === 'yes';
+  });
+  posts.sort(function(a, b) { return (b.Date || '').localeCompare(a.Date || ''); });
+  if (!posts.length) return;
+
+  document.getElementById('home-posts').innerHTML =
+    posts.map(function(r) { return renderHomeAnnouncement(r); }).join('') +
+    '<div style="margin-top:12px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
+});
 </script>
 </body>
 </html>

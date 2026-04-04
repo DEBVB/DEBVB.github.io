@@ -214,7 +214,7 @@ footer{background:var(--navy);color:var(--white)}
 </div>
 
 <div class="page-wrap">
-  <div class="posts">
+  <div class="posts" id="posts-container">
 
     <div class="post">
       <div class="post-top">
@@ -548,9 +548,29 @@ if (burger && drawer) {
   });
 }
 
-// Accordion event delegation (replaces inline onclick handlers)
-document.querySelectorAll('.acc-trigger').forEach(function(btn) {
-  btn.addEventListener('click', function() { toggleAcc(btn); });
+// Accordion event delegation — works for static and dynamically-rendered buttons
+document.getElementById('posts-container').addEventListener('click', function(e) {
+  var btn = e.target.closest('.acc-trigger');
+  if (btn) toggleAcc(btn);
+});
+</script>
+
+<script src="/js/sheets.js"></script>
+<script>
+fetchSheet('News', function(err, rows) {
+  if (err) return; // leave static posts visible when sheet not configured
+
+  rows.sort(function(a, b) { return (b.Date || '').localeCompare(a.Date || ''); });
+  if (!rows.length) return;
+
+  var html = renderNewsExpanded(rows[0]);
+  if (rows.length > 1) {
+    html += '<div class="older-label">Previous Posts</div>';
+    for (var i = 1; i < rows.length; i++) {
+      html += renderNewsAccordion(rows[i]);
+    }
+  }
+  document.getElementById('posts-container').innerHTML = html;
 });
 </script>
 

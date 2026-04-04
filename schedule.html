@@ -157,6 +157,8 @@ footer { background: var(--navy); color: var(--white); }
 .footer-col p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; }
 .footer-bottom { max-width: 1100px; margin: 0 auto; padding: 16px 48px 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; text-align: center; }
 @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.sched-loading { text-align:center; padding:40px 20px; color:var(--muted); font-size:14px; font-style:italic; }
+.sched-error   { text-align:center; padding:40px 20px; color:var(--red);   font-size:13px; font-family:'JetBrains Mono',monospace; }
 .page-header { animation: fadeUp 0.4s 0.05s both; }
 .page-wrap   { animation: fadeUp 0.4s 0.15s both; }
 .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px; border-radius: 6px; transition: background 0.12s; }
@@ -223,24 +225,24 @@ footer { background: var(--navy); color: var(--white); }
 <div class="page-header">
   <div class="page-header-kicker">Downingtown East · PIAA District 1 · Ches-Mont League</div>
   <h1>2026 Season <em>Schedule</em></h1>
-  <div class="page-header-sub">Varsity &amp; JV · 22 Games</div>
+  <div class="page-header-sub" id="sched-count">Varsity &amp; JV · 2026 Season</div>
 </div>
 
 <div class="page-wrap">
   <div class="record-banner">
     <div>
       <div class="record-banner-label">2026 Record</div>
-      <div class="record-banner-val">4<em>–</em>2</div>
+      <div class="record-banner-val" id="banner-record">—</div>
     </div>
     <div class="record-banner-divider"></div>
     <div>
       <div class="record-banner-label">Last Result</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#991b1b;font-weight:700;margin-top:4px;">W 3–0 vs. Dock Mennonite · Mar 28</div>
+      <div id="banner-last" style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#991b1b;font-weight:700;margin-top:4px;">—</div>
     </div>
     <div class="record-banner-divider"></div>
     <div>
       <div class="record-banner-label">Next Game</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--navy);font-weight:700;margin-top:4px;">@ Council Rock South · Mar 30 · 4:30 PM</div>
+      <div id="banner-next" style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--navy);font-weight:700;margin-top:4px;">—</div>
     </div>
   </div>
 
@@ -260,148 +262,8 @@ footer { background: var(--navy); color: var(--white); }
           <th class="th-result">Result</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="row-home">
-          <td class="td-date">Mar 10, 2026</td>
-          <td class="td-opponent home-game">vs. Souderton</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-scrim">Scrim</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Mar 13, 2026</td>
-          <td class="td-opponent">@ Bensalem</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=4319+Hulmeville+Rd,+Bensalem,+PA+19020" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-scrim">Scrim</span></td>
-        </tr>
-        <!-- UPDATED: Wilson result -->
-        <tr class="row-home">
-          <td class="td-date">Mar 14, 2026</td>
-          <td class="td-opponent home-game">vs. Wilson (Reading)</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">11:00 AM</td>
-          <td class="td-result"><span class="badge badge-loss">L 2&ndash;3</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Mar 16, 2026</td>
-          <td class="td-opponent">@ Lansdale Catholic</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=700+Lansdale+Ave,+Lansdale,+PA+19446" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-           <td class="td-result"><span class="badge badge-loss">L 1&ndash;3</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Mar 18, 2026</td>
-          <td class="td-opponent">@ Henderson</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=400+Montgomery+Ave,+West+Chester,+PA+19380" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-win">W 3&ndash;0</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Mar 24, 2026</td>
-          <td class="td-opponent">@ Downingtown West</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=445+Manor+Ave,+Downingtown,+PA+19335" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-win">W 3&ndash;1</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Mar 27, 2026</td>
-          <td class="td-opponent home-game">vs. Dock Mennonite</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-win">W 3&ndash;0</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Mar 30, 2026</td>
-          <td class="td-opponent">@ Council Rock South</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=2002+Rock+Way,+Holland,+PA+18966" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge badge-win">W 3&ndash;0</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Mar 31, 2026</td>
-          <td class="td-opponent home-game">vs. WC Rustin</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">3:45 PM</td>
-          <td class="td-result"><span class="badge badge-win">W 3&ndash;0</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Apr 7, 2026</td>
-          <td class="td-opponent">@ Avon Grove</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=10+Waltman+Way,+West+Grove,+PA+19390" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Apr 9, 2026</td>
-          <td class="td-opponent">@ Unionville</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=750+Unionville+Rd,+Kennett+Square,+PA+19348" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Apr 10, 2026</td>
-          <td class="td-opponent home-game">vs. CB South</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Apr 14, 2026</td>
-          <td class="td-opponent home-game">vs. Bishop Shanahan</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Apr 16, 2026</td>
-          <td class="td-opponent home-game">vs. Downingtown West</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Apr 20, 2026</td>
-          <td class="td-opponent">@ Quakertown</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=600+Park+Ave,+Quakertown,+PA+18951" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">6:30 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Apr 24, 2026</td>
-          <td class="td-opponent">@ Kennett</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=100+E+South+St,+Kennett+Square,+PA+19348" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">Apr 28, 2026</td>
-          <td class="td-opponent home-game">vs. Unionville</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">Apr 30, 2026</td>
-          <td class="td-opponent">@ Bishop Shanahan</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=220+Woodbine+Rd,+Downingtown,+PA+19335" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-home">
-          <td class="td-date">May 1, 2026</td>
-          <td class="td-opponent home-game">vs. Spring-Ford</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=50+Devon+Dr,+Exton,+PA+19341" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">7:00 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
-        <tr class="row-away">
-          <td class="td-date">May 4, 2026</td>
-          <td class="td-opponent">@ Lower Merion</td>
-          <td class="td-location"><a class="dir-btn" href="https://www.google.com/maps/dir/?api=1&destination=315+E+Montgomery+Ave,+Ardmore,+PA+19003" target="_blank" rel="noopener noreferrer"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a></td>
-          <td class="td-time">5:30 PM</td>
-          <td class="td-result"><span class="badge-upcoming">Upcoming</span></td>
-        </tr>
+            <tbody id="sched-tbody">
+        <tr><td colspan="5" class="sched-loading">Loading schedule from Google Sheets…</td></tr>
       </tbody>
     </table>
   </div>
@@ -437,9 +299,47 @@ footer { background: var(--navy); color: var(--white); }
   <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved</div>
 </footer>
 
+<script src="/js/sheets.js"></script>
 <script>
-  document.getElementById('mobile-menu-button').addEventListener('click', () => {
+  document.getElementById('mobile-menu-button').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  fetchSheet('Schedule', function(err, rows) {
+    var tbody = document.getElementById('sched-tbody');
+    if (err) {
+      tbody.innerHTML = '<tr><td colspan="5" class="sched-error">' +
+        (err.message.indexOf('not configured') !== -1
+          ? 'Set your Google Sheet ID in /js/sheets.js to enable live data.'
+          : 'Could not load schedule — check your connection and try again.') +
+        '</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function(r) { return renderScheduleRow(r); }).join('');
+
+    var rec = schedRecord(rows);
+    document.getElementById('banner-record').innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
+
+    var last = schedLastResult(rows);
+    if (last) {
+      var res = last.Result.toUpperCase() === 'W' ? 'W' : 'L';
+      var sc  = (last.Score || '').replace('-', '&ndash;');
+      var opp = (last.Location || '').toLowerCase() === 'home' ? 'vs. ' + last.Opponent : '@ ' + last.Opponent;
+      document.getElementById('banner-last').style.color = res === 'W' ? '#166534' : '#991b1b';
+      document.getElementById('banner-last').innerHTML   = res + ' ' + sc + ' ' + opp + ' &middot; ' + fmtDateShort(last.Date);
+    }
+
+    var next = schedNextGame(rows);
+    if (next) {
+      var nOpp = (next.Location || '').toLowerCase() === 'home' ? 'vs. ' + next.Opponent : '@ ' + next.Opponent;
+      document.getElementById('banner-next').innerHTML =
+        nOpp + ' &middot; ' + fmtDateShort(next.Date) + (next.Time ? ' &middot; ' + next.Time : '');
+    } else {
+      document.getElementById('banner-next').textContent = 'Season complete';
+    }
+
+    var total = rows.filter(function(r) { return (r.Type || '').toLowerCase() !== 'scrim'; }).length;
+    document.getElementById('sched-count').textContent = 'Varsity & JV \u00b7 ' + total + ' Games';
   });
 </script>
 </body>
