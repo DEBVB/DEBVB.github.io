@@ -169,12 +169,16 @@ footer { background: var(--navy); color: var(--white); }
 .mobile-link:hover { background: var(--soft); }
 .mobile-link.active { background: var(--navy); color: var(--white); }
 .mobile-link:last-child { border-bottom: none; }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   nav { padding: 0 16px; }
   .nav-brand-text { display: none; }
   .nav-links { display: none; }
   .mobile-menu-btn { display: block; }
   .page-header { padding: 28px 20px 24px; }
+  .page-wrap { padding: 36px 20px 60px; }
+  .record-banner { flex-wrap: wrap; }
+}
+@media (max-width: 700px) {
   .page-wrap { padding: 28px 16px 60px; }
   .sched-table thead { display: none; }
   .sched-table, .sched-table tbody { display: block; }
