@@ -513,10 +513,11 @@ fetchSheet('Schedule', function(err, rows) {
     document.getElementById('stat-next-val').innerHTML =
       parts.length > 1 ? parts[0] + '<em> ' + parts[1] + '</em>' : label;
   } else {
-    document.getElementById('ng-date').textContent     = 'SEE';
-    document.getElementById('ng-opponent').textContent = 'You next season!';
-    document.getElementById('ng-times').textContent    = '2027 Season';
-    document.getElementById('stat-next-val').innerHTML = 'OFF<em>-</em>SZN';
+    // Season complete — show final record in the next-game slot
+    document.getElementById('ng-date').innerHTML       = rec.w + '<em>&ndash;</em>' + rec.l;
+    document.getElementById('ng-opponent').textContent = 'Season Complete';
+    document.getElementById('ng-times').textContent    = 'Final Record · See you in 2027!';
+    document.getElementById('stat-next-val').innerHTML = 'FINAL';
   }
 });
 

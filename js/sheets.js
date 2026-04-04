@@ -159,8 +159,8 @@ function schedNextGame(rows) {
   var upcoming = [];
   rows.forEach(function(r) {
     if (r.Result) return;               // already played
-    var d = parseISODate(r.Date);
-    if (d && d >= today) upcoming.push({ row: r, d: d });
+    var d = parseISODate(r.Date) || (r.Date ? new Date(r.Date) : null);
+    if (d && !isNaN(d) && d >= today) upcoming.push({ row: r, d: d });
   });
   if (!upcoming.length) return null;
   upcoming.sort(function(a, b) { return a.d - b.d; }); // earliest first
@@ -172,8 +172,8 @@ function schedLastResult(rows) {
   rows.forEach(function(r) {
     var res = (r.Result || '').toUpperCase();
     if (res !== 'W' && res !== 'L') return;
-    var d = parseISODate(r.Date);
-    if (d) played.push({ row: r, d: d });
+    var d = parseISODate(r.Date) || (r.Date ? new Date(r.Date) : null);
+    if (d && !isNaN(d)) played.push({ row: r, d: d });
   });
   if (!played.length) return null;
   played.sort(function(a, b) { return b.d - a.d; }); // most recent first
