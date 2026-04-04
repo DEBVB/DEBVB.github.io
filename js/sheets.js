@@ -319,19 +319,20 @@ function renderHomeAnnouncement(row) {
   var type = (row.Type || 'info').toLowerCase();
   var sc = (row.SetsDE && row.SetsOpp)
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
-  var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
-  var tagLabel = sc || (type === 'new' ? 'New' : 'Info');
+  var tagCls  = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
+  var cardCls = type === 'win' ? ' post-win' : type === 'loss' ? ' post-loss' : '';
+  var tagLabel = sc || (type === 'new' ? 'New' : type === 'info' ? 'Info' : 'New');
 
-  // Truncate body to 120 chars
+  // Truncate body to 120 chars at a word boundary
   var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
   var snippet  = fullBody.length > 120
     ? fullBody.slice(0, fullBody.lastIndexOf(' ', 120)) + '&hellip;'
     : fullBody;
   var bodyHTML = snippet
     ? snippet + ' <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>'
-    : '<a href="/news.html">See full post &rarr;</a>';
+    : '<a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>';
 
-  return '<div class="post' + (sc ? ' post-result' : '') + '">' +
+  return '<div class="post' + cardCls + '">' +
     '<div class="post-top"><span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
     '<div class="post-title">' + (row.Title || '') + '</div></div>' +
     '<div class="post-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
