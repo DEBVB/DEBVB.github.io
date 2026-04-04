@@ -52,7 +52,7 @@
    are in collapsible accordions. Only ShowOnHome=yes rows appear on index.html.
    =========================================================================== */
 
-var SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE';
+var SHEET_ID = 'https://docs.google.com/spreadsheets/d/1pgwjllLVC1JOYkgskhWiZ-Kwgw_klYM2UvbKBf27UO4/edit?usp=sharing';
 
 // ── Internal CSV helpers ──────────────────────────────────────────────────────
 
