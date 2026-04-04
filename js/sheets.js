@@ -156,23 +156,28 @@ function schedRecord(rows) {
 
 function schedNextGame(rows) {
   var today = new Date(); today.setHours(0, 0, 0, 0);
-  for (var i = 0; i < rows.length; i++) {
-    var r = rows[i];
-    if (!r.Result) {
-      var d = parseISODate(r.Date);
-      if (d && d >= today) return r;
-    }
-  }
-  return null;
+  var upcoming = [];
+  rows.forEach(function(r) {
+    if (r.Result) return;               // already played
+    var d = parseISODate(r.Date);
+    if (d && d >= today) upcoming.push({ row: r, d: d });
+  });
+  if (!upcoming.length) return null;
+  upcoming.sort(function(a, b) { return a.d - b.d; }); // earliest first
+  return upcoming[0].row;
 }
 
 function schedLastResult(rows) {
-  var last = null;
+  var played = [];
   rows.forEach(function(r) {
     var res = (r.Result || '').toUpperCase();
-    if (res === 'W' || res === 'L') last = r;
+    if (res !== 'W' && res !== 'L') return;
+    var d = parseISODate(r.Date);
+    if (d) played.push({ row: r, d: d });
   });
-  return last;
+  if (!played.length) return null;
+  played.sort(function(a, b) { return b.d - a.d; }); // most recent first
+  return played[0].row;
 }
 
 var _dirSVG = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
