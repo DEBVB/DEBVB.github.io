@@ -314,11 +314,20 @@ function renderHomeAnnouncement(row) {
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
   var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
   var tagLabel = sc || (type === 'new' ? 'New' : 'Info');
-  var body = (row.Body || '').replace(/\n/g, '<br>');
+
+  // Truncate body to 120 chars
+  var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
+  var snippet  = fullBody.length > 120
+    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 120)) + '&hellip;'
+    : fullBody;
+  var bodyHTML = snippet
+    ? snippet + ' <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>'
+    : '<a href="/news.html">See full post &rarr;</a>';
+
   return '<div class="post' + (sc ? ' post-result' : '') + '">' +
     '<div class="post-top"><span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
     '<div class="post-title">' + (row.Title || '') + '</div></div>' +
     '<div class="post-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
-    '<div class="post-body">' + (body || '&nbsp;') + '</div>' +
+    '<div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">' + bodyHTML + '</div>' +
     '</div>';
 }
