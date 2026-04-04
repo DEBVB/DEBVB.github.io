@@ -268,7 +268,9 @@ function _newsStats(row) {
         '</div><div class="stat-label">' + s.key + '</div></div>';
     }).join('') + '</div>';
   if (row.HitEff) {
-    html += '<div class="stat-pills" style="margin:8px 0"><span class="pill">Hit Eff. <b>' + row.HitEff + '</b></span></div>';
+    html += '<div class="hit-eff">Hit Eff. <strong style="color:var(--navy)">' + row.HitEff + '</strong></div>';
+  } else {
+    html += '<div style="margin-bottom:14px"></div>';
   }
   return html;
 }

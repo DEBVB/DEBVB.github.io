@@ -62,12 +62,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .tag-new{background:var(--navy);color:var(--white)}
 .tag-result{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
 .tag-win{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.tag-loss{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
 .tag-info{background:var(--gold-light);color:var(--navy);border:1px solid var(--gold)}
 .tag-archive{background:var(--soft);color:var(--muted);border:1px solid var(--rule)}
 .post-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);line-height:1.2;flex:1;min-width:0}
 .post-date{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
 .post-body{font-size:14px;color:#3d3830;line-height:1.75}
 .post-body p{margin-bottom:12px}
+.hit-eff{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;padding:6px 0 12px}
 .post-body p:last-child{margin-bottom:0}
 .post-body a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
 .post-body strong{font-weight:700;color:var(--ink)}
@@ -89,7 +91,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .sb-cell.won{color:var(--navy);font-weight:700}
 
 /* STAT STRIP */
-.stat-strip{display:flex;gap:0;border:1px solid var(--rule);border-top:none;margin-bottom:16px;background:var(--soft)}
+.stat-strip{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:0;background:var(--soft)}
+.stat-strip+.hit-eff{padding:6px 0 12px}
+.scoreboard+.stat-strip{border-top:none;margin-top:0}
 .stat-item{flex:1;text-align:center;padding:10px 4px;border-right:1px solid var(--rule)}
 .stat-item:last-child{border-right:none}
 .stat-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);line-height:1}
@@ -559,9 +563,19 @@ document.getElementById('posts-container').addEventListener('click', function(e)
 <script>
 fetchSheet('News', function(err, rows) {
   if (err) return; // leave static posts visible when sheet not configured
-
-  rows.sort(function(a, b) { return (b.Date || '').localeCompare(a.Date || ''); });
   if (!rows.length) return;
+
+  // Robust sort: newest first. Handles YYYY-MM-DD, "Apr 4, 2026", "4/4/2026", etc.
+  function toMs(dateStr) {
+    if (!dateStr) return 0;
+    var d = new Date(dateStr);
+    if (!isNaN(d)) return d.getTime();
+    // Try ISO split YYYY-MM-DD
+    var p = dateStr.split('-');
+    if (p.length === 3) return new Date(+p[0], +p[1]-1, +p[2]).getTime();
+    return 0;
+  }
+  rows.sort(function(a, b) { return toMs(b.Date) - toMs(a.Date); });
 
   var html = renderNewsExpanded(rows[0]);
   if (rows.length > 1) {
