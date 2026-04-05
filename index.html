@@ -110,6 +110,16 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .mast-slides { position: absolute; inset: 0; z-index: 0; }
 .mast-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
 .mast-slide.active { opacity: 1; }
+.mast-slides-loading {
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, var(--navy) 30%, rgba(232,176,0,0.12) 50%, var(--navy) 70%);
+  background-size: 200% 100%;
+  animation: slides-shimmer 1.6s linear infinite;
+}
+@keyframes slides-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 .mast-overlay { position: absolute; inset: 0; background: rgba(14,30,69,0.84); z-index: 1; }
 .mast-stripes { position: absolute; top: -80px; right: -80px; width: 500px; height: 600px; background: repeating-linear-gradient(-55deg, transparent, transparent 18px, rgba(255,255,255,0.025) 18px, rgba(255,255,255,0.025) 19px); pointer-events: none; z-index: 2; }
 .mast-dots { position: absolute; bottom: 16px; left: 48px; display: flex; gap: 8px; z-index: 4; }
@@ -273,21 +283,8 @@ footer { background: var(--navy); color: var(--white); }
 
 <main>
 <div class="masthead">
-  <div class="mast-slides">
-    <img class="mast-slide active" src="/slide1.jpeg" alt="Downingtown East Boys Volleyball team action">
-    <img class="mast-slide" src="/slide2.jpeg" alt="Cougars volleyball match highlight">
-    <img class="mast-slide" src="/slide3.jpg" alt="Cougars volleyball game">
-    <img class="mast-slide" src="/slide4.jpeg" alt="Downingtown East volleyball players">
-    <img class="mast-slide" src="/slide5.jpeg" alt="Cougars volleyball team">
-    <img class="mast-slide" src="/slide6.jpeg" alt="Boys volleyball match">
-    <img class="mast-slide" src="/slide7.jpg" alt="Cougars volleyball action shot">
-    <img class="mast-slide" src="/slide8.jpeg" alt="Downingtown East volleyball game">
-    <img class="mast-slide" src="/slide9.jpeg" alt="Boys volleyball team in action">
-    <img class="mast-slide" src="/VB1.JPEG" alt="Cougars volleyball team photo">
-    <img class="mast-slide" src="/IMG_1446.JPG" alt="Downingtown East volleyball players">
-    <img class="mast-slide" src="/IMG_5919.jpeg" alt="Boys volleyball match">
-    <img class="mast-slide" src="/IMG_5948.jpeg" alt="Cougars volleyball highlight">
-    <img class="mast-slide" src="/IMG_5964.jpeg" alt="Cougars volleyball action">
+  <div class="mast-slides" id="mast-slides">
+    <!-- Slides loaded dynamically from /photos/photos.json -->
   </div>
   <div class="mast-overlay"></div>
   <div class="mast-stripes"></div>
@@ -455,24 +452,68 @@ footer { background: var(--navy); color: var(--white); }
     burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
   });
 
-  const slides = document.querySelectorAll('.mast-slide');
-  const dotsEl = document.getElementById('mast-dots');
-  let current = 0, timer;
-  slides.forEach((_, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'mast-dot' + (i === 0 ? ' active' : '');
-    btn.addEventListener('click', () => goSlide(i));
-    dotsEl.appendChild(btn);
-  });
-  const dots = dotsEl.querySelectorAll('.mast-dot');
-  function goSlide(n) {
-    slides[current].classList.remove('active'); dots[current].classList.remove('active');
-    current = (n + slides.length) % slides.length;
-    slides[current].classList.add('active'); dots[current].classList.add('active');
-    resetTimer();
-  }
-  function resetTimer() { clearInterval(timer); timer = setInterval(() => goSlide(current + 1), 5000); }
-  resetTimer();
+  // ── Dynamic photo slideshow ───────────────────────────────────────────────
+  (function () {
+    var container = document.getElementById('mast-slides');
+    var dotsEl    = document.getElementById('mast-dots');
+    var slides = [], dots = [], current = 0, timer;
+
+    var shimmer = document.createElement('div');
+    shimmer.className = 'mast-slides-loading';
+    container.appendChild(shimmer);
+
+    function goSlide(n) {
+      if (!slides.length) return;
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = ((n % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      resetTimer();
+    }
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(function () { goSlide(current + 1); }, 5000);
+    }
+    function addDot(index) {
+      var btn = document.createElement('button');
+      btn.className = 'mast-dot' + (index === 0 ? ' active' : '');
+      btn.addEventListener('click', function () { goSlide(index); });
+      dotsEl.appendChild(btn);
+      dots.push(btn);
+    }
+    function buildSlides(photos) {
+      if (!photos || !photos.length) { container.removeChild(shimmer); return; }
+      photos.forEach(function (photo, i) {
+        var img = document.createElement('img');
+        img.className = 'mast-slide';
+        img.alt = photo.alt || 'Cougars volleyball action photo';
+        img.src = photo.src;
+        container.appendChild(img);
+        slides.push(img);
+        addDot(i);
+      });
+      slides[0].classList.add('active');
+      function removeShimmer() { if (shimmer.parentNode) container.removeChild(shimmer); }
+      if (slides[0].complete) { removeShimmer(); }
+      else {
+        slides[0].addEventListener('load',  removeShimmer, { once: true });
+        slides[0].addEventListener('error', removeShimmer, { once: true });
+      }
+      resetTimer();
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/photos/photos.json', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        try { buildSlides(JSON.parse(xhr.responseText)); }
+        catch (e) { container.removeChild(shimmer); }
+      } else { container.removeChild(shimmer); }
+    };
+    xhr.onerror = function () { container.removeChild(shimmer); };
+    xhr.send();
+  }());
 
   document.getElementById('donate-header').addEventListener('click', () => {
     const c = document.getElementById('donate-content');
