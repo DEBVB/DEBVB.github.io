@@ -1,0 +1,45 @@
+name: Regenerate photos.json
+
+on:
+  push:
+    paths:
+      - 'photos/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate photos.json
+        run: |
+          python3 - <<'PYEOF'
+          import os, json
+
+          IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
+          photos_dir = 'photos'
+
+          entries = []
+          for fname in sorted(os.listdir(photos_dir), reverse=True):
+              ext = os.path.splitext(fname)[1].lower()
+              if ext in IMAGE_EXTS:
+                  entries.append({
+                      'src': f'/photos/{fname}',
+                      'alt': 'Downingtown East Boys Volleyball action photo'
+                  })
+
+          with open(os.path.join(photos_dir, 'photos.json'), 'w') as f:
+              json.dump(entries, f, indent=2)
+          print(f'Wrote {len(entries)} entries to photos/photos.json')
+          PYEOF
+
+      - name: Commit updated manifest
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add photos/photos.json
+          git diff --cached --quiet || git commit -m "chore: regenerate photos.json [skip ci]"
+          git push
