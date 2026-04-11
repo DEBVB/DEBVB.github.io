@@ -569,7 +569,13 @@ fetchSheet('News', function(err, rows) {
   var posts = rows.filter(function(r) {
     return (r.ShowOnHome || '').toLowerCase() === 'yes';
   });
-  posts.sort(function(a, b) { return (b.Date || '').localeCompare(a.Date || ''); });
+  posts.sort(function(a, b) {
+    var da = parseISODate(a.Date) || (a.Date ? new Date(a.Date) : null);
+    var db = parseISODate(b.Date) || (b.Date ? new Date(b.Date) : null);
+    var ta = (da && !isNaN(da)) ? da.getTime() : 0;
+    var tb = (db && !isNaN(db)) ? db.getTime() : 0;
+    return tb - ta;
+  });
   if (!posts.length) return;
 
   document.getElementById('home-posts').innerHTML =
