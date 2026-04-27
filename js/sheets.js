@@ -340,31 +340,23 @@ function renderNewsAccordion(row) {
 
 /** Render the most recent post as a full-width navy hero block */
 function renderHeroAnnouncement(row) {
-  var type    = (row.Type || 'info').toLowerCase();
-  var sc      = (row.SetsDE && row.SetsOpp)
+  var type     = (row.Type || 'info').toLowerCase();
+  var sc       = (row.SetsDE && row.SetsOpp)
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
-  var tagCls  = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
-  var tagLabel = sc || (type === 'new' ? 'New' : type === 'info' ? 'Info' : 'New');
-  var heroCls = type === 'win' ? ' news-hero-win' : type === 'loss' ? ' news-hero-loss' : '';
-
+  var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
+  var tagLabel = sc || (type === 'win' ? 'Win' : type === 'loss' ? 'Loss' : 'New');
   var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
-  var snippet  = fullBody.length > 280
-    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 280)) + '&hellip;'
+  var snippet  = fullBody.length > 220
+    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 220)) + '&hellip;'
     : fullBody;
-
-  return '<div class="news-hero' + heroCls + '">' +
-    '<div class="nh-inner">' +
-      '<div class="nh-eye">' +
-        '<span class="nh-live">Latest</span>' +
-        '<span class="nh-sep"></span>' +
-        '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
-        '<span class="nh-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
-      '</div>' +
-      '<h2 class="nh-title">' + (row.Title || '') + '</h2>' +
-      (snippet ? '<p class="nh-body">' + snippet + '</p>' : '') +
-      '<a href="/news.html" class="nh-cta">Full story &rarr;</a>' +
+  return '<div class="fp-eye">' +
+      '<span class="fp-live">Latest</span>' +
+      '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
+      '<span class="fp-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
     '</div>' +
-  '</div>';
+    '<h2 class="fp-title">' + (row.Title || '') + '</h2>' +
+    (snippet ? '<p class="fp-body">' + snippet + '</p>' : '') +
+    '<a href="/news.html" class="fp-link">Full story &rarr;</a>';
 }
 
 /** Render a compact announcement card for the homepage */
