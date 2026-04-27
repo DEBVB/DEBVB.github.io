@@ -73,23 +73,25 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .section-coaches { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 8px; }
 .stats-note { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 20px; text-transform: uppercase; }
 .stats-note span { color: var(--navy); font-weight: 500; }
-.player-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
-.player-card { background: var(--navy); border: 1px solid rgba(255,255,255,0.1); overflow: hidden; transition: box-shadow 0.18s, transform 0.15s; position: relative; }
+.player-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.player-card { background: var(--white); border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s, transform 0.16s; position: relative; }
 .player-card.clickable { cursor: pointer; }
-.player-card.clickable:hover { box-shadow: 4px 4px 0 var(--gold); transform: translateY(-2px); }
-.card-bar { height: 4px; background: var(--gold); }
-.card-body { padding: 14px 14px 12px; }
-.player-card.has-stats::after { content: ''; position: absolute; top: 10px; right: 10px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-.card-jersey { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--gold); line-height: 1; letter-spacing: -1px; margin-bottom: 4px; }
-.card-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 2px 8px; margin-bottom: 8px; }
-.card-name { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--white); line-height: 1.2; margin-bottom: 12px; }
-.card-divider { height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 10px; }
-.card-stats { display: flex; }
-.cs { flex: 1; text-align: center; padding: 0 3px; border-right: 1px solid rgba(255,255,255,0.12); }
+.player-card.clickable:hover { box-shadow: 0 10px 28px rgba(14,30,69,0.16); transform: translateY(-4px); }
+.card-photo-area { position: relative; width: 100%; padding-top: 88%; background: linear-gradient(155deg, #0e1e45 0%, #1e3a7a 60%, #0e2255 100%); overflow: hidden; }
+.card-photo-area img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.card-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: clamp(48px,8vw,72px); color: rgba(232,176,0,0.22); letter-spacing: -2px; line-height: 1; user-select: none; }
+.card-jersey-badge { position: absolute; bottom: 10px; right: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+.player-card.has-stats::after { content: ''; position: absolute; top: 10px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 2px rgba(232,176,0,0.3); }
+.card-body { padding: 14px 16px 16px; }
+.card-role { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; margin-bottom: 10px; }
+.card-name { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1.15; margin-bottom: 5px; }
+.card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.card-stats { display: flex; border-top: 1px solid var(--rule); margin-top: 12px; }
+.cs { flex: 1; text-align: center; padding: 10px 3px 6px; border-right: 1px solid var(--rule); }
 .cs:last-child { border-right: none; }
-.cs-val { font-family: 'DM Serif Display', serif; font-size: 13px; color: var(--white); line-height: 1; display: block; }
-.cs-key { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); display: block; margin-top: 3px; }
-.card-hint { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; margin-top: 8px; }
+.cs-val { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--navy); line-height: 1; display: block; }
+.cs-key { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 3px; }
+.card-hint { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--navy); letter-spacing: 0.08em; text-transform: uppercase; text-align: right; margin-top: 8px; opacity: 0.7; }
 .role-outside { background: var(--gold);  color: var(--navy); }
 .role-middle  { background: #7f1d1d;      color: #fff; }
 .role-setter  { background: #14532d;      color: #fff; }
@@ -144,11 +146,11 @@ footer { background: var(--navy); color: var(--white); }
   .nav-inner { padding: 0 20px; } .nav-brand-text { display: none; }
   .nav-links { display: none; } .nav-burger { display: block; }
   .page-header { padding: 28px 20px 24px; } .page-wrap { padding: 36px 24px 60px; }
-  .player-grid { grid-template-columns: repeat(4,1fr); }
+  .player-grid { grid-template-columns: repeat(3,1fr); gap: 12px; }
 }
 @media (max-width: 600px) {
   .page-wrap { padding: 28px 16px 60px; }
-  .player-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
+  .player-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
   .section-title { font-size: 22px; } .ms-grid { grid-template-columns: repeat(2,1fr); }
   .modal { max-height: 85vh; }
   .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
@@ -274,16 +276,27 @@ function roleClass(r) {
 }
 function buildCard(p){
   var s=p.stats,hasStats=s!==null,eff=hasStats?calcEff(s.kills,s.errors,s.attempts):null;
-  var cols=[];cols.push({val:p.height,key:'Ht'});cols.push({val:p.year,key:'Yr'});
+  var initials=p.name.split(' ').map(function(w){return w.charAt(0).toUpperCase();}).slice(0,2).join('');
+  var jerseyBadge=p.jersey!=='—'?'<span class="card-jersey-badge">#'+p.jersey+'</span>':'';
+  var statCols=[];
   if(hasStats){
-    if(p.role==='Setter'){cols.push({val:s.assists,key:'Ast'});cols.push({val:s.digs,key:'Dig'});}
-    else if(p.role==='DS'||p.role==='DS / Libero'){cols.push({val:s.digs,key:'Dig'});cols.push({val:s.srRtg?s.srRtg.toFixed(2):'—',key:'SR'});}
-    else{if(s.kills===0&&s.blocks>0){cols.push({val:s.blocks,key:'Blk'});cols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}
-    else{cols.push({val:s.kills,key:'K'});cols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}}
-  }else{cols.push({val:'—',key:'Stats'});cols.push({val:'Soon',key:''});}
-  var statsHTML=cols.map(function(c){return'<div class="cs"><span class="cs-val">'+c.val+'</span><span class="cs-key">'+c.key+'</span></div>';}).join('');
+    if(p.role==='Setter'){statCols.push({val:s.assists,key:'Ast'});statCols.push({val:s.digs,key:'Dig'});}
+    else if(p.role==='DS'||p.role==='DS / Libero'){statCols.push({val:s.digs,key:'Dig'});statCols.push({val:s.srRtg?s.srRtg.toFixed(2):'—',key:'SR'});}
+    else{if(s.kills===0&&s.blocks>0){statCols.push({val:s.blocks,key:'Blk'});statCols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}
+    else{statCols.push({val:s.kills,key:'K'});statCols.push({val:eff!==null?fmtEff(eff):'—',key:'Eff'});}}
+  }
+  var statsHTML=hasStats
+    ?'<div class="card-stats">'+statCols.map(function(c){return'<div class="cs"><span class="cs-val">'+c.val+'</span><span class="cs-key">'+c.key+'</span></div>';}).join('')+'</div><div class="card-hint">View stats &#8250;</div>'
+    :'';
   var div=document.createElement('div');div.className='player-card'+(hasStats?' has-stats clickable':'');
-  div.innerHTML='<div class="card-bar"></div><div class="card-body"><div class="card-jersey">'+(p.jersey!=='—'?'#'+p.jersey:p.jersey)+'</div><div class="card-role '+roleClass(p.role)+'">'+p.role+'</div><div class="card-name">'+p.name+'</div><div class="card-divider"></div><div class="card-stats">'+statsHTML+'</div>'+(hasStats?'<div class="card-hint">View stats &#8250;</div>':'')+'</div>';
+  div.innerHTML=
+    '<div class="card-photo-area"><span class="card-initials">'+initials+'</span>'+jerseyBadge+'</div>'+
+    '<div class="card-body">'+
+      '<div class="card-role '+roleClass(p.role)+'">'+p.role+'</div>'+
+      '<div class="card-name">'+p.name+'</div>'+
+      '<div class="card-meta">'+(p.height||'—')+(p.year?' &nbsp;&middot;&nbsp; '+p.year:'')+'</div>'+
+      statsHTML+
+    '</div>';
   if(hasStats){div.addEventListener('click',function(){openModal(p);});}
   return div;
 }
