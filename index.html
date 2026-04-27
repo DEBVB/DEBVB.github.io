@@ -173,6 +173,18 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .post-win  { border-left: 4px solid #86efac; }
 .post-loss { border-left: 4px solid #f87171; }
 .post-result { border-left: 4px solid #f87171; }
+/* ── Featured (latest) announcement ────────────────────────── */
+.post-featured { background: var(--white); border: 1px solid var(--rule); border-top: 4px solid var(--navy); padding: 28px 32px 30px; margin-bottom: 2px; transition: box-shadow 0.2s; }
+.post-featured:hover { box-shadow: 4px 4px 0 var(--navy); }
+.post-featured-win  { border-top-color: #4ade80; background: #f0fdf4; }
+.post-featured-loss { border-top-color: #f87171; background: #fef2f2; }
+.post-featured-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+.post-featured-title { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink); line-height: 1.15; margin-bottom: 12px; }
+.post-featured-body { font-size: 14.5px; color: #3d3830; line-height: 1.75; }
+.post-featured-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; white-space: nowrap; }
+.posts-earlier { margin-top: 20px; }
+.posts-earlier-rule { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+.posts-earlier-rule::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 .stat-pills { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 10px; }
 .pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; padding: 4px 10px; background: var(--soft); border: 1px solid var(--rule); color: var(--ink); white-space: nowrap; }
 .pill b { color: var(--navy); }
@@ -237,6 +249,8 @@ footer { background: var(--navy); color: var(--white); }
   .sidebar { order: 2; }
   .post { padding: 20px 18px; }
   .post-title { font-size: 18px; }
+  .post-featured { padding: 20px 18px 22px; }
+  .post-featured-title { font-size: 22px; }
   .qlink { padding: 15px 16px; }
   .qlink-ico { width: 34px; height: 34px; font-size: 16px; }
   .footer-inner { grid-template-columns: 1fr; padding: 36px 20px 24px; gap: 28px; text-align: center; }
@@ -347,24 +361,27 @@ footer { background: var(--navy); color: var(--white); }
 
     <!-- Announcements — replaced by Google Sheets when configured -->
     <div id="home-posts">
-      <div class="post post-loss">
-        <div class="post-top">
+      <div class="post-featured post-featured-loss">
+        <div class="post-featured-kicker">
           <span class="tag tag-loss">L 2&ndash;3</span>
-          <div class="post-title">Cougars Fall to Wilson (Reading) in Season Opener</div>
+          March 14, 2026 &middot; Wilson (Reading)
         </div>
-        <div class="post-date">March 14, 2026 &middot; Wilson (Reading)</div>
-        <div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">
-          DE dropped their 2026 debut — 15 blocks and 43 digs but 21 service errors proved too costly&hellip; <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>
+        <div class="post-featured-title">Cougars Fall to Wilson (Reading) in Season Opener</div>
+        <div class="post-featured-body">
+          DE dropped their 2026 debut — 15 blocks and 43 digs but 21 service errors proved too costly against a well-drilled Wilson squad&hellip; <a href="/news.html">Full story &rarr;</a>
         </div>
       </div>
-      <div class="post">
-        <div class="post-top">
-          <span class="tag tag-new">New</span>
-          <div class="post-title">2026 Season is Underway!</div>
-        </div>
-        <div class="post-date">March 4, 2026</div>
-        <div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">
-          Tryouts concluded and rosters are finalized&hellip; <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>
+      <div class="posts-earlier">
+        <div class="posts-earlier-rule">Earlier</div>
+        <div class="post">
+          <div class="post-top">
+            <span class="tag tag-new">New</span>
+            <div class="post-title">2026 Season is Underway!</div>
+          </div>
+          <div class="post-date">March 4, 2026</div>
+          <div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">
+            Tryouts concluded and rosters are finalized&hellip; <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -579,8 +596,13 @@ fetchSheet('News', function(err, rows) {
   if (!posts.length) return;
 
   document.getElementById('home-posts').innerHTML =
-    posts.map(function(r) { return renderHomeAnnouncement(r); }).join('') +
-    '<div style="margin-top:12px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
+    renderFeaturedAnnouncement(posts[0]) +
+    (posts.length > 1
+      ? '<div class="posts-earlier"><div class="posts-earlier-rule">Earlier</div>' +
+        posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('') +
+        '</div>'
+      : '') +
+    '<div style="margin-top:14px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
 });
 </script>
 </body>
