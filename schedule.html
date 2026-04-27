@@ -338,6 +338,10 @@ footer { background: var(--navy); color: var(--white); }
         '</td></tr>';
       return;
     }
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="4" class="sched-loading" style="font-style:normal;">Schedule will be posted soon.</td></tr>';
+      return;
+    }
     _schedLastMonth = null;
     tbody.innerHTML = rows.map(function(r) { return renderScheduleRow(r); }).join('');
 
