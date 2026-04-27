@@ -543,7 +543,7 @@ footer { background: var(--navy); color: var(--white); }
 <script>
 // ── Schedule → next game + record ────────────────────────────
 fetchSheet('Schedule', function(err, rows) {
-  if (err) return; // keep placeholder dashes
+  if (err || !rows.length) return; // keep placeholder dashes
 
   var rec  = schedRecord(rows);
   var next = schedNextGame(rows);
