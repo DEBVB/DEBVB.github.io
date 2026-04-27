@@ -338,31 +338,33 @@ function renderNewsAccordion(row) {
     '</div></div>';
 }
 
-/** Render the most recent post as a featured hero card */
-function renderFeaturedAnnouncement(row) {
+/** Render the most recent post as a full-width navy hero block */
+function renderHeroAnnouncement(row) {
   var type    = (row.Type || 'info').toLowerCase();
   var sc      = (row.SetsDE && row.SetsOpp)
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
   var tagCls  = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
   var tagLabel = sc || (type === 'new' ? 'New' : type === 'info' ? 'Info' : 'New');
-  var accCls  = type === 'win' ? ' post-featured-win' : type === 'loss' ? ' post-featured-loss' : '';
+  var heroCls = type === 'win' ? ' news-hero-win' : type === 'loss' ? ' news-hero-loss' : '';
 
   var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
-  var snippet  = fullBody.length > 240
-    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 240)) + '&hellip;'
+  var snippet  = fullBody.length > 280
+    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 280)) + '&hellip;'
     : fullBody;
-  var bodyHTML = snippet
-    ? snippet + ' <a href="/news.html">Full story &rarr;</a>'
-    : '<a href="/news.html">Full story &rarr;</a>';
 
-  return '<div class="post-featured' + accCls + '">' +
-    '<div class="post-featured-kicker">' +
-      '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
-      fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') +
+  return '<div class="news-hero' + heroCls + '">' +
+    '<div class="nh-inner">' +
+      '<div class="nh-eye">' +
+        '<span class="nh-live">Latest</span>' +
+        '<span class="nh-sep"></span>' +
+        '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
+        '<span class="nh-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
+      '</div>' +
+      '<h2 class="nh-title">' + (row.Title || '') + '</h2>' +
+      (snippet ? '<p class="nh-body">' + snippet + '</p>' : '') +
+      '<a href="/news.html" class="nh-cta">Full story &rarr;</a>' +
     '</div>' +
-    '<div class="post-featured-title">' + (row.Title || '') + '</div>' +
-    '<div class="post-featured-body">' + bodyHTML + '</div>' +
-    '</div>';
+  '</div>';
 }
 
 /** Render a compact announcement card for the homepage */
