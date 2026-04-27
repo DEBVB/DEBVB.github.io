@@ -287,7 +287,7 @@ function openModal(p){
   document.getElementById('mRole').textContent=p.role;
   document.getElementById('mName').textContent=p.name;
   document.getElementById('mMeta').textContent=p.height+' \u00b7 '+p.year;
-  document.getElementById('mFooter').textContent='2026 Season \u00b7 '+(s?s.gp+' GP \u00b7 '+s.sp+' Sets Played':'0 GP')+' \u00b7 Cumulative Totals';
+  document.getElementById('mFooter').textContent='2026 Season \u00b7 '+(s?s.sp+' Sets Played':'Season in Progress')+' \u00b7 Cumulative Totals';
   var body=document.getElementById('mBody');body.innerHTML='';
   if(!s){body.innerHTML='<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';document.getElementById('modalOverlay').classList.add('open');return;}
   var eff=calcEff(s.kills,s.errors,s.attempts),html='';
@@ -337,33 +337,46 @@ if(burger&&drawer){burger.addEventListener('click',function(){var isOpen=drawer.
 
 <script src="/js/sheets.js"></script>
 <script>
-// Show skeleton loading cards while fetching
-(function() {
-  function skeletonCard() {
-    var d = document.createElement('div');
-    d.className = 'player-card';
-    d.style.cssText = 'opacity:0.35;pointer-events:none;min-height:120px;background:var(--soft);';
-    return d;
-  }
-  var vg = document.getElementById('varsityGrid');
-  var jg = document.getElementById('jvGrid');
-  for (var i = 0; i < 4; i++) { vg.appendChild(skeletonCard()); jg.appendChild(skeletonCard()); }
-})();
+// ── Static roster (renders instantly; Sheet overwrites if it has live stats) ──
+var STATIC_VARSITY = [
+  { jersey: '—', name: 'Adrian Liu',        role: 'Middle',      height: "6'3",  year: 'Senior',   stats: null },
+  { jersey: '—', name: 'Divyansh Ajmera',   role: 'DS',          height: "5'5",  year: 'Senior',   stats: null },
+  { jersey: '—', name: 'Ritvik Adoni',      role: 'Libero',      height: "5'9",  year: 'Senior',   stats: null },
+  { jersey: '—', name: 'Samuel Joshy',      role: 'DS',          height: "5'6",  year: 'Senior',   stats: null },
+  { jersey: '—', name: 'Sritan Bhumireddy', role: 'Outside',     height: "6'0",  year: 'Senior',   stats: null },
+  { jersey: '—', name: 'Aadi Kurukunda',    role: 'Outside',     height: "5'7",  year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Anish Dachepalli',  role: 'Middle',      height: "5'9",  year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Anish Yasa',        role: 'Right Side',  height: "5'7",  year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Arjun Patankar',    role: 'Right Side',  height: "5'8",  year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Arjun Sankar',      role: 'Setter',      height: "5'10", year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Gavin Tulloch',     role: 'Middle',      height: "6'10", year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Parker Laverya',    role: 'Outside',     height: "6'2",  year: 'Junior',   stats: null },
+  { jersey: '—', name: 'Sidd Madipadaga',   role: 'Middle',      height: "6'3",  year: 'Junior',   stats: null }
+];
+var STATIC_JV = [
+  { jersey: '—', name: 'Nehan Madankumar',   role: 'DS',         height: "5'7",  year: 'Sophomore', stats: null },
+  { jersey: '—', name: 'Sreekar Pasupulati', role: 'Outside',    height: "5'10", year: 'Sophomore', stats: null },
+  { jersey: '—', name: 'Tyler McGowan',      role: 'Outside',    height: "5'10", year: 'Sophomore', stats: null },
+  { jersey: '—', name: 'Shreyan Potdar',     role: 'Right Side', height: "6'10", year: 'Junior',    stats: null },
+  { jersey: '—', name: 'Anish Sugan',        role: 'Outside',    height: "6'0",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Avanish Rao',        role: 'Setter',     height: "5'3",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'David Son',          role: 'Right Side', height: "5'6",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Mason Gulotta',      role: 'DS',         height: "5'5",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Rishaan Kesari',     role: 'Setter',     height: "5'7",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Samrudh Ghanta',     role: 'DS',         height: "5'6",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Srithan Ravula',     role: 'Outside',    height: "6'0",  year: 'Freshman',  stats: null },
+  { jersey: '—', name: 'Vivaan Adiga',       role: 'Setter',     height: "5'3",  year: 'Freshman',  stats: null }
+];
+renderGrid(STATIC_VARSITY, 'varsityGrid');
+renderGrid(STATIC_JV,      'jvGrid');
+document.getElementById('varsity-count').textContent = STATIC_VARSITY.length + ' Players';
+document.getElementById('jv-count').textContent      = STATIC_JV.length      + ' Players';
 
 fetchSheet('Roster', function(err, rows) {
   var vGrid = document.getElementById('varsityGrid');
   var jGrid = document.getElementById('jvGrid');
 
-  if (err) {
-    var msg = err.message.indexOf('not configured') !== -1
-      ? 'Set your Google Sheet ID in /js/sheets.js to load the roster.'
-      : 'Could not load roster — check your connection.';
-    vGrid.innerHTML = '<p style="padding:20px;color:var(--muted);font-size:13px;font-style:italic;grid-column:1/-1">' + msg + '</p>';
-    jGrid.innerHTML = '';
-    document.getElementById('varsity-count').textContent = '';
-    document.getElementById('jv-count').textContent = '';
-    return;
-  }
+  if (err) { return; } // keep static render on load failure
 
   var varsity = [], jv = [];
   rows.forEach(function(r) {
@@ -372,19 +385,15 @@ fetchSheet('Roster', function(err, rows) {
     else if (t === 'jv')  jv.push(csvRowToPlayer(r));
   });
 
-  renderGrid(varsity, 'varsityGrid');
-  renderGrid(jv,      'jvGrid');
-
-  document.getElementById('varsity-count').textContent =
-    varsity.length + ' Player' + (varsity.length !== 1 ? 's' : '');
-  document.getElementById('jv-count').textContent =
-    jv.length + ' Player' + (jv.length !== 1 ? 's' : '');
-
-  var maxGP = varsity.reduce(function(m, p) { return p.stats ? Math.max(m, p.stats.gp) : m; }, 0);
-  if (maxGP > 0) {
-    document.getElementById('varsity-note').innerHTML =
-      '&#9679; gold dot = season stats on file &nbsp;&middot;&nbsp; <span>' +
-      maxGP + ' GP logged &mdash; cumulative season totals</span>';
+  if (varsity.length) {
+    renderGrid(varsity, 'varsityGrid');
+    document.getElementById('varsity-count').textContent =
+      varsity.length + ' Player' + (varsity.length !== 1 ? 's' : '');
+  }
+  if (jv.length) {
+    renderGrid(jv, 'jvGrid');
+    document.getElementById('jv-count').textContent =
+      jv.length + ' Player' + (jv.length !== 1 ? 's' : '');
   }
 });
 </script>
