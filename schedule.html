@@ -95,20 +95,28 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --ink: #0d0f14; --navy: #0e1e45; --gold: #e8b000; --gold-light: #fdf3d0;
-  --cream: #faf8f3; --white: #ffffff; --rule: #d4cec3; --muted: #7a7266; --soft: #f2f0ea;
+  --cream: #faf8f3; --white: #ffffff; --rule: #d4cec3; --muted: #7a7266; --soft: #f2f0ea; --red: #991b1b;
 }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-nav { background: var(--white); border-bottom: 3px solid var(--ink); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 58px; position: sticky; top: 0; z-index: 100; }
+.nav-wrap { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 0; z-index: 200; }
+.nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
 .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .nav-brand img { height: 36px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
 .nav-brand-text { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--navy); border-left: 2px solid var(--rule); padding-left: 12px; letter-spacing: -0.2px; }
+.nav-burger { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px; border-radius: 6px; transition: background 0.12s; }
+.nav-burger:hover { background: var(--soft); }
 .nav-links { display: flex; align-items: center; gap: 0; }
-.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 6px 14px; text-transform: uppercase; letter-spacing: 0.08em; border-left: 1px solid var(--rule); transition: background 0.12s; }
+.nav-links a { font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 6px 14px; text-transform: uppercase; letter-spacing: 0.08em; border-left: 1px solid var(--rule); transition: background 0.12s; white-space: nowrap; }
 .nav-links a:hover { background: var(--soft); }
 .nav-links a.active { background: var(--navy); color: var(--white); }
 .nav-links a:last-child { border-right: 1px solid var(--rule); }
 .nav-cta { background: var(--gold) !important; color: var(--ink) !important; }
-.nav-cta:hover { background: #d4a000 !important; }
+.nav-drawer { display: none; flex-direction: column; border-top: 1px solid var(--rule); }
+.nav-drawer.open { display: flex; }
+.nav-drawer a { display: block; padding: 15px 20px; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
+.nav-drawer a:hover { background: var(--soft); }
+.nav-drawer a.active { background: var(--navy); color: var(--white); }
+.nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
 .page-header { background: var(--navy); border-bottom: 5px solid var(--gold); padding: 40px 48px 36px; }
 .page-header-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 .page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); color: var(--white); line-height: 1; letter-spacing: -1px; }
@@ -168,19 +176,11 @@ footer { background: var(--navy); color: var(--white); }
 .sched-error   { text-align:center; padding:40px 20px; color:var(--red);   font-size:13px; font-family:'JetBrains Mono',monospace; }
 .page-header { animation: fadeUp 0.4s 0.05s both; }
 .page-wrap   { animation: fadeUp 0.4s 0.15s both; }
-.mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--navy); padding: 4px; border-radius: 6px; transition: background 0.12s; }
-.mobile-menu-btn:hover { background: var(--soft); }
-.mobile-drawer { background: var(--white); border-bottom: 3px solid var(--ink); position: sticky; top: 58px; z-index: 99; }
-.mobile-drawer.hidden { display: none; }
-.mobile-link { display: block; padding: 14px 20px; font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--rule); transition: background 0.12s; }
-.mobile-link:hover { background: var(--soft); }
-.mobile-link.active { background: var(--navy); color: var(--white); }
-.mobile-link:last-child { border-bottom: none; }
 @media (max-width: 900px) {
-  nav { padding: 0 16px; }
+  .nav-inner { padding: 0 16px; }
   .nav-brand-text { display: none; }
   .nav-links { display: none; }
-  .mobile-menu-btn { display: block; }
+  .nav-burger { display: block; }
   .page-header { padding: 28px 20px 24px; }
   .page-wrap { padding: 36px 20px 60px; }
   .record-banner { flex-wrap: wrap; }
@@ -215,34 +215,36 @@ footer { background: var(--navy); color: var(--white); }
 </head>
 <body>
 
-<nav>
-  <a href="/index.html" class="nav-brand">
-    <img src="logo2.jpg" alt="Cougars Volleyball Logo">
-    <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
-  </a>
-  <button id="mobile-menu-button" class="mobile-menu-btn" aria-label="Open menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-    </svg>
-  </button>
-  <div class="nav-links" id="nav-links-desktop">
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/schedule.html" class="active">Schedule</a>
+      <a href="/coaches.html">Coaches</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/roster.html">Roster</a>
+      <a href="/news.html">News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
     <a href="/index.html">Home</a>
     <a href="/schedule.html" class="active">Schedule</a>
     <a href="/coaches.html">Coaches</a>
     <a href="/contact.html">Contact</a>
     <a href="/roster.html">Roster</a>
     <a href="/news.html">News</a>
-    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">▶ Watch</a>
-  </div>
-</nav>
-<div id="mobile-menu" class="mobile-drawer hidden">
-  <a href="/index.html" class="mobile-link">Home</a>
-  <a href="/schedule.html" class="mobile-link active">Schedule</a>
-  <a href="/coaches.html" class="mobile-link">Coaches</a>
-  <a href="/contact.html" class="mobile-link">Contact</a>
-  <a href="/roster.html" class="mobile-link">Roster</a>
-  <a href="/news.html" class="mobile-link">News</a>
-  <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="mobile-link" style="background:var(--gold);color:var(--ink);font-weight:700;">▶ Watch</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">▶ Watch on Hudl</a>
+  </nav>
 </div>
 
 <main>
@@ -303,6 +305,7 @@ footer { background: var(--navy); color: var(--white); }
         <li><a href="/coaches.html">Coaches</a></li>
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="/news.html">News</a></li>
+        <li><a href="/volleyball-scoring-guide.html">Score Sheet Guide</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -324,8 +327,15 @@ footer { background: var(--navy); color: var(--white); }
 
 <script src="/js/sheets.js"></script>
 <script>
-  document.getElementById('mobile-menu-button').addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
+  const burger = document.getElementById('nav-burger');
+  const drawer = document.getElementById('nav-drawer');
+  const burgerIcon = document.getElementById('burger-icon');
+  const openPath = 'M4 6h16M4 12h16M4 18h16';
+  const closePath = 'M6 18L18 6M6 6l12 12';
+  burger.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+    burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
   });
 
   fetchSheet('Schedule', function(err, rows) {

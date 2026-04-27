@@ -562,7 +562,7 @@ fetchSheet('Schedule', function(err, rows) {
 
     // Robust date label — works with YYYY-MM-DD, "Apr 7, 2026", etc.
     var d = parseISODate(next.Date) || new Date(next.Date);
-    var MONS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    var MONS = _MONS.map(function(m){ return m.toUpperCase(); });
     var label = (!isNaN(d) ? MONS[d.getMonth()] + ' ' + d.getDate() : next.Date) || '—';
     var parts = label.split(' ');
 

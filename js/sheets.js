@@ -136,11 +136,6 @@ function fmtDateLong(iso) {    // "2026-03-10" → "March 10, 2026"
   return p.length === 3 ? _MONL[+p[1] - 1] + ' ' + +p[2] + ', ' + p[0] : iso || '';
 }
 
-function fmtDateLabel(iso) {   // "2026-03-10" → "MAR 10"
-  var p = (iso || '').split('-');
-  return p.length === 3 ? _MONS[+p[1] - 1].toUpperCase() + ' ' + +p[2] : iso || '';
-}
-
 // ── Schedule helpers ──────────────────────────────────────────────────────────
 
 function schedRecord(rows) {
