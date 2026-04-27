@@ -173,13 +173,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .post-win  { border-left: 4px solid #86efac; }
 .post-loss { border-left: 4px solid #f87171; }
 .post-result { border-left: 4px solid #f87171; }
-/* ── Latest News Hero ────────────────────────────────────────── */
-.mast-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 20px 0 16px; }
-.mn-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
-.mn-tag { display: inline-block; margin-bottom: 10px; }
-.mn-title { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--white); line-height: 1.35; margin-bottom: 12px; }
-.mn-link { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; transition: letter-spacing 0.15s; }
-.mn-link:hover { letter-spacing: 0.2em; }
+/* ── Featured news card ──────────────────────────────────────── */
+.feat-post { grid-column: 1 / -1; background: #111827; border-left: 5px solid var(--gold); padding: 40px 48px 44px; }
+.fp-eye { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.fp-live { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; }
+.fp-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: fp-pulse 2s ease-in-out infinite; }
+@keyframes fp-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+.fp-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+.fp-title { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.2vw, 40px); color: #fff; line-height: 1.1; margin-bottom: 16px; max-width: 760px; }
+.fp-body { font-size: 15px; color: rgba(255,255,255,0.58); line-height: 1.72; max-width: 680px; margin-bottom: 24px; }
+.fp-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(232,176,0,0.35); padding-bottom: 2px; transition: border-color 0.15s, letter-spacing 0.15s; }
+.fp-link:hover { border-color: var(--gold); letter-spacing: 0.18em; }
 /* ── Post cards (earlier posts) ───────────────────────────────── */
 .stat-pills { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 10px; }
 .pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; padding: 4px 10px; background: var(--soft); border: 1px solid var(--rule); color: var(--ink); white-space: nowrap; }
@@ -242,6 +246,8 @@ footer { background: var(--navy); color: var(--white); }
 }
 @media (max-width: 640px) {
   .body-wrap { grid-template-columns: 1fr; padding: 24px 16px 60px; gap: 32px; }
+  .feat-post { padding: 28px 20px 32px; }
+  .fp-title { font-size: clamp(22px,6vw,30px); }
   .sidebar { order: 2; }
   .post { padding: 20px 18px; }
   .post-title { font-size: 18px; }
@@ -327,13 +333,6 @@ footer { background: var(--navy); color: var(--white); }
         <div class="rec-key">Games '26</div>
       </div>
     </div>
-    <div class="mast-divider"></div>
-    <div id="mast-news">
-      <div class="mn-label">March 14, 2026 &middot; Wilson (Reading)</div>
-      <span class="tag tag-loss mn-tag">L 2&ndash;3</span>
-      <div class="mn-title">Cougars Fall to Wilson in Season Opener</div>
-      <a href="/news.html" class="mn-link">Full story &rarr;</a>
-    </div>
   </div>
 </div>
 
@@ -354,9 +353,22 @@ footer { background: var(--navy); color: var(--white); }
 
 
 <div class="body-wrap">
+
+  <!-- Featured latest news — populated by JS, static fallback below -->
+  <div id="feat-post" class="feat-post">
+    <div class="fp-eye">
+      <span class="fp-live">Latest</span>
+      <span class="tag tag-loss">L 2&ndash;3</span>
+      <span class="fp-date">March 14, 2026 &middot; Wilson (Reading)</span>
+    </div>
+    <h2 class="fp-title">Cougars Fall to Wilson (Reading) in Season Opener</h2>
+    <p class="fp-body">DE dropped their 2026 debut — 15 blocks and 43 digs but 21 service errors proved too costly against a well-drilled Wilson squad. A strong defensive showing wasn't enough to overcome the serve errors.</p>
+    <a href="/news.html" class="fp-link">Full story &rarr;</a>
+  </div>
+
   <div>
     <div class="sec-rule">
-      <div class="sec-rule-label">News</div>
+      <div class="sec-rule-label">Earlier Posts</div>
       <div class="sec-rule-line"></div>
       <a href="/news.html" class="sec-rule-more">All news →</a>
     </div>
@@ -584,13 +596,17 @@ fetchSheet('News', function(err, rows) {
   });
   if (!posts.length) return;
 
-  // Masthead teaser: most recent post
-  document.getElementById('mast-news').innerHTML = renderHeroAnnouncement(posts[0]);
+  // Featured hero: most recent post
+  document.getElementById('feat-post').innerHTML = renderHeroAnnouncement(posts[0]);
 
-  // News column: all posts
-  document.getElementById('home-posts').innerHTML =
-    posts.map(function(r) { return renderHomeAnnouncement(r); }).join('') +
-    '<div style="margin-top:14px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
+  // Earlier posts: everything after the first
+  if (posts.length > 1) {
+    document.getElementById('home-posts').innerHTML =
+      posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('') +
+      '<div style="margin-top:14px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
+  } else {
+    document.getElementById('home-posts').innerHTML = '';
+  }
 });
 </script>
 </body>

@@ -345,12 +345,18 @@ function renderHeroAnnouncement(row) {
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
   var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
   var tagLabel = sc || (type === 'win' ? 'Win' : type === 'loss' ? 'Loss' : 'New');
-  var title    = (row.Title || '');
-  var short    = title.length > 52 ? title.slice(0, title.lastIndexOf(' ', 52)) + '&hellip;' : title;
-  return '<div class="mn-label">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
-    '<span class="tag ' + tagCls + ' mn-tag">' + tagLabel + '</span>' +
-    '<div class="mn-title">' + short + '</div>' +
-    '<a href="/news.html" class="mn-link">Full story &rarr;</a>';
+  var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
+  var snippet  = fullBody.length > 220
+    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 220)) + '&hellip;'
+    : fullBody;
+  return '<div class="fp-eye">' +
+      '<span class="fp-live">Latest</span>' +
+      '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
+      '<span class="fp-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
+    '</div>' +
+    '<h2 class="fp-title">' + (row.Title || '') + '</h2>' +
+    (snippet ? '<p class="fp-body">' + snippet + '</p>' : '') +
+    '<a href="/news.html" class="fp-link">Full story &rarr;</a>';
 }
 
 /** Render a compact announcement card for the homepage */
