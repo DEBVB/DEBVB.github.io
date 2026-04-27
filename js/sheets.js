@@ -340,31 +340,17 @@ function renderNewsAccordion(row) {
 
 /** Render the most recent post as a full-width navy hero block */
 function renderHeroAnnouncement(row) {
-  var type    = (row.Type || 'info').toLowerCase();
-  var sc      = (row.SetsDE && row.SetsOpp)
+  var type     = (row.Type || 'info').toLowerCase();
+  var sc       = (row.SetsDE && row.SetsOpp)
     ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
-  var tagCls  = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
-  var tagLabel = sc || (type === 'new' ? 'New' : type === 'info' ? 'Info' : 'New');
-  var heroCls = type === 'win' ? ' news-hero-win' : type === 'loss' ? ' news-hero-loss' : '';
-
-  var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
-  var snippet  = fullBody.length > 280
-    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 280)) + '&hellip;'
-    : fullBody;
-
-  return '<div class="news-hero' + heroCls + '">' +
-    '<div class="nh-inner">' +
-      '<div class="nh-eye">' +
-        '<span class="nh-live">Latest</span>' +
-        '<span class="nh-sep"></span>' +
-        '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
-        '<span class="nh-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
-      '</div>' +
-      '<h2 class="nh-title">' + (row.Title || '') + '</h2>' +
-      (snippet ? '<p class="nh-body">' + snippet + '</p>' : '') +
-      '<a href="/news.html" class="nh-cta">Full story &rarr;</a>' +
-    '</div>' +
-  '</div>';
+  var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
+  var tagLabel = sc || (type === 'win' ? 'Win' : type === 'loss' ? 'Loss' : 'New');
+  var title    = (row.Title || '');
+  var short    = title.length > 52 ? title.slice(0, title.lastIndexOf(' ', 52)) + '&hellip;' : title;
+  return '<div class="mn-label">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
+    '<span class="tag ' + tagCls + ' mn-tag">' + tagLabel + '</span>' +
+    '<div class="mn-title">' + short + '</div>' +
+    '<a href="/news.html" class="mn-link">Full story &rarr;</a>';
 }
 
 /** Render a compact announcement card for the homepage */
