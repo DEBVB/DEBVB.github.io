@@ -354,16 +354,15 @@ footer { background: var(--navy); color: var(--white); }
 
 <div class="body-wrap">
 
-  <!-- Featured latest news — populated by JS, static fallback below -->
+  <!-- Featured latest news — populated by JS from Google Sheets; generic fallback shown if fetch fails or no ShowOnHome=yes rows exist -->
   <div id="feat-post" class="feat-post">
     <div class="fp-eye">
       <span class="fp-live">Latest</span>
-      <span class="tag tag-win">W 3&ndash;1</span>
-      <span class="fp-date">April 23&ndash;24, 2026 &middot; Kennett</span>
+      <span class="fp-date">2026 Season</span>
     </div>
-    <h2 class="fp-title">Pair of Big Wins for the Cougars</h2>
-    <p class="fp-body">DE swept the back-to-back matchup against the Kennett Blue Devils, winning 3&ndash;1 in both matches on April 23rd and 24th. Back-to-back dominant performances to carry the momentum forward.</p>
-    <a href="/news.html" class="fp-link">Full story &rarr;</a>
+    <h2 class="fp-title">Cougars Boys Volleyball</h2>
+    <p class="fp-body">Follow the latest results, news, and updates all season long. Check back after every match for recaps and highlights.</p>
+    <a href="/news.html" class="fp-link">See all news &rarr;</a>
   </div>
 
   <div>
@@ -582,7 +581,10 @@ fetchSheet('Schedule', function(err, rows) {
 
 // ── News → homepage announcements ────────────────────────────
 fetchSheet('News', function(err, rows) {
-  if (err) return; // keep static fallback
+  if (err) {
+    console.error('[DEBVB] News tab fetch failed — generic fallback shown. Check Sheet ID, tab name, and sharing permissions.', err.message);
+    return;
+  }
 
   var posts = rows.filter(function(r) {
     return (r.ShowOnHome || '').toLowerCase() === 'yes';
@@ -594,7 +596,10 @@ fetchSheet('News', function(err, rows) {
     var tb = (db && !isNaN(db)) ? db.getTime() : 0;
     return tb - ta;
   });
-  if (!posts.length) return;
+  if (!posts.length) {
+    console.warn('[DEBVB] News: Sheet loaded but no rows have ShowOnHome=yes — generic fallback shown. Set ShowOnHome to "yes" on at least one News row.');
+    return;
+  }
 
   // Featured hero: most recent post
   document.getElementById('feat-post').innerHTML = renderHeroAnnouncement(posts[0]);
