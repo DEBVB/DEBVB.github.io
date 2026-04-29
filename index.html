@@ -354,16 +354,8 @@ footer { background: var(--navy); color: var(--white); }
 
 <div class="body-wrap">
 
-  <!-- Featured latest news — populated by JS from Google Sheets; generic fallback shown if fetch fails or no ShowOnHome=yes rows exist -->
-  <div id="feat-post" class="feat-post">
-    <div class="fp-eye">
-      <span class="fp-live">Latest</span>
-      <span class="fp-date">2026 Season</span>
-    </div>
-    <h2 class="fp-title">Cougars Boys Volleyball</h2>
-    <p class="fp-body">Follow the latest results, news, and updates all season long. Check back after every match for recaps and highlights.</p>
-    <a href="/news.html" class="fp-link">See all news &rarr;</a>
-  </div>
+  <!-- Featured latest news — populated by JS from Google Sheets -->
+  <div id="feat-post" class="feat-post" style="display:none"></div>
 
   <div>
     <div class="sec-rule">
@@ -602,7 +594,9 @@ fetchSheet('News', function(err, rows) {
   }
 
   // Featured hero: most recent post
-  document.getElementById('feat-post').innerHTML = renderHeroAnnouncement(posts[0]);
+  var featEl = document.getElementById('feat-post');
+  featEl.innerHTML = renderHeroAnnouncement(posts[0]);
+  featEl.style.display = '';
 
   // Earlier posts: everything after the first
   if (posts.length > 1) {
