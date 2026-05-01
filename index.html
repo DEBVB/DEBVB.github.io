@@ -111,7 +111,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .nav-drawer a:hover { background: var(--soft); }
 .nav-drawer a.active { background: var(--navy); color: var(--white); }
 .nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
-.masthead { padding: 0 48px; display: flex; align-items: stretch; min-height: 420px; position: relative; overflow: hidden; background: var(--navy); }
+.masthead { padding: 0 48px; display: flex; align-items: stretch; min-height: 540px; position: relative; overflow: hidden; background: var(--navy); }
 .masthead::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; z-index: 5; background: linear-gradient(to right, var(--gold) 0%, #f5ca3a 40%, var(--gold) 70%, rgba(232,176,0,0.4) 100%); }
 .mast-slides { position: absolute; inset: 0; z-index: 0; }
 .mast-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
@@ -132,11 +132,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .mast-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.25s, width 0.25s var(--ease), border-radius 0.25s; }
 .mast-dot.active { background: var(--gold); transform: none; width: 20px; border-radius: 4px; }
 .mast-left, .mast-right { position: relative; z-index: 3; }
-.mast-left { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 52px 56px 52px 0; border-right: 1px solid rgba(255,255,255,0.1); }
+.mast-left { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 52px 56px 52px 0; border-right: none; }
 .mast-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
 .kicker-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-.mast-headline { font-family: 'DM Serif Display', serif; font-size: clamp(52px,7vw,92px); line-height: 0.92; color: var(--white); letter-spacing: -2px; margin-bottom: 24px; text-shadow: 0 2px 24px rgba(14,30,69,0.5); }
-.mast-headline em { font-style: italic; color: var(--gold); }
+.mast-headline { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: clamp(44px,5.5vw,72px); line-height: 1.0; color: var(--white); letter-spacing: -2px; margin-bottom: 24px; }
+.mast-headline em { font-style: normal; color: var(--gold); }
 .mast-deck { font-size: 15px; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.6; max-width: 420px; margin-bottom: 36px; border-left: 3px solid var(--gold); padding-left: 16px; }
 .mast-btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-solid { background: var(--gold); color: var(--ink); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 24px; border-radius: var(--radius-sm); box-shadow: 0 2px 8px rgba(232,176,0,0.35); transition: background 0.18s var(--ease), transform 0.15s var(--ease), box-shadow 0.15s var(--ease); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
@@ -144,14 +144,16 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .btn-solid:active { transform: translateY(0); }
 .btn-outline { border: 2px solid rgba(255,255,255,0.25); color: var(--white); font-weight: 600; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 11px 22px; border-radius: var(--radius-sm); transition: border-color 0.18s, background 0.18s, transform 0.15s var(--ease); display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .btn-outline:hover { border-color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.06); transform: translateY(-1px); }
-.mast-right { width: 300px; flex-shrink: 0; padding: 52px 0 52px 48px; display: flex; flex-direction: column; background: rgba(14,30,69,0.2); backdrop-filter: blur(4px); }
-.score-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.next-game { margin-bottom: 32px; }
-.ng-date { font-family: 'DM Serif Display', serif; font-size: 64px; line-height: 0.9; color: var(--white); letter-spacing: -2px; margin-bottom: 10px; }
-.ng-opponent { font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 5px; }
+.mast-right { width: 280px; flex-shrink: 0; padding: 48px 0 48px 32px; display: flex; align-items: center; position: relative; z-index: 3; }
+.glass-card { background: rgba(14,30,69,0.55); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 24px 22px; width: 100%; }
+.card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 16px 0; }
+.score-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.next-game { margin-bottom: 16px; }
+.ng-date { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 0.9; color: var(--white); letter-spacing: -2px; margin-bottom: 10px; }
+.ng-opponent { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 5px; }
 .ng-times { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 18px; }
-.record-row { display: flex; gap: 2px; margin-top: auto; }
-.rec-cell { flex: 1; background: rgba(255,255,255,0.05); padding: 16px; border: 1px solid rgba(255,255,255,0.07); }
+.record-row { display: flex; gap: 10px; margin-top: 0; }
+.rec-cell { flex: 1; background: none; padding: 0; border: none; }
 .rec-val { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--white); line-height: 1; letter-spacing: -1px; }
 .rec-val em { color: var(--gold); font-style: normal; }
 .rec-key { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 5px; }
@@ -325,7 +327,7 @@ footer { background: var(--navy); color: var(--white); border-top: 3px solid var
   <div class="mast-dots" id="mast-dots"></div>
   <div class="mast-left">
     <div class="mast-kicker"><span class="kicker-dot"></span>Downingtown East · PIAA District 1 · 2026 Season</div>
-    <h1 class="mast-headline">Cougar<br>Boys<br><em>Volleyball</em></h1>
+    <h1 class="mast-headline">Cougar Boys<br><em>Volleyball</em></h1>
     <p class="mast-deck">Every point. Every match. Every moment — this is Downingtown East Boys Volleyball.</p>
     <div class="mast-btns">
       <a href="/schedule.html" class="btn-solid">
@@ -336,21 +338,24 @@ footer { background: var(--navy); color: var(--white); border-top: 3px solid var
     </div>
   </div>
   <div class="mast-right">
-    <div class="score-label">Season at a Glance</div>
-    <div class="next-game">
-      <div class="ng-date" id="ng-date">—</div>
-      <div class="ng-opponent" id="ng-opponent">Schedule TBD</div>
-      <div class="ng-times" id="ng-times">&nbsp;</div>
-      <a href="/schedule.html" class="btn-solid" style="font-size:11.5px;padding:9px 18px;">See Schedule →</a>
-    </div>
-    <div class="record-row">
-      <div class="rec-cell">
-        <div class="rec-val" id="hero-record">—</div>
-        <div class="rec-key">2026 Record</div>
+    <div class="glass-card">
+      <div class="score-label">Season at a Glance</div>
+      <div class="next-game">
+        <div class="ng-date" id="ng-date">—</div>
+        <div class="ng-opponent" id="ng-opponent">Schedule TBD</div>
+        <div class="ng-times" id="ng-times">&nbsp;</div>
+        <a href="/schedule.html" class="btn-solid" style="font-size:11px;padding:8px 16px;">See Schedule →</a>
       </div>
-      <div class="rec-cell">
-        <div class="rec-val">22<em>+</em></div>
-        <div class="rec-key">Games '26</div>
+      <div class="card-divider"></div>
+      <div class="record-row">
+        <div class="rec-cell">
+          <div class="rec-val" id="hero-record">—</div>
+          <div class="rec-key">2026 Record</div>
+        </div>
+        <div class="rec-cell">
+          <div class="rec-val">22<em>+</em></div>
+          <div class="rec-key">Games '26</div>
+        </div>
       </div>
     </div>
   </div>
