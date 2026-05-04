@@ -23,20 +23,20 @@
   --ink:#0d0f14;--navy:#0e1e45;--gold:#e8b000;
   --gold-light:#fdf3d0;--cream:#faf8f3;--white:#ffffff;
   --rule:#d4cec3;--muted:#7a7266;--soft:#f2f0ea;
+  --radius-sm:6px;--ease:cubic-bezier(0.22,1,0.36,1);
 }
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
 
 /* NAV */
-.nav-wrap{background:var(--white);border-bottom:3px solid var(--ink);position:sticky;top:0;z-index:200}
-.nav-inner{padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:200}
+.nav-inner{padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
 .nav-brand img{height:34px;width:auto;object-fit:contain;mix-blend-mode:multiply}
 .nav-brand-text{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);border-left:2px solid var(--rule);padding-left:12px;display:none}
 .nav-links{display:none;align-items:center}
-.nav-links a{font-size:12.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 14px;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid var(--rule);transition:background .12s;white-space:nowrap}
-.nav-links a:hover{background:var(--soft)}
-.nav-links a.active{background:var(--navy);color:var(--white)}
-.nav-links a:last-child{border-right:1px solid var(--rule)}
+.nav-links a{font-size:11px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 12px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:.08em;transition:color .12s,background .12s;white-space:nowrap}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
+.nav-links a.active{background:var(--soft);color:var(--navy)}
 .nav-cta{background:var(--gold)!important;color:var(--ink)!important}
 .nav-cta:hover{background:#d4a000!important}
 .nav-burger{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--navy);padding:6px;border-radius:6px;transition:background .12s;-webkit-tap-highlight-color:transparent}
@@ -49,8 +49,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .nav-drawer .nav-cta-mobile{background:var(--gold);color:var(--ink)!important;font-weight:700}
 
 /* PAGE HEADER */
-.page-header{background:var(--navy);border-bottom:5px solid var(--gold);padding:28px 16px 24px}
-.page-header-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.page-header{background:var(--navy);border-bottom:4px solid var(--gold);padding:28px 16px 24px}
+.page-header-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.page-header-kicker::before{content:'';width:24px;height:1px;background:var(--gold)}
 .page-header h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,8vw,56px);color:var(--white);line-height:1;letter-spacing:-1px}
 .page-header h1 em{font-style:italic;color:var(--gold)}
 
@@ -131,15 +132,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);m
 .acc-recap-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:4px;padding-top:2px}
 
 /* FOOTER */
-footer{background:var(--navy);color:var(--white)}
-.footer-inner{max-width:1100px;margin:0 auto;padding:36px 16px 24px;display:grid;grid-template-columns:1fr;gap:24px;text-align:center}
-.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+footer{background:var(--navy);color:var(--white);border-top:3px solid var(--gold)}
+.footer-brand{display:flex;align-items:center;gap:14px;padding:28px 16px 16px;border-bottom:1px solid rgba(255,255,255,0.08);max-width:1200px;margin:0 auto}
+.footer-logo{height:34px;width:auto;opacity:0.85;mix-blend-mode:luminosity}
+.footer-brand-name{font-family:'DM Serif Display',serif;font-size:16px;color:rgba(255,255,255,0.7);letter-spacing:-0.2px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:28px 16px 32px;display:grid;grid-template-columns:1fr;gap:24px;text-align:center}
+.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.07)}
 .footer-col ul{list-style:none}
 .footer-col ul li+li{margin-top:8px}
-.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;transition:color .15s}
-.footer-col a:hover{color:var(--gold)}
+.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;display:inline-flex;align-items:center;gap:4px;transition:color .15s,gap .15s var(--ease)}
+.footer-col a:hover{color:var(--gold);gap:7px}
 .footer-col p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
-.footer-bottom{max-width:1100px;margin:0 auto;padding:14px 16px 20px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.3);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-align:center}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:14px 16px 20px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.25);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-align:center}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .page-header{animation:fadeUp .35s .05s both}
@@ -160,10 +164,9 @@ footer{background:var(--navy);color:var(--white)}
 .sb-cell{font-size:20px;min-width:42px;padding:11px 4px}
 }
 @media(min-width:780px){
-.nav-brand-text{display:block}
 .nav-links{display:flex}
 .nav-burger{display:none}
-.nav-inner{padding:0 48px;height:58px}
+.nav-inner{padding:0 48px;height:56px}
 .page-header{padding:40px 48px 36px}
 .page-header-kicker{font-size:10px;letter-spacing:.3em}
 .page-wrap{padding:52px 48px 80px}
@@ -175,7 +178,8 @@ footer{background:var(--navy);color:var(--white)}
 .acc-title{font-size:17px}
 .acc-body{padding:16px 24px 22px}
 .acc-body-text{font-size:14.5px}
-.footer-inner{grid-template-columns:repeat(3,1fr);padding:48px 48px 32px;text-align:left}
+.footer-brand{padding:36px 48px 24px;flex-direction:row;align-items:center}
+.footer-inner{grid-template-columns:repeat(3,1fr);padding:28px 48px 32px;text-align:left}
 .footer-bottom{padding:16px 48px 24px}
 }
 </style>
@@ -504,6 +508,10 @@ footer{background:var(--navy);color:var(--white)}
 </main>
 
 <footer>
+  <div class="footer-brand">
+    <img src="logo2.jpg" alt="Cougars Volleyball" class="footer-logo">
+    <span class="footer-brand-name">Downingtown East Boys Volleyball</span>
+  </div>
   <div class="footer-inner">
     <div class="footer-col">
       <h4>Quick Links</h4>
@@ -514,6 +522,7 @@ footer{background:var(--navy);color:var(--white)}
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="/news.html">News</a></li>
         <li><a href="/volleyball-scoring-guide.html">Score Sheet Guide</a></li>
+        <li><a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB Clinics</a></li>
       </ul>
     </div>
     <div class="footer-col">
