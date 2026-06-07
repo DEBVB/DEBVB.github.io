@@ -1,0 +1,31 @@
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">
+      <img src="/logo2.jpg" alt="Cougars Volleyball Logo" height="36" width="36">
+      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
+    </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="/index.html"{% if page.nav_active == "home" %} class="active"{% endif %}>Home</a>
+      <a href="/schedule.html"{% if page.nav_active == "schedule" %} class="active"{% endif %}>Schedule</a>
+      <a href="/coaches.html"{% if page.nav_active == "coaches" %} class="active"{% endif %}>Coaches</a>
+      <a href="/contact.html"{% if page.nav_active == "contact" %} class="active"{% endif %}>Contact</a>
+      <a href="/roster.html"{% if page.nav_active == "roster" %} class="active"{% endif %}>Roster</a>
+      <a href="/news.html"{% if page.nav_active == "news" %} class="active"{% endif %}>News</a>
+      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
+    </div>
+  </div>
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+    <a href="/index.html"{% if page.nav_active == "home" %} class="active"{% endif %}>Home</a>
+    <a href="/schedule.html"{% if page.nav_active == "schedule" %} class="active"{% endif %}>Schedule</a>
+    <a href="/coaches.html"{% if page.nav_active == "coaches" %} class="active"{% endif %}>Coaches</a>
+    <a href="/contact.html"{% if page.nav_active == "contact" %} class="active"{% endif %}>Contact</a>
+    <a href="/roster.html"{% if page.nav_active == "roster" %} class="active"{% endif %}>Roster</a>
+    <a href="/news.html"{% if page.nav_active == "news" %} class="active"{% endif %}>News</a>
+    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
+  </nav>
+</div>
