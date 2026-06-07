@@ -1,0 +1,18 @@
+<script>
+(function() {
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  var burgerIcon = document.getElementById('burger-icon');
+  var openPath = 'M4 6h16M4 12h16M4 18h16';
+  var closePath = 'M6 18L18 6M6 6l12 12';
+  if (burger && drawer) {
+    burger.addEventListener('click', function() {
+      var isOpen = drawer.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+      if (burgerIcon) {
+        burgerIcon.querySelector('path').setAttribute('d', isOpen ? closePath : openPath);
+      }
+    });
+  }
+})();
+</script>

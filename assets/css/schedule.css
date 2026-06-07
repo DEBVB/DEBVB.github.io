@@ -1,0 +1,70 @@
+:root { --red: #991b1b; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; }
+.record-banner { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--white); border: 1px solid var(--rule); margin-bottom: 20px; flex-wrap: wrap; }
+.record-banner-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.record-banner-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--navy); letter-spacing: -0.5px; line-height: 1; }
+.record-banner-val em { color: var(--gold); font-style: normal; }
+.record-banner-divider { width: 1px; height: 32px; background: var(--rule); }
+.legend { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; }
+.legend-swatch-home { width: 4px; height: 16px; background: var(--navy); border-radius: 2px; flex-shrink: 0; }
+.legend-swatch-away { width: 4px; height: 16px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+.sched-card { background: var(--white); border: 1px solid var(--rule); overflow: hidden; }
+.sched-table { width: 100%; border-collapse: collapse; }
+.sched-table thead tr { background: var(--navy); }
+.sched-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); padding: 12px 16px; text-align: left; font-weight: 500; }
+.sched-table thead th.th-result { text-align: center; }
+.sched-table tbody tr { border-bottom: 1px solid var(--rule); transition: filter 0.15s; }
+.sched-table tbody tr:last-child { border-bottom: none; }
+.sched-table tbody tr:hover { filter: brightness(0.97); }
+.row-home { background: #f7f9fd; border-left: 4px solid var(--navy); }
+.row-away { background: var(--white); border-left: 4px solid var(--gold); }
+.sched-table td { padding: 13px 16px; font-size: 13px; vertical-align: middle; }
+.td-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; width: 120px; }
+.td-opponent { font-weight: 700; color: var(--ink); font-size: 15px; line-height: 1.35; }
+.td-time { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--ink); white-space: nowrap; width: 90px; }
+.td-result { text-align: center; width: 120px; }
+.ha-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; vertical-align: middle; margin-left: 7px; position: relative; top: -1px; }
+.ha-pill-home { background: var(--navy); color: var(--white); }
+.ha-pill-away { background: #fff8e1; color: #7a5f00; border: 1px solid var(--gold); }
+.opp-venue { display: block; font-size: 11px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+.opp-venue .dir-btn { padding: 2px 7px; font-size: 9.5px; }
+.row-month-sep { background: var(--soft) !important; border-left: none !important; pointer-events: none; }
+.row-month-sep td { padding: 6px 18px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+.badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+.badge-scrim { background: #e0e7ef; color: #5a6a7e; }
+.badge-win   { background: #dcfce7; color: #166534; }
+.badge-loss  { background: #fee2e2; color: #991b1b; }
+.badge-upcoming { color: var(--muted); font-style: italic; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0; }
+.dir-btn { display: inline-flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.05em; color: var(--navy); padding: 4px 9px; border-radius: 4px; border: 1px solid var(--rule); background: var(--white); text-decoration: none; transition: all 0.15s; white-space: nowrap; }
+.dir-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.dir-btn svg { flex-shrink: 0; }
+.sched-loading { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; font-style: italic; }
+.sched-error   { text-align: center; padding: 40px 20px; color: var(--red); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+@media (max-width: 900px) {
+  .page-wrap { padding: 36px 20px 60px; }
+  .record-banner { flex-wrap: wrap; }
+  .footer-brand { padding: 28px 20px 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .footer-inner { grid-template-columns: 1fr; padding: 24px 20px 24px; gap: 28px; text-align: center; }
+  .footer-bottom { padding: 14px 20px 20px; }
+}
+@media (max-width: 700px) {
+  .page-wrap { padding: 28px 16px 60px; }
+  .sched-table thead { display: none; }
+  .sched-table, .sched-table tbody { display: block; }
+  .sched-table tr.row-home, .sched-table tr.row-away {
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto auto;
+    padding: 12px 14px 12px 16px; margin-bottom: 4px; border-bottom: none !important;
+    border-left-width: 4px; border-left-style: solid;
+  }
+  .row-home { border-left-color: var(--navy); }
+  .row-away { border-left-color: var(--gold); }
+  .sched-table td { padding: 2px 0; border: none; }
+  .td-date     { grid-column: 1 / -1; font-size: 10px; margin-bottom: 2px; }
+  .td-opponent { grid-column: 1; grid-row: 2; font-size: 14px; align-self: center; }
+  .td-time     { grid-column: 1; grid-row: 3; font-size: 11px; color: var(--muted); padding-top: 2px; }
+  .td-result   { grid-column: 2; grid-row: 2 / 4; text-align: right; align-self: center; padding-left: 10px; }
+  .row-month-sep { display: block; }
+  .row-month-sep td { display: block; }
+  .record-banner { padding: 12px 16px; }
+}

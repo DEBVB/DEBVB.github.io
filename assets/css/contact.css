@@ -1,0 +1,23 @@
+.page-wrap { max-width: 680px; margin: 0 auto; padding: 52px 48px 80px; }
+.contact-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+.contact-card { background: var(--white); border: 1px solid var(--rule); padding: 28px 32px; transition: box-shadow 0.2s; }
+.contact-card:hover { box-shadow: 4px 4px 0 var(--navy); }
+.contact-card-role { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); background: var(--navy); display: inline-block; padding: 4px 10px; margin-bottom: 10px; }
+.contact-card-name { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ink); letter-spacing: -0.5px; margin-bottom: 16px; }
+.email-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.email-row svg { color: var(--navy); flex-shrink: 0; }
+.email-row a { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); transition: color 0.15s; }
+.email-row a:hover { color: var(--ink); }
+.email-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 20px; background: var(--navy); color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+.email-btn:hover { background: #1a3060; }
+.email-btn.secondary { background: var(--soft); color: var(--ink); border: 1.5px solid var(--rule); }
+.email-btn.secondary:hover { background: var(--rule); }
+.contact-note { text-align: center; font-size: 13px; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; padding-top: 8px; border-top: 1px solid var(--rule); }
+@media (max-width: 900px) {
+  .page-wrap { padding: 36px 20px 60px; }
+}
+@media (max-width: 600px) {
+  .page-wrap { padding: 28px 16px 60px; }
+  .contact-card { padding: 20px 18px; }
+  .contact-card-name { font-size: 22px; }
+}
