@@ -123,6 +123,9 @@ css: index
 
 <div class="body-wrap">
 
+  <!-- Featured latest news — populated by JS from Google Sheets -->
+  <div id="feat-post" class="feat-post" style="display:none"></div>
+
   <div>
     <div class="sec-rule">
       <div class="sec-rule-label">Earlier Posts</div>
@@ -317,7 +320,9 @@ fetchSheet('News', function(err, rows) {
   }
 
   // Featured hero: most recent post
-  document.getElementById('feat-post').innerHTML = renderHeroAnnouncement(posts[0]);
+  var featEl = document.getElementById('feat-post');
+  featEl.innerHTML = renderHeroAnnouncement(posts[0]);
+  featEl.style.display = '';
 
   // Earlier posts: everything after the first
   if (posts.length > 1) {
