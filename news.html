@@ -1,218 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="eQCLmHScF-W6xY6Hhn8cNT3UnUKWG_hgtd1gJ3Ha2zw" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News &amp; Updates — Downingtown East Boys Volleyball</title>
-<meta name="description" content="Latest news and updates for Downingtown East Boys Volleyball. Season announcements, match recaps, and team highlights for the Cougars.">
-<meta name="theme-color" content="#0e1e45">
-<meta property="og:title" content="News &amp; Updates | Downingtown East Boys Volleyball">
-<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-<meta property="og:url" content="https://debvb.github.io/news.html">
-<link rel="canonical" href="https://debvb.github.io/news.html">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#0d0f14;--navy:#0e1e45;--gold:#e8b000;
-  --gold-light:#fdf3d0;--cream:#faf8f3;--white:#ffffff;
-  --rule:#d4cec3;--muted:#7a7266;--soft:#f2f0ea;
-}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
-
-/* NAV */
-.nav-wrap{background:var(--white);border-bottom:3px solid var(--ink);position:sticky;top:0;z-index:200}
-.nav-inner{padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:54px}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.nav-brand img{height:34px;width:auto;object-fit:contain;mix-blend-mode:multiply}
-.nav-brand-text{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy);border-left:2px solid var(--rule);padding-left:12px;display:none}
-.nav-links{display:none;align-items:center}
-.nav-links a{font-size:12.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 14px;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid var(--rule);transition:background .12s;white-space:nowrap}
-.nav-links a:hover{background:var(--soft)}
-.nav-links a.active{background:var(--navy);color:var(--white)}
-.nav-links a:last-child{border-right:1px solid var(--rule)}
-.nav-cta{background:var(--gold)!important;color:var(--ink)!important}
-.nav-cta:hover{background:#d4a000!important}
-.nav-burger{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--navy);padding:6px;border-radius:6px;transition:background .12s;-webkit-tap-highlight-color:transparent}
-.nav-drawer{display:none;flex-direction:column;border-top:1px solid var(--rule)}
-.nav-drawer.open{display:flex}
-.nav-drawer a{display:block;padding:15px 20px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--rule);transition:background .12s}
-.nav-drawer a:last-child{border-bottom:none}
-.nav-drawer a:hover{background:var(--soft)}
-.nav-drawer a.active{background:var(--navy);color:var(--white)}
-.nav-drawer .nav-cta-mobile{background:var(--gold);color:var(--ink)!important;font-weight:700}
-
-/* PAGE HEADER */
-.page-header{background:var(--navy);border-bottom:5px solid var(--gold);padding:28px 16px 24px}
-.page-header-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.page-header h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,8vw,56px);color:var(--white);line-height:1;letter-spacing:-1px}
-.page-header h1 em{font-style:italic;color:var(--gold)}
-
-/* MAIN */
-.page-wrap{max-width:780px;margin:0 auto;padding:18px 12px 60px}
-.posts{display:flex;flex-direction:column;gap:2px}
-
-/* FULL POST */
-.post{background:var(--white);border:1px solid var(--rule);padding:18px 14px}
-.post-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;flex-wrap:wrap}
-.tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;padding:3px 7px;flex-shrink:0;line-height:1.4}
-.tag-new{background:var(--navy);color:var(--white)}
-.tag-result{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
-.tag-win{background:#dcfce7;color:#166534;border:1px solid #86efac}
-.tag-loss{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
-.tag-info{background:var(--gold-light);color:var(--navy);border:1px solid var(--gold)}
-.tag-archive{background:var(--soft);color:var(--muted);border:1px solid var(--rule)}
-.post-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);line-height:1.2;flex:1;min-width:0}
-.post-date{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:12px}
-.post-body{font-size:14px;color:#3d3830;line-height:1.75}
-.post-body p{margin-bottom:12px}
-.hit-eff{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;padding:6px 0 12px}
-.post-body p:last-child{margin-bottom:0}
-.post-body a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
-.post-body strong{font-weight:700;color:var(--ink)}
-
-/* SCOREBOARD */
-.scoreboard{border:1px solid var(--rule);overflow:hidden;margin:14px 0 0;width:100%}
-.sb-header{background:var(--navy);padding:7px 10px;display:flex;align-items:center;justify-content:space-between;gap:6px}
-.sb-final{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.sb-set-labels{display:flex;flex-shrink:0}
-.sb-sl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center;flex:1;min-width:36px;max-width:52px}
-.sb-row{display:flex;align-items:stretch;border-bottom:1px solid var(--rule)}
-.sb-row:last-child{border-bottom:none}
-.sb-team{flex:1;min-width:0;padding:10px 10px;font-size:12px;font-weight:600;color:var(--ink);border-right:1px solid var(--rule);display:flex;align-items:center;line-height:1.2}
-.sb-team .t-full{display:inline}
-.sb-team .t-abbr{display:none}
-.sb-scores{display:flex;flex-shrink:0}
-.sb-cell{flex:1;min-width:36px;max-width:52px;padding:10px 4px;text-align:center;font-family:'DM Serif Display',serif;font-size:18px;line-height:1;color:#bbb;border-right:1px solid var(--rule)}
-.sb-cell:last-child{border-right:none}
-.sb-cell.won{color:var(--navy);font-weight:700}
-
-/* STAT STRIP */
-.stat-strip{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:0;background:var(--soft)}
-.stat-strip+.hit-eff{padding:6px 0 12px}
-.scoreboard+.stat-strip{border-top:none;margin-top:0}
-.stat-item{flex:1;text-align:center;padding:10px 4px;border-right:1px solid var(--rule)}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);line-height:1}
-.stat-label{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-
-/* STANDOUT CALLOUT */
-.post-standout{background:var(--gold-light);border-left:4px solid var(--gold);padding:11px 13px;margin:13px 0;font-size:13.5px;color:var(--navy);line-height:1.6}
-
-/* SECTION DIVIDER */
-.older-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:18px 0 10px;display:flex;align-items:center;gap:10px}
-.older-label::before,.older-label::after{content:'';flex:1;height:1px;background:var(--rule)}
-
-/* ACCORDION */
-.post-accordion{background:var(--white);border:1px solid var(--rule);margin-bottom:2px}
-.acc-trigger{width:100%;background:none;border:none;padding:13px 14px;display:flex;align-items:center;gap:9px;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;min-height:50px}
-.acc-trigger:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
-.acc-tags{flex-shrink:0}
-.acc-title{font-family:'DM Serif Display',serif;font-size:15px;color:var(--ink);line-height:1.2;flex:1;min-width:0}
-.acc-meta{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.05em;color:var(--muted);white-space:nowrap;flex-shrink:0}
-.acc-chevron{flex-shrink:0;transition:transform .25s ease;color:var(--muted)}
-.post-accordion.open .acc-chevron{transform:rotate(180deg)}
-.acc-body{display:none;border-top:1px solid var(--rule);padding:14px 14px 18px}
-.post-accordion.open .acc-body{display:block}
-.acc-body-text{font-size:13.5px;color:#3d3830;line-height:1.75}
-.acc-body-text p{margin-bottom:12px}
-.acc-body-text p:last-child{margin-bottom:0}
-.acc-body-text a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
-.acc-body-text strong{font-weight:700;color:var(--ink)}
-.acc-body-simple{font-size:13.5px;color:#3d3830;line-height:1.75}
-.acc-body-simple a{color:var(--navy);font-weight:600;border-bottom:1px solid var(--gold);text-decoration:none}
-.acc-body-simple strong{font-weight:700;color:var(--ink)}
-.acc-recap-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:4px;padding-top:2px}
-
-/* FOOTER */
-footer{background:var(--navy);color:var(--white)}
-.footer-inner{max-width:1100px;margin:0 auto;padding:36px 16px 24px;display:grid;grid-template-columns:1fr;gap:24px;text-align:center}
-.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
-.footer-col ul{list-style:none}
-.footer-col ul li+li{margin-top:8px}
-.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;transition:color .15s}
-.footer-col a:hover{color:var(--gold)}
-.footer-col p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
-.footer-bottom{max-width:1100px;margin:0 auto;padding:14px 16px 20px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.3);font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-align:center}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.page-header{animation:fadeUp .35s .05s both}
-.page-wrap {animation:fadeUp .35s .12s both}
-
-@media(max-width:380px){
-.sb-team .t-full{display:none}
-.sb-team .t-abbr{display:inline}
-.sb-cell{font-size:16px;min-width:32px}
-}
-@media(min-width:540px){
-.post{padding:22px 20px}
-.post-title{font-size:20px}
-.acc-trigger{padding:14px 18px}
-.acc-title{font-size:16px}
-.acc-body{padding:16px 18px 20px}
-.sb-team{font-size:13px;padding:12px 14px}
-.sb-cell{font-size:20px;min-width:42px;padding:11px 4px}
-}
-@media(min-width:780px){
-.nav-brand-text{display:block}
-.nav-links{display:flex}
-.nav-burger{display:none}
-.nav-inner{padding:0 48px;height:58px}
-.page-header{padding:40px 48px 36px}
-.page-header-kicker{font-size:10px;letter-spacing:.3em}
-.page-wrap{padding:52px 48px 80px}
-.post{padding:28px 32px}
-.post-title{font-size:22px}
-.post-date{font-size:10px;letter-spacing:.1em}
-.post-body{font-size:14.5px}
-.acc-trigger{padding:16px 24px}
-.acc-title{font-size:17px}
-.acc-body{padding:16px 24px 22px}
-.acc-body-text{font-size:14.5px}
-.footer-inner{grid-template-columns:repeat(3,1fr);padding:48px 48px 32px;text-align:left}
-.footer-bottom{padding:16px 48px 24px}
-}
-</style>
-</head>
-<body>
-
-<div class="nav-wrap">
-  <div class="nav-inner">
-    <a href="/index.html" class="nav-brand">
-      <img src="logo2.jpg" alt="Cougars Volleyball Logo">
-      <span class="nav-brand-text">Downingtown East Boys Volleyball</span>
-    </a>
-    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
-      <svg id="burger-icon" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-    <div class="nav-links">
-      <a href="/index.html">Home</a>
-      <a href="/schedule.html">Schedule</a>
-      <a href="/coaches.html">Coaches</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/roster.html">Roster</a>
-      <a href="/news.html" class="active">News</a>
-      <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta">&#9654; Watch</a>
-    </div>
-  </div>
-  <nav class="nav-drawer" id="nav-drawer">
-    <a href="/index.html">Home</a>
-    <a href="/schedule.html">Schedule</a>
-    <a href="/coaches.html">Coaches</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/roster.html">Roster</a>
-    <a href="/news.html" class="active">News</a>
-    <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="nav-cta-mobile">&#9654; Watch on Hudl</a>
-  </nav>
-</div>
+---
+layout: default
+nav_active: news
+title: "News & Updates — Downingtown East Boys Volleyball"
+description: "Latest news and updates for Downingtown East Boys Volleyball. Season announcements, match recaps, and team highlights for the Cougars."
+keywords: "Downingtown East Boys Volleyball News, Cougars match results, volleyball updates, PIAA District 1"
+og_title: "News & Updates | Downingtown East Boys Volleyball"
+og_description: "Latest news and updates for Downingtown East Boys Volleyball. Season announcements, match recaps, and team highlights."
+twitter_title: "News & Updates | Downingtown East Boys Volleyball"
+twitter_description: "Latest news and updates for Downingtown East Boys Volleyball."
+canonical: "https://debvb.github.io/news.html"
+css: news
+---
 
 <main>
 <div class="page-header">
@@ -290,13 +88,13 @@ footer{background:var(--navy);color:var(--white)}
           </div>
         </div>
 
-        <p>The Cougars brought the heat to the cross-town rivalry Monday night, taking down Downingtown West 3-1 in a hard-fought road victory. East dominated early, securing the first two sets with clinical execution before West clawed back in the third. The Cougars shut the door in the fourth, finishing with 43 total kills and a relentless defensive effort[cite: 1].</p>
+        <p>The Cougars brought the heat to the cross-town rivalry Monday night, taking down Downingtown West 3-1 in a hard-fought road victory. East dominated early, securing the first two sets with clinical execution before West clawed back in the third. The Cougars shut the door in the fourth, finishing with 43 total kills and a relentless defensive effort.</p>
 
         <div class="post-standout">
-          <strong>Efficiency at the net was key.</strong> Siddhanth Madipadaga (#28) put on a masterclass, hitting a staggering .438 with 9 kills[cite: 2]. Meanwhile, Arjun Sankar (#13) orchestrated the attack with 35 assists while digging up 13 balls to keep plays alive[cite: 2].
+          <strong>Efficiency at the net was key.</strong> Siddhanth Madipadaga (#28) put on a masterclass, hitting a staggering .438 with 9 kills. Meanwhile, Arjun Sankar (#13) orchestrated the attack with 35 assists while digging up 13 balls to keep plays alive.
         </div>
 
-        <p>Defensively, the back row was a wall. <strong>Ritvik Adoni (#7)</strong> and <strong>Parker LaVeyra (#4)</strong> led the charge with 18 digs each, ensuring West struggled to find the floor[cite: 2]. LaVeyra also contributed significantly to the offensive pressure with 13 kills and led the team with 3 solo blocks[cite: 2]. <strong>Sritan Bhumireddy (#1)</strong> paced the scoring with a team-high 15 kills[cite: 2].</p>
+        <p>Defensively, the back row was a wall. <strong>Ritvik Adoni (#7)</strong> and <strong>Parker LaVeyra (#4)</strong> led the charge with 18 digs each, ensuring West struggled to find the floor. LaVeyra also contributed significantly to the offensive pressure with 13 kills and led the team with 3 solo blocks. <strong>Sritan Bhumireddy (#1)</strong> paced the scoring with a team-high 15 kills.</p>
 
         <p>The win moves the Cougars to 2-2 on the season, providing massive momentum as they dive deeper into the heart of the Ches-Mont schedule.</p>
 
@@ -503,64 +301,20 @@ footer{background:var(--navy);color:var(--white)}
 </div>
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="/schedule.html">Schedule</a></li>
-        <li><a href="/roster.html">Roster</a></li>
-        <li><a href="/coaches.html">Coaches</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/news.html">News</a></li>
-        <li><a href="/volleyball-scoring-guide.html">Score Sheet Guide</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>Downingtown East High School<br>50 Devon Dr, Exton, PA 19341<br>610-363-6400</p>
-    </div>
-    <div class="footer-col">
-      <h4>Follow Us</h4>
-      <ul>
-        <li><a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram @deastboysvb</a></li>
-        <li><a href="https://x.com/devbboys" target="_blank" rel="noopener noreferrer">Twitter @devbboys</a></li>
-        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl Highlights</a></li>
-        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">&copy; 2026 Downingtown East Boys Volleyball · All Rights Reserved</div>
-</footer>
-
 <script>
 function toggleAcc(btn) {
   const accordion = btn.parentElement;
   const isOpen = accordion.classList.contains('open');
-  
-  // Close all other accordions
   document.querySelectorAll('.post-accordion').forEach(acc => {
     acc.classList.remove('open');
     acc.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
   });
-
   if (!isOpen) {
     accordion.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
   }
 }
 
-// Burger menu
-const burger = document.getElementById('nav-burger');
-const drawer = document.getElementById('nav-drawer');
-if (burger && drawer) {
-  burger.addEventListener('click', () => {
-    const open = drawer.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
-  });
-}
-
-// Accordion event delegation — works for static and dynamically-rendered buttons
 document.getElementById('posts-container').addEventListener('click', function(e) {
   var btn = e.target.closest('.acc-trigger');
   if (btn) toggleAcc(btn);
@@ -573,12 +327,10 @@ fetchSheet('News', function(err, rows) {
   if (err) return; // leave static posts visible when sheet not configured
   if (!rows.length) return;
 
-  // Robust sort: newest first. Handles YYYY-MM-DD, "Apr 4, 2026", "4/4/2026", etc.
   function toMs(dateStr) {
     if (!dateStr) return 0;
     var d = new Date(dateStr);
     if (!isNaN(d)) return d.getTime();
-    // Try ISO split YYYY-MM-DD
     var p = dateStr.split('-');
     if (p.length === 3) return new Date(+p[0], +p[1]-1, +p[2]).getTime();
     return 0;
@@ -595,6 +347,3 @@ fetchSheet('News', function(err, rows) {
   document.getElementById('posts-container').innerHTML = html;
 });
 </script>
-
-</body>
-</html>

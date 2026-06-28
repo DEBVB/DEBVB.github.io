@@ -1,0 +1,25 @@
+.page-header { padding: 60px 48px 52px; text-align: center; }
+.page-header-kicker { justify-content: center; }
+.page-header h1 { font-size: clamp(36px, 6vw, 64px); margin-bottom: 16px; }
+.page-header p { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.7; border-left: 3px solid var(--gold); padding-left: 16px; text-align: left; }
+.page-wrap { max-width: 640px; margin: 0 auto; padding: 52px 48px 80px; }
+.donate-card { background: var(--white); border: 1px solid var(--rule); padding: 36px; margin-bottom: 24px; }
+.donate-card h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ink); margin-bottom: 8px; }
+.donate-card .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+.preset-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.preset-btn { background: var(--soft); border: 1px solid var(--rule); color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 10px 20px; cursor: default; letter-spacing: 0.05em; }
+.donate-note { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 14px; }
+.btn-venmo { display: flex; align-items: center; justify-content: center; gap: 10px; background: #3D95CE; color: var(--white); font-size: 15px; font-weight: 700; padding: 16px 28px; text-decoration: none; transition: background 0.15s; width: 100%; }
+.btn-venmo:hover { background: #2d7fb0; }
+.btn-venmo-icon { font-size: 20px; }
+.info-strip { background: var(--gold-light); border: 1px solid var(--gold); padding: 16px 20px; margin-bottom: 24px; }
+.info-strip-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
+.info-strip p { font-size: 13px; color: var(--ink); line-height: 1.6; }
+@media (max-width: 900px) {
+  .page-header { padding: 40px 20px 36px; }
+  .page-wrap { padding: 36px 20px 60px; }
+}
+@media (max-width: 640px) {
+  .page-wrap { padding: 28px 16px 60px; }
+  .donate-card { padding: 24px 20px; }
+}
