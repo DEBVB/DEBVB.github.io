@@ -197,11 +197,20 @@ css: index
     shimmer.className = 'mast-slides-loading';
     container.appendChild(shimmer);
 
+    function loadSlide(i) {
+      var img = slides[i];
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        delete img.dataset.src;
+      }
+    }
     function goSlide(n) {
       if (!slides.length) return;
       slides[current].classList.remove('active');
       dots[current].classList.remove('active');
       current = ((n % slides.length) + slides.length) % slides.length;
+      loadSlide(current);
+      loadSlide((current + 1) % slides.length);
       slides[current].classList.add('active');
       dots[current].classList.add('active');
       resetTimer();
@@ -227,8 +236,12 @@ css: index
         var img = document.createElement('img');
         img.className = 'mast-slide';
         img.alt = photo.alt || 'Cougars volleyball action photo';
-        img.src = photo.src;
-        if (i === 0) { img.fetchPriority = 'high'; }
+        if (i < 2) {
+          img.src = photo.src;
+          if (i === 0) { img.fetchPriority = 'high'; }
+        } else {
+          img.dataset.src = photo.src;
+        }
         container.appendChild(img);
         slides.push(img);
         addDot(i);
