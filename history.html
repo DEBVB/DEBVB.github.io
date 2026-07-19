@@ -1,0 +1,205 @@
+---
+layout: default
+nav_active: history
+title: "Program History — Downingtown East Boys Volleyball"
+description: "Season archives for Downingtown East Boys Volleyball — past rosters, schedules, results, and news for the Cougars."
+keywords: "Downingtown East Volleyball history, past rosters, season results, Cougars Volleyball archive, Exton PA"
+og_title: "Program History | Downingtown East Boys Volleyball"
+og_description: "Season archives for DE Boys Volleyball — past rosters, schedules, results, and news."
+twitter_title: "Program History | Downingtown East Boys Volleyball"
+twitter_description: "Season archives for DE Boys Volleyball — past rosters, schedules, results, and news."
+canonical: "https://debvb.github.io/history.html"
+css: "schedule news history"
+---
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-kicker">Downingtown East &middot; Program History</div>
+  <h1>Program <em>History</em></h1>
+  <div class="page-header-sub" id="hist-sub">Season archives &middot; Rosters, schedules &amp; news</div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ═══ SEASON LIST (default view) ═══ -->
+  <div id="season-list">
+    <div id="seasons-grid" class="seasons-grid">
+      <div class="hist-loading">Loading seasons&hellip;</div>
+    </div>
+  </div>
+
+  <!-- ═══ SEASON DETAIL (?season=YYYY) ═══ -->
+  <div id="season-detail" hidden>
+    <a href="/history.html" class="hist-back">&larr; All seasons</a>
+
+    <div class="record-banner">
+      <div>
+        <div class="record-banner-label" id="det-year-label">Season</div>
+        <div class="record-banner-val" id="det-record">&mdash;</div>
+      </div>
+      <div class="record-banner-divider"></div>
+      <div>
+        <div class="record-banner-label">Finish</div>
+        <div class="hist-finish" id="det-finish">&mdash;</div>
+      </div>
+    </div>
+
+    <div id="det-sched-section" hidden>
+      <div class="older-label">Schedule &amp; Results</div>
+      <div class="sched-card">
+        <table class="sched-table">
+          <thead>
+            <tr><th>Date</th><th>Opponent</th><th>Time</th><th class="th-result">Result</th></tr>
+          </thead>
+          <tbody id="det-sched-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="det-roster-section" hidden>
+      <div class="older-label">Roster</div>
+      <div id="det-roster"></div>
+    </div>
+
+    <div id="det-news-section" hidden>
+      <div class="older-label">News &amp; Recaps</div>
+      <div id="det-news"></div>
+    </div>
+
+    <div id="det-empty" class="hist-empty" hidden>
+      <p>No archive data found for this season yet.</p>
+      <p class="hist-empty-sub">Archive tabs (e.g. <code>Schedule&nbsp;2025</code>, <code>Roster&nbsp;2025</code>, <code>News&nbsp;2025</code>) may still need to be added to the Google Sheet.</p>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script src="/js/sheets.js"></script>
+<script>
+(function () {
+  var m = /^(19|20)\d{2}$/.exec(new URLSearchParams(location.search).get('season') || '');
+  var season = m ? m[0] : null;
+
+  // ── Season list view ───────────────────────────────────────────
+  function showList() {
+    fetchSheet('Seasons', function (err, rows) {
+      var grid = document.getElementById('seasons-grid');
+      if (err) {
+        grid.innerHTML = '<div class="hist-empty"><p>Season archives are coming soon.</p>' +
+          '<p class="hist-empty-sub">Add a <code>Seasons</code> tab to the Google Sheet (columns: Year | Record | Finish | Notes) to publish past seasons here.</p></div>';
+        return;
+      }
+      var seasons = rows.filter(function (r) { return /^(19|20)\d{2}$/.test((r.Year || '').trim()); });
+      seasons.sort(function (a, b) { return +b.Year - +a.Year; });
+      if (!seasons.length) {
+        grid.innerHTML = '<div class="hist-empty"><p>No seasons archived yet.</p>' +
+          '<p class="hist-empty-sub">Add rows to the <code>Seasons</code> tab of the Google Sheet to publish past seasons here.</p></div>';
+        return;
+      }
+      grid.innerHTML = seasons.map(function (s) {
+        return '<a class="season-card" href="/history.html?season=' + s.Year.trim() + '">' +
+          '<div class="sc-top"><span class="sc-year">' + esc(s.Year.trim()) + '</span>' +
+          (s.Record ? '<span class="sc-record">' + esc(s.Record).replace('-', '&ndash;') + '</span>' : '') + '</div>' +
+          (s.Finish ? '<div class="sc-finish">' + esc(s.Finish) + '</div>' : '') +
+          (s.Notes ? '<div class="sc-note">' + esc(s.Notes) + '</div>' : '') +
+          '<span class="sc-more">View season &rsaquo;</span></a>';
+      }).join('');
+    });
+  }
+
+  // ── Season detail view ─────────────────────────────────────────
+  function rosterTable(players) {
+    return '<div class="hroster-scroll"><table class="hroster-table">' +
+      '<thead><tr><th class="hr-num">#</th><th>Name</th><th>Position</th><th class="hr-ht">Height</th><th class="hr-yr">Year</th></tr></thead><tbody>' +
+      players.map(function (r) {
+        return '<tr>' +
+          '<td class="hr-num">' + (r.Jersey ? esc(r.Jersey) : '&mdash;') + '</td>' +
+          '<td class="hr-name">' + esc(r.Name || '') + '</td>' +
+          '<td>' + esc(r.Role || '') + '</td>' +
+          '<td class="hr-ht">' + esc(r.Height || '') + '</td>' +
+          '<td class="hr-yr">' + esc(r.Year || '') + '</td>' +
+          '</tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
+  function showDetail(yr) {
+    document.getElementById('season-list').hidden = true;
+    document.getElementById('season-detail').hidden = false;
+    document.getElementById('hist-sub').textContent = yr + ' Season Archive';
+    document.getElementById('det-year-label').textContent = yr + ' Record';
+    document.title = yr + ' Season — Downingtown East Boys Volleyball';
+    var found = { any: false, done: 0 };
+    function section(id, on) {
+      document.getElementById(id).hidden = !on;
+      if (on) found.any = true;
+      if (++found.done === 3 && !found.any) {
+        document.getElementById('det-empty').hidden = false;
+      }
+    }
+
+    // Finish / record label from the Seasons tab (falls back to computed record)
+    fetchSheet('Seasons', function (err, rows) {
+      if (err) return;
+      var row = rows.filter(function (r) { return (r.Year || '').trim() === yr; })[0];
+      if (!row) return;
+      if (row.Record) document.getElementById('det-record').innerHTML = esc(row.Record).replace('-', '&ndash;');
+      if (row.Finish) document.getElementById('det-finish').textContent = row.Finish;
+    });
+
+    fetchSheet('Schedule ' + yr, function (err, rows) {
+      if (err || !rows.length) { section('det-sched-section', false); return; }
+      _schedLastMonth = null;
+      document.getElementById('det-sched-body').innerHTML =
+        rows.map(function (r) { return renderScheduleRow(r); }).join('');
+      var rec = schedRecord(rows);
+      if (document.getElementById('det-record').textContent.trim() === '—') {
+        document.getElementById('det-record').innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
+      }
+      section('det-sched-section', true);
+    });
+
+    fetchSheet('Roster ' + yr, function (err, rows) {
+      if (err || !rows.length) { section('det-roster-section', false); return; }
+      var varsity = rows.filter(function (r) { return (r.Team || '').toLowerCase() === 'varsity'; });
+      var jv      = rows.filter(function (r) { return (r.Team || '').toLowerCase() === 'jv'; });
+      var html = '';
+      if (varsity.length) html += '<div class="hroster-group">Varsity</div>' + rosterTable(varsity);
+      if (jv.length)      html += '<div class="hroster-group">Junior Varsity</div>' + rosterTable(jv);
+      if (!html) { section('det-roster-section', false); return; }
+      document.getElementById('det-roster').innerHTML = html;
+      section('det-roster-section', true);
+    });
+
+    fetchSheet('News ' + yr, function (err, rows) {
+      if (err || !rows.length) { section('det-news-section', false); return; }
+      rows.sort(function (a, b) {
+        var da = parseISODate(a.Date) || (a.Date ? new Date(a.Date) : null);
+        var db = parseISODate(b.Date) || (b.Date ? new Date(b.Date) : null);
+        return ((db && !isNaN(db)) ? db.getTime() : 0) - ((da && !isNaN(da)) ? da.getTime() : 0);
+      });
+      document.getElementById('det-news').innerHTML =
+        rows.map(function (r) { return renderNewsAccordion(r); }).join('');
+      section('det-news-section', true);
+    });
+  }
+
+  // Accordion toggling (same behavior as news.html)
+  document.getElementById('det-news').addEventListener('click', function (e) {
+    var btn = e.target.closest('.acc-trigger');
+    if (!btn) return;
+    var acc = btn.parentElement;
+    var isOpen = acc.classList.contains('open');
+    document.querySelectorAll('#det-news .post-accordion').forEach(function (a) {
+      a.classList.remove('open');
+      a.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      acc.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  if (season) { showDetail(season); } else { showList(); }
+}());
+</script>

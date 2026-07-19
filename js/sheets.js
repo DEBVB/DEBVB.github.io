@@ -50,6 +50,26 @@
 
    Most recent row (by Date) is shown expanded on news.html; older posts
    are in collapsible accordions. Only ShowOnHome=yes rows appear on index.html.
+
+   ── Season archive (history.html) ───────────────────────────────────────────
+   Seasons tab (one row per archived season):
+   Year | Record | Finish | Notes
+
+     Year   – 4-digit season year, e.g. 2025
+     Record – final record, e.g. 12-4  (shown on the season card)
+     Finish – short summary, e.g. "Ches-Mont runner-up · District 1 playoffs"
+     Notes  – optional one-liner for the season card
+
+   Per-season data lives in tabs named with the year appended (same column
+   formats as the live tabs):  Schedule 2025  |  Roster 2025  |  News 2025
+   Any of the three may be omitted — history.html only shows sections that
+   have data.
+
+   END-OF-SEASON CHECKLIST (archives the year in ~2 minutes):
+   1. Duplicate the live Schedule / Roster / News tabs.
+   2. Rename the copies "Schedule YYYY", "Roster YYYY", "News YYYY".
+   3. Add a row for YYYY to the Seasons tab.
+   4. Clear the live tabs for the new season.
    =========================================================================== */
 
 var SHEET_ID = '1pgwjllLVC1JOYkgskhWiZ-Kwgw_klYM2UvbKBf27UO4';
