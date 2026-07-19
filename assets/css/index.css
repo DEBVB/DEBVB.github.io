@@ -152,3 +152,5 @@
   #donate-header { font-size: 0.8rem; }
   .sec-rule-label { font-size: 18px; }
 }
+.home-posts-empty { grid-column: 1 / -1; background: var(--white); border: 1px dashed var(--rule); border-radius: var(--radius-md); padding: 26px 24px; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+.home-posts-empty a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }

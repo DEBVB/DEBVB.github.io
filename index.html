@@ -74,7 +74,7 @@ preload_json: "/photos/photos.json"
     </button>
   </div>
   <div class="mast-content">
-    <div class="mast-kicker">Downingtown East · PIAA District 1 · 2026 Season</div>
+    <div class="mast-kicker">Downingtown East · PIAA District 1 · Cougars Volleyball</div>
     <h1 class="mast-headline">Cougar Boys<br><em>Volleyball</em></h1>
   </div>
 </div>
@@ -94,7 +94,7 @@ preload_json: "/photos/photos.json"
     <div class="band-stat band-action">
       <div>
         <div class="band-stat-val" id="strip-record">—</div>
-        <div class="band-stat-key">2026 Record</div>
+        <div class="band-stat-key" id="strip-record-key">Season Record</div>
       </div>
       <a href="/schedule.html" class="btn-solid" style="font-size:11px;padding:9px 20px;">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -114,7 +114,7 @@ preload_json: "/photos/photos.json"
       <div id="feat-post" class="feat-post">
         <div class="fp-eye">
           <span class="fp-live">Latest</span>
-          <span class="fp-date">2026 Season</span>
+          <span class="fp-date">Cougars Volleyball</span>
         </div>
         <h2 class="fp-title">Cougars Boys Volleyball</h2>
         <p class="fp-body">Follow the latest results, news, and updates all season long. Check back after every match for recaps and highlights.</p>
@@ -134,16 +134,7 @@ preload_json: "/photos/photos.json"
     </div>
 
     <div id="home-posts">
-      <div class="post">
-        <div class="post-top">
-          <span class="tag tag-new">New</span>
-          <div class="post-title">2026 Season is Underway!</div>
-        </div>
-        <div class="post-date">March 4, 2026</div>
-        <div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">
-          Tryouts concluded and rosters are finalized&hellip; <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>
-        </div>
-      </div>
+      <div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>
     </div>
 
   </div>
@@ -294,6 +285,16 @@ fetchSheet('Schedule', function(err, rows) {
   var rec  = schedRecord(rows);
   var next = schedNextGame(rows);
 
+  // Season year — taken from the schedule data itself, so labels never go stale
+  var seasonYear = null;
+  for (var i = 0; i < rows.length; i++) {
+    var sd = parseISODate(rows[i].Date) || (rows[i].Date ? new Date(rows[i].Date) : null);
+    if (sd && !isNaN(sd)) { seasonYear = sd.getFullYear(); break; }
+  }
+  if (seasonYear) {
+    document.getElementById('strip-record-key').textContent = seasonYear + ' Record';
+  }
+
   document.getElementById('strip-record').innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
 
   if (next) {
@@ -316,15 +317,17 @@ fetchSheet('Schedule', function(err, rows) {
   } else {
     // Season complete — show final record in the next-game slot
     document.getElementById('ng-opponent').textContent = 'Season Complete';
-    document.getElementById('ng-times').textContent    = 'Final Record · See you in 2027!';
+    document.getElementById('ng-times').textContent    = 'Final Record · See you in ' +
+      ((seasonYear || new Date().getFullYear()) + 1) + '!';
     document.getElementById('stat-next-val').innerHTML = 'FINAL';
   }
 });
 
 // ── News → homepage announcements ────────────────────────────
+var HOME_POSTS_EMPTY = '<div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>';
 fetchSheet('News', function(err, rows) {
   if (err) {
-    console.error('[DEBVB] News tab fetch failed — generic fallback shown. Check Sheet ID, tab name, and sharing permissions.', err.message);
+    console.error('[DEBVB] News tab fetch failed — generic placeholder shown. Check Sheet ID, tab name, and sharing permissions.', err.message);
     return;
   }
 
@@ -339,7 +342,7 @@ fetchSheet('News', function(err, rows) {
     return tb - ta;
   });
   if (!posts.length) {
-    console.warn('[DEBVB] News: Sheet loaded but no rows have ShowOnHome=yes — generic fallback shown. Set ShowOnHome to "yes" on at least one News row.');
+    document.getElementById('home-posts').innerHTML = HOME_POSTS_EMPTY;
     return;
   }
 
@@ -354,7 +357,7 @@ fetchSheet('News', function(err, rows) {
       posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('') +
       '<div style="margin-top:14px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
   } else {
-    document.getElementById('home-posts').innerHTML = '';
+    document.getElementById('home-posts').innerHTML = HOME_POSTS_EMPTY;
   }
 });
 </script>

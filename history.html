@@ -68,7 +68,7 @@ css: "schedule news history"
 
     <div id="det-empty" class="hist-empty" hidden>
       <p>No archive data found for this season yet.</p>
-      <p class="hist-empty-sub">Archive tabs (e.g. <code>Schedule&nbsp;2025</code>, <code>Roster&nbsp;2025</code>, <code>News&nbsp;2025</code>) may still need to be added to the Google Sheet.</p>
+      <p class="hist-empty-sub" id="det-empty-tabs">This page looks for Google Sheet tabs named <code>Schedule YYYY</code>, <code>Roster YYYY</code>, and <code>News YYYY</code> (a <code>ScheduleYYYY</code> or <code>YYYY Schedule</code> spelling also works). Check the tab names match the year exactly.</p>
     </div>
   </div>
 
@@ -109,16 +109,42 @@ css: "schedule news history"
   }
 
   // ── Season detail view ─────────────────────────────────────────
+
+  // Try the documented tab name first, then common spelling variants.
+  function fetchSeasonTab(base, yr, cb) {
+    var names = [base + ' ' + yr, base + yr, yr + ' ' + base];
+    (function tryName(i) {
+      if (i >= names.length) { cb(new Error('No "' + names[0] + '" tab'), null); return; }
+      fetchSheet(names[i], function (err, rows) {
+        if (!err && rows && rows.length) { cb(null, rows); }
+        else { tryName(i + 1); }
+      });
+    }(0));
+  }
+
+  var STAT_COLS = [
+    { key: 'GP', label: 'GP' }, { key: 'Kills', label: 'K' }, { key: 'Assists', label: 'Ast' },
+    { key: 'Aces', label: 'Ace' }, { key: 'Blocks', label: 'Blk' }, { key: 'Digs', label: 'Dig' }
+  ];
+
   function rosterTable(players) {
-    return '<div class="hroster-scroll"><table class="hroster-table">' +
-      '<thead><tr><th class="hr-num">#</th><th>Name</th><th>Position</th><th class="hr-ht">Height</th><th class="hr-yr">Year</th></tr></thead><tbody>' +
+    var hasStats = players.some(function (r) { return (parseInt(r.GP, 10) || 0) > 0; });
+    var statHead = hasStats ? STAT_COLS.map(function (c) {
+      return '<th class="hr-st">' + c.label + '</th>';
+    }).join('') : '';
+    return '<div class="hroster-scroll"><table class="hroster-table' + (hasStats ? ' has-stats' : '') + '">' +
+      '<thead><tr><th class="hr-num">#</th><th>Name</th><th>Position</th><th class="hr-ht">Height</th><th class="hr-yr">Year</th>' + statHead + '</tr></thead><tbody>' +
       players.map(function (r) {
+        var statCells = hasStats ? STAT_COLS.map(function (c) {
+          return '<td class="hr-st">' + (r[c.key] ? esc(r[c.key]) : '&mdash;') + '</td>';
+        }).join('') : '';
         return '<tr>' +
           '<td class="hr-num">' + (r.Jersey ? esc(r.Jersey) : '&mdash;') + '</td>' +
           '<td class="hr-name">' + esc(r.Name || '') + '</td>' +
           '<td>' + esc(r.Role || '') + '</td>' +
           '<td class="hr-ht">' + esc(r.Height || '') + '</td>' +
           '<td class="hr-yr">' + esc(r.Year || '') + '</td>' +
+          statCells +
           '</tr>';
       }).join('') + '</tbody></table></div>';
   }
@@ -147,7 +173,7 @@ css: "schedule news history"
       if (row.Finish) document.getElementById('det-finish').textContent = row.Finish;
     });
 
-    fetchSheet('Schedule ' + yr, function (err, rows) {
+    fetchSeasonTab('Schedule', yr, function (err, rows) {
       if (err || !rows.length) { section('det-sched-section', false); return; }
       _schedLastMonth = null;
       document.getElementById('det-sched-body').innerHTML =
@@ -159,7 +185,7 @@ css: "schedule news history"
       section('det-sched-section', true);
     });
 
-    fetchSheet('Roster ' + yr, function (err, rows) {
+    fetchSeasonTab('Roster', yr, function (err, rows) {
       if (err || !rows.length) { section('det-roster-section', false); return; }
       var varsity = rows.filter(function (r) { return (r.Team || '').toLowerCase() === 'varsity'; });
       var jv      = rows.filter(function (r) { return (r.Team || '').toLowerCase() === 'jv'; });
@@ -171,7 +197,7 @@ css: "schedule news history"
       section('det-roster-section', true);
     });
 
-    fetchSheet('News ' + yr, function (err, rows) {
+    fetchSeasonTab('News', yr, function (err, rows) {
       if (err || !rows.length) { section('det-news-section', false); return; }
       rows.sort(function (a, b) {
         var da = parseISODate(a.Date) || (a.Date ? new Date(a.Date) : null);

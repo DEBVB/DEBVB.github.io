@@ -44,3 +44,6 @@
   .seasons-grid { grid-template-columns: 1fr; }
   .sc-year { font-size: 28px; }
 }
+.hr-st { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); text-align: center; white-space: nowrap; width: 52px; }
+.hroster-table thead th.hr-st { text-align: center; }
+.hroster-table.has-stats { min-width: 760px; }
