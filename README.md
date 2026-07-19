@@ -10,6 +10,7 @@ The official website of the **Downingtown East Cougars Boys Volleyball** program
 - **Schedule** — full season schedule with results, home/away, and directions
 - **Roster** — Varsity & JV player cards with per-player season stats
 - **News** — match recaps with scoreboards and team stat lines
+- **History** — archives of past seasons: old rosters, schedules/results, and news
 - **Coaches / Contact / Donate** — staff bios, email links, Venmo support
 - **[Score Sheet Guide](https://debvb.github.io/volleyball-scoring-guide.html)** — interactive scorebook tutorial
 
@@ -38,6 +39,7 @@ which drives the homepage slideshow. Keep images ≤1600px on the long edge.
 | Update player stats | Edit the `Roster` tab |
 | Add slideshow photos | Commit images to `photos/` |
 | Edit bios / pages | Edit the corresponding `.html` file |
+| Archive a season | Duplicate the live tabs as `Schedule YYYY` / `Roster YYYY` / `News YYYY`, add a row to the `Seasons` tab, then clear the live tabs (details in `js/sheets.js`) |
 
 ## Contact
 

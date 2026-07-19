@@ -1,0 +1,46 @@
+/* Loaded after schedule.css + news.css — widen the shared page wrap */
+.page-wrap { max-width: 1100px; }
+
+/* ── Season list ─────────────────────────────────────────────────── */
+.seasons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.season-card { display: flex; flex-direction: column; gap: 6px; background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: var(--radius-md); padding: 22px 24px; text-decoration: none; box-shadow: var(--shadow-card); transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease); }
+.season-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.sc-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.sc-year { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--navy); line-height: 1; letter-spacing: -1px; }
+.sc-record { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: var(--ink); }
+.sc-finish { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.sc-note { font-size: 13px; color: #3d3830; line-height: 1.55; }
+.sc-more { margin-top: 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--navy); }
+.hist-loading { grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; font-style: italic; }
+
+/* ── Empty / setup states ────────────────────────────────────────── */
+.hist-empty { grid-column: 1 / -1; background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 32px 28px; text-align: center; }
+.hist-empty p { font-size: 15px; color: var(--ink); }
+.hist-empty-sub { margin-top: 8px; font-size: 12.5px !important; color: var(--muted) !important; line-height: 1.6; }
+.hist-empty code { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--soft); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 5px; }
+
+/* ── Season detail ───────────────────────────────────────────────── */
+.hist-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--navy); text-decoration: none; margin-bottom: 18px; }
+.hist-back:hover { color: var(--gold); }
+.hist-finish { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--navy); font-weight: 700; margin-top: 4px; }
+#season-detail .older-label { padding-top: 28px; }
+
+/* ── Archive roster tables ───────────────────────────────────────── */
+.hroster-group { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); margin: 18px 0 10px; }
+.hroster-group:first-child { margin-top: 0; }
+.hroster-scroll { overflow-x: auto; background: var(--white); border: 1px solid var(--rule); }
+.hroster-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.hroster-table thead tr { background: var(--navy); }
+.hroster-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); padding: 10px 14px; text-align: left; font-weight: 500; }
+.hroster-table tbody tr { border-bottom: 1px solid var(--rule); }
+.hroster-table tbody tr:last-child { border-bottom: none; }
+.hroster-table tbody tr:nth-child(even) { background: #f7f9fd; }
+.hroster-table td { padding: 10px 14px; font-size: 13px; }
+.hr-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); width: 48px; }
+.hr-name { font-weight: 700; color: var(--ink); font-size: 14px; }
+.hr-ht, .hr-yr { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .seasons-grid { grid-template-columns: 1fr; }
+  .sc-year { font-size: 28px; }
+}
