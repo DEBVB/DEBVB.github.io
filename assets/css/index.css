@@ -11,7 +11,9 @@
 }
 @keyframes slides-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .mast-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,30,69,0.08) 0%, rgba(14,30,69,0.15) 50%, rgba(14,30,69,0.92) 100%); z-index: 1; }
-.mast-dots { position: absolute; top: 24px; right: 48px; display: flex; gap: 8px; z-index: 4; }
+.mast-dots { position: absolute; top: 24px; right: 48px; display: flex; align-items: center; gap: 8px; z-index: 4; }
+.mast-pause { order: 1; width: 22px; height: 22px; margin-left: 4px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35); background: rgba(14,30,69,0.45); color: rgba(255,255,255,0.85); cursor: pointer; padding: 0; display: grid; place-items: center; transition: background 0.2s, border-color 0.2s; }
+.mast-pause:hover { background: rgba(14,30,69,0.75); border-color: var(--gold); color: var(--gold); }
 .mast-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.25s, width 0.25s var(--ease), border-radius 0.25s; }
 .mast-dot.active { background: var(--gold); transform: none; width: 20px; border-radius: 4px; }
 .mast-content { position: relative; z-index: 3; width: 100%; padding: 0 48px 52px; }
