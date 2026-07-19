@@ -10,8 +10,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ page.og_title | default: page.title }}">
 <meta property="og:description" content="{{ page.og_description | default: page.description }}">
-<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
-<meta property="og:url" content="{{ page.canonical }}">
+<meta property="og:image" content="https://debvb.github.io/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Downingtown East Cougar Boys Volleyball team photo">
+{% if page.canonical %}<meta property="og:url" content="{{ page.canonical }}">{% endif %}
 <meta property="og:site_name" content="Downingtown East Boys Volleyball">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,13 +22,14 @@
 <meta name="twitter:creator" content="@devbboys">
 <meta name="twitter:title" content="{{ page.twitter_title | default: page.og_title | default: page.title }}">
 <meta name="twitter:description" content="{{ page.twitter_description | default: page.og_description | default: page.description }}">
-<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
-<link rel="canonical" href="{{ page.canonical }}">
+<meta name="twitter:image" content="https://debvb.github.io/social-card.jpg">
+{% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
+{% if page.preload_json %}<link rel="preload" href="{{ page.preload_json }}" as="fetch">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">

@@ -7,7 +7,8 @@
 .donate-card h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--ink); margin-bottom: 8px; }
 .donate-card .sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
 .preset-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
-.preset-btn { background: var(--soft); border: 1px solid var(--rule); color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 10px 20px; cursor: default; letter-spacing: 0.05em; }
+.preset-btn { background: var(--soft); border: 1px solid var(--rule); color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 10px 20px; letter-spacing: 0.05em; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+.preset-btn:hover { background: var(--gold-light); border-color: var(--gold); }
 .donate-note { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; border-left: 3px solid var(--gold); padding-left: 14px; }
 .btn-venmo { display: flex; align-items: center; justify-content: center; gap: 10px; background: #3D95CE; color: var(--white); font-size: 15px; font-weight: 700; padding: 16px 28px; text-decoration: none; transition: background 0.15s; width: 100%; }
 .btn-venmo:hover { background: #2d7fb0; }

@@ -91,28 +91,64 @@ function _csvToObjects(rows) {
   });
 }
 
+/** Escape user-editable Sheet text before it is interpolated into HTML. */
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ── localStorage cache (serve last good copy instantly, refresh in background) ─
+
+var _CACHE_MAX_AGE = 24 * 60 * 60 * 1000; // 24h
+
+function _cacheGet(tab) {
+  try {
+    var obj = JSON.parse(localStorage.getItem('debvb:sheet:' + tab));
+    if (obj && obj.d && (Date.now() - obj.t) < _CACHE_MAX_AGE) return obj.d;
+  } catch (e) {}
+  return null;
+}
+
+function _cacheSet(tab, rows) {
+  try { localStorage.setItem('debvb:sheet:' + tab, JSON.stringify({ t: Date.now(), d: rows })); }
+  catch (e) {}
+}
+
 // ── Public fetch API ──────────────────────────────────────────────────────────
 
 /**
  * Fetch a named tab from the Google Sheet and return parsed row objects.
  * callback(err, rows[])  —  rows is an array of {ColumnHeader: value} objects.
+ * A cached copy (if any) is delivered immediately; the callback runs a second
+ * time only when the live data differs. Errors are suppressed when cached
+ * data was already shown.
  */
 function fetchSheet(tab, callback) {
   if (!SHEET_ID || SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE') {
     callback(new Error('SHEET_ID not configured in /js/sheets.js'), null);
     return;
   }
+  var cached = _cacheGet(tab);
+  if (cached) { callback(null, cached); }
+
   var xhr = new XMLHttpRequest();
   xhr.open('GET', _sheetsURL(tab), true);
   xhr.onload = function() {
     if (xhr.status === 200) {
-      try { callback(null, _csvToObjects(_parseCSV(xhr.responseText))); }
-      catch (e) { callback(e, null); }
-    } else {
+      try {
+        var rows = _csvToObjects(_parseCSV(xhr.responseText));
+        var changed = !cached || JSON.stringify(rows) !== JSON.stringify(cached);
+        _cacheSet(tab, rows);
+        if (changed) { callback(null, rows); }
+      } catch (e) {
+        if (!cached) { callback(e, null); }
+      }
+    } else if (!cached) {
       callback(new Error('HTTP ' + xhr.status + ' fetching tab "' + tab + '"'), null);
     }
   };
-  xhr.onerror = function() { callback(new Error('Network error'), null); };
+  xhr.onerror = function() { if (!cached) { callback(new Error('Network error'), null); } };
   xhr.send();
 }
 
@@ -182,7 +218,7 @@ var _dirSVG = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" strok
 function resultBadge(row) {
   var type = (row.Type || '').toLowerCase();
   var res  = (row.Result || '').toUpperCase();
-  var sc   = (row.Score || '').replace('-', '&ndash;');
+  var sc   = esc(row.Score || '').replace('-', '&ndash;');
   if (type === 'scrim') return '<span class="badge badge-scrim">Scrim</span>';
   if (res === 'W') return '<span class="badge badge-win">W ' + sc + '</span>';
   if (res === 'L') return '<span class="badge badge-loss">L ' + sc + '</span>';
@@ -222,13 +258,13 @@ function renderScheduleRow(row) {
       '" target="_blank" rel="noopener noreferrer">' + _dirSVG + 'Directions</a></span>'
     : '';
 
-  var oppInner = (row.Opponent || '&mdash;') + haPill + venueHTML;
+  var oppInner = (row.Opponent ? esc(row.Opponent) : '&mdash;') + haPill + venueHTML;
 
   return sepHTML +
     '<tr class="' + (isHome ? 'row-home' : 'row-away') + '">' +
-    '<td class="td-date">'     + fmtDateShort(row.Date) + '</td>' +
+    '<td class="td-date">'     + esc(fmtDateShort(row.Date)) + '</td>' +
     '<td class="td-opponent">' + oppInner + '</td>' +
-    '<td class="td-time">'     + (row.Time || '&mdash;') + '</td>' +
+    '<td class="td-time">'     + (row.Time ? esc(row.Time) : '&mdash;') + '</td>' +
     '<td class="td-result">'   + resultBadge(row) + '</td>' +
     '</tr>';
 }
@@ -288,11 +324,11 @@ function _newsStats(row) {
   if (!fields.some(function(s) { return s.val && s.val !== ''; })) return '';
   var html = '<div class="stat-strip">' +
     fields.map(function(s) {
-      return '<div class="stat-item"><div class="stat-num">' + (s.val || '&mdash;') +
+      return '<div class="stat-item"><div class="stat-num">' + (s.val ? esc(s.val) : '&mdash;') +
         '</div><div class="stat-label">' + s.key + '</div></div>';
     }).join('') + '</div>';
   if (row.HitEff) {
-    html += '<div class="hit-eff">Hit Eff. <strong style="color:var(--navy)">' + row.HitEff + '</strong></div>';
+    html += '<div class="hit-eff">Hit Eff. <strong style="color:var(--navy)">' + esc(row.HitEff) + '</strong></div>';
   } else {
     html += '<div style="margin-bottom:14px"></div>';
   }
@@ -303,11 +339,11 @@ function _newsStats(row) {
 function renderNewsExpanded(row) {
   var type = (row.Type || 'info').toLowerCase();
   var meta = [fmtDateLong(row.Date)];
-  if (row.Opponent) meta.push(row.Opponent);
-  if (row.SetsDE && row.SetsOpp) meta.push((type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp);
-  var body = (row.Body || '').replace(/\n/g, '<br>');
+  if (row.Opponent) meta.push(esc(row.Opponent));
+  if (row.SetsDE && row.SetsOpp) meta.push((type === 'win' ? 'W ' : 'L ') + esc(row.SetsDE) + '&ndash;' + esc(row.SetsOpp));
+  var body = esc(row.Body || '').replace(/\n/g, '<br>');
   return '<div class="post">' +
-    '<div class="post-top">' + _newsTag(type) + '<div class="post-title">' + (row.Title || '') + '</div></div>' +
+    '<div class="post-top">' + _newsTag(type) + '<div class="post-title">' + esc(row.Title || '') + '</div></div>' +
     '<div class="post-date">' + meta.join(' &middot; ') + '</div>' +
     '<div class="post-body">' + _newsStats(row) + (body ? '<p>' + body + '</p>' : '') + '</div>' +
     '</div>';
@@ -316,18 +352,18 @@ function renderNewsExpanded(row) {
 /** Render as collapsed accordion */
 function renderNewsAccordion(row) {
   var type = (row.Type || 'info').toLowerCase();
-  var metaShort = fmtDateShort(row.Date) +
-    (row.SetsDE && row.SetsOpp ? ' &middot; ' + row.SetsDE + '&ndash;' + row.SetsOpp : '');
-  var body = (row.Body || '').replace(/\n/g, '<br>');
+  var metaShort = esc(fmtDateShort(row.Date)) +
+    (row.SetsDE && row.SetsOpp ? ' &middot; ' + esc(row.SetsDE) + '&ndash;' + esc(row.SetsOpp) : '');
+  var body = esc(row.Body || '').replace(/\n/g, '<br>');
   var chevron = '<svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
   return '<div class="post-accordion">' +
     '<button class="acc-trigger" aria-expanded="false">' +
     '<div class="acc-tags">' + _newsTag(type) + '</div>' +
-    '<div class="acc-title">' + (row.Title || '') + '</div>' +
+    '<div class="acc-title">' + esc(row.Title || '') + '</div>' +
     '<div class="acc-meta">' + metaShort + '</div>' +
     chevron + '</button>' +
     '<div class="acc-body">' +
-    '<div class="acc-recap-meta">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
+    '<div class="acc-recap-meta">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + esc(row.Opponent) : '') + '</div>' +
     _newsStats(row) +
     (body ? '<div class="acc-body-text"><p>' + body + '</p></div>' : '') +
     '</div></div>';
@@ -337,19 +373,19 @@ function renderNewsAccordion(row) {
 function renderHeroAnnouncement(row) {
   var type     = (row.Type || 'info').toLowerCase();
   var sc       = (row.SetsDE && row.SetsOpp)
-    ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
+    ? (type === 'win' ? 'W ' : 'L ') + esc(row.SetsDE) + '&ndash;' + esc(row.SetsOpp) : '';
   var tagCls   = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
   var tagLabel = sc || (type === 'win' ? 'Win' : type === 'loss' ? 'Loss' : 'New');
   var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
   var snippet  = fullBody.length > 220
-    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 220)) + '&hellip;'
-    : fullBody;
+    ? esc(fullBody.slice(0, fullBody.lastIndexOf(' ', 220))) + '&hellip;'
+    : esc(fullBody);
   return '<div class="fp-eye">' +
       '<span class="fp-live">Latest</span>' +
       '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
-      '<span class="fp-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</span>' +
+      '<span class="fp-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + esc(row.Opponent) : '') + '</span>' +
     '</div>' +
-    '<h2 class="fp-title">' + (row.Title || '') + '</h2>' +
+    '<h2 class="fp-title">' + esc(row.Title || '') + '</h2>' +
     (snippet ? '<p class="fp-body">' + snippet + '</p>' : '') +
     '<a href="/news.html" class="fp-link">Full story &rarr;</a>';
 }
@@ -358,7 +394,7 @@ function renderHeroAnnouncement(row) {
 function renderHomeAnnouncement(row) {
   var type = (row.Type || 'info').toLowerCase();
   var sc = (row.SetsDE && row.SetsOpp)
-    ? (type === 'win' ? 'W ' : 'L ') + row.SetsDE + '&ndash;' + row.SetsOpp : '';
+    ? (type === 'win' ? 'W ' : 'L ') + esc(row.SetsDE) + '&ndash;' + esc(row.SetsOpp) : '';
   var tagCls  = type === 'win' ? 'tag-win' : type === 'loss' ? 'tag-loss' : type === 'new' ? 'tag-new' : 'tag-info';
   var cardCls = type === 'win' ? ' post-win' : type === 'loss' ? ' post-loss' : '';
   var tagLabel = sc || (type === 'new' ? 'New' : type === 'info' ? 'Info' : 'New');
@@ -366,16 +402,16 @@ function renderHomeAnnouncement(row) {
   // Truncate body to 120 chars at a word boundary
   var fullBody = (row.Body || '').replace(/\n/g, ' ').trim();
   var snippet  = fullBody.length > 120
-    ? fullBody.slice(0, fullBody.lastIndexOf(' ', 120)) + '&hellip;'
-    : fullBody;
+    ? esc(fullBody.slice(0, fullBody.lastIndexOf(' ', 120))) + '&hellip;'
+    : esc(fullBody);
   var bodyHTML = snippet
     ? snippet + ' <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>'
     : '<a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>';
 
   return '<div class="post' + cardCls + '">' +
     '<div class="post-top"><span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
-    '<div class="post-title">' + (row.Title || '') + '</div></div>' +
-    '<div class="post-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + row.Opponent : '') + '</div>' +
+    '<div class="post-title">' + esc(row.Title || '') + '</div></div>' +
+    '<div class="post-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + esc(row.Opponent) : '') + '</div>' +
     '<div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">' + bodyHTML + '</div>' +
     '</div>';
 }

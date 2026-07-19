@@ -1,47 +1,49 @@
-# Grant Shieh | Software Developer & Volleyball Coach
+# Downingtown East Boys Volleyball — Team Website
 
-<p align="center">
-  <img src="https://debvb.github.io/social-preview.png" alt="Grant Shieh Social Media Preview Banner"/>
-</p>
+The official website of the **Downingtown East Cougars Boys Volleyball** program
+(PIAA District 1 · Ches-Mont League · Exton, PA), live at
+**[debvb.github.io](https://debvb.github.io/)**.
 
-<p align="center">
-  Welcome! This repository hosts my personal portfolio and various software projects.
-</p>
+## What's on the site
 
----
+- **Home** — photo slideshow, next game / season record strip, latest news
+- **Schedule** — full season schedule with results, home/away, and directions
+- **Roster** — Varsity & JV player cards with per-player season stats
+- **News** — match recaps with scoreboards and team stat lines
+- **Coaches / Contact / Donate** — staff bios, email links, Venmo support
+- **[Score Sheet Guide](https://debvb.github.io/volleyball-scoring-guide.html)** — interactive scorebook tutorial
 
-### About Me
+## How it works
 
-I am a passionate **Software Developer** and the **Head Men's Volleyball Coach** at Downingtown East High School. Based in Pennsylvania, I have a background in both technology and competitive sports, which drives my approach to building efficient, user-focused applications and leading successful teams.
+Static **Jekyll** site hosted on **GitHub Pages**. Shared chrome (head, nav,
+footer) lives in `_includes/` and `_layouts/default.html`; per-page styles in
+`assets/css/`.
 
--   **As a Developer:** I enjoy creating clean, maintainable code and building user-friendly web experiences. My portfolio, hosted here, showcases my skills and journey in software development.
--   **As a Coach:** I lead the Downingtown East Boys Volleyball team and assist with the girls' team. I am dedicated to fostering teamwork, strategy, and a love for the game.
+**Live data comes from a Google Sheet** — no code changes needed for routine
+updates. `js/sheets.js` fetches the published sheet's `Schedule`, `Roster`,
+and `News` tabs as CSV at page load (with a 24-hour localStorage fallback
+cache). Column formats for each tab are documented at the top of
+[`js/sheets.js`](js/sheets.js).
 
-I am a graduate of Temple University, where I played club volleyball, and I began my coaching career in 2022.
+**Photos**: drop images into `photos/` and push — a GitHub Action
+(`.github/workflows/update-photos.yml`) regenerates `photos/photos.json`,
+which drives the homepage slideshow. Keep images ≤1600px on the long edge.
 
----
+## Updating content
 
-### Projects
+| Task | How |
+|---|---|
+| Add a game / result | Edit the `Schedule` tab in the Google Sheet |
+| Post news / a recap | Add a row to the `News` tab (`ShowOnHome: yes` to feature it) |
+| Update player stats | Edit the `Roster` tab |
+| Add slideshow photos | Commit images to `photos/` |
+| Edit bios / pages | Edit the corresponding `.html` file |
 
-#### Personal Portfolio Website
-This repository contains the full source code for my personal website, [debvb.github.io](https://debvb.github.io/index.html). It's a static site built with HTML and styled with Tailwind CSS, highlighting my resume, coaching schedule, and contact information.
+## Contact
 
----
+Maintained by **Grant Shieh**, Head Boys Volleyball Coach at Downingtown East
+High School.
 
-### Volleyball Coaching
-
-I am proud to lead the **Downingtown East Boys Volleyball** team. My goal is to combine modern coaching techniques with a positive team culture to help my players excel both on and off the court.
-
--   **Team:** Downingtown East Cougars
--   **Role:** Head Coach, Men's Volleyball | Assistant Coach, Girls' Volleyball
--   **Follow the Team:** You can follow our journey on Instragram at [@deastboysvolleyball]
-
----
-
-### Contact & Connect
-
-I'm always open to connecting with fellow developers, coaches, and tech enthusiasts.
-
--   **Email:** [gshieh11@outlook.com](mailto:gshieh11@outlook.com)
--   **LinkedIn:** [linkedin.com/in/grantshieh](https://www.linkedin.com/in/grantshieh/)
--   **GitHub:** [github.com/debvb](https://github.com/debvb)
+- Team Instagram: [@deastboysvb](https://instagram.com/deastboysvb)
+- Team Twitter/X: [@devbboys](https://x.com/devbboys)
+- GitHub: [github.com/DEBVB](https://github.com/DEBVB)

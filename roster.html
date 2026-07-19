@@ -12,14 +12,14 @@ canonical: "https://debvb.github.io/roster.html"
 css: roster
 ---
 
-<main>
+<main id="main">
 <div class="page-header">
   <div class="kicker">Downingtown East &middot; PIAA District 1 &middot; 2026 Season</div>
   <h1>2026 Season <em>Roster</em></h1>
   <div class="page-header-sub">Click any player card to view season stats &middot; Gold dot = stats available</div>
 </div>
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mName">
     <div class="modal-top-bar"></div>
     <div class="modal-header">
       <div class="mh-left">
@@ -30,7 +30,7 @@ css: roster
           <div class="mh-meta" id="mMeta"></div>
         </div>
       </div>
-      <button class="modal-close" id="modalClose">&#10005;</button>
+      <button class="modal-close" id="modalClose" aria-label="Close player stats">&#10005;</button>
     </div>
     <div class="modal-body" id="mBody"></div>
     <div class="modal-footer" id="mFooter"></div>
@@ -77,7 +77,7 @@ function roleClass(r) {
 function buildCard(p){
   var s=p.stats,hasStats=s!==null,eff=hasStats?calcEff(s.kills,s.errors,s.attempts):null;
   var initials=p.name.split(' ').map(function(w){return w.charAt(0).toUpperCase();}).slice(0,2).join('');
-  var jerseyBadge=p.jersey!=='—'?'<span class="card-jersey-badge">#'+p.jersey+'</span>':'';
+  var jerseyBadge=p.jersey!=='—'?'<span class="card-jersey-badge">#'+esc(p.jersey)+'</span>':'';
   var statCols=[];
   if(hasStats){
     if(p.role==='Setter'){statCols.push({val:s.assists,key:'Ast'});statCols.push({val:s.digs,key:'Dig'});}
@@ -90,14 +90,20 @@ function buildCard(p){
     :'';
   var div=document.createElement('div');div.className='player-card'+(hasStats?' has-stats clickable':'');
   div.innerHTML=
-    '<div class="card-photo-area"><span class="card-initials">'+initials+'</span>'+jerseyBadge+'</div>'+
+    '<div class="card-photo-area"><span class="card-initials">'+esc(initials)+'</span>'+jerseyBadge+'</div>'+
     '<div class="card-body">'+
-      '<div class="card-role '+roleClass(p.role)+'">'+p.role+'</div>'+
-      '<div class="card-name">'+p.name+'</div>'+
-      '<div class="card-meta">'+(p.height||'—')+(p.year?' &nbsp;&middot;&nbsp; '+p.year:'')+'</div>'+
+      '<div class="card-role '+roleClass(p.role)+'">'+esc(p.role)+'</div>'+
+      '<div class="card-name">'+esc(p.name)+'</div>'+
+      '<div class="card-meta">'+esc(p.height||'—')+(p.year?' &nbsp;&middot;&nbsp; '+esc(p.year):'')+'</div>'+
       statsHTML+
     '</div>';
-  if(hasStats){div.addEventListener('click',function(){openModal(p);});}
+  if(hasStats){
+    div.setAttribute('role','button');
+    div.setAttribute('tabindex','0');
+    div.setAttribute('aria-label','View season stats for '+p.name);
+    div.addEventListener('click',function(){openModal(p,div);});
+    div.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(p,div);}});
+  }
   return div;
 }
 function renderGrid(players, id) {
@@ -105,7 +111,13 @@ function renderGrid(players, id) {
   grid.innerHTML = '';
   players.forEach(function(p) { grid.appendChild(buildCard(p)); });
 }
-function openModal(p){
+var _modalTrigger=null;
+function _showModal(){
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('modalClose').focus();
+}
+function openModal(p,trigger){
+  _modalTrigger=trigger||null;
   var s=p.stats;
   document.getElementById('mNum').textContent=p.jersey!=='—'?'#'+p.jersey:p.jersey;
   document.getElementById('mRole').textContent=p.role;
@@ -113,7 +125,7 @@ function openModal(p){
   document.getElementById('mMeta').textContent=p.height+' · '+p.year;
   document.getElementById('mFooter').textContent='2026 Season · '+(s?s.sp+' Sets Played':'Season in Progress')+' · Cumulative Totals';
   var body=document.getElementById('mBody');body.innerHTML='';
-  if(!s){body.innerHTML='<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';document.getElementById('modalOverlay').classList.add('open');return;}
+  if(!s){body.innerHTML='<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';_showModal();return;}
   var eff=calcEff(s.kills,s.errors,s.attempts),html='';
   if(s.attempts>0&&p.role!=='Setter'){
     var killPct=((s.kills/s.attempts)*100).toFixed(1),errPct=((s.errors/s.attempts)*100).toFixed(1);
@@ -146,11 +158,14 @@ function openModal(p){
       cell(s.digs,'Digs','')+cell(s.blocks,'Blocks',s.blocks>=5?'good':'')+
       cell(s.srAtt||'—','SR Att','')+cell(s.srRtg?s.srRtg.toFixed(2):'—','SR Rtg',s.srRtg?srClass(s.srRtg):'')+'</div>';
   }
-  body.innerHTML=html;document.getElementById('modalOverlay').classList.add('open');
+  body.innerHTML=html;_showModal();
 }
 function cell(val,key,cls){return'<div class="ms-cell"><div class="ms-val '+cls+'">'+val+'</div><div class="ms-key">'+key+'</div></div>';}
 function bar(label,valStr,widthPct,color){return'<div class="bar-wrap"><div class="bar-label-row"><span class="bar-label">'+label+'</span><span class="bar-value" style="color:'+color+'">'+valStr+'</span></div><div class="bar-track"><div class="bar-fill" style="width:'+widthPct.toFixed(1)+'%;background:'+color+'"></div></div></div>';}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  if(_modalTrigger){_modalTrigger.focus();_modalTrigger=null;}
+}
 document.getElementById('modalClose').addEventListener('click',closeModal);
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
