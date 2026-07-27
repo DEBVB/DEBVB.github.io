@@ -62,14 +62,19 @@
 
    Per-season data lives in tabs named with the year appended (same column
    formats as the live tabs):  Schedule 2025  |  Roster 2025  |  News 2025
+   ("Schedule2025" and "2025 Schedule" spellings also work.)
    Any of the three may be omitted — history.html only shows sections that
-   have data.
+   have data. Archived Roster tabs that include stats (GP > 0) get extra
+   stat columns (GP/K/Ast/Ace/Blk/Dig) on the history page.
 
    END-OF-SEASON CHECKLIST (archives the year in ~2 minutes):
    1. Duplicate the live Schedule / Roster / News tabs.
    2. Rename the copies "Schedule YYYY", "Roster YYYY", "News YYYY".
    3. Add a row for YYYY to the Seasons tab.
-   4. Clear the live tabs for the new season.
+   4. Clear the data rows (keep the header row) in the live tabs.
+      The live pages then show "posted soon" placeholders until the new
+      season's data is entered — season-year labels update automatically
+      from the new schedule dates.
    =========================================================================== */
 
 var SHEET_ID = '1pgwjllLVC1JOYkgskhWiZ-Kwgw_klYM2UvbKBf27UO4';

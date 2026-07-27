@@ -80,3 +80,4 @@
 @media (max-width: 360px) {
   .player-grid { grid-template-columns: 1fr; }
 }
+.grid-note { grid-column: 1 / -1; text-align: center; padding: 32px 20px; color: var(--muted); font-size: 14px; font-style: italic; background: var(--white); border: 1px dashed var(--rule); border-radius: 8px; }

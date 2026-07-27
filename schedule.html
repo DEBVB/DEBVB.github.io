@@ -1,13 +1,13 @@
 ---
 layout: default
 nav_active: schedule
-title: "2026 Schedule — Downingtown East Boys Volleyball"
-description: "2026 game schedule for Downingtown East Boys Volleyball. View upcoming matches, home and away games, and results for the Cougars."
+title: "Schedule — Downingtown East Boys Volleyball"
+description: "Game schedule for Downingtown East Boys Volleyball. View upcoming matches, home and away games, and results for the Cougars."
 keywords: "Downingtown East, Volleyball Schedule, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA"
-og_title: "2026 Schedule | Downingtown East Boys Volleyball"
-og_description: "Full 2026 season schedule for DE Boys Volleyball — home games, away games, times, and results."
-twitter_title: "2026 Schedule | Downingtown East Boys Volleyball"
-twitter_description: "Full 2026 season schedule for DE Boys Volleyball — home games, away games, times, and results."
+og_title: "Schedule | Downingtown East Boys Volleyball"
+og_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
+twitter_title: "Schedule | Downingtown East Boys Volleyball"
+twitter_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
 canonical: "https://debvb.github.io/schedule.html"
 css: schedule
 ---
@@ -15,14 +15,14 @@ css: schedule
 <main id="main">
 <div class="page-header">
   <div class="page-header-kicker">Downingtown East · PIAA District 1 · Ches-Mont League</div>
-  <h1>2026 Season <em>Schedule</em></h1>
-  <div class="page-header-sub" id="sched-count">Varsity &amp; JV · 2026 Season</div>
+  <h1><span id="sched-year"></span>Season <em>Schedule</em></h1>
+  <div class="page-header-sub" id="sched-count">Varsity &amp; JV</div>
 </div>
 
 <div class="page-wrap">
   <div class="record-banner">
     <div>
-      <div class="record-banner-label">2026 Record</div>
+      <div class="record-banner-label" id="banner-record-label">Season Record</div>
       <div class="record-banner-val" id="banner-record">—</div>
     </div>
     <div class="record-banner-divider"></div>
@@ -79,21 +79,31 @@ css: schedule
     _schedLastMonth = null;
     tbody.innerHTML = rows.map(function(r) { return renderScheduleRow(r); }).join('');
 
+    // Season year — derived from the schedule data, so labels never go stale
+    for (var i = 0; i < rows.length; i++) {
+      var sd = parseISODate(rows[i].Date) || (rows[i].Date ? new Date(rows[i].Date) : null);
+      if (sd && !isNaN(sd)) {
+        document.getElementById('sched-year').textContent = sd.getFullYear() + ' ';
+        document.getElementById('banner-record-label').textContent = sd.getFullYear() + ' Record';
+        break;
+      }
+    }
+
     var rec = schedRecord(rows);
     document.getElementById('banner-record').innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
 
     var last = schedLastResult(rows);
     if (last) {
       var res = last.Result.toUpperCase() === 'W' ? 'W' : 'L';
-      var sc  = (last.Score || '').replace('-', '&ndash;');
-      var opp = (last.Location || '').toLowerCase() === 'home' ? 'vs. ' + last.Opponent : '@ ' + last.Opponent;
+      var sc  = esc(last.Score || '').replace('-', '&ndash;');
+      var opp = ((last.Location || '').toLowerCase() === 'home' ? 'vs. ' : '@ ') + esc(last.Opponent);
       document.getElementById('banner-last').style.color = res === 'W' ? '#166534' : '#991b1b';
       document.getElementById('banner-last').innerHTML   = res + ' ' + sc + ' ' + opp + ' &middot; ' + fmtDateShort(last.Date);
     }
 
     var next = schedNextGame(rows);
     if (next) {
-      var nOpp = (next.Location || '').toLowerCase() === 'home' ? 'vs. ' + next.Opponent : '@ ' + next.Opponent;
+      var nOpp = ((next.Location || '').toLowerCase() === 'home' ? 'vs. ' : '@ ') + esc(next.Opponent);
       document.getElementById('banner-next').innerHTML =
         nOpp + ' &middot; ' + fmtDateShort(next.Date) + (next.Time ? ' &middot; ' + next.Time : '');
     } else {

@@ -1,21 +1,21 @@
 ---
 layout: default
 nav_active: roster
-title: "2026 Roster — Downingtown East Boys Volleyball"
-description: "2026 roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
-keywords: "Downingtown East Volleyball Roster, DE Boys Volleyball Players, Cougars Volleyball 2026, Exton PA volleyball"
-og_title: "2026 Roster | Downingtown East Boys Volleyball"
-og_description: "2026 roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
-twitter_title: "2026 Roster | Downingtown East Boys Volleyball"
-twitter_description: "2026 roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
+title: "Roster — Downingtown East Boys Volleyball"
+description: "Current roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
+keywords: "Downingtown East Volleyball Roster, DE Boys Volleyball Players, Cougars Volleyball roster, Exton PA volleyball"
+og_title: "Roster | Downingtown East Boys Volleyball"
+og_description: "Current roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
+twitter_title: "Roster | Downingtown East Boys Volleyball"
+twitter_description: "Current roster for Downingtown East Boys Volleyball. View varsity and JV players with season stats."
 canonical: "https://debvb.github.io/roster.html"
 css: roster
 ---
 
 <main id="main">
 <div class="page-header">
-  <div class="kicker">Downingtown East &middot; PIAA District 1 &middot; 2026 Season</div>
-  <h1>2026 Season <em>Roster</em></h1>
+  <div class="kicker">Downingtown East &middot; PIAA District 1 &middot; Cougars Volleyball</div>
+  <h1>Cougars <em>Roster</em></h1>
   <div class="page-header-sub">Click any player card to view season stats &middot; Gold dot = stats available</div>
 </div>
 <div class="modal-overlay" id="modalOverlay">
@@ -45,7 +45,7 @@ css: roster
     </div>
     <div class="section-coaches">Head Coach: Grant Shieh &nbsp;&middot;&nbsp; Asst. Coach: Chris D'Amore</div>
     <div class="stats-note" id="varsity-note">&#9679; gold dot = season stats on file</div>
-    <div class="player-grid" id="varsityGrid"></div>
+    <div class="player-grid" id="varsityGrid"><div class="grid-note">Loading roster&hellip;</div></div>
   </div>
   <div class="roster-section">
     <div class="section-header">
@@ -54,7 +54,7 @@ css: roster
       <div class="section-count" id="jv-count">— Players</div>
     </div>
     <div class="section-coaches">Coach: Chris D'Amore</div>
-    <div class="player-grid" id="jvGrid"></div>
+    <div class="player-grid" id="jvGrid"><div class="grid-note">Loading roster&hellip;</div></div>
   </div>
 </div>
 </main>
@@ -123,7 +123,7 @@ function openModal(p,trigger){
   document.getElementById('mRole').textContent=p.role;
   document.getElementById('mName').textContent=p.name;
   document.getElementById('mMeta').textContent=p.height+' · '+p.year;
-  document.getElementById('mFooter').textContent='2026 Season · '+(s?s.sp+' Sets Played':'Season in Progress')+' · Cumulative Totals';
+  document.getElementById('mFooter').textContent=(s?s.sp+' Sets Played':'Season in Progress')+' · Cumulative Totals';
   var body=document.getElementById('mBody');body.innerHTML='';
   if(!s){body.innerHTML='<div class="no-stats"><p>No stats on record yet.<br>Stats will appear here after matches are logged.</p></div>';_showModal();return;}
   var eff=calcEff(s.kills,s.errors,s.attempts),html='';
@@ -173,46 +173,17 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()
 
 <script src="/js/sheets.js"></script>
 <script>
-// ── Static roster (renders instantly; Sheet overwrites if it has live stats) ──
-var STATIC_VARSITY = [
-  { jersey: '—', name: 'Adrian Liu',        role: 'Middle',      height: "6'3",  year: 'Senior',   stats: null },
-  { jersey: '—', name: 'Divyansh Ajmera',   role: 'DS',          height: "5'5",  year: 'Senior',   stats: null },
-  { jersey: '—', name: 'Ritvik Adoni',      role: 'Libero',      height: "5'9",  year: 'Senior',   stats: null },
-  { jersey: '—', name: 'Samuel Joshy',      role: 'DS',          height: "5'6",  year: 'Senior',   stats: null },
-  { jersey: '—', name: 'Sritan Bhumireddy', role: 'Outside',     height: "6'0",  year: 'Senior',   stats: null },
-  { jersey: '—', name: 'Aadi Kurukunda',    role: 'Outside',     height: "5'7",  year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Anish Dachepalli',  role: 'Middle',      height: "5'9",  year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Anish Yasa',        role: 'Right Side',  height: "5'7",  year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Arjun Patankar',    role: 'Right Side',  height: "5'8",  year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Arjun Sankar',      role: 'Setter',      height: "5'10", year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Gavin Tulloch',     role: 'Middle',      height: "6'10", year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Parker Laverya',    role: 'Outside',     height: "6'2",  year: 'Junior',   stats: null },
-  { jersey: '—', name: 'Sidd Madipadaga',   role: 'Middle',      height: "6'3",  year: 'Junior',   stats: null }
-];
-var STATIC_JV = [
-  { jersey: '—', name: 'Nehan Madankumar',   role: 'DS',         height: "5'7",  year: 'Sophomore', stats: null },
-  { jersey: '—', name: 'Sreekar Pasupulati', role: 'Outside',    height: "5'10", year: 'Sophomore', stats: null },
-  { jersey: '—', name: 'Tyler McGowan',      role: 'Outside',    height: "5'10", year: 'Sophomore', stats: null },
-  { jersey: '—', name: 'Shreyan Potdar',     role: 'Right Side', height: "6'10", year: 'Junior',    stats: null },
-  { jersey: '—', name: 'Anish Sugan',        role: 'Outside',    height: "6'0",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Avanish Rao',        role: 'Setter',     height: "5'3",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'David Son',          role: 'Right Side', height: "5'6",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Mason Gulotta',      role: 'DS',         height: "5'5",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Rishaan Kesari',     role: 'Setter',     height: "5'7",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Samrudh Ghanta',     role: 'DS',         height: "5'6",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Srithan Ravula',     role: 'Outside',    height: "6'0",  year: 'Freshman',  stats: null },
-  { jersey: '—', name: 'Vivaan Adiga',       role: 'Setter',     height: "5'3",  year: 'Freshman',  stats: null }
-];
-renderGrid(STATIC_VARSITY, 'varsityGrid');
-renderGrid(STATIC_JV,      'jvGrid');
-document.getElementById('varsity-count').textContent = STATIC_VARSITY.length + ' Players';
-document.getElementById('jv-count').textContent      = STATIC_JV.length      + ' Players';
+// ── Roster loads from the Google Sheet's Roster tab ──────────────────────────
+function gridMessage(id, msg) {
+  document.getElementById(id).innerHTML = '<div class="grid-note">' + msg + '</div>';
+}
 
 fetchSheet('Roster', function(err, rows) {
-  var vGrid = document.getElementById('varsityGrid');
-  var jGrid = document.getElementById('jvGrid');
-
-  if (err) { return; } // keep static render on load failure
+  if (err) {
+    gridMessage('varsityGrid', "Couldn't load the roster &mdash; check back soon.");
+    gridMessage('jvGrid',      "Couldn't load the roster &mdash; check back soon.");
+    return;
+  }
 
   var varsity = [], jv = [];
   rows.forEach(function(r) {
@@ -225,11 +196,17 @@ fetchSheet('Roster', function(err, rows) {
     renderGrid(varsity, 'varsityGrid');
     document.getElementById('varsity-count').textContent =
       varsity.length + ' Player' + (varsity.length !== 1 ? 's' : '');
+  } else {
+    gridMessage('varsityGrid', 'Roster will be posted after tryouts.');
+    document.getElementById('varsity-count').textContent = '\u2014 Players';
   }
   if (jv.length) {
     renderGrid(jv, 'jvGrid');
     document.getElementById('jv-count').textContent =
       jv.length + ' Player' + (jv.length !== 1 ? 's' : '');
+  } else {
+    gridMessage('jvGrid', 'Roster will be posted after tryouts.');
+    document.getElementById('jv-count').textContent = '\u2014 Players';
   }
 });
 </script>

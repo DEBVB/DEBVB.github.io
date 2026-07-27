@@ -39,7 +39,7 @@ which drives the homepage slideshow. Keep images ≤1600px on the long edge.
 | Update player stats | Edit the `Roster` tab |
 | Add slideshow photos | Commit images to `photos/` |
 | Edit bios / pages | Edit the corresponding `.html` file |
-| Archive a season | Duplicate the live tabs as `Schedule YYYY` / `Roster YYYY` / `News YYYY`, add a row to the `Seasons` tab, then clear the live tabs (details in `js/sheets.js`) |
+| Archive a season | Duplicate the live tabs as `Schedule YYYY` / `Roster YYYY` / `News YYYY` (spacing variants accepted), add a row to the `Seasons` tab, then clear the data rows in the live tabs — the live pages show "posted soon" placeholders until new-season data is entered (details in `js/sheets.js`) |
 
 ## Contact
 
