@@ -68,3 +68,10 @@
   .row-month-sep td { display: block; }
   .record-banner { padding: 12px 16px; }
 }
+
+/* ── Evergreen intro copy ─────────────────────────────────────────── */
+.sched-intro { max-width: 1200px; margin: 0 auto; padding: 26px 48px 0; }
+.sched-intro p { max-width: 74ch; font-size: 14.5px; line-height: 1.75; color: #3d3830; }
+.sched-intro a { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+@media (max-width: 900px) { .sched-intro { padding: 20px 20px 0; } }
+@media (max-width: 640px) { .sched-intro { padding: 18px 16px 0; } .sched-intro p { font-size: 13.5px; } }

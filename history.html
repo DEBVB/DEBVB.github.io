@@ -1,9 +1,8 @@
 ---
 layout: default
 nav_active: history
-title: "Program History — Downingtown East Boys Volleyball"
-description: "Season archives for Downingtown East Boys Volleyball — past rosters, schedules, results, and news for the Cougars."
-keywords: "Downingtown East Volleyball history, past rosters, season results, Cougars Volleyball archive, Exton PA"
+title: "Program History — Downingtown East Boys Volleyball Records by Season"
+description: "Season-by-season history of Downingtown East boys volleyball: yearly records, playoff finishes, past rosters, schedules, and results for the Exton, PA Cougars."
 og_title: "Program History | Downingtown East Boys Volleyball"
 og_description: "Season archives for DE Boys Volleyball — past rosters, schedules, results, and news."
 twitter_title: "Program History | Downingtown East Boys Volleyball"
@@ -23,9 +22,55 @@ css: "schedule news history"
 
   <!-- ═══ SEASON LIST (default view) ═══ -->
   <div id="season-list">
+
+    <!-- Evergreen intro — present whether or not archive data has loaded -->
+    <section class="hist-intro">
+      <h2>Downingtown East Boys Volleyball, Season by Season</h2>
+      <p>This page is the record book for boys volleyball at <strong>Downingtown East High
+      School</strong> in Exton, Pennsylvania. Each archived season below links to that year's
+      full schedule and results, the roster that played it, and the recaps written along the way.
+      Use it to look up a <strong>Downingtown East volleyball record</strong> for any year, find a
+      former player's number and position, or trace how a match against a Ches-Mont opponent
+      turned out.</p>
+
+      <p>The Cougars play in the <strong>Ches-Mont League</strong> and <strong>PIAA District 1</strong>.
+      Boys volleyball is a spring sport in Pennsylvania, so a "season" here runs from tryouts in
+      early March through the regular season in April and May, into the District 1 tournament in
+      late May. District finishers who qualify advance to the PIAA state tournament in early June.
+      A season's record on this page counts regular-season and playoff matches; preseason
+      scrimmages are excluded.</p>
+
+      <div id="hist-alltime" class="hist-alltime" hidden>
+        <div class="ha-item"><span class="ha-val" id="ha-seasons">—</span><span class="ha-key">Seasons Archived</span></div>
+        <div class="ha-item"><span class="ha-val" id="ha-record">—</span><span class="ha-key">Combined Record</span></div>
+        <div class="ha-item"><span class="ha-val" id="ha-span">—</span><span class="ha-key">Years Covered</span></div>
+      </div>
+    </section>
+
+    <div class="sec-head-rule">Seasons</div>
     <div id="seasons-grid" class="seasons-grid">
       <div class="hist-loading">Loading seasons&hellip;</div>
     </div>
+
+    <!-- Evergreen closing content — keeps the page useful in the offseason -->
+    <section class="hist-more">
+      <h2>Where the Rest of the Record Lives</h2>
+      <p>Not every result the program has ever played is archived here yet. These are the other
+      places Cougars boys volleyball results are recorded:</p>
+      <ul class="hist-links">
+        <li><a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a> — box scores, standings, and stat leaders by season.</li>
+        <li><a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer">Hudl</a> — match video and highlight reels.</li>
+        <li><a href="/news.html">Team news</a> — recaps written after each match of the current season.</li>
+      </ul>
+
+      <h2>Playing for Downingtown East</h2>
+      <p>Tryouts for both varsity and junior varsity open in early March with the start of the PIAA
+      spring season, and are open to every Downingtown East student — club experience is helpful but
+      not required. Players looking to prepare in the offseason can join a
+      <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB clinic</a>,
+      and anyone with questions about the program can
+      <a href="/contact.html">reach the coaching staff directly</a>.</p>
+    </section>
   </div>
 
   <!-- ═══ SEASON DETAIL (?season=YYYY) ═══ -->
@@ -68,7 +113,7 @@ css: "schedule news history"
 
     <div id="det-empty" class="hist-empty" hidden>
       <p>No archive data found for this season yet.</p>
-      <p class="hist-empty-sub" id="det-empty-tabs">This page looks for Google Sheet tabs named <code>Schedule YYYY</code>, <code>Roster YYYY</code>, and <code>News YYYY</code> (a <code>ScheduleYYYY</code> or <code>YYYY Schedule</code> spelling also works). Check the tab names match the year exactly.</p>
+      <p class="hist-empty-sub" id="det-empty-tabs">Try <a href="/history.html">another season</a>, or look this year up on <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a>.</p>
     </div>
   </div>
 
@@ -85,18 +130,18 @@ css: "schedule news history"
   function showList() {
     fetchSheet('Seasons', function (err, rows) {
       var grid = document.getElementById('seasons-grid');
-      if (err) {
-        grid.innerHTML = '<div class="hist-empty"><p>Season archives are coming soon.</p>' +
-          '<p class="hist-empty-sub">Add a <code>Seasons</code> tab to the Google Sheet (columns: Year | Record | Finish | Notes) to publish past seasons here.</p></div>';
-        return;
-      }
+      var EMPTY = '<div class="hist-empty"><p>Season archives are being added.</p>' +
+        '<p class="hist-empty-sub">Past results are on ' +
+        '<a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a> ' +
+        'in the meantime, and the current season is on the ' +
+        '<a href="/schedule.html">schedule page</a>.</p></div>';
+      if (err) { grid.innerHTML = EMPTY; return; }
+
       var seasons = rows.filter(function (r) { return /^(19|20)\d{2}$/.test((r.Year || '').trim()); });
       seasons.sort(function (a, b) { return +b.Year - +a.Year; });
-      if (!seasons.length) {
-        grid.innerHTML = '<div class="hist-empty"><p>No seasons archived yet.</p>' +
-          '<p class="hist-empty-sub">Add rows to the <code>Seasons</code> tab of the Google Sheet to publish past seasons here.</p></div>';
-        return;
-      }
+      if (!seasons.length) { grid.innerHTML = EMPTY; return; }
+
+      showAllTime(seasons);
       grid.innerHTML = seasons.map(function (s) {
         return '<a class="season-card" href="/history.html?season=' + s.Year.trim() + '">' +
           '<div class="sc-top"><span class="sc-year">' + esc(s.Year.trim()) + '</span>' +
@@ -106,6 +151,25 @@ css: "schedule news history"
           '<span class="sc-more">View season &rsaquo;</span></a>';
       }).join('');
     });
+  }
+
+  /** Roll the archived seasons up into a combined program record. */
+  function showAllTime(seasons) {
+    var w = 0, l = 0, counted = 0, years = [];
+    seasons.forEach(function (s) {
+      years.push(+s.Year);
+      var m = /^\s*(\d+)\s*[-–]\s*(\d+)\s*$/.exec(s.Record || '');
+      if (m) { w += +m[1]; l += +m[2]; counted++; }
+    });
+
+    document.getElementById('ha-seasons').textContent = seasons.length;
+    document.getElementById('ha-span').textContent =
+      years.length > 1 ? Math.min.apply(null, years) + '–' + Math.max.apply(null, years)
+                       : String(years[0]);
+    // Only claim a combined record when every archived season contributed one.
+    document.getElementById('ha-record').textContent =
+      (counted && counted === seasons.length) ? w + '–' + l : '—';
+    document.getElementById('hist-alltime').hidden = false;
   }
 
   // ── Season detail view ─────────────────────────────────────────
@@ -154,7 +218,7 @@ css: "schedule news history"
     document.getElementById('season-detail').hidden = false;
     document.getElementById('hist-sub').textContent = yr + ' Season Archive';
     document.getElementById('det-year-label').textContent = yr + ' Record';
-    document.title = yr + ' Season — Downingtown East Boys Volleyball';
+    document.title = yr + ' Season Record & Roster — Downingtown East Boys Volleyball';
     var found = { any: false, done: 0 };
     function section(id, on) {
       document.getElementById(id).hidden = !on;

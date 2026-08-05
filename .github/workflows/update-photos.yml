@@ -21,17 +21,27 @@ jobs:
 
           IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
           photos_dir = 'photos'
+          manifest = os.path.join(photos_dir, 'photos.json')
+          DEFAULT_ALT = 'Downingtown East Cougars boys volleyball match action'
+
+          # Keep any alt text that was written by hand — only new photos get the default.
+          existing = {}
+          try:
+              with open(manifest) as f:
+                  for e in json.load(f):
+                      if e.get('src') and e.get('alt'):
+                          existing[e['src']] = e['alt']
+          except (OSError, ValueError):
+              pass
 
           entries = []
           for fname in sorted(os.listdir(photos_dir), reverse=True):
               ext = os.path.splitext(fname)[1].lower()
               if ext in IMAGE_EXTS:
-                  entries.append({
-                      'src': f'/photos/{fname}',
-                      'alt': 'Downingtown East Boys Volleyball action photo'
-                  })
+                  src = f'/photos/{fname}'
+                  entries.append({'src': src, 'alt': existing.get(src, DEFAULT_ALT)})
 
-          with open(os.path.join(photos_dir, 'photos.json'), 'w') as f:
+          with open(manifest, 'w') as f:
               json.dump(entries, f, indent=2)
           print(f'Wrote {len(entries)} entries to photos/photos.json')
           PYEOF
