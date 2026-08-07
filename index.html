@@ -1,9 +1,8 @@
 ---
 layout: default
 nav_active: home
-title: "Home — Downingtown East Boys Volleyball"
-description: "Official home of Downingtown East Boys Volleyball. Schedules, rosters, news, and highlights for the Cougars."
-keywords: "Downingtown East, Volleyball, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA"
+title: "Downingtown East Volleyball — Cougars Boys Schedule, Roster & Scores"
+description: "Official site of Downingtown East boys volleyball in Exton, PA. Cougars schedule, scores, roster, coaching staff, and program history — Ches-Mont League, PIAA District 1."
 og_title: "Downingtown East Boys Volleyball"
 og_description: "Official home of the Cougars. Follow schedules, scores, rosters, and team news all season long."
 twitter_title: "Downingtown East Boys Volleyball"
@@ -21,12 +20,23 @@ preload_json: "/photos/photos.json"
       "@type": "SportsTeam",
       "@id": "https://debvb.github.io/#team",
       "name": "Downingtown East Boys Volleyball",
-      "alternateName": "Cougars Boys Volleyball",
+      "alternateName": [
+        "Downingtown East Cougars Volleyball",
+        "Downingtown East Volleyball",
+        "DE Boys Volleyball",
+        "Cougars Boys Volleyball"
+      ],
       "sport": "Volleyball",
+      "gender": "Male",
       "url": "https://debvb.github.io/",
-      "logo": { "@type": "ImageObject", "url": "https://debvb.github.io/logo2.jpg" },
-      "image": "https://debvb.github.io/logo2.jpg",
-      "description": "Official home of Downingtown East Boys Volleyball. Schedules, rosters, news, and highlights for the Cougars.",
+      "logo": { "@type": "ImageObject", "url": "https://debvb.github.io/downingtown-east-cougars-volleyball-logo.jpg" },
+      "image": "https://debvb.github.io/downingtown-east-cougars-volleyball-logo.jpg",
+      "description": "Boys varsity and junior varsity volleyball at Downingtown East High School in Exton, Pennsylvania. The Cougars compete in the Ches-Mont League and PIAA District 1 during the spring season.",
+      "parentOrganization": {
+        "@type": "HighSchool",
+        "name": "Downingtown East High School",
+        "url": "https://www.dasd.org/de"
+      },
       "location": {
         "@type": "Place",
         "name": "Downingtown East High School",
@@ -43,11 +53,16 @@ preload_json: "/photos/photos.json"
         { "@type": "Person", "name": "Grant Shieh", "jobTitle": "Head Coach" },
         { "@type": "Person", "name": "Chris D'Amore", "jobTitle": "Assistant Coach" }
       ],
-      "memberOf": { "@type": "SportsOrganization", "name": "PIAA District 1" },
+      "memberOf": [
+        { "@type": "SportsOrganization", "name": "Ches-Mont League" },
+        { "@type": "SportsOrganization", "name": "PIAA District 1" },
+        { "@type": "SportsOrganization", "name": "Pennsylvania Interscholastic Athletic Association" }
+      ],
       "sameAs": [
         "https://instagram.com/deastboysvb",
         "https://x.com/devbboys",
-        "https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/"
+        "https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/",
+        "https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball"
       ]
     },
     {
@@ -55,7 +70,8 @@ preload_json: "/photos/photos.json"
       "@id": "https://debvb.github.io/#website",
       "url": "https://debvb.github.io/",
       "name": "Downingtown East Boys Volleyball",
-      "description": "Official home of Downingtown East Boys Volleyball.",
+      "alternateName": "Downingtown East Volleyball",
+      "description": "Official site of Downingtown East boys volleyball — Cougars schedule, scores, roster, and program history.",
       "publisher": { "@id": "https://debvb.github.io/#team" }
     }
   ]
@@ -74,8 +90,9 @@ preload_json: "/photos/photos.json"
     </button>
   </div>
   <div class="mast-content">
-    <div class="mast-kicker">Downingtown East · PIAA District 1 · Cougars Volleyball</div>
-    <h1 class="mast-headline">Cougar Boys<br><em>Volleyball</em></h1>
+    <div class="mast-kicker">Exton, PA · Ches-Mont League · PIAA District 1</div>
+    <h1 class="mast-headline">Downingtown East <br><em>Boys Volleyball</em></h1>
+    <p class="mast-sub">Home of the <strong>Cougars</strong> — varsity &amp; JV schedules, scores, roster, and program history.</p>
   </div>
 </div>
 
@@ -114,13 +131,69 @@ preload_json: "/photos/photos.json"
       <div id="feat-post" class="feat-post">
         <div class="fp-eye">
           <span class="fp-live">Latest</span>
-          <span class="fp-date">Cougars Volleyball</span>
+          <span class="fp-date">Cougars Volleyball · Exton, PA</span>
         </div>
         <h2 class="fp-title">Cougars Boys Volleyball</h2>
-        <p class="fp-body">Follow the latest results, news, and updates all season long. Check back after every match for recaps and highlights.</p>
+        <p class="fp-body">Downingtown East plays its season in the spring — tryouts open in early
+        March, and match recaps land here after every match. In the meantime, the
+        <a href="/schedule.html">schedule</a>, <a href="/roster.html">roster</a>, and
+        <a href="/history.html">season archives</a> are all up to date.</p>
         <a href="/news.html" class="fp-link">See all news &rarr;</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ EVERGREEN PROGRAM BLOCK — always populated, in season or out ═══ -->
+<section class="program" aria-labelledby="program-heading">
+  <div class="program-inner">
+    <div class="program-main">
+      <div class="sec-rule-label" id="program-heading-kicker">The Program</div>
+      <h2 id="program-heading">Downingtown East Boys Volleyball</h2>
+
+      <p><strong>Downingtown East Boys Volleyball</strong> is the boys' varsity and junior varsity
+      volleyball program at Downingtown East High School in Exton, Pennsylvania. Known as the
+      <strong>Cougars</strong>, the team competes in the <strong>Ches-Mont League</strong> and in
+      <strong>PIAA District 1</strong>, playing home matches in the Downingtown East gymnasium at
+      50 Devon Drive.</p>
+
+      <p>In Pennsylvania, boys volleyball is a <strong>spring sport</strong>. Tryouts open with the
+      start of the PIAA spring season in early March, the regular season runs from March into May,
+      and District 1 playoffs follow in late May, with qualifying teams advancing to the PIAA state
+      tournament. Any Downingtown East student is welcome to try out — no club experience required.</p>
+
+      <p>The program is led by head coach <a href="/coaches.html">Grant Shieh</a>, with assistant
+      coach Chris D'Amore. Beyond the high school season, the staff runs
+      <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB
+      volleyball clinics</a> for local players, and maintains a free
+      <a href="/volleyball-scoring-guide.html">volleyball score sheet guide</a> for scorekeepers,
+      parents, and student managers.</p>
+
+      <div class="program-links">
+        <a href="/schedule.html" class="btn-solid">Schedule &amp; Scores</a>
+        <a href="/roster.html" class="program-link">Roster →</a>
+        <a href="/history.html" class="program-link">Program history →</a>
+        <a href="/contact.html" class="program-link">Contact the coaches →</a>
+      </div>
+    </div>
+
+    <aside class="program-facts" aria-label="Program quick facts">
+      <div class="pf-head">Quick Facts</div>
+      <dl class="pf-list">
+        <div class="pf-row"><dt>School</dt><dd>Downingtown East High School</dd></div>
+        <div class="pf-row"><dt>Location</dt><dd>50 Devon Dr, Exton, PA 19341</dd></div>
+        <div class="pf-row"><dt>Nickname</dt><dd>Cougars</dd></div>
+        <div class="pf-row"><dt>League</dt><dd>Ches-Mont League</dd></div>
+        <div class="pf-row"><dt>District</dt><dd>PIAA District 1</dd></div>
+        <div class="pf-row"><dt>Season</dt><dd>Spring (March–June)</dd></div>
+        <div class="pf-row"><dt>Tryouts</dt><dd>Early March, open to all DE students</dd></div>
+        <div class="pf-row"><dt>Head Coach</dt><dd>Grant Shieh</dd></div>
+        <div class="pf-row" id="pf-last-season" hidden>
+          <dt id="pf-last-season-key">Last Season</dt><dd id="pf-last-season-val"></dd>
+        </div>
+      </dl>
+      <a href="/history.html" class="pf-more">Season-by-season records →</a>
+    </aside>
   </div>
 </section>
 
@@ -157,6 +230,14 @@ preload_json: "/photos/photos.json"
         <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🔔</div><span class="qlink-label">Join Remind</span></div><span class="qlink-arr">›</span></a>
         <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🏐</div><span class="qlink-label">DEVB Clinics</span></div><span class="qlink-arr">›</span></a>
         <a href="/donate.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">💛</div><span class="qlink-label">Donate</span></div><span class="qlink-arr">›</span></a>
+      </div>
+    </div>
+    <div class="side-block">
+      <div class="side-head">Volleyball Guides</div>
+      <div class="qlinks">
+        <a href="/volleyball-rotations-explained.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🔁</div><span class="qlink-label">Rotations Explained</span></div><span class="qlink-arr">›</span></a>
+        <a href="/libero-rules-volleyball.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🦺</div><span class="qlink-label">Libero Rules</span></div><span class="qlink-arr">›</span></a>
+        <a href="/piaa-volleyball-rules.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🏛️</div><span class="qlink-label">PIAA Rules &amp; Scoring</span></div><span class="qlink-arr">›</span></a>
       </div>
     </div>
   </div>
@@ -280,7 +361,13 @@ preload_json: "/photos/photos.json"
 <script>
 // ── Schedule → next game + record ────────────────────────────
 fetchSheet('Schedule', function(err, rows) {
-  if (err || !rows.length) return; // keep placeholder dashes
+  if (err || !rows.length) {
+    // Offseason or unreachable data — say something useful rather than sitting on dashes.
+    document.getElementById('stat-next-val').innerHTML = '<em>Spring</em>';
+    document.getElementById('ng-opponent').textContent = 'Season opens in March';
+    document.getElementById('ng-times').textContent    = 'Tryouts early March · Schedule posted soon';
+    return;
+  }
 
   var rec  = schedRecord(rows);
   var next = schedNextGame(rows);
@@ -321,6 +408,24 @@ fetchSheet('Schedule', function(err, rows) {
       ((seasonYear || new Date().getFullYear()) + 1) + '!';
     document.getElementById('stat-next-val').innerHTML = 'FINAL';
   }
+});
+
+// ── Seasons → "Last Season" quick fact (evergreen, survives the offseason) ──
+fetchSheet('Seasons', function(err, rows) {
+  if (err || !rows.length) return;   // row stays hidden — never shows a blank fact
+  var seasons = rows.filter(function(r) { return /^(19|20)\d{2}$/.test((r.Year || '').trim()); });
+  if (!seasons.length) return;
+  seasons.sort(function(a, b) { return +b.Year - +a.Year; });
+
+  var s = seasons[0];
+  var parts = [];
+  if (s.Record) parts.push(s.Record.replace('-', '–'));
+  if (s.Finish) parts.push(s.Finish);
+  if (!parts.length) return;
+
+  document.getElementById('pf-last-season-key').textContent = s.Year.trim() + ' Season';
+  document.getElementById('pf-last-season-val').textContent = parts.join(' · ');
+  document.getElementById('pf-last-season').hidden = false;
 });
 
 // ── News → homepage announcements ────────────────────────────

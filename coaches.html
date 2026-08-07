@@ -1,13 +1,12 @@
 ---
 layout: default
 nav_active: coaches
-title: "Meet the Coaches — Downingtown East Boys Volleyball"
-description: "Meet the coaches of Downingtown East Boys Volleyball. Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore."
-keywords: "Downingtown East, Volleyball Coaches, Grant Shieh, Chris D'Amore, Boys Volleyball, Cougars Volleyball, Exton PA"
-og_title: "Meet the Coaches | Downingtown East Boys Volleyball"
-og_description: "Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars."
-twitter_title: "Meet the Coaches | Downingtown East Boys Volleyball"
-twitter_description: "Learn about Head Coach Grant Shieh and Assistant Coach Chris D'Amore — the staff behind the Cougars."
+title: "Coach Grant Shieh — Downingtown East Boys Volleyball Coaching Staff"
+description: "Grant Shieh is the head boys volleyball coach at Downingtown East High School in Exton, PA. Coaching background, philosophy, and contact info for Coach Shieh and assistant coach Chris D'Amore."
+og_title: "Coach Grant Shieh | Downingtown East Boys Volleyball"
+og_description: "Head coach Grant Shieh and assistant coach Chris D'Amore — the staff behind the Downingtown East Cougars."
+twitter_title: "Coach Grant Shieh | Downingtown East Boys Volleyball"
+twitter_description: "Head coach Grant Shieh and assistant coach Chris D'Amore — the staff behind the Downingtown East Cougars."
 canonical: "https://debvb.github.io/coaches.html"
 css: coaches
 ---
@@ -21,7 +20,11 @@ css: coaches
       "@id": "https://debvb.github.io/coaches.html#shieh",
       "name": "Grant Shieh",
       "jobTitle": "Head Boys Volleyball Coach",
-      "description": "Head Boys Volleyball Coach at Downingtown East High School since 2022. Temple University alumnus and competitive volleyball player.",
+      "description": "Head boys volleyball coach at Downingtown East High School in Exton, Pennsylvania since 2022, and assistant coach for the girls program. Temple University alumnus, former libero at Council Rock North, and a history teacher at Lionville Middle School.",
+      "image": "https://debvb.github.io/grant-shieh-downingtown-east-volleyball-head-coach.jpeg",
+      "email": "gshieh@dasd.org",
+      "knowsAbout": ["Volleyball", "Volleyball Coaching", "High School Athletics"],
+      "memberOf": { "@id": "https://debvb.github.io/#team" },
       "worksFor": {
         "@type": "EducationalOrganization",
         "name": "Downingtown East High School",
@@ -34,14 +37,26 @@ css: coaches
           "addressCountry": "US"
         }
       },
-      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Temple University" },
-      "url": "https://debvb.github.io/coaches.html"
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Temple University" },
+        { "@type": "HighSchool", "name": "Council Rock High School North" }
+      ],
+      "url": "https://debvb.github.io/coaches.html",
+      "mainEntityOfPage": "https://debvb.github.io/coaches.html"
     },
     {
       "@type": "Person",
       "@id": "https://debvb.github.io/coaches.html#damore",
       "name": "Chris D'Amore",
-      "jobTitle": "Assistant Volleyball Coach",
+      "jobTitle": "Assistant Boys Volleyball Coach",
+      "description": "Assistant boys volleyball coach at Downingtown East High School. Twin Valley and California University of Pennsylvania graduate with over 30 years in the sport.",
+      "image": "https://debvb.github.io/chris-damore-downingtown-east-volleyball-assistant-coach.jpg",
+      "email": "cdamore@dasd.org",
+      "memberOf": { "@id": "https://debvb.github.io/#team" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "California University of Pennsylvania" },
+        { "@type": "HighSchool", "name": "Twin Valley High School" }
+      ],
       "worksFor": {
         "@type": "EducationalOrganization",
         "name": "Downingtown East High School",
@@ -63,21 +78,33 @@ css: coaches
 <main id="main">
 <!-- ═══ PAGE HEADER ═══ -->
 <div class="page-header">
-  <div class="page-header-kicker">Downingtown East · PIAA District 1 · Cougars Volleyball</div>
-  <h1>Meet the <em>Coaches</em></h1>
+  <div class="page-header-kicker">Downingtown East · Coaching Staff</div>
+  <h1>Coach <em>Grant Shieh</em></h1>
+  <div class="page-header-sub">Head Boys Volleyball Coach · Downingtown East High School</div>
 </div>
 
 <!-- ═══ MAIN ═══ -->
 <div class="page-wrap">
 
+  <p class="coaches-intro">
+    <strong>Grant Shieh</strong> is the head coach of the Downingtown East boys volleyball program
+    in Exton, Pennsylvania, a position he has held since 2022. He is joined on the bench by
+    assistant coach <strong>Chris D'Amore</strong>. Together they run the Cougars' varsity and
+    junior varsity teams through the PIAA spring season, plus offseason
+    <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB clinics</a>
+    for players in the Downingtown area. To reach either coach, see the
+    <a href="/contact.html">contact page</a>.
+  </p>
+
   <!-- Grant Shieh -->
   <div class="coach-card">
     <div class="coach-photo">
-      <img src="/headshot.JPEG" alt="Grant Shieh — Head Coach" loading="lazy">
+      <img src="/grant-shieh-downingtown-east-volleyball-head-coach.jpeg"
+           alt="Grant Shieh, head boys volleyball coach at Downingtown East High School" loading="lazy">
     </div>
     <div>
       <div class="coach-role">Head Coach</div>
-      <div class="coach-name">Grant Shieh</div>
+      <h2 class="coach-name">Grant Shieh</h2>
 
       <div class="bio-heading">Building the Local Volleyball Community</div>
 
@@ -101,11 +128,12 @@ css: coaches
   <!-- Chris D'Amore -->
   <div class="coach-card">
     <div class="coach-photo">
-      <img src="ac1.jpg" alt="Chris D'Amore — Assistant Coach" loading="lazy">
+      <img src="/chris-damore-downingtown-east-volleyball-assistant-coach.jpg"
+           alt="Chris D'Amore, assistant boys volleyball coach at Downingtown East High School" loading="lazy">
     </div>
     <div>
       <div class="coach-role">Assistant Coach</div>
-      <div class="coach-name">Chris D'Amore</div>
+      <h2 class="coach-name">Chris D'Amore</h2>
 
       <div class="bio-heading">Three Decades of Competitive Excellence</div>
 

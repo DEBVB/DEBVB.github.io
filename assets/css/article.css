@@ -1,0 +1,62 @@
+/* ── Long-form explainer pages (rotations, libero, PIAA rules) ─────── */
+.article { max-width: 820px; margin: 0 auto; padding: 44px 48px 88px; }
+.article-lead { font-size: 18px; line-height: 1.75; color: #3d3830; margin-bottom: 28px; }
+.article h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 3.2vw, 32px); color: var(--navy); line-height: 1.2; letter-spacing: -0.4px; margin: 46px 0 14px; padding-bottom: 9px; border-bottom: 2px solid var(--gold); }
+.article h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin: 26px 0 9px; }
+.article p { font-size: 15.5px; line-height: 1.8; color: #3d3830; margin-bottom: 15px; }
+.article p strong, .article li strong { color: var(--navy); font-weight: 600; }
+.article a { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+.article ul, .article ol { margin: 0 0 18px 22px; }
+.article li { font-size: 15.5px; line-height: 1.78; color: #3d3830; margin-bottom: 9px; padding-left: 4px; }
+
+/* Table of contents */
+.art-toc { background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 18px 22px; margin-bottom: 34px; }
+.art-toc-head { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.art-toc ul { list-style: none; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.art-toc li { margin: 0; padding: 0; font-size: 13.5px; }
+.art-toc a { border-bottom: none; }
+.art-toc a:hover { border-bottom: 1px solid var(--gold); }
+
+/* Callout */
+.art-note { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 15px 20px; margin: 22px 0; }
+.art-note p { margin: 0; font-size: 14.5px; color: #4a4132; }
+
+/* Tables */
+.art-table-wrap { overflow-x: auto; margin: 20px 0 24px; -webkit-overflow-scrolling: touch; }
+.art-table { width: 100%; min-width: 540px; border-collapse: collapse; font-size: 14px; background: var(--white); }
+.art-table th { background: var(--navy); color: var(--white); text-align: left; padding: 10px 14px; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+.art-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.6; color: #3d3830; }
+.art-table tr:nth-child(even) td { background: var(--soft); }
+.art-table td:first-child { font-weight: 600; color: var(--navy); white-space: nowrap; }
+
+/* Court diagram */
+.court { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-width: 400px; margin: 22px 0; background: var(--navy); padding: 6px; border-radius: var(--radius-md); }
+.court-cell { background: var(--white); border-radius: 4px; padding: 16px 8px; text-align: center; }
+.court-num { display: block; font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--navy); line-height: 1; }
+.court-lbl { display: block; font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.court-cell.serve { background: var(--gold-light); border: 1px solid var(--gold); }
+.court-caption { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: -8px 0 24px; }
+
+/* FAQ */
+.art-faq { margin-top: 8px; }
+.art-qa { border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+.art-qa h3 { margin-top: 22px; }
+
+/* Related pages */
+.art-related { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px; margin-top: 20px; }
+.art-rel { display: block; background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 18px 20px; text-decoration: none; border-bottom: 1px solid var(--rule) !important; box-shadow: var(--shadow-card); transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), border-color 0.15s; }
+.art-rel:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); border-color: var(--gold) !important; }
+.ar-kicker { display: block; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.ar-title { display: block; font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--ink); line-height: 1.25; margin-bottom: 6px; }
+.ar-desc { display: block; font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+.art-footnote { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 40px; line-height: 1.7; }
+
+@media (max-width: 900px) { .article { padding: 32px 20px 64px; } }
+@media (max-width: 640px) {
+  .article { padding: 26px 16px 56px; }
+  .article-lead { font-size: 16px; }
+  .article p, .article li { font-size: 14.5px; }
+  .court { max-width: 100%; }
+  .court-num { font-size: 24px; }
+}

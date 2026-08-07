@@ -1,12 +1,13 @@
 ---
 layout: default
 nav_active: schedule
-title: "Schedule — Downingtown East Boys Volleyball"
-description: "Game schedule for Downingtown East Boys Volleyball. View upcoming matches, home and away games, and results for the Cougars."
-keywords: "Downingtown East, Volleyball Schedule, Boys Volleyball, PIAA District 1, Ches-Mont League, Cougars Volleyball, Exton PA"
-og_title: "Schedule | Downingtown East Boys Volleyball"
+# season_year drives the <title> and page heading. Bump it once each spring.
+season_year: 2026
+title: "2026 Schedule & Scores — Downingtown East Boys Volleyball"
+description: "Full 2026 schedule and scores for Downingtown East boys volleyball. Cougars home and away matches, dates, start times, directions, and results — Ches-Mont League and PIAA District 1."
+og_title: "2026 Schedule & Scores | Downingtown East Boys Volleyball"
 og_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
-twitter_title: "Schedule | Downingtown East Boys Volleyball"
+twitter_title: "2026 Schedule & Scores | Downingtown East Boys Volleyball"
 twitter_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
 canonical: "https://debvb.github.io/schedule.html"
 css: schedule
@@ -14,9 +15,18 @@ css: schedule
 
 <main id="main">
 <div class="page-header">
-  <div class="page-header-kicker">Downingtown East · PIAA District 1 · Ches-Mont League</div>
-  <h1><span id="sched-year"></span>Season <em>Schedule</em></h1>
-  <div class="page-header-sub" id="sched-count">Varsity &amp; JV</div>
+  <div class="page-header-kicker">Exton, PA · Ches-Mont League · PIAA District 1</div>
+  <h1><span id="sched-year">{{ page.season_year }} </span>Downingtown East Boys Volleyball <em>Schedule</em></h1>
+  <div class="page-header-sub" id="sched-count">Varsity &amp; JV · Cougars home &amp; away matches</div>
+</div>
+
+<div class="sched-intro">
+  <p>Every varsity and junior varsity match on the Downingtown East Cougars boys volleyball
+  schedule, with dates, start times, home/away designation, and final scores as they are played.
+  Home matches are played in the Downingtown East gymnasium at 50 Devon Drive, Exton, PA 19341;
+  away rows include a directions link to the opposing gym. Results update within a day of each
+  match — see <a href="/news.html">news</a> for recaps and
+  <a href="/history.html">program history</a> for past seasons.</p>
 </div>
 
 <div class="page-wrap">
@@ -112,5 +122,98 @@ css: schedule
 
     var total = rows.filter(function(r) { return (r.Type || '').toLowerCase() !== 'scrim'; }).length;
     document.getElementById('sched-count').textContent = 'Varsity & JV · ' + total + ' Games';
+
+    injectEventSchema(rows);
   });
+
+  // ── SportsEvent structured data, built from the live schedule ──────────────
+  var HOME_VENUE = {
+    "@type": "Place",
+    "name": "Downingtown East High School",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50 Devon Dr",
+      "addressLocality": "Exton",
+      "addressRegion": "PA",
+      "postalCode": "19341",
+      "addressCountry": "US"
+    }
+  };
+  var DE_TEAM = {
+    "@type": "SportsTeam",
+    "name": "Downingtown East Boys Volleyball",
+    "sport": "Volleyball",
+    "url": "https://debvb.github.io/"
+  };
+
+  /** "5:00 PM" → "17:00"; returns null when the time is missing or unparseable. */
+  function to24h(t) {
+    var m = /^\s*(\d{1,2})(?::(\d{2}))?\s*([AaPp])\.?[Mm]\.?\s*$/.exec(t || '');
+    if (!m) return null;
+    var h = +m[1] % 12;
+    if (m[3].toLowerCase() === 'p') h += 12;
+    return (h < 10 ? '0' : '') + h + ':' + (m[2] || '00');
+  }
+
+  function injectEventSchema(rows) {
+    var events = rows.filter(function(r) {
+      return /^\d{4}-\d{2}-\d{2}$/.test(r.Date || '') && r.Opponent &&
+             (r.Type || '').toLowerCase() !== 'scrim';
+    }).map(function(r) {
+      var isHome = (r.Location || '').toLowerCase() === 'home';
+      var time   = to24h(r.Time);
+      var opp    = { "@type": "SportsTeam", "name": r.Opponent, "sport": "Volleyball" };
+      var played = /^[WL]$/.test((r.Result || '').toUpperCase());
+
+      var ev = {
+        "@type": "SportsEvent",
+        "name": isHome
+          ? "Downingtown East vs. " + r.Opponent + " — Boys Volleyball"
+          : "Downingtown East at " + r.Opponent + " — Boys Volleyball",
+        "sport": "Volleyball",
+        "startDate": r.Date + (time ? 'T' + time : ''),
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "url": "https://debvb.github.io/schedule.html",
+        "organizer": DE_TEAM,
+        "homeTeam": isHome ? DE_TEAM : opp,
+        "awayTeam": isHome ? opp : DE_TEAM,
+        "competitor": [DE_TEAM, opp]
+      };
+
+      if (isHome) {
+        ev.location = HOME_VENUE;
+      } else if (r.Address) {
+        ev.location = { "@type": "Place", "name": r.Opponent, "address": r.Address };
+      } else {
+        ev.location = { "@type": "Place", "name": r.Opponent + " (away)" };
+      }
+
+      // Played matches carry their result; upcoming ones stay open.
+      if (played && r.Score) {
+        ev.description = (r.Result.toUpperCase() === 'W' ? 'Downingtown East won ' : 'Downingtown East lost ') +
+                         r.Score + ' ' + (isHome ? 'vs. ' : 'at ') + r.Opponent + '.';
+      }
+      return ev;
+    });
+
+    if (!events.length) return;
+
+    var el = document.getElementById('sched-schema') || (function() {
+      var s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.id = 'sched-schema';
+      document.head.appendChild(s);
+      return s;
+    }());
+
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Downingtown East Boys Volleyball Schedule",
+      "itemListElement": events.map(function(ev, i) {
+        return { "@type": "ListItem", "position": i + 1, "item": ev };
+      })
+    });
+  }
 </script>

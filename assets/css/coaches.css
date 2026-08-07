@@ -26,3 +26,9 @@
   .coach-name { font-size: 32px; margin-bottom: 20px; }
   .bio-heading { font-size: 19px; }
 }
+
+/* ── Evergreen intro copy ─────────────────────────────────────────── */
+.coaches-intro { max-width: 74ch; font-size: 15.5px; line-height: 1.78; color: #3d3830; margin-bottom: 40px; }
+.coaches-intro strong { color: var(--navy); font-weight: 600; }
+.coaches-intro a { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+@media (max-width: 600px) { .coaches-intro { font-size: 14.5px; margin-bottom: 28px; } }

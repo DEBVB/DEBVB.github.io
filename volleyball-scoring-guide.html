@@ -4,25 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="eQCLmHScF-W6xY6Hhn8cNT3UnUKWG_hgtd1gJ3Ha2zw" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Volleyball Score Sheet Guide — Downingtown East Boys Volleyball</title>
-<meta name="description" content="Interactive guide to keeping volleyball score. Learn scorebook notation, libero tracking, substitutions, and time-out recording used in NFHS and NCAA volleyball.">
-<meta name="keywords" content="volleyball score sheet, volleyball scorebook, how to keep volleyball score, libero tracker, volleyball scoring guide, NFHS volleyball scoring">
+<title>How to Fill Out a Volleyball Score Sheet — Step-by-Step Guide</title>
+<meta name="description" content="Learn how to fill out a volleyball score sheet step by step: the symbol key, lineups and Roman numerals, rally points, the dash-bar, boxed side-out points, substitutions, time-outs, the libero tracker, and the end-of-set checklist. Free NFHS-format guide.">
 <meta name="author" content="Downingtown East Boys Volleyball">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#003366">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Volleyball Score Sheet Guide | Downingtown East Boys Volleyball">
-<meta property="og:description" content="Interactive guide to keeping volleyball score. Learn scorebook notation, libero tracking, substitutions, and time-out recording.">
-<meta property="og:image" content="https://debvb.github.io/logo2.jpg">
+<meta property="og:title" content="How to Fill Out a Volleyball Score Sheet — Step-by-Step Guide">
+<meta property="og:description" content="Symbol key, lineups, rally points, substitutions, time-outs, and the libero tracker — everything a volleyball scorekeeper needs, in order.">
+<meta property="og:image" content="https://debvb.github.io/downingtown-east-cougars-volleyball-logo.jpg">
 <meta property="og:url" content="https://debvb.github.io/volleyball-scoring-guide.html">
 <meta property="og:site_name" content="Downingtown East Boys Volleyball">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@devbboys">
 <meta name="twitter:creator" content="@devbboys">
-<meta name="twitter:title" content="Volleyball Score Sheet Guide | Downingtown East Boys Volleyball">
-<meta name="twitter:description" content="Interactive guide to keeping volleyball score. Learn scorebook notation, libero tracking, substitutions, and time-out recording.">
-<meta name="twitter:image" content="https://debvb.github.io/logo2.jpg">
+<meta name="twitter:title" content="How to Fill Out a Volleyball Score Sheet — Step-by-Step Guide">
+<meta name="twitter:description" content="Symbol key, lineups, rally points, substitutions, time-outs, and the libero tracker — everything a volleyball scorekeeper needs, in order.">
+<meta name="twitter:image" content="https://debvb.github.io/downingtown-east-cougars-volleyball-logo.jpg">
 <link rel="canonical" href="https://debvb.github.io/volleyball-scoring-guide.html">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -33,6 +32,61 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Source Sans 3', sans-serif; background: #f4f5f7; min-height: 100vh; }
+
+  /* Static text reference (below the interactive trainer) */
+  .ref { background: #fff; border-top: 4px solid #003366; padding: 56px 24px 72px; }
+  .ref-inner { max-width: 820px; margin: 0 auto; color: #26292e; }
+  .ref-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 36px); color: #003366; line-height: 1.15; margin-bottom: 14px; }
+  .ref-inner h3 { font-family: 'Playfair Display', serif; font-size: clamp(20px, 3vw, 26px); color: #003366; margin: 42px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #FFC72C; }
+  .ref-inner h4 { font-size: 16px; font-weight: 700; color: #003366; margin: 20px 0 8px; }
+  .ref-inner p { font-size: 15.5px; line-height: 1.8; margin-bottom: 14px; }
+  .ref-lead { font-size: 17px !important; color: #444; }
+  .ref-inner a { color: #003366; font-weight: 600; border-bottom: 1px solid #FFC72C; text-decoration: none; }
+  .ref-inner a:hover { background: #fff8e1; }
+
+  .ref-toc { background: #f4f5f7; border-left: 4px solid #FFC72C; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 22px 0 8px; font-size: 13.5px; line-height: 2.1; }
+  .ref-toc strong { display: block; margin-bottom: 4px; color: #003366; }
+  .ref-toc a { margin-right: 14px; white-space: nowrap; }
+
+  .ref-list, .ref-steps { margin: 0 0 16px 22px; }
+  .ref-list li, .ref-steps li { font-size: 15.5px; line-height: 1.75; margin-bottom: 10px; padding-left: 4px; }
+  .ref-steps { counter-reset: none; }
+
+  .ref-table-wrap { overflow-x: auto; margin: 18px 0 20px; -webkit-overflow-scrolling: touch; }
+  .ref-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14.5px; }
+  .ref-table th { background: #003366; color: #fff; text-align: left; padding: 10px 14px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ref-table td { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; vertical-align: top; line-height: 1.6; }
+  .ref-table tr:nth-child(even) td { background: #fafbfc; }
+  .rt-sym { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #003366; white-space: nowrap; }
+  .rt-red { color: #CC0000; }
+  .rt-pts { font-family: 'JetBrains Mono', monospace; }
+  .pt { display: inline-block; min-width: 26px; text-align: center; padding: 2px 5px; margin-right: 5px; font-weight: 700; color: #1a7a1a; }
+  .pt.boxed { border: 2px solid #CC0000; color: #CC0000; border-radius: 3px; }
+  .pt.sub-note { color: #7f5200; font-weight: 700; min-width: 0; }
+  .pt.muted { color: #aaa; font-weight: 400; font-family: 'Source Sans 3', sans-serif; }
+
+  .ref-tip { background: #fffbe6; border-left: 4px solid #FFC72C; border-radius: 0 8px 8px 0; padding: 12px 18px; font-size: 14.5px !important; }
+  .ref-red { color: #CC0000; font-weight: 700; }
+  .ref-sym-inline { font-family: 'JetBrains Mono', monospace; font-weight: 700; background: #eef1f5; color: #003366; padding: 1px 6px; border-radius: 4px; }
+
+  .ref-faq { display: grid; gap: 4px; }
+  .ref-qa { border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; }
+  .ref-qa h4 { margin-top: 16px; }
+
+  .ref-siblings { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0 28px; }
+  .ref-sib { display: block; background: #f4f5f7; border: 1px solid #dfe3e8; border-radius: 10px; padding: 18px 20px; text-decoration: none; border-bottom: 1px solid #dfe3e8 !important; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; }
+  .ref-sib:hover { border-color: #FFC72C !important; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,51,102,0.1); background: #f4f5f7 !important; }
+  .rs-kicker { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #7a8390; margin-bottom: 8px; }
+  .rs-title { display: block; font-weight: 700; font-size: 16px; color: #003366; line-height: 1.3; margin-bottom: 6px; }
+  .rs-desc { display: block; font-size: 13.5px; line-height: 1.6; color: #555; font-weight: 400; }
+
+  .ref-footnote { font-size: 13.5px !important; color: #777; border-top: 1px solid #e5e7eb; padding-top: 18px; margin-top: 32px; }
+
+  @media (max-width: 640px) {
+    .ref { padding: 36px 16px 48px; }
+    .ref-inner p, .ref-list li, .ref-steps li { font-size: 14.5px; }
+    .ref-toc a { display: inline-block; }
+  }
 
   /* Header */
   #app-header {
@@ -123,7 +177,7 @@
     font-family: 'Playfair Display', serif; font-weight: 700; font-size: 11px;
     letter-spacing: 3px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; margin-bottom: 16px;
   }
-  .intro-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(24px,5vw,38px); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+  .intro-hero h1, .intro-hero .hero-h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px,5vw,38px); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
   .intro-hero .match { color: #FFC72C; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; margin-bottom: 18px; }
   .intro-hero .desc { color: #ccc; font-size: 15px; max-width: 520px; line-height: 1.6; }
   .info-card { background: #fff; border: 2px solid #e0e0e0; border-radius: 12px; padding: 18px 20px; }
@@ -200,8 +254,8 @@
 <div id="app-header">
   <span style="font-size:24px">🏐</span>
   <div>
-    <div class="title">Volleyball Score Sheet Training</div>
-    <div class="subtitle">2025 NCAA Championship · LBSU vs. UCLA</div>
+    <h1 class="title">How to Fill Out a Volleyball Score Sheet</h1>
+    <div class="subtitle">Interactive NFHS trainer · 2025 NCAA Championship · LBSU vs. UCLA</div>
   </div>
   <div class="phase-count" id="phase-count" style="margin-left:auto">Phase 1 of 11</div>
   <a href="/index.html" class="back-link">← Back to Site</a>
@@ -220,7 +274,6 @@
     </div>
   </div>
 </div>
-</main>
 
 <script>
 const LBSU = "#003366", UCLA = "#2774AE", GOLD = "#FFC72C", RED = "#CC0000";
@@ -258,7 +311,7 @@ function buildIntro() {
     <div style="max-width:720px;margin:0 auto">
       <div class="intro-hero">
         <div class="badge">2025 NCAA Men's Volleyball Championship</div>
-        <h1>Score Sheet &<br>Libero Tracker</h1>
+        <h2 class="hero-h2">Score Sheet & Libero Tracker</h2>
         <div class="match">Long Beach State vs. UCLA — May 12, 2025</div>
         <div class="desc">A step-by-step training guide for JV and Varsity players. Follow along while watching the championship match to learn NFHS scoring notation from the real thing.</div>
       </div>
@@ -796,6 +849,377 @@ document.getElementById('content').addEventListener('click', function(e) {
   else if (action === 'toggleSym') { toggleSym(parseInt(target.dataset.idx)); }
   else if (action === 'toggleCheck') { toggleCheck(target.dataset.key); }
 });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STATIC TEXT REFERENCE
+     The trainer above is rendered by JavaScript. Everything below is plain HTML
+     so the page is complete for search engines, screen readers, printing, and
+     anyone who just wants to scan the notation without clicking through phases.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+<section id="reference" class="ref">
+  <div class="ref-inner">
+
+    <h2>The Written Reference — Filling Out a Volleyball Score Sheet</h2>
+    <p class="ref-lead">The full written reference for the trainer above. It follows the
+    <strong>NFHS score sheet</strong> used by high school volleyball in Pennsylvania and most
+    other states; NCAA sheets use the same core notation with a few differences, called out
+    where they matter.</p>
+
+    <div class="ref-toc">
+      <strong>On this page:</strong>
+      <a href="#ref-need">What you need</a>
+      <a href="#ref-symbols">Symbol key</a>
+      <a href="#ref-setup">Before the match</a>
+      <a href="#ref-lineups">Lineups</a>
+      <a href="#ref-rally">Scoring a rally</a>
+      <a href="#ref-example">Worked example</a>
+      <a href="#ref-subs">Substitutions</a>
+      <a href="#ref-timeouts">Time-outs</a>
+      <a href="#ref-libero">Libero tracker</a>
+      <a href="#ref-endset">End of set</a>
+      <a href="#ref-mistakes">Common mistakes</a>
+      <a href="#ref-faq">FAQ</a>
+    </div>
+
+    <h3 id="ref-need">What you need before you sit down</h3>
+    <ul class="ref-list">
+      <li><strong>One score sheet per set.</strong> Three for a best-of-three JV match, five for a best-of-five varsity match.</li>
+      <li><strong>At least one libero tracker</strong> per match, per team that uses a libero.</li>
+      <li><strong>Two pens</strong> — blue or black, plus red. The colors alternate by rotation and are how a referee reads your sheet quickly.</li>
+      <li><strong>A straight edge</strong> is optional but makes the dash-bar and boxed points far more legible.</li>
+      <li><strong>Both lineup sheets</strong>, handed in by each coach before the set starts.</li>
+    </ul>
+    <p>Arrive about 20 minutes before first serve. Header information, set numbers, and team
+    names can all be filled in before warmups end, which leaves you free to watch the court once
+    the whistle blows.</p>
+
+    <h3 id="ref-symbols">The complete symbol key</h3>
+    <p>These are the only marks a volleyball scorekeeper needs. Everything else on the sheet is
+    a name, a number, or a signature.</p>
+    <div class="ref-table-wrap">
+      <table class="ref-table">
+        <thead><tr><th>Mark</th><th>Means</th><th>Where it goes</th></tr></thead>
+        <tbody>
+          <tr><td class="rt-sym">1 2 3 …</td><td>Rally point won</td><td>Next point number, written in the current server's row</td></tr>
+          <tr><td class="rt-sym">-|</td><td>End of serving term (dash-bar)</td><td>The serving team lost the rally; close that server's row</td></tr>
+          <tr><td class="rt-sym">[ 4 ]</td><td>Side-out point</td><td>Box the receiving team's first point after they win the serve</td></tr>
+          <tr><td class="rt-sym">/ 5 /</td><td>Running score slash</td><td>Slash the matching number in the Running Score column</td></tr>
+          <tr><td class="rt-sym">S 7/3</td><td>Substitution, serving team</td><td>S, then entering player / leaving player</td></tr>
+          <tr><td class="rt-sym">Sx 9/4</td><td>Substitution, receiving team</td><td>Sx, then entering player / leaving player</td></tr>
+          <tr><td class="rt-sym">T</td><td>Time-out, serving team</td><td>Current server's row, plus the score in the time-out box</td></tr>
+          <tr><td class="rt-sym">Tx</td><td>Time-out, receiving team</td><td>Current server's row, plus the score in the time-out box</td></tr>
+          <tr><td class="rt-sym">○ 12 ○</td><td>Penalty point</td><td>Circle the point number awarded for the opponent's penalty</td></tr>
+          <tr><td class="rt-sym">RS</td><td>Re-serve</td><td>A first toss caught or dropped; no point, no score change</td></tr>
+          <tr><td class="rt-sym">R</td><td>Replay</td><td>The referee interrupted the rally; no point awarded</td></tr>
+          <tr><td class="rt-sym">△</td><td>Libero serve (NFHS)</td><td>Triangle around the Roman numeral when the libero serves. NFHS only — the libero may not serve in NCAA men's volleyball</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ref-tip"><strong>Ink rule:</strong> use blue or black for the first time through the
+    rotation, switch to <span class="ref-red">red</span> when the first server comes up again, and
+    switch back to blue or black for a third turn. Alternating colors is what lets anyone glance at
+    a column and see how many times the lineup has gone around.</p>
+
+    <h3 id="ref-setup">Before the match — five setup steps</h3>
+    <ol class="ref-steps">
+      <li><strong>Circle the set number.</strong> One sheet per set, so circle 1 on the first sheet, 2 on the second, and so on.</li>
+      <li><strong>Circle the level</strong> — Varsity, Junior Varsity, or Middle School.</li>
+      <li><strong>Fill in the header:</strong> date, home team, visiting team, site, and scheduled start time.</li>
+      <li><strong>Put each team on the correct side.</strong> The team on the left side of the court goes on the left side of the sheet. Teams switch ends between sets, so this changes every sheet — getting it wrong awards points to the wrong team.</li>
+      <li><strong>Mark first serve with an X.</strong> After the coin toss, X the First Serve box for whichever team serves first. Ask the second referee if you missed the toss.</li>
+    </ol>
+
+    <h3 id="ref-lineups">Entering the lineups</h3>
+    <p>Each coach submits a lineup before the set. Copy it exactly, in serving order, using the
+    Roman numerals <strong>I through VI</strong>:</p>
+    <ul class="ref-list">
+      <li><strong>I</strong> is the player who will serve first for that team; the rest follow in rotation order through <strong>VI</strong>.</li>
+      <li>Write the <strong>jersey number</strong> against each Roman numeral. Names go in the team roster block, not the rotation grid.</li>
+      <li>List the <strong>libero's number</strong> in the libero box. A libero is not part of the six-player rotation on the score sheet.</li>
+      <li>Once the first serve is contacted, the lineup is locked. A wrong number on the sheet is a scorekeeping error, not a lineup fault — fix it quietly with the second referee rather than changing what the team actually did.</li>
+    </ul>
+
+    <h3 id="ref-rally">Scoring a rally, point by point</h3>
+    <p>Volleyball uses <strong>rally scoring</strong>: every rally produces a point for one team,
+    whether or not that team served. What changes is which marks you make.</p>
+    <h4>When the serving team wins the rally</h4>
+    <ol class="ref-steps">
+      <li>Write the team's <strong>next point number</strong> in the current server's row.</li>
+      <li><strong>Slash that same number</strong> in the Running Score column.</li>
+      <li>The same player serves again — nothing else changes.</li>
+    </ol>
+    <h4>When the serving team loses the rally (side out)</h4>
+    <ol class="ref-steps">
+      <li>Draw the <strong>dash-bar (-|)</strong> in the server's row. That server's term is over.</li>
+      <li>Move to the other team's grid. Their next server rotates in.</li>
+      <li>Write their next point number and <strong>box it</strong> — <span class="ref-sym-inline">[ 4 ]</span> — because it is the first point of a new serving term.</li>
+      <li>Slash that number in their Running Score column.</li>
+    </ol>
+    <p>Every subsequent point in that same serving term is written normally, unboxed. The boxed
+    number is what lets you reconstruct exactly where each side out happened.</p>
+
+    <h3 id="ref-example">What a filled-in serving term looks like</h3>
+    <p>Reading the grid below: the home team's player in position I served, won three rallies, and
+    then lost the fourth. Their <strong>4</strong> is boxed because it was the first point of the
+    term; <strong>5</strong>, <strong>6</strong>, and <strong>7</strong> followed on the same serve;
+    the dash-bar closes the term.</p>
+    <div class="ref-table-wrap">
+      <table class="ref-table ref-sheet" aria-label="Example of a completed serving term on a volleyball score sheet">
+        <thead>
+          <tr><th>Serving order</th><th>Player #</th><th>Points scored on this serve</th><th>End of term</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="rt-sym">I</td><td>7</td><td class="rt-pts"><span class="pt boxed">4</span><span class="pt">5</span><span class="pt">6</span><span class="pt">7</span></td><td class="rt-sym rt-red">-|</td></tr>
+          <tr><td class="rt-sym">II</td><td>12</td><td class="rt-pts"><span class="pt boxed">11</span><span class="pt">12</span></td><td class="rt-sym rt-red">-|</td></tr>
+          <tr><td class="rt-sym">III</td><td>18</td><td class="rt-pts"><span class="pt boxed">15</span><span class="pt sub-note">S 9/18</span></td><td class="rt-sym"></td></tr>
+          <tr><td class="rt-sym">IV</td><td>5</td><td class="rt-pts"><span class="pt muted">— not yet reached —</span></td><td class="rt-sym"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ref-tip">Row III shows a substitution recorded mid-term: <strong>S 9/18</strong> means
+    number 9 entered for number 18 while their team was serving. The serving order position does
+    not change — only the player occupying it.</p>
+
+    <h3 id="ref-subs">Recording substitutions</h3>
+    <ul class="ref-list">
+      <li><strong>Serving team:</strong> write <span class="ref-sym-inline">S</span> then <em>entering player / leaving player</em>, e.g. <span class="ref-sym-inline">S 7/3</span>.</li>
+      <li><strong>Receiving team:</strong> write <span class="ref-sym-inline">Sx</span> then the same pair, e.g. <span class="ref-sym-inline">Sx 9/4</span>.</li>
+      <li>Record the sub <strong>next to the point number in progress</strong>, so the score at which it happened is unambiguous.</li>
+      <li>A player who leaves may re-enter, but only into the <strong>same serving-order position</strong>, and only for the player who replaced them. Tracking this is the whole reason substitutions live on the sheet.</li>
+      <li>Each team gets a limited number of team substitutions per set. Keep a running count — coaches will ask you how many they have left, and it is your sheet that settles it.</li>
+      <li>A <strong>libero replacement is not a substitution</strong> and does not count against that limit. See below.</li>
+    </ul>
+
+    <h3 id="ref-timeouts">Recording time-outs</h3>
+    <ul class="ref-list">
+      <li>Serving team calls it: write <span class="ref-sym-inline">T</span> in the current server's row.</li>
+      <li>Receiving team calls it: write <span class="ref-sym-inline">Tx</span> in the current server's row.</li>
+      <li>Either way, write <strong>the score at the moment of the time-out</strong> in that team's time-out box — both numbers, their score first.</li>
+      <li>Each team gets two time-outs per set, and they do not carry over between sets.</li>
+      <li>If a coach requests a third, the second referee will deny it; do not record anything.</li>
+    </ul>
+
+    <h3 id="ref-libero">The libero tracker</h3>
+    <p>The libero is the back-row defensive specialist in the contrasting jersey. Because the
+    libero enters and leaves constantly, those movements are recorded on a
+    <strong>separate libero tracker sheet</strong>, not in the rotation grid.</p>
+    <ul class="ref-list">
+      <li>Record the <strong>serving-order position</strong> the libero replaces and the number of the player replaced.</li>
+      <li>Libero replacements are <strong>unlimited</strong>, but two of them must be separated by a completed rally.</li>
+      <li>The libero replaces a <strong>back-row player only</strong>, and leaves for the same player.</li>
+      <li>Under <strong>NFHS</strong> rules the libero may serve in one rotation position; when that happens, put a triangle around the Roman numeral on the score sheet. In <strong>NCAA men's</strong> volleyball the libero may not serve at all.</li>
+      <li>The libero may not complete an attack on a ball entirely above the height of the net, may not block or attempt to block, and may not overhand-set a ball from in front of the attack line for a teammate to attack above net height.</li>
+    </ul>
+    <p>For the full set of restrictions, see the dedicated
+    <a href="/libero-rules-volleyball.html">libero rules explainer</a>.</p>
+
+    <h3 id="ref-endset">End-of-set checklist</h3>
+    <ol class="ref-steps">
+      <li><strong>Circle the winning team's final point number.</strong></li>
+      <li>Confirm the set was won by <strong>at least two points</strong> — 25 with a two-point margin in sets 1 through 4, 15 with a two-point margin in a deciding set.</li>
+      <li>Total each team's points and write them in the set score boxes.</li>
+      <li>Count and record the substitutions each team used.</li>
+      <li>Record the <strong>ending time</strong> of the set.</li>
+      <li>Have the second referee initial the sheet before the next set starts.</li>
+      <li>Start a fresh sheet for the next set — and remember the teams have switched sides.</li>
+    </ol>
+
+    <h3 id="ref-mistakes">Five mistakes that cost scorekeepers the most</h3>
+    <ol class="ref-steps">
+      <li><strong>Forgetting to switch sides between sets.</strong> Every point after that lands in the wrong column.</li>
+      <li><strong>Missing the box on a side-out point.</strong> Without it, nobody can tell where a serving term began.</li>
+      <li><strong>Recording a libero replacement as a substitution.</strong> It burns a sub the team still has.</li>
+      <li><strong>Writing the sub before the score.</strong> Record the point first, then the sub next to it, so the timing is preserved.</li>
+      <li><strong>Not alternating ink.</strong> A single-color sheet is legal but far slower to audit when a rotation is challenged mid-match.</li>
+    </ol>
+
+    <h3 id="ref-faq">Frequently asked questions</h3>
+    <div class="ref-faq">
+      <div class="ref-qa">
+        <h4>What does the dash-bar mean on a volleyball score sheet?</h4>
+        <p>The dash-bar <span class="ref-sym-inline">-|</span> marks the end of a serving term. It
+        is drawn in the server's row the moment the serving team loses a rally, closing out that
+        player's turn at the service line.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>Why is the first point after a side out boxed?</h4>
+        <p>The box identifies the first point of a new serving term. When you read the sheet back,
+        every boxed number is a side out, which makes it possible to reconstruct the flow of the set
+        without the running score.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>Do libero replacements count as substitutions?</h4>
+        <p>No. Libero replacements are unlimited and are recorded on a separate libero tracker
+        sheet. They never count against a team's substitution limit for the set.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>Can the libero serve?</h4>
+        <p>Under NFHS high school rules the libero may serve in one rotation position, marked with a
+        triangle around the Roman numeral. In NCAA men's volleyball the libero may not serve at all.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>Why do scorekeepers switch between blue and red ink?</h4>
+        <p>Ink color tracks how many times a team has been through its rotation. Blue or black for
+        the first pass, red when the first server returns, blue or black again for a third pass.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>What do I write when the referee calls a replay?</h4>
+        <p>Write <span class="ref-sym-inline">R</span> in the current server's row. No point is
+        awarded and the running score does not change. A caught or dropped first toss is a re-serve
+        instead, marked <span class="ref-sym-inline">RS</span>.</p>
+      </div>
+      <div class="ref-qa">
+        <h4>How many points does it take to win a volleyball set?</h4>
+        <p>Sets are played to 25 points, win by two. A deciding fifth set (or third set in a
+        best-of-three match) is played to 15, also win by two.</p>
+      </div>
+    </div>
+
+    <h3>Keep going</h3>
+    <div class="ref-siblings">
+      <a class="ref-sib" href="/volleyball-rotations-explained.html">
+        <span class="rs-kicker">Next</span>
+        <span class="rs-title">Volleyball Rotations Explained</span>
+        <span class="rs-desc">Serving order, positions 1–6, overlap rules, and why a 5-1 offense rotates the way it does.</span>
+      </a>
+      <a class="ref-sib" href="/libero-rules-volleyball.html">
+        <span class="rs-kicker">Rules</span>
+        <span class="rs-title">Libero Rules, in Plain English</span>
+        <span class="rs-desc">What the libero can and cannot do, replacement rules, and how NFHS differs from NCAA.</span>
+      </a>
+      <a class="ref-sib" href="/piaa-volleyball-rules.html">
+        <span class="rs-kicker">Pennsylvania</span>
+        <span class="rs-title">PIAA Volleyball Rules &amp; Scoring</span>
+        <span class="rs-desc">How the high school game is scored in Pennsylvania — season, match format, and the NFHS specifics.</span>
+      </a>
+    </div>
+
+    <p class="ref-footnote">Maintained by the
+    <a href="/">Downingtown East boys volleyball</a> program in Exton, PA, for our scorekeepers,
+    student managers, and parents. Rules change — always check the current NFHS rulebook and any
+    state adoptions before a match.</p>
+
+  </div>
+</section>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "@id": "https://debvb.github.io/volleyball-scoring-guide.html#howto",
+      "name": "How to Fill Out a Volleyball Score Sheet",
+      "description": "Step-by-step instructions for keeping a volleyball score sheet: setup, lineups, rally points, side outs, substitutions, time-outs, the libero tracker, and the end-of-set checklist.",
+      "totalTime": "PT20M",
+      "supply": [
+        { "@type": "HowToSupply", "name": "One NFHS score sheet per set" },
+        { "@type": "HowToSupply", "name": "Libero tracker sheet" },
+        { "@type": "HowToSupply", "name": "Blue or black pen and a red pen" }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Set up the sheet before the match",
+          "text": "Circle the set number and level, fill in the header, place each team on the side of the sheet matching the side of the court they occupy, and mark first serve with an X after the coin toss.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-setup"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter the lineups",
+          "text": "Copy each coach's lineup in serving order using Roman numerals I through VI, writing jersey numbers against each position and the libero's number in the libero box.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-lineups"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Record rallies won on serve",
+          "text": "Write the team's next point number in the current server's row and slash the matching number in the Running Score column. The same player serves again.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-rally"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Record the side out",
+          "text": "When the serving team loses a rally, draw the dash-bar in the server's row to end the term, then box the receiving team's first point of their new serving term.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-rally"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Record substitutions",
+          "text": "Write S followed by entering player over leaving player for the serving team, or Sx for the receiving team, placed next to the point number in progress.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-subs"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Record time-outs",
+          "text": "Write T for a serving-team time-out or Tx for a receiving-team time-out in the current server's row, and note the score in that team's time-out box.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-timeouts"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Track the libero separately",
+          "text": "Record libero replacements on the libero tracker sheet, noting the serving-order position and the player replaced. Libero replacements are unlimited and never count as substitutions.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-libero"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Close out the set",
+          "text": "Circle the winning point, confirm the two-point margin, total both teams' points, record substitutions used and the ending time, and have the second referee initial the sheet.",
+          "url": "https://debvb.github.io/volleyball-scoring-guide.html#ref-endset"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://debvb.github.io/volleyball-scoring-guide.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the dash-bar mean on a volleyball score sheet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The dash-bar marks the end of a serving term. It is drawn in the server's row the moment the serving team loses a rally, closing out that player's turn at the service line." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the first point after a side out boxed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The box identifies the first point of a new serving term. Every boxed number on the sheet is a side out, which makes it possible to reconstruct the flow of the set." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do libero replacements count as substitutions?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Libero replacements are unlimited and are recorded on a separate libero tracker sheet. They never count against a team's substitution limit for the set." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the libero serve?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Under NFHS high school rules the libero may serve in one rotation position, marked with a triangle around the Roman numeral. In NCAA men's volleyball the libero may not serve at all." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do scorekeepers switch between blue and red ink?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ink color tracks how many times a team has been through its rotation: blue or black for the first pass, red when the first server returns, blue or black again for a third pass." }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I write when the referee calls a replay?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Write R in the current server's row. No point is awarded and the running score does not change. A caught or dropped first toss is a re-serve instead, marked RS." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many points does it take to win a volleyball set?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sets are played to 25 points, win by two. A deciding fifth set, or third set in a best-of-three match, is played to 15, also win by two." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Downingtown East Boys Volleyball", "item": "https://debvb.github.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Volleyball Score Sheet Guide", "item": "https://debvb.github.io/volleyball-scoring-guide.html" }
+      ]
+    }
+  ]
+}
 </script>
 </body>
 </html>
