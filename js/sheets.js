@@ -410,7 +410,7 @@ function renderHeroAnnouncement(row) {
       '<span class="tag ' + tagCls + '">' + tagLabel + '</span>' +
       '<span class="fp-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + esc(row.Opponent) : '') + '</span>' +
     '</div>' +
-    '<h2 class="fp-title">' + esc(row.Title || '') + '</h2>' +
+    '<h3 class="fp-title">' + esc(row.Title || '') + '</h3>' +
     (snippet ? '<p class="fp-body">' + snippet + '</p>' : '') +
     '<a href="/news.html" class="fp-link">Full story &rarr;</a>';
 }
