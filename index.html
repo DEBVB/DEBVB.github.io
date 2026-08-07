@@ -79,6 +79,8 @@ preload_json: "/photos/photos.json"
 </script>
 
 <main id="main">
+
+<!-- ═══ MASTHEAD ═══════════════════════════════════════════════════════════ -->
 <div class="masthead">
   <div class="mast-slides" id="mast-slides">
     <!-- Slides loaded dynamically from /photos/photos.json -->
@@ -93,47 +95,79 @@ preload_json: "/photos/photos.json"
     <div class="mast-kicker">Exton, PA · Ches-Mont League · PIAA District 1</div>
     <h1 class="mast-headline">Downingtown East <br><em>Boys Volleyball</em></h1>
     <p class="mast-sub">Home of the <strong>Cougars</strong> — varsity &amp; JV schedules, scores, roster, and program history.</p>
-  </div>
-</div>
-
-<div id="stat-strip" class="stat-strip">
-  <div class="band-inner">
-    <div class="band-stat">
-      <div class="band-stat-val" id="stat-next-val">—</div>
-      <div class="band-stat-key">Next Game</div>
-    </div>
-    <div class="band-div"></div>
-    <div class="band-stat">
-      <div class="band-stat-val" id="ng-opponent" style="font-size:18px">Schedule TBD</div>
-      <div class="band-stat-key" id="ng-times">&nbsp;</div>
-    </div>
-    <div class="band-div"></div>
-    <div class="band-stat band-action">
-      <div>
-        <div class="band-stat-val" id="strip-record">—</div>
-        <div class="band-stat-key" id="strip-record-key">Season Record</div>
-      </div>
-      <a href="/schedule.html" class="btn-solid" style="font-size:11px;padding:9px 20px;">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Full Schedule
+    <div class="mast-actions">
+      <a href="/schedule.html" class="btn-solid">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule &amp; Scores
       </a>
+      <a href="/roster.html" class="btn-ghost">Meet the Team</a>
     </div>
   </div>
 </div>
 
-<section class="feat-section">
-  <div class="feat-section-inner">
-    <div class="feat-section-head">
-      <div class="sec-rule-label">Latest</div>
+<!-- ═══ SCOREBAR — next match · record · last result ═══════════════════════ -->
+<section class="scorebar" aria-label="Team status">
+  <div class="scorebar-inner">
+
+    <article class="sb-card sb-next">
+      <div class="sb-label">Next Match</div>
+      <div class="sb-body">
+        <div class="sb-date">
+          <span class="sb-mon" id="ng-mon">Spring</span>
+          <span class="sb-day sb-day-word" id="ng-day">Season</span>
+        </div>
+        <div>
+          <div class="sb-opp" id="ng-opponent">Schedule TBD</div>
+          <div class="sb-when" id="ng-times">Match dates post here as soon as they are set</div>
+        </div>
+      </div>
+      <div class="sb-foot"><a href="/schedule.html">Full schedule &amp; scores &rarr;</a></div>
+    </article>
+
+    <article class="sb-card sb-record">
+      <div class="sb-label" id="strip-record-key">Season Record</div>
+      <div class="sb-body">
+        <div>
+          <div class="sb-num" id="strip-record">&mdash;</div>
+          <div class="sb-note" id="strip-record-note">Varsity, regular season</div>
+        </div>
+      </div>
+      <div class="sb-foot"><a href="/history.html">Season archives &rarr;</a></div>
+    </article>
+
+    <article class="sb-card sb-last">
+      <div class="sb-label" id="last-result-key">Last Result</div>
+      <div class="sb-body">
+        <div>
+          <div class="sb-result" id="last-result"><span class="sb-quiet">No matches yet</span></div>
+          <div class="sb-note" id="last-result-note">Recaps land here after every match</div>
+        </div>
+      </div>
+      <div class="sb-foot"><a href="/news.html">Match recaps &rarr;</a></div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══ LATEST ════════════════════════════════════════════════════════════ -->
+<section class="latest" aria-labelledby="latest-heading">
+  <div class="home-wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <div class="sec-kicker">Latest</div>
+        <h2 class="sec-title" id="latest-heading">News &amp; Match Recaps</h2>
+      </div>
+      <a href="/news.html" class="sec-more">All news &rarr;</a>
     </div>
+
     <div class="feat-card">
-      <div class="feat-photo"></div>
+      <div class="feat-photo" role="img" aria-label="Downingtown East Cougars boys volleyball match action"></div>
       <div id="feat-post" class="feat-post">
         <div class="fp-eye">
           <span class="fp-live">Latest</span>
           <span class="fp-date">Cougars Volleyball · Exton, PA</span>
         </div>
-        <h2 class="fp-title">Cougars Boys Volleyball</h2>
+        <h3 class="fp-title">Cougars Boys Volleyball</h3>
         <p class="fp-body">Downingtown East plays its season in the spring — tryouts open in early
         March, and match recaps land here after every match. In the meantime, the
         <a href="/schedule.html">schedule</a>, <a href="/roster.html">roster</a>, and
@@ -141,14 +175,18 @@ preload_json: "/photos/photos.json"
         <a href="/news.html" class="fp-link">See all news &rarr;</a>
       </div>
     </div>
+
+    <div id="home-posts">
+      <div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>
+    </div>
   </div>
 </section>
 
-<!-- ═══ EVERGREEN PROGRAM BLOCK — always populated, in season or out ═══ -->
+<!-- ═══ EVERGREEN PROGRAM BLOCK — always populated, in season or out ═══════ -->
 <section class="program" aria-labelledby="program-heading">
-  <div class="program-inner">
+  <div class="home-wrap program-inner">
     <div class="program-main">
-      <div class="sec-rule-label" id="program-heading-kicker">The Program</div>
+      <div class="sec-kicker">The Program</div>
       <h2 id="program-heading">Downingtown East Boys Volleyball</h2>
 
       <p><strong>Downingtown East Boys Volleyball</strong> is the boys' varsity and junior varsity
@@ -197,46 +235,95 @@ preload_json: "/photos/photos.json"
   </div>
 </section>
 
-<div class="body-wrap">
-
-  <div>
-    <div class="sec-rule">
-      <div class="sec-rule-label">Earlier Posts</div>
-      <div class="sec-rule-line"></div>
-      <a href="/news.html" class="sec-rule-more">All news →</a>
+<!-- ═══ GUIDES ════════════════════════════════════════════════════════════ -->
+<section class="guides" aria-labelledby="guides-heading">
+  <div class="home-wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Learn the Game</div>
+      <h2 class="sec-title" id="guides-heading">Volleyball Guides</h2>
+      <p class="sec-sub">Free explainers from the Downingtown East staff — written for players, parents,
+      scorekeepers, and student managers.</p>
     </div>
 
-    <div id="home-posts">
-      <div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>
+    <div class="guide-grid">
+      <a href="/volleyball-scoring-guide.html" class="guide-card guide-card-lead">
+        <div class="guide-ico" aria-hidden="true">📋</div>
+        <h3 class="guide-title">Volleyball Score Sheet Guide</h3>
+        <p class="guide-desc">Line-by-line walkthrough of a high school score sheet — lineups, subs, libero tracking, and the running score.</p>
+        <span class="guide-more">Read the guide &rsaquo;</span>
+      </a>
+      <a href="/volleyball-rotations-explained.html" class="guide-card">
+        <div class="guide-ico" aria-hidden="true">🔁</div>
+        <h3 class="guide-title">Rotations Explained</h3>
+        <p class="guide-desc">Rotation order, overlap rules, and how 5-1 and 6-2 systems actually run on the court.</p>
+        <span class="guide-more">Read the guide &rsaquo;</span>
+      </a>
+      <a href="/libero-rules-volleyball.html" class="guide-card">
+        <div class="guide-ico" aria-hidden="true">🦺</div>
+        <h3 class="guide-title">Libero Rules</h3>
+        <p class="guide-desc">What the libero can and cannot do, replacement rules, and the mistakes that cost teams points.</p>
+        <span class="guide-more">Read the guide &rsaquo;</span>
+      </a>
+      <a href="/piaa-volleyball-rules.html" class="guide-card">
+        <div class="guide-ico" aria-hidden="true">🏛️</div>
+        <h3 class="guide-title">PIAA Rules &amp; Scoring</h3>
+        <p class="guide-desc">How Pennsylvania high school matches are scored, plus the PIAA rules specific to boys volleyball.</p>
+        <span class="guide-more">Read the guide &rsaquo;</span>
+      </a>
     </div>
-
   </div>
+</section>
 
-  <div class="sidebar">
-    <div class="ig-panel">
-      <span class="ig-tag">Instagram</span>
-      <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="ig-handle">@deastboysvb</a>
-      <div class="ig-sub">Game photos &amp; highlights</div>
+<!-- ═══ CONNECT ═══════════════════════════════════════════════════════════ -->
+<section class="connect" aria-labelledby="connect-heading">
+  <div class="home-wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Stay Connected</div>
+      <h2 class="sec-title" id="connect-heading">Follow the Cougars</h2>
     </div>
-    <div class="side-block">
-      <div class="side-head">Quick Links</div>
-      <div class="qlinks">
-        <a href="/volleyball-scoring-guide.html" class="qlink qlink-featured"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">📋</div><span class="qlink-label">Score Sheet Guide</span></div><span class="qlink-arr">›</span></a>
-        <a href="/volleyball-rotations-explained.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🔁</div><span class="qlink-label">Rotations Explained</span></div><span class="qlink-arr">›</span></a>
-        <a href="/libero-rules-volleyball.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🦺</div><span class="qlink-label">Libero Rules</span></div><span class="qlink-arr">›</span></a>
-        <a href="/piaa-volleyball-rules.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🏛️</div><span class="qlink-label">PIAA Rules &amp; Scoring</span></div><span class="qlink-arr">›</span></a>
-        <a href="/schedule.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">📅</div><span class="qlink-label">Full Schedule</span></div><span class="qlink-arr">›</span></a>
-        <a href="/roster.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">👥</div><span class="qlink-label">Roster</span></div><span class="qlink-arr">›</span></a>
-        <a href="/history.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🏆</div><span class="qlink-label">Program History</span></div><span class="qlink-arr">›</span></a>
-        <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">📊</div><span class="qlink-label">MaxPreps</span></div><span class="qlink-arr">›</span></a>
-        <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🎬</div><span class="qlink-label">Hudl Highlights</span></div><span class="qlink-arr">›</span></a>
-        <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🔔</div><span class="qlink-label">Join Remind</span></div><span class="qlink-arr">›</span></a>
-        <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">🏐</div><span class="qlink-label">DEVB Clinics</span></div><span class="qlink-arr">›</span></a>
-        <a href="/donate.html" class="qlink"><div class="qlink-left"><div class="qlink-ico" aria-hidden="true">💛</div><span class="qlink-label">Donate</span></div><span class="qlink-arr">›</span></a>
+
+    <div class="connect-inner">
+      <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer" class="ig-panel">
+        <span class="ig-tag">Instagram</span>
+        <span class="ig-handle">@deastboysvb</span>
+        <span class="ig-sub">Game photos &amp; highlights</span>
+      </a>
+
+      <div class="ctiles">
+        <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">🔔</span>
+          <span class="ctile-txt"><strong>Join Remind</strong><small>Team announcements</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
+        <a href="https://fan.hudl.com/usa/pa/exton/organization/13507/downingtown-east-high-school/team/730061/boys-varsity-volleyball" target="_blank" rel="noopener noreferrer" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">🎬</span>
+          <span class="ctile-txt"><strong>Hudl</strong><small>Streams &amp; highlights</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
+        <a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">📊</span>
+          <span class="ctile-txt"><strong>MaxPreps</strong><small>Stats &amp; standings</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
+        <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">🏐</span>
+          <span class="ctile-txt"><strong>DEVB Clinics</strong><small>Offseason training</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
+        <a href="/contact.html" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">✉️</span>
+          <span class="ctile-txt"><strong>Contact</strong><small>Reach the coaches</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
+        <a href="/donate.html" class="ctile">
+          <span class="ctile-ico" aria-hidden="true">💛</span>
+          <span class="ctile-txt"><strong>Donate</strong><small>Support the program</small></span>
+          <span class="ctile-arr" aria-hidden="true">›</span>
+        </a>
       </div>
     </div>
   </div>
-</div>
+</section>
 </main>
 
 <div id="donate-bubble">
@@ -354,18 +441,36 @@ preload_json: "/photos/photos.json"
 
 <script src="/js/sheets.js"></script>
 <script>
-// ── Schedule → next game + record ────────────────────────────
+// ── Scorebar helpers ─────────────────────────────────────────────
+var $ = function(id) { return document.getElementById(id); };
+
+/** Big date block on the Next Match card. `word` = render the lower line as text. */
+function setNextDate(top, bottom, word) {
+  $('ng-mon').textContent = top;
+  var d = $('ng-day');
+  d.textContent = bottom;
+  d.classList.toggle('sb-day-word', !!word);
+}
+
+/** The season upcoming as of today — used only when no schedule is published. */
+function upcomingSeasonYear() {
+  var now = new Date();
+  return now.getMonth() >= 6 ? now.getFullYear() + 1 : now.getFullYear();
+}
+
+// ── Schedule → next match, record, last result ───────────────────
 fetchSheet('Schedule', function(err, rows) {
   if (err || !rows.length) {
     // Offseason or unreachable data — say something useful rather than sitting on dashes.
-    document.getElementById('stat-next-val').innerHTML = '<em>Spring</em>';
-    document.getElementById('ng-opponent').textContent = 'Season opens in March';
-    document.getElementById('ng-times').textContent    = 'Tryouts early March · Schedule posted soon';
+    setNextDate('Spring', upcomingSeasonYear(), true);
+    $('ng-opponent').textContent = 'Season opens in March';
+    $('ng-times').textContent    = 'Tryouts early March · Schedule posted soon';
     return;
   }
 
   var rec  = schedRecord(rows);
   var next = schedNextGame(rows);
+  var last = schedLastResult(rows);
 
   // Season year — taken from the schedule data itself, so labels never go stale
   var seasonYear = null;
@@ -373,66 +478,89 @@ fetchSheet('Schedule', function(err, rows) {
     var sd = parseISODate(rows[i].Date) || (rows[i].Date ? new Date(rows[i].Date) : null);
     if (sd && !isNaN(sd)) { seasonYear = sd.getFullYear(); break; }
   }
-  if (seasonYear) {
-    document.getElementById('strip-record-key').textContent = seasonYear + ' Record';
-  }
+  if (seasonYear) { $('strip-record-key').textContent = seasonYear + ' Record'; }
 
-  document.getElementById('strip-record').innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
+  // Record — live schedule data wins over the Seasons-tab fallback below
+  var recEl = $('strip-record');
+  recEl.innerHTML = rec.w + '<em>&ndash;</em>' + rec.l;
+  recEl.dataset.live = '1';
+  $('strip-record-note').textContent = 'Varsity, regular season';
 
+  // Next match
   if (next) {
     var isHome = (next.Location || '').toLowerCase() === 'home';
-    var opp    = isHome ? 'vs. ' + next.Opponent : '@ ' + next.Opponent;
     var detail = [next.Time, isHome ? 'Home' : 'Away',
                   (next.Type && next.Type.toLowerCase() !== 'regular' ? next.Type : '')]
                  .filter(Boolean).join(' · ');
 
     // Robust date label — works with YYYY-MM-DD, "Apr 7, 2026", etc.
     var d = parseISODate(next.Date) || new Date(next.Date);
-    var MONS = _MONS.map(function(m){ return m.toUpperCase(); });
-    var label = (!isNaN(d) ? MONS[d.getMonth()] + ' ' + d.getDate() : next.Date) || '—';
-    var parts = label.split(' ');
+    if (!isNaN(d)) { setNextDate(_MONS[d.getMonth()], d.getDate(), false); }
+    else           { setNextDate('Next', next.Date || 'TBD', true); }
 
-    document.getElementById('ng-opponent').textContent = opp;
-    document.getElementById('ng-times').textContent    = detail;
-    document.getElementById('stat-next-val').innerHTML =
-      parts.length > 1 ? parts[0] + '<em> ' + parts[1] + '</em>' : label;
+    $('ng-opponent').textContent = (isHome ? 'vs. ' : '@ ') + next.Opponent;
+    $('ng-times').textContent    = detail;
   } else {
-    // Season complete — show final record in the next-game slot
-    document.getElementById('ng-opponent').textContent = 'Season Complete';
-    document.getElementById('ng-times').textContent    = 'Final Record · See you in ' +
-      ((seasonYear || new Date().getFullYear()) + 1) + '!';
-    document.getElementById('stat-next-val').innerHTML = 'FINAL';
+    // Season complete
+    setNextDate('Season', 'Complete', true);
+    $('ng-opponent').textContent = 'See you in ' + ((seasonYear || new Date().getFullYear()) + 1);
+    $('ng-times').textContent    = 'Final record and recaps are in the archives';
+  }
+
+  // Last result
+  if (last) {
+    var res    = (last.Result || '').toUpperCase();
+    var score  = esc(last.Score || '').replace('-', '&ndash;');
+    var homeLR = (last.Location || '').toLowerCase() === 'home';
+    var ld     = parseISODate(last.Date) || (last.Date ? new Date(last.Date) : null);
+
+    var lrEl = $('last-result');
+    lrEl.innerHTML = '<span class="sb-badge sb-badge-' + (res === 'W' ? 'w' : 'l') + '">' + res + '</span>' +
+                     (score ? '<span class="sb-score">' + score + '</span>' : '');
+    lrEl.dataset.live = '1';
+    $('last-result-note').textContent =
+      [(homeLR ? 'vs. ' : '@ ') + (last.Opponent || 'Opponent'),
+       (ld && !isNaN(ld)) ? _MONS[ld.getMonth()] + ' ' + ld.getDate() : ''].filter(Boolean).join(' · ');
   }
 });
 
-// ── Seasons → "Last Season" quick fact (evergreen, survives the offseason) ──
+// ── Seasons → "Last Season" quick fact + offseason fallbacks ─────
 fetchSheet('Seasons', function(err, rows) {
   if (err || !rows.length) return;   // row stays hidden — never shows a blank fact
   var seasons = rows.filter(function(r) { return /^(19|20)\d{2}$/.test((r.Year || '').trim()); });
   if (!seasons.length) return;
   seasons.sort(function(a, b) { return +b.Year - +a.Year; });
 
-  var s = seasons[0];
+  var s    = seasons[0];
+  var year = s.Year.trim();
   var parts = [];
   if (s.Record) parts.push(s.Record.replace('-', '–'));
   if (s.Finish) parts.push(s.Finish);
   if (!parts.length) return;
 
-  document.getElementById('pf-last-season-key').textContent = s.Year.trim() + ' Season';
-  document.getElementById('pf-last-season-val').textContent = parts.join(' · ');
-  document.getElementById('pf-last-season').hidden = false;
+  $('pf-last-season-key').textContent = year + ' Season';
+  $('pf-last-season-val').textContent = parts.join(' · ');
+  $('pf-last-season').hidden = false;
 
-  // Offseason: the strip's record slot is still a bare dash because there is no
-  // current schedule. Fall back to last season rather than leaving it empty.
-  var strip = document.getElementById('strip-record');
+  // Offseason: the scorebar has no live schedule to draw on. Fall back to the
+  // most recent archived season rather than leaving the cards empty.
+  var recEl = $('strip-record');
   var m = /^\s*(\d+)\s*[-–]\s*(\d+)\s*$/.exec(s.Record || '');
-  if (m && strip.textContent.trim() === '—') {
-    strip.innerHTML = m[1] + '<em>&ndash;</em>' + m[2];
-    document.getElementById('strip-record-key').textContent = s.Year.trim() + ' Record';
+  if (m && recEl.dataset.live !== '1') {
+    recEl.innerHTML = m[1] + '<em>&ndash;</em>' + m[2];
+    $('strip-record-key').textContent  = year + ' Record';
+    $('strip-record-note').textContent = 'Final record, ' + year + ' season';
+  }
+
+  var lrEl = $('last-result');
+  if (lrEl.dataset.live !== '1' && s.Finish) {
+    $('last-result-key').textContent  = year + ' Finish';
+    lrEl.innerHTML = '<span class="sb-quiet">' + esc(s.Finish) + '</span>';
+    $('last-result-note').textContent = 'Full season-by-season records in the archives';
   }
 });
 
-// ── News → homepage announcements ────────────────────────────
+// ── News → homepage announcements ────────────────────────────────
 var HOME_POSTS_EMPTY = '<div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>';
 fetchSheet('News', function(err, rows) {
   if (err) {
@@ -451,22 +579,18 @@ fetchSheet('News', function(err, rows) {
     return tb - ta;
   });
   if (!posts.length) {
-    document.getElementById('home-posts').innerHTML = HOME_POSTS_EMPTY;
+    $('home-posts').innerHTML = HOME_POSTS_EMPTY;
     return;
   }
 
   // Featured hero: most recent post
-  var featEl = document.getElementById('feat-post');
+  var featEl = $('feat-post');
   featEl.innerHTML = renderHeroAnnouncement(posts[0]);
   featEl.style.display = '';
 
   // Earlier posts: everything after the first
-  if (posts.length > 1) {
-    document.getElementById('home-posts').innerHTML =
-      posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('') +
-      '<div style="margin-top:14px"><a href="/news.html" style="font-size:13px;color:var(--navy);font-weight:600;">All news &rarr;</a></div>';
-  } else {
-    document.getElementById('home-posts').innerHTML = HOME_POSTS_EMPTY;
-  }
+  $('home-posts').innerHTML = posts.length > 1
+    ? posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('')
+    : HOME_POSTS_EMPTY;
 });
 </script>
