@@ -96,6 +96,8 @@
 
 /* ── Post cards ──────────────────────────────────────────────────── */
 #home-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+/* No secondary posts → collapse the grid so its margin leaves no gap behind. */
+#home-posts:empty { display: none; }
 .post { background: var(--white); padding: 24px 26px; border: 1px solid var(--rule); border-radius: var(--radius-md); box-shadow: var(--shadow-card); transition: box-shadow 0.2s var(--ease), transform 0.2s var(--ease); }
 .post:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
 .post-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
@@ -110,8 +112,6 @@
 .post-body a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
 .post-win  { border-left: 3px solid #4ade80; }
 .post-loss { border-left: 3px solid #f87171; }
-.home-posts-empty { grid-column: 1 / -1; background: var(--white); border: 1px dashed var(--rule); border-radius: var(--radius-md); padding: 26px 24px; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
-.home-posts-empty a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
 
 /* ── Program (evergreen) ─────────────────────────────────────────── */
 .program { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 64px 0 68px; }
