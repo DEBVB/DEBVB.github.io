@@ -27,6 +27,47 @@ New pages:
 - `/volleyball-rotations-explained.html`
 - `/libero-rules-volleyball.html`
 - `/piaa-volleyball-rules.html`
+- `/chester-county-boys-volleyball.html`
+
+---
+
+## Chester County targeting
+
+The site ranked for "Downingtown East" brand queries but had almost nothing on the page for the
+county-level searches — "boys volleyball Chester County", "Chester County PA high school boys
+volleyball", "boys volleyball tryouts Chester County", "when is boys volleyball season in PA".
+Before this pass, "Chester County" appeared on exactly one page.
+
+| # | Change | Where |
+|---|--------|-------|
+| 1 | New hub page `/chester-county-boys-volleyball.html` — season calendar, all thirteen Ches-Mont schools with town and county, league vs. District 1, tryouts, where to find scores, going to a match, offseason, 7-question FAQ | new file |
+| 2 | JSON-LD on the hub: `Article` with `spatialCoverage` = Chester County, an `ItemList` of the thirteen `HighSchool` entities, `FAQPage`, `BreadcrumbList` | `chester-county-boys-volleyball.html` |
+| 3 | Homepage `SportsTeam` gained `areaServed` (Chester County, Exton, Downingtown) and `location.containedInPlace` = Chester County | `index.html` |
+| 4 | "Chester County" added to the homepage masthead kicker, program prose, and a new County row in Quick Facts | `index.html` |
+| 5 | Hub linked from the homepage guides grid, the footer guides column, and the related-guides blocks on the PIAA, rotations, and libero pages | `index.html`, `_includes/footer.html`, 3 guide pages |
+| 6 | Meta descriptions on home, schedule, roster, coaches, history, contact, and news now name Chester County | front matter |
+| 7 | Sitemap: hub added at priority 0.9; `lastmod` refreshed on every page touched | `sitemap.xml` |
+
+### Facts on the hub page, and where they came from
+
+The Ches-Mont League roster of schools (thirteen members — twelve Chester County, plus Sun Valley in
+Delaware County) was verified against the league site and the Bishop Shanahan athletics page in
+August 2026. Divisions are *deliberately not* assigned per school on the page: alignment gets
+reviewed periodically and a stale table is worse than none. The page also says explicitly that
+league membership is not the same as fielding a boys team in a given spring, which is true and keeps
+the page from going wrong when a program skips a year.
+
+**Recheck each spring:** member schools, and whether the Pioneer Athletic Conference / independent
+school framing in the "outside the Ches-Mont League" paragraph still holds.
+
+### Still worth doing for Chester County specifically
+
+- The hub is the natural page to pitch for links — a county page is easier to get linked from a
+  parent Facebook group, a club program, or a rec league than a single team's homepage is.
+- Request indexing for `/chester-county-boys-volleyball.html` in Search Console once it deploys.
+- If the county page starts ranking, the highest-value follow-up is a live Ches-Mont boys volleyball
+  standings or results table on it. That needs a data source; the team Google Sheet only carries DE's
+  own schedule today.
 
 ### Yearly maintenance
 
