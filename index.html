@@ -176,9 +176,9 @@ preload_json: "/photos/photos.json"
       </div>
     </div>
 
-    <div id="home-posts">
-      <div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>
-    </div>
+    <!-- Secondary post cards. Stays empty (and hidden) when there is at most
+         one announcement — the featured card above carries it. -->
+    <div id="home-posts"></div>
   </div>
 </section>
 
@@ -561,7 +561,6 @@ fetchSheet('Seasons', function(err, rows) {
 });
 
 // ── News → homepage announcements ────────────────────────────────
-var HOME_POSTS_EMPTY = '<div class="home-posts-empty">No announcements right now &mdash; match recaps and updates land on the <a href="/news.html">News page</a> all season long.</div>';
 fetchSheet('News', function(err, rows) {
   if (err) {
     console.error('[DEBVB] News tab fetch failed — generic placeholder shown. Check Sheet ID, tab name, and sharing permissions.', err.message);
@@ -578,10 +577,7 @@ fetchSheet('News', function(err, rows) {
     var tb = (db && !isNaN(db)) ? db.getTime() : 0;
     return tb - ta;
   });
-  if (!posts.length) {
-    $('home-posts').innerHTML = HOME_POSTS_EMPTY;
-    return;
-  }
+  if (!posts.length) { return; }   // leave the evergreen featured card in place
 
   // Featured hero: most recent post
   var featEl = $('feat-post');
@@ -589,8 +585,7 @@ fetchSheet('News', function(err, rows) {
   featEl.style.display = '';
 
   // Earlier posts: everything after the first
-  $('home-posts').innerHTML = posts.length > 1
-    ? posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('')
-    : HOME_POSTS_EMPTY;
+  $('home-posts').innerHTML =
+    posts.slice(1).map(function(r) { return renderHomeAnnouncement(r); }).join('');
 });
 </script>
