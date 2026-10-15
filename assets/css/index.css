@@ -79,7 +79,7 @@
 /* ── Latest ──────────────────────────────────────────────────────── */
 .latest { background: var(--cream); padding: 64px 0 68px; }
 .feat-card { display: grid; grid-template-columns: 1.05fr 1fr; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-feat); }
-.feat-photo { background-image: url('/photos/slide9.jpeg'); background-size: cover; background-position: center; min-height: 340px; }
+.feat-photo { background-image: url('/photos/slide7.jpg'); background-size: cover; background-position: center; min-height: 340px; }
 
 .feat-post { background: linear-gradient(135deg, #0d1829 0%, #111827 60%, #0f1a30 100%); padding: 40px 44px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
 .feat-post::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--gold), rgba(232,176,0,0.3)); }
