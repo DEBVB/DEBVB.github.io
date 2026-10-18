@@ -21,7 +21,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .nav-brand img { height: 40px; width: auto; object-fit: contain; }
 .nav-brand-text { display: flex; flex-direction: column; line-height: 1; }
 .nav-brand-kicker { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); }
-.nav-brand-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--navy); margin-top: 3px; }
+.nav-brand-name { font-family: 'Graduate', serif; font-weight: 400; font-synthesis: none; font-size: 16px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--navy); margin-top: 5px; }
 .nav-links { display: flex; align-items: center; }
 .nav-links a { font-size: 11px; font-weight: 600; color: var(--muted); text-decoration: none; padding: 5px 12px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.12s, background 0.12s; white-space: nowrap; }
 .nav-links a:hover { color: var(--ink); background: var(--soft); }
@@ -50,7 +50,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 footer { background: var(--navy); color: var(--white); border-top: 3px solid var(--gold); }
 .footer-brand { display: flex; align-items: center; gap: 14px; padding: 36px 48px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); max-width: 1200px; margin: 0 auto; }
 .footer-logo { height: 52px; width: auto; }
-.footer-brand-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 19px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); }
+.footer-brand-name { font-family: 'Graduate', serif; font-weight: 400; font-synthesis: none; font-size: 16px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.8); }
+.footer-brand-name span { white-space: nowrap; }
 .footer-inner { max-width: 1200px; margin: 0 auto; padding: 28px 48px 32px; display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
 .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .footer-col ul { list-style: none; }
