@@ -37,11 +37,12 @@
 .mast-dot.active { background: var(--gold); transform: none; width: 20px; border-radius: 4px; }
 .mast-content { position: relative; z-index: 3; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 48px 104px; }
 /* Team lockup: crest | gold rule | school name over sport name */
-.mast-lockup { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); }
-.mast-mark { flex-shrink: 0; height: clamp(84px, 11vw, 156px); width: auto; filter: drop-shadow(0 4px 18px rgba(6,12,30,0.55)); }
-.mast-headline { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; line-height: 0.9; color: var(--white); padding-left: clamp(16px, 2.4vw, 32px); border-left: 2px solid var(--gold); text-shadow: 0 2px 24px rgba(6,12,30,0.45); }
-.mast-school { display: block; font-weight: 600; font-size: clamp(16px, 2.2vw, 30px); letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.35em; }
-.mast-sport { display: block; font-weight: 800; font-size: clamp(44px, 7.6vw, 112px); letter-spacing: 0.01em; }
+.mast-lockup { display: flex; align-items: center; gap: clamp(16px, 1.8vw, 24px); }
+.mast-mark { flex-shrink: 0; height: clamp(76px, 8vw, 116px); width: auto; filter: drop-shadow(0 4px 18px rgba(6,12,30,0.55)); }
+/* Graduate ships one weight; never let the browser fake a bold */
+.mast-headline { font-family: 'Graduate', serif; font-weight: 400; font-synthesis: none; text-transform: uppercase; line-height: 1; color: var(--white); padding-left: clamp(16px, 1.8vw, 24px); border-left: 2px solid var(--gold); text-shadow: 0 2px 24px rgba(6,12,30,0.45); }
+.mast-school { display: block; font-size: clamp(12px, 1.1vw, 15px); letter-spacing: 0.32em; color: var(--gold); margin-bottom: 0.7em; }
+.mast-sport { display: block; font-size: clamp(34px, 4vw, 58px); letter-spacing: 0.02em; }
 .mast-kicker { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 26px; display: flex; align-items: center; gap: 10px; }
 .mast-kicker::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
 .mast-sub { margin-top: 18px; max-width: 560px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.78); }
@@ -207,11 +208,12 @@
 @media (max-width: 640px) {
   .home-wrap { padding: 0 16px; }
   .mast-content { padding: 0 16px 40px; }
-  .mast-lockup { gap: 14px; }
-  .mast-headline { padding-left: 14px; }
-  .mast-mark { height: clamp(64px, 21vw, 96px); }
-  .mast-school { font-size: 13px; letter-spacing: 0.16em; }
-  .mast-sport { font-size: clamp(34px, 11.5vw, 52px); }
+  /* Crest above the name so "Boys Volleyball" keeps to one line */
+  .mast-lockup { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .mast-mark { height: 64px; }
+  .mast-headline { border-left: none; padding-left: 0; }
+  .mast-school { font-size: 11px; letter-spacing: 0.28em; }
+  .mast-sport { font-size: clamp(26px, 9vw, 40px); }
   /* Keep the kicker on one line at phone widths */
   .mast-kicker { margin-top: 20px; font-size: 8.5px; letter-spacing: 0.17em; align-items: flex-start; }
   .mast-kicker::before { margin-top: 6px; width: 18px; flex-shrink: 0; }
