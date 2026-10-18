@@ -12,7 +12,7 @@ Search Console login.
 |---|--------|-------|
 | 1 | Homepage `<title>` rewritten to `Downingtown East Boys Volleyball — Schedule, Roster & Scores` | `index.html` front matter |
 | 2 | Homepage `<h1>` now reads "Downingtown East Boys Volleyball"; "Cougars" moved to the subhead | `index.html` |
-| 3 | Permanent program block on the homepage — description, league, season, tryout timing, quick facts, and last season's record pulled from the `Seasons` sheet tab | `index.html`, `assets/css/index.css` |
+| 3 | Permanent program text on the homepage — description, league, season, tryout timing, quick facts, and last season's record pulled from the `Seasons` sheet tab. It now sits in an "About the program" panel that starts closed: still in the page for Google, out of the way for visitors | `index.html`, `assets/css/index.css` |
 | 4 | JSON-LD: expanded `SportsTeam` + `WebSite` on the homepage, `SportsEvent` list generated from the live schedule, `Person` on coaches, `HowTo` + `FAQPage` on the score sheet guide, `Article` + `FAQPage` + `BreadcrumbList` on the three new guides | all pages |
 | 6 | Unique, keyword-first titles on every page | all front matter |
 | 7 | History page gained evergreen prose, a combined-record rollup, and public-facing empty states | `history.html`, `assets/css/history.css` |
@@ -119,8 +119,8 @@ itself is small: rewrite the `<title>` and `<h1>` around the local-intent phrase
 ### Facts worth confirming
 
 The homepage and PIAA pages state tryouts open "in early March" with the PIAA spring season. If
-Downingtown East runs to a different date, edit the program block in `index.html` and the season
-table in `piaa-volleyball-rules.html`.
+Downingtown East runs to a different date, edit the "About the program" panel and the tryouts
+tile in `index.html`, and the season table in `piaa-volleyball-rules.html`.
 
 The "Last Season" quick fact on the homepage and the combined record on the history page read from
 the `Seasons` tab of the team Google Sheet (columns `Year | Record | Finish | Notes`). Both stay
