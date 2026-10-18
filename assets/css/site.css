@@ -38,6 +38,23 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .nav-drawer a.active { background: var(--navy); color: var(--white); }
 .nav-drawer .nav-cta-mobile { background: var(--gold); color: var(--ink) !important; font-weight: 700; }
 
+/* ── Evergreen page prose — schedule, roster, news ───────────────── */
+/* Static text that stays on the page when the sheet tabs are empty, so
+   off-season pages still have something for visitors and search to read. */
+.page-about { max-width: 74ch; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.page-about h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(22px, 2.6vw, 28px); color: var(--ink); line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 14px; }
+.page-about h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 24px 0 8px; }
+.page-about p, .page-about li { font-size: 15px; line-height: 1.78; color: #3d3830; }
+.page-about p { margin-bottom: 14px; }
+.page-about ul { margin: 0 0 14px 20px; }
+.page-about li { margin-bottom: 6px; padding-left: 2px; }
+.page-about strong { color: var(--navy); font-weight: 600; }
+.page-about a { color: var(--navy); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+@media (max-width: 640px) {
+  .page-about { margin-top: 36px; padding-top: 26px; }
+  .page-about p, .page-about li { font-size: 14px; }
+}
+
 /* ── Page header ─────────────────────────────────────────────────── */
 .page-header { background: var(--navy); border-bottom: 4px solid var(--gold); padding: 48px 48px 40px; }
 .page-header-kicker, .kicker { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
