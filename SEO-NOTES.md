@@ -22,6 +22,8 @@ Search Console login.
 | — | `meta keywords` removed sitewide | `_includes/head.html` |
 | — | Images renamed descriptively; alt text rewritten | repo root, `_includes/`, `photos/photos.json` |
 | — | Sitemap updated with the new pages | `sitemap.xml` |
+| — | Permanent text on the schedule, roster, and news pages (how the season works, positions and stat definitions, what gets posted), so they aren't empty placeholders between seasons. News `<h1>` now names the program | `schedule.html`, `roster.html`, `news.html`, `.page-about` in `assets/css/site.css` |
+| — | Home links point to `/` instead of `/index.html`, matching the homepage canonical | `_includes/nav.html`, `_includes/footer.html`, `404.html`, `volleyball-scoring-guide.html` |
 
 New pages:
 
@@ -65,13 +67,28 @@ Suggested ask — to Corey Sigle (DE athletic director) and the Ches-Mont League
 > roster, and results. Could the volleyball entry on the athletics page link to it? Happy to link
 > back from our site.
 
-### Submit the sitemap in Search Console
+### Search Console: sitemap and indexing (status as of October 2026)
 
-`robots.txt` and `sitemap.xml` both exist and are correct. The sitemap still needs to be submitted
-at Search Console → Sitemaps → `https://debvb.github.io/sitemap.xml`. Verification is already in
-place (`google3961a9f7cd47d85b.html` and the `google-site-verification` meta tag).
+The sitemap was submitted on Sep 12, 2026, but Search Console still shows **Couldn't fetch** with no
+"Last read" date, meaning Google never actually fetched it. `robots.txt` and `sitemap.xml` are both
+correct, and verification is in place (`google3961a9f7cd47d85b.html` and the
+`google-site-verification` meta tag). To unstick it:
 
-Also worth doing in the same session: request indexing for the three new guide pages.
+1. Open `https://debvb.github.io/sitemap.xml` in a browser and confirm it shows XML.
+2. URL Inspection → paste that URL → **Test live URL**. "Page fetch: Successful" means Google can
+   read it.
+3. Sitemaps → ⋮ next to `/sitemap.xml` → **Remove sitemap**, then submit `sitemap.xml?v=2`. GitHub
+   Pages serves the same file, but Search Console treats it as a new URL and tries again.
+
+Only the homepage is indexed. From Aug 10 to Sep 19, three pages sat in "Crawled – currently not
+indexed" (most likely schedule, roster, and news, which were empty placeholders after the July
+archive). On Sep 20 they dropped out of the report entirely. The "Validation passed" on Oct 5 only
+means they left that report; they were not indexed.
+
+Once the off-season text on those pages is live, use URL Inspection → **Request indexing** on the
+four guide pages, `coaches.html`, and `history.html` first, then `schedule.html`, `roster.html`, and
+`news.html`. Search Console caps requests per day, so finish the list the next day if it says the
+quota is reached. Expect it to take a few weeks either way.
 
 ### Track click-through rate in Search Console
 
