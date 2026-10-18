@@ -42,8 +42,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(
 .page-header { background: var(--navy); border-bottom: 4px solid var(--gold); padding: 48px 48px 40px; }
 .page-header-kicker, .kicker { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
 .page-header-kicker::before, .kicker::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-.page-header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 56px); color: var(--white); line-height: 1; letter-spacing: -1px; }
-.page-header h1 em { font-style: italic; color: var(--gold); }
+.page-header h1 { font-family: 'Graduate', serif; font-weight: 400; font-synthesis: none; font-size: clamp(28px, 3.8vw, 48px); text-transform: uppercase; color: var(--white); line-height: 1.08; letter-spacing: 0.02em; }
+.page-header h1 em { font-style: normal; color: var(--gold); }
 .page-header-sub { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; }
 
 /* ── Footer ──────────────────────────────────────────────────────── */
