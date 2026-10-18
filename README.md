@@ -6,7 +6,9 @@ The official website of the **Downingtown East Cougars Boys Volleyball** program
 
 ## What's on the site
 
-- **Home** — photo slideshow, next game / season record strip, latest news
+- **Home** — next match over the photo slideshow, record and last five results,
+  latest recap and the next three matches, a tile grid for the rest of the site,
+  and a closed-by-default "About the program" panel
 - **Schedule** — full season schedule with results, home/away, and directions
 - **Roster** — Varsity & JV player cards with per-player season stats
 - **News** — match recaps with scoreboards and team stat lines

@@ -210,7 +210,8 @@ function schedRecord(rows) {
   return { w: w, l: l };
 }
 
-function schedNextGame(rows) {
+/** Unplayed games from today on, earliest first. */
+function schedUpcoming(rows) {
   var today = new Date(); today.setHours(0, 0, 0, 0);
   var upcoming = [];
   rows.forEach(function(r) {
@@ -218,12 +219,16 @@ function schedNextGame(rows) {
     var d = parseISODate(r.Date) || (r.Date ? new Date(r.Date) : null);
     if (d && !isNaN(d) && d >= today) upcoming.push({ row: r, d: d });
   });
-  if (!upcoming.length) return null;
   upcoming.sort(function(a, b) { return a.d - b.d; }); // earliest first
-  return upcoming[0].row;
+  return upcoming.map(function(u) { return u.row; });
 }
 
-function schedLastResult(rows) {
+function schedNextGame(rows) {
+  return schedUpcoming(rows)[0] || null;
+}
+
+/** Games with a W or L result, most recent first. */
+function schedPlayed(rows) {
   var played = [];
   rows.forEach(function(r) {
     var res = (r.Result || '').toUpperCase();
@@ -231,9 +236,12 @@ function schedLastResult(rows) {
     var d = parseISODate(r.Date) || (r.Date ? new Date(r.Date) : null);
     if (d && !isNaN(d)) played.push({ row: r, d: d });
   });
-  if (!played.length) return null;
   played.sort(function(a, b) { return b.d - a.d; }); // most recent first
-  return played[0].row;
+  return played.map(function(p) { return p.row; });
+}
+
+function schedLastResult(rows) {
+  return schedPlayed(rows)[0] || null;
 }
 
 var _dirSVG = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
