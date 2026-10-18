@@ -36,6 +36,7 @@
 .mast-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: background 0.25s, width 0.25s var(--ease), border-radius 0.25s; }
 .mast-dot.active { background: var(--gold); transform: none; width: 20px; border-radius: 4px; }
 .mast-content { position: relative; z-index: 3; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 48px 104px; }
+.mast-mark { display: block; height: clamp(64px, 7vw, 96px); width: auto; margin-bottom: 22px; filter: drop-shadow(0 4px 18px rgba(6,12,30,0.55)); }
 .mast-kicker { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
 .mast-kicker::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
 .mast-headline { font-family: 'DM Serif Display', serif; font-size: clamp(54px, 7.4vw, 104px); line-height: 0.92; color: var(--white); letter-spacing: -3px; margin-bottom: 0; text-shadow: 0 2px 24px rgba(6,12,30,0.45); }
