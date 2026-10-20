@@ -18,10 +18,11 @@ Search Console login.
 | 7 | History page gained evergreen prose, a combined-record rollup, and public-facing empty states | `history.html`, `assets/css/history.css` |
 | 8 | Score sheet guide: retitled, plus a full static (crawlable) written reference with symbol table, worked example, and FAQ. Three sibling pages built | `volleyball-scoring-guide.html` + 3 new pages |
 | 9 | Coaches page titled and `<h1>`'d for "Coach Grant Shieh", with a fuller `Person` block | `coaches.html` |
+| 10 | Clinics page retargeted at "volleyball clinics Exton PA" and "beach volleyball lessons Chester County", with canonical, Open Graph, and `SportsActivityLocation` + `BreadcrumbList` JSON-LD. See "`/devbclinics/` is a separate repository" below | `devbclinics` repo, `index.html` |
 | — | Titles trimmed to about 60 characters and descriptions to about 155, so Google shows them whole instead of cutting them off. Search terms come first | all front matter, `volleyball-scoring-guide.html` |
 | — | `meta keywords` removed sitewide | `_includes/head.html` |
 | — | Images renamed descriptively; alt text rewritten | repo root, `_includes/`, `photos/photos.json` |
-| — | Sitemap updated with the new pages | `sitemap.xml` |
+| — | Sitemap updated with the new pages, and with `/devbclinics/` | `sitemap.xml` |
 | — | Permanent text on the schedule, roster, and news pages (how the season works, positions and stat definitions, what gets posted), so they aren't empty placeholders between seasons. News `<h1>` now names the program | `schedule.html`, `roster.html`, `news.html`, `.page-about` in `assets/css/site.css` |
 | — | Home links point to `/` instead of `/index.html`, matching the homepage canonical | `_includes/nav.html`, `_includes/footer.html`, `404.html`, `volleyball-scoring-guide.html` |
 
@@ -86,8 +87,8 @@ archive). On Sep 20 they dropped out of the report entirely. The "Validation pas
 means they left that report; they were not indexed.
 
 Once the off-season text on those pages is live, use URL Inspection → **Request indexing** on the
-four guide pages, `coaches.html`, and `history.html` first, then `schedule.html`, `roster.html`, and
-`news.html`. Search Console caps requests per day, so finish the list the next day if it says the
+four guide pages, `coaches.html`, `history.html`, and `/devbclinics/` first, then `schedule.html`,
+`roster.html`, and `news.html`. Search Console caps requests per day, so finish the list the next day if it says the
 quota is reached. Expect it to take a few weeks either way.
 
 ### Track click-through rate in Search Console
@@ -111,10 +112,22 @@ Filling in that column is the whole fix.
 ### `/devbclinics/` is a separate repository
 
 Item 10 — retargeting the clinics page at "volleyball clinics Exton PA" and "beach volleyball
-lessons Chester County" — could not be done here. `https://debvb.github.io/devbclinics/` is served
-from a different repository (`devbclinics`), which was not in scope for this session. The change
-itself is small: rewrite the `<title>` and `<h1>` around the local-intent phrases, and add a
-`LocalBusiness` or `SportsActivityLocation` JSON-LD block with the service area.
+lessons Chester County" — is done. `https://debvb.github.io/devbclinics/` is served from a different
+repository (`DEBVB/devbclinics`), and the change shipped there in
+[DEBVB/devbclinics#1](https://github.com/DEBVB/devbclinics/pull/1), merged Oct 20, 2026, along with a
+restyle to match this site. What shipped, all in that repo's `index.html`:
+
+- `<title>`: `Volleyball Clinics in Exton, PA — DEVB Sand Training`
+- `<h1>`: "Sand Volleyball Clinics in Exton, PA"
+- Meta description led by "Beach volleyball lessons in Chester County", plus a canonical
+  (`https://debvb.github.io/devbclinics/`), Open Graph and Twitter tags, and its own `social-card.jpg`
+- JSON-LD: `SportsActivityLocation` with the Exton Park address, a Chester County / Exton /
+  Downingtown / West Chester service area, the solo and partner offers, and links to this site's
+  `#team` and `coaches.html#shieh` entities; plus a `BreadcrumbList` (home → DEVB Clinics)
+
+This repo's `sitemap.xml` lists `/devbclinics/`, since both are served from the same host. Changes
+in `devbclinics` don't touch that file, so bump the entry's `lastmod` by hand when the clinics page
+changes materially.
 
 ### Facts worth confirming
 
