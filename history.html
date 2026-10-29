@@ -35,8 +35,8 @@ css: "schedule news history"
 
       <p>The Cougars play in the <strong>Ches-Mont League</strong> and <strong>PIAA District 1</strong>.
       Boys volleyball is a spring sport in Pennsylvania, so a "season" here runs from tryouts in
-      early March through the regular season in April and May, into the District 1 tournament in
-      late May. District finishers who qualify advance to the PIAA state tournament in early June.
+      early March through a regular season that runs March through May, into the District 1
+      tournament in May. District finishers who qualify advance to the PIAA state tournament in June.
       A season's record on this page counts regular-season and playoff matches; preseason
       scrimmages are excluded.</p>
 
@@ -49,7 +49,17 @@ css: "schedule news history"
 
     <div class="sec-head-rule">Seasons</div>
     <div id="seasons-grid" class="seasons-grid">
-      <div class="hist-loading">Loading seasons&hellip;</div>
+      <!-- Static copy of the Seasons tab, shown until it loads and kept if it
+           fails. Add a card here when a season is archived. -->
+      <a class="season-card" href="/history.html?season=2026">
+        <div class="sc-top"><span class="sc-year">2026</span><span class="sc-record">11&ndash;9</span></div>
+        <div class="sc-finish">First District 1 playoff berth in program history</div>
+        <div class="sc-note">Best record in program history</div>
+        <span class="sc-more">View season &rsaquo;</span></a>
+      <a class="season-card" href="/history.html?season=2025">
+        <div class="sc-top"><span class="sc-year">2025</span><span class="sc-record">10&ndash;10</span></div>
+        <div class="sc-note">Ranked #17</div>
+        <span class="sc-more">View season &rsaquo;</span></a>
     </div>
   </div>
 
@@ -115,7 +125,7 @@ css: "schedule news history"
         '<a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a> ' +
         'in the meantime, and the current season is on the ' +
         '<a href="/schedule.html">schedule page</a>.</p></div>';
-      if (err) { grid.innerHTML = EMPTY; return; }
+      if (err) return;   // keep the static season cards
 
       var seasons = rows.filter(function (r) { return /^(19|20)\d{2}$/.test((r.Year || '').trim()); });
       seasons.sort(function (a, b) { return +b.Year - +a.Year; });

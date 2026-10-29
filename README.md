@@ -31,6 +31,8 @@ cache). Column formats for each tab are documented at the top of
 **Photos**: drop images into `photos/` and push — a GitHub Action
 (`.github/workflows/update-photos.yml`) regenerates `photos/photos.json`,
 which drives the homepage slideshow. Keep images ≤1600px on the long edge.
+Slideshow photos are decorative (empty alt) unless you write an `alt` for one
+in `photos/photos.json`; hand-written alts are kept on regeneration.
 
 ## Updating content
 
@@ -41,7 +43,7 @@ which drives the homepage slideshow. Keep images ≤1600px on the long edge.
 | Update player stats | Edit the `Roster` tab |
 | Add slideshow photos | Commit images to `photos/` |
 | Edit bios / pages | Edit the corresponding `.html` file |
-| Archive a season | Duplicate the live tabs as `Schedule YYYY` / `Roster YYYY` / `News YYYY` (spacing variants accepted), add a row to the `Seasons` tab, then clear the data rows in the live tabs — the live pages show "posted soon" placeholders until new-season data is entered (details in `js/sheets.js`) |
+| Archive a season | Duplicate the live tabs as `Schedule YYYY` / `Roster YYYY` / `News YYYY` (spacing variants accepted), add a row to the `Seasons` tab, then clear the data rows in the live tabs — the live pages show "posted soon" placeholders until new-season data is entered (details in `js/sheets.js`). Also add a static season card to `history.html`, which shows if the Sheet can't be reached |
 
 ## Contact
 

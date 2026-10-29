@@ -1,15 +1,13 @@
 ---
 layout: default
 nav_active: schedule
-# season_year drives the page heading only. The year in title, description,
-# og_title and twitter_title is typed out — bump them with season_year as soon
-# as the next season's schedule is in the sheet.
-season_year: 2026
-title: "2026 Schedule & Scores — Downingtown East Boys Volleyball"
-description: "2026 schedule and scores for Downingtown East boys volleyball: home and away matches, times, directions, and results. Ches-Mont League, PIAA District 1."
-og_title: "2026 Schedule & Scores | Downingtown East Boys Volleyball"
+# No season year in the static text: the heading picks it up from the
+# Schedule tab's dates once they load, so nothing here goes stale.
+title: "Schedule & Scores — Downingtown East Boys Volleyball"
+description: "Schedule and scores for Downingtown East boys volleyball: home and away matches, times, directions, and results. Ches-Mont League, PIAA District 1."
+og_title: "Schedule & Scores | Downingtown East Boys Volleyball"
 og_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
-twitter_title: "2026 Schedule & Scores | Downingtown East Boys Volleyball"
+twitter_title: "Schedule & Scores | Downingtown East Boys Volleyball"
 twitter_description: "Full season schedule for DE Boys Volleyball — home games, away games, times, and results."
 canonical: "https://debvb.github.io/schedule.html"
 css: schedule
@@ -18,7 +16,7 @@ css: schedule
 <main id="main">
 <div class="page-header">
   <div class="page-header-kicker">Exton, PA · Ches-Mont League · PIAA District 1</div>
-  <h1><span id="sched-year">{{ page.season_year }} </span>Downingtown East Boys Volleyball <em>Schedule</em></h1>
+  <h1><span id="sched-year"></span>Downingtown East Boys Volleyball <em>Schedule</em></h1>
   <div class="page-header-sub" id="sched-count">Varsity &amp; JV · Cougars home &amp; away matches</div>
 </div>
 
@@ -65,7 +63,9 @@ css: schedule
         </tr>
       </thead>
       <tbody id="sched-tbody">
-        <tr><td colspan="4" class="sched-loading">Loading schedule from Google Sheets…</td></tr>
+        <!-- Shown until the Schedule tab loads, and kept if it is empty or fails -->
+        <tr><td colspan="4" class="sched-loading" style="font-style:normal;" id="sched-fallback">The {% include next-season-year.html %} schedule posts here before the season opens in March.
+          Last season's results are in the <a href="/history.html">season archives</a>.</td></tr>
       </tbody>
     </table>
   </div>
@@ -74,10 +74,10 @@ css: schedule
   <section class="page-about" aria-labelledby="season-heading">
     <h2 id="season-heading">How the Downingtown East Boys Volleyball Season Works</h2>
     <p>Boys volleyball is a <strong>spring sport</strong> in Pennsylvania. Tryouts and first
-    practices open with the PIAA spring season in early March, and the regular season runs from late
-    March through May. The schedule mixes <strong>Ches-Mont League</strong> matches with non-league
+    practices open with the PIAA spring season in early March, and the regular season runs March
+    through May. The schedule mixes <strong>Ches-Mont League</strong> matches with non-league
     opponents, and those results set seeding for the <strong>PIAA District 1</strong> tournament in
-    late May. District qualifiers advance to the PIAA state tournament in early June. Preseason
+    May. District qualifiers advance to the PIAA state tournament in June. Preseason
     scrimmages are listed with a "Scrim" tag and don't count toward the season record.</p>
 
     <h3>Match format</h3>
@@ -97,20 +97,17 @@ css: schedule
 
 <script src="/js/sheets.js"></script>
 <script>
+  var SCHED_FALLBACK = document.getElementById('sched-tbody').innerHTML;
   fetchSheet('Schedule', function(err, rows) {
     var tbody = document.getElementById('sched-tbody');
     if (err) {
       tbody.innerHTML = '<tr><td colspan="4" class="sched-error">' +
-        (err.message.indexOf('not configured') !== -1
-          ? 'Set your Google Sheet ID in /js/sheets.js to enable live data.'
-          : 'Could not load schedule — check your connection and try again.') +
-        '</td></tr>';
+        'The live schedule didn\'t load. Try again in a minute, or see results on ' +
+        '<a href="https://www.maxpreps.com/pa/exton/downingtown-east-cougars/volleyball/boys/" target="_blank" rel="noopener noreferrer">MaxPreps</a> ' +
+        'and in the <a href="/history.html">season archives</a>.</td></tr>';
       return;
     }
-    if (!rows.length) {
-      tbody.innerHTML = '<tr><td colspan="4" class="sched-loading" style="font-style:normal;">Schedule will be posted soon.</td></tr>';
-      return;
-    }
+    if (!rows.length) { tbody.innerHTML = SCHED_FALLBACK; return; }   // off-season
     _schedLastMonth = null;
     tbody.innerHTML = rows.map(function(r) { return renderScheduleRow(r); }).join('');
 

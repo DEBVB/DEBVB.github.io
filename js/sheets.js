@@ -339,6 +339,12 @@ function csvRowToPlayer(r) {
 
 // ── News helpers ──────────────────────────────────────────────────────────────
 
+/** Anchor id for a post on news.html, e.g. "Winter Open Gyms" → "post-winter-open-gyms". */
+function newsSlug(row) {
+  return 'post-' + String((row && row.Title) || '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 function _newsTag(type) {
   var t = (type || 'info').toLowerCase();
   var cls   = { win:'tag-win', loss:'tag-loss', info:'tag-info', new:'tag-new' };
@@ -420,7 +426,7 @@ function renderHeroAnnouncement(row) {
     '</div>' +
     '<h3 class="fp-title">' + esc(row.Title || '') + '</h3>' +
     (snippet ? '<p class="fp-body">' + snippet + '</p>' : '') +
-    '<a href="/news.html" class="fp-link">Full story &rarr;</a>';
+    '<a href="/news.html#' + newsSlug(row) + '" class="fp-link">Full story &rarr;</a>';
 }
 
 /** Render a compact announcement card for the homepage */
@@ -437,9 +443,8 @@ function renderHomeAnnouncement(row) {
   var snippet  = fullBody.length > 120
     ? esc(fullBody.slice(0, fullBody.lastIndexOf(' ', 120))) + '&hellip;'
     : esc(fullBody);
-  var bodyHTML = snippet
-    ? snippet + ' <a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>'
-    : '<a href="/news.html" style="white-space:nowrap">Full story &rarr;</a>';
+  var link     = '<a href="/news.html#' + newsSlug(row) + '" style="white-space:nowrap">Full story &rarr;</a>';
+  var bodyHTML = snippet ? snippet + ' ' + link : link;
 
   return '<div class="post' + cardCls + '">' +
     '<div class="post-top"><span class="tag ' + tagCls + '">' + tagLabel + '</span>' +

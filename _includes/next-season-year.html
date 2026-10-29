@@ -1,0 +1,9 @@
+{%- comment -%}
+  The spring season a visitor is waiting on, as of the last site build:
+  this year until June, next year from July on. Matches upcomingSeasonYear()
+  in index.html. Used only in static fallback copy that the Sheet data
+  replaces once it loads.
+{%- endcomment -%}
+{%- assign nsy_year = site.time | date: '%Y' | plus: 0 -%}
+{%- assign nsy_month = site.time | date: '%-m' | plus: 0 -%}
+{%- if nsy_month >= 7 -%}{{ nsy_year | plus: 1 }}{%- else -%}{{ nsy_year }}{%- endif -%}

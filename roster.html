@@ -44,7 +44,8 @@ css: roster
     </div>
     <div class="section-coaches">Head Coach: Grant Shieh &nbsp;&middot;&nbsp; Asst. Coach: Chris D'Amore</div>
     <div class="stats-note" id="varsity-note">&#9679; gold dot = season stats on file</div>
-    <div class="player-grid" id="varsityGrid"><div class="grid-note">Loading roster&hellip;</div></div>
+    <!-- Shown until the Roster tab loads, and kept if it is empty -->
+    <div class="player-grid" id="varsityGrid"><div class="grid-note">The {% include next-season-year.html %} varsity roster posts here after tryouts in early March.</div></div>
   </div>
   <div class="roster-section">
     <div class="section-header">
@@ -53,7 +54,7 @@ css: roster
       <div class="section-count" id="jv-count">— Players</div>
     </div>
     <div class="section-coaches">Coach: Chris D'Amore</div>
-    <div class="player-grid" id="jvGrid"><div class="grid-note">Loading roster&hellip;</div></div>
+    <div class="player-grid" id="jvGrid"><div class="grid-note">The {% include next-season-year.html %} JV roster posts here after tryouts in early March.</div></div>
   </div>
 
   <!-- Evergreen — stays put when the Roster tab is empty between seasons -->
@@ -218,8 +219,10 @@ function gridMessage(id, msg) {
 
 fetchSheet('Roster', function(err, rows) {
   if (err) {
-    gridMessage('varsityGrid', "Couldn't load the roster &mdash; check back soon.");
-    gridMessage('jvGrid',      "Couldn't load the roster &mdash; check back soon.");
+    var MSG = "The live roster didn't load. Try again in a minute; past rosters are on the " +
+              '<a href="/history.html">Program History</a> page.';
+    gridMessage('varsityGrid', MSG);
+    gridMessage('jvGrid',      MSG);
     return;
   }
 
@@ -235,7 +238,7 @@ fetchSheet('Roster', function(err, rows) {
     document.getElementById('varsity-count').textContent =
       varsity.length + ' Player' + (varsity.length !== 1 ? 's' : '');
   } else {
-    gridMessage('varsityGrid', 'Roster will be posted after tryouts.');
+    gridMessage('varsityGrid', 'The varsity roster posts here after tryouts in early March.');
     document.getElementById('varsity-count').textContent = '\u2014 Players';
   }
   if (jv.length) {
@@ -243,7 +246,7 @@ fetchSheet('Roster', function(err, rows) {
     document.getElementById('jv-count').textContent =
       jv.length + ' Player' + (jv.length !== 1 ? 's' : '');
   } else {
-    gridMessage('jvGrid', 'Roster will be posted after tryouts.');
+    gridMessage('jvGrid', 'The JV roster posts here after tryouts in early March.');
     document.getElementById('jv-count').textContent = '\u2014 Players';
   }
 });

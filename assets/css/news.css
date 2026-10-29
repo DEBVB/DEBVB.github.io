@@ -81,3 +81,6 @@
 }
 .news-note { background: var(--white); border: 1px dashed var(--rule); padding: 32px 28px; text-align: center; font-size: 14.5px; color: var(--muted); line-height: 1.7; }
 .news-note a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); text-decoration: none; }
+
+/* Posts opened from a homepage "Full story" link clear the sticky nav */
+.post, .post-accordion { scroll-margin-top: 80px; }

@@ -41,6 +41,7 @@
 .dir-btn svg { flex-shrink: 0; }
 .sched-loading { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; font-style: italic; }
 .sched-error   { text-align: center; padding: 40px 20px; color: var(--red); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+.sched-loading a, .sched-error a { color: var(--navy); font-weight: 600; }
 @media (max-width: 900px) {
   .page-wrap { padding: 36px 20px 60px; }
   .record-banner { flex-wrap: wrap; }

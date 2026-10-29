@@ -22,14 +22,17 @@ jobs:
           IMAGE_EXTS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
           photos_dir = 'photos'
           manifest = os.path.join(photos_dir, 'photos.json')
-          DEFAULT_ALT = 'Downingtown East Cougars boys volleyball match action'
+          # Slideshow photos sit behind the hero text, so they are decorative by
+          # default (empty alt, skipped by screen readers). Write an alt by hand
+          # in photos.json for any photo that should be described.
+          DEFAULT_ALT = ''
 
           # Keep any alt text that was written by hand — only new photos get the default.
           existing = {}
           try:
               with open(manifest) as f:
                   for e in json.load(f):
-                      if e.get('src') and e.get('alt'):
+                      if e.get('src') and 'alt' in e:
                           existing[e['src']] = e['alt']
           except (OSError, ValueError):
               pass

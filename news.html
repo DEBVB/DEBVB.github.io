@@ -19,7 +19,12 @@ css: news
 
 <div class="page-wrap">
   <div class="posts" id="posts-container">
-    <div class="news-note">Loading news&hellip;</div>
+    <!-- Shown until the News tab loads, and kept if it is empty -->
+    <div class="news-note">Match recaps post here after every match from March through May.
+    Off-season announcements, like winter open gyms, go out on
+    <a href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">Remind</a> and
+    <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram</a>.
+    Past seasons' recaps are on the <a href="/history.html">Program History</a> page.</div>
   </div>
 
   <!-- Evergreen — stays put when the News tab is empty between seasons -->
@@ -29,8 +34,8 @@ css: news
     Pennsylvania: <strong>match recaps</strong> with set scores and team stat lines, season
     announcements, and tryout information. During the season a recap goes up after each match. The
     newest post opens first, with earlier posts listed below it.</p>
-    <p>Boys volleyball is a spring sport in Pennsylvania, so news is busiest from March through early
-    June. Tryouts open in early March and are open to any Downingtown East student. The Cougars play
+    <p>Boys volleyball is a spring sport in Pennsylvania, so news is busiest from March through
+    May. Tryouts open in early March and are open to any Downingtown East student. The Cougars play
     in the Ches-Mont League and PIAA District 1.</p>
     <p>For day-to-day updates, follow the team on Instagram
     <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">@deastboysvb</a>
@@ -63,10 +68,13 @@ document.getElementById('posts-container').addEventListener('click', function(e)
 
 <script src="/js/sheets.js"></script>
 <script>
+var jumped = false;   // scroll to a #post-… link only once, not again on the live refresh
 fetchSheet('News', function(err, rows) {
   var container = document.getElementById('posts-container');
   if (err) {
-    container.innerHTML = '<div class="news-note">Couldn\'t load news &mdash; check back soon.</div>';
+    container.innerHTML = '<div class="news-note">The latest news didn\'t load. Try again in a minute, or follow ' +
+      '<a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">@deastboysvb</a> for updates. ' +
+      'Past seasons\' recaps are on the <a href="/history.html">Program History</a> page.</div>';
     return;
   }
   if (!rows.length) {
@@ -93,5 +101,23 @@ fetchSheet('News', function(err, rows) {
     }
   }
   container.innerHTML = html;
+
+  // Give each post an id (newsSlug, deduped) so the homepage can link straight to it
+  var seen = {};
+  container.querySelectorAll('.post, .post-accordion').forEach(function(el, i) {
+    var id = newsSlug(rows[i]);
+    seen[id] = (seen[id] || 0) + 1;
+    el.id = seen[id] > 1 ? id + '-' + seen[id] : id;
+  });
+  if (!jumped && location.hash) {
+    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) {
+      jumped = true;
+      if (target.classList.contains('post-accordion') && !target.classList.contains('open')) {
+        toggleAcc(target.querySelector('.acc-trigger'));
+      }
+      target.scrollIntoView();
+    }
+  }
 });
 </script>

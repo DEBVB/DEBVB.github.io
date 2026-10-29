@@ -174,11 +174,28 @@ preload_json: "/photos/photos.json"
     <aside class="upcoming" aria-labelledby="upcoming-heading">
       <div class="sec-head">
         <div class="sec-kicker">Coming up</div>
-        <h2 class="sec-title" id="upcoming-heading">Next Three</h2>
+        <h2 class="sec-title" id="upcoming-heading">Off-Season</h2>
       </div>
       <div class="up-card">
+        <!-- Off-season list. The Schedule tab replaces it with the next three
+             matches once the season's dates are in. Check the open gym line
+             each fall. -->
         <ol class="up-list" id="up-list">
-          <li class="up-empty">Match dates post here as soon as the schedule is set.</li>
+          <li class="up-item">
+            <div class="up-date"><span class="up-mon">NOV</span><span class="up-day up-day-word">Mid</span></div>
+            <div class="up-txt"><a class="up-opp" href="https://www.remind.com/join/boysdevb" target="_blank" rel="noopener noreferrer">Winter open gyms</a>
+            <span class="up-meta">DE boys · dates and times on Remind</span></div>
+          </li>
+          <li class="up-item">
+            <div class="up-date"><span class="up-mon">MAR</span><span class="up-day up-day-word">Early</span></div>
+            <div class="up-txt"><a class="up-opp" href="/contact.html">Tryouts open</a>
+            <span class="up-meta">Every DE student · no club experience needed</span></div>
+          </li>
+          <li class="up-item">
+            <div class="up-date"><span class="up-mon">SUMMER</span><span class="up-day up-day-word">{% include next-season-year.html %}</span></div>
+            <div class="up-txt"><a class="up-opp" href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB sand clinics</a>
+            <span class="up-meta">Exton Park · dates to come</span></div>
+          </li>
         </ol>
         <a href="/schedule.html" class="up-foot">Full schedule &amp; scores &rarr;</a>
       </div>
@@ -198,10 +215,10 @@ preload_json: "/photos/photos.json"
       <section class="hub-tile hub-wide hub-join" aria-labelledby="join-heading">
         <span class="hub-label">Want to play?</span>
         <h3 id="join-heading">Tryouts open in early March</h3>
-        <p>Open to every Downingtown East student, no club experience required. DEVB clinics run through the off-season.</p>
+        <p>Open to every Downingtown East student, no club experience required. Winter open gyms start in mid-November, and DEVB sand clinics run in the summer.</p>
         <div class="hub-join-actions">
           <a href="/contact.html" class="btn-navy">Ask about tryouts</a>
-          <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer" class="sec-more">DEVB clinics &rarr;</a>
+          <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer" class="sec-more">Summer sand clinics &rarr;</a>
         </div>
       </section>
 
@@ -267,7 +284,7 @@ preload_json: "/photos/photos.json"
         <span class="hub-ico hub-ico-gold" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
         <span class="hub-tile-body">
           <span class="hub-tile-title">Support the program</span>
-          <span class="hub-tile-sub">Donate via Venmo @DECougarsVB</span>
+          <span class="hub-tile-sub">Funds equipment, uniforms &amp; tournament fees · Venmo @DECougarsVB</span>
         </span>
       </a>
     </div>
@@ -324,14 +341,14 @@ preload_json: "/photos/photos.json"
       50 Devon Drive.</p>
 
       <p>In Pennsylvania, boys volleyball is a <strong>spring sport</strong>. Tryouts open with the
-      start of the PIAA spring season in early March, the regular season runs from March into May,
-      and District 1 playoffs follow in late May, with qualifying teams advancing to the PIAA state
-      tournament. Any Downingtown East student is welcome to try out — no club experience required.</p>
+      start of the PIAA spring season in early March, the regular season runs March through May,
+      and District 1 playoffs follow in May, with qualifying teams advancing to the PIAA state
+      tournament in June. Any Downingtown East student is welcome to try out — no club experience required.</p>
 
       <p>The program is led by head coach <a href="/coaches.html">Grant Shieh</a>, with assistant
       coach Chris D'Amore. Beyond the high school season, the staff runs
       <a href="https://debvb.github.io/devbclinics/" target="_blank" rel="noopener noreferrer">DEVB
-      volleyball clinics</a> for local players, and maintains a free
+      summer sand clinics</a> for local players, and maintains a free
       <a href="/volleyball-scoring-guide.html">volleyball score sheet guide</a> for scorekeepers,
       parents, and student managers.</p>
     </div>
@@ -344,7 +361,7 @@ preload_json: "/photos/photos.json"
         <div class="pf-row"><dt>Nickname</dt><dd>Cougars</dd></div>
         <div class="pf-row"><dt>League</dt><dd>Ches-Mont League</dd></div>
         <div class="pf-row"><dt>District</dt><dd>PIAA District 1</dd></div>
-        <div class="pf-row"><dt>Season</dt><dd>Spring (March–June)</dd></div>
+        <div class="pf-row"><dt>Season</dt><dd>Spring (March–May)</dd></div>
         <div class="pf-row"><dt>Tryouts</dt><dd>Early March, open to all DE students</dd></div>
         <div class="pf-row"><dt>Head Coach</dt><dd>Grant Shieh</dd></div>
         <div class="pf-row" id="pf-last-season" hidden>
@@ -360,7 +377,7 @@ preload_json: "/photos/photos.json"
 <div id="donate-bubble">
   <button type="button" id="donate-header" aria-expanded="false" aria-controls="donate-content"><span aria-hidden="true">💛</span> Donate</button>
   <div id="donate-content">
-    <p style="font-size:0.8rem;margin-bottom:6px;">Support Cougar Volleyball!</p>
+    <p style="font-size:0.8rem;margin-bottom:6px;">Support Cougar Volleyball! Donations pay for equipment, uniforms, and tournament fees.</p>
     <a href="https://venmo.com/u/DECougarsVB" target="_blank" rel="noopener noreferrer" class="venmo-button">Donate via Venmo</a>
   </div>
 </div>
@@ -435,7 +452,7 @@ preload_json: "/photos/photos.json"
         var img = document.createElement('img');
         img.className = 'mast-slide';
         img.decoding = 'async';
-        img.alt = photo.alt || 'Cougars volleyball action photo';
+        img.alt = photo.alt || '';   // decorative unless photos.json describes it
         if (i < 2) {
           img.src = photo.src;
           if (i === 0) { img.fetchPriority = 'high'; }
@@ -570,7 +587,7 @@ fetchSheet('Schedule', function(err, rows) {
       detailHTML(ICON_CAL, 'Tryouts early March · open to every DE student') +
       detailHTML(ICON_USER, 'No club experience required'),
       actionHTML('btn-solid', '/contact.html', 'Tryout info') +
-      actionHTML('btn-ghost', 'https://debvb.github.io/devbclinics/', 'Off-season clinics', true) +
+      actionHTML('btn-ghost', 'https://www.remind.com/join/boysdevb', 'Open gym updates', true) +
       actionHTML('md-textlink', '/schedule.html', 'Full schedule &rarr;'),
       null);
     return;
@@ -652,6 +669,7 @@ fetchSheet('Schedule', function(err, rows) {
   }
 
   // Next three — the matches after the one in the hero
+  $('upcoming-heading').textContent = 'Next Three';
   var list = $('up-list');
   var rest = upcoming.slice(1, 4);
   if (rest.length) {

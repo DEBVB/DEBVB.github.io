@@ -121,8 +121,11 @@
 .up-date { width: 52px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; padding-right: 16px; border-right: 1px solid var(--rule); }
 .up-mon { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; color: #9a7400; }
 .up-day { font-family: 'DM Serif Display', serif; font-size: 28px; line-height: 1; color: var(--navy); }
+.up-day-word { font-size: 16px; line-height: 1.3; }
 .up-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .up-opp { font-family: 'DM Serif Display', serif; font-size: 19px; line-height: 1.2; color: var(--ink); }
+a.up-opp { text-decoration: none; }
+a.up-opp:hover { color: var(--navy); text-decoration: underline; text-decoration-color: var(--gold); }
 .up-meta { font-size: 12.5px; color: var(--muted); }
 .up-empty { padding: 18px 20px; font-size: 14px; line-height: 1.6; color: var(--muted); border-bottom: 1px solid var(--soft); }
 .up-foot { display: flex; align-items: center; min-height: 44px; padding: 0 20px; background: var(--soft); border-radius: 0 0 var(--radius-md) var(--radius-md); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); text-decoration: none; transition: background 0.15s; }
@@ -299,6 +302,7 @@ a.hub-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-ho
   .up-item { padding: 12px 14px; gap: 14px; }
   .up-date { width: 42px; padding-right: 12px; }
   .up-day { font-size: 24px; }
+  .up-day-word { font-size: 14px; }
   .up-opp { font-size: 17px; }
   .up-foot { padding: 0 14px; }
   .post { padding: 20px 18px; }
