@@ -1,0 +1,381 @@
+---
+layout: default
+nav_active: events
+title: "Events Calendar — Downingtown East Boys Volleyball"
+description: "Upcoming events for Downingtown East boys volleyball: open gyms, tryouts, practices, parent meetings, clinics, fundraisers, and matches, with times and directions."
+og_title: "Events Calendar | Downingtown East Boys Volleyball"
+og_description: "Open gyms, tryouts, practices, parent meetings, and matches for DE Boys Volleyball — all in one place."
+twitter_title: "Events Calendar | Downingtown East Boys Volleyball"
+twitter_description: "Open gyms, tryouts, practices, parent meetings, and matches for DE Boys Volleyball — all in one place."
+canonical: "https://debvb.github.io/events.html"
+css: events
+---
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-kicker">Exton, PA · Ches-Mont League · PIAA District 1</div>
+  <h1>Downingtown East Boys Volleyball <em>Events</em></h1>
+  <div class="page-header-sub" id="ev-count">Open gyms · Tryouts · Practices · Meetings · Matches</div>
+</div>
+
+<div class="page-wrap">
+  <div class="ev-toolbar">
+    <div class="ev-chips" id="ev-chips" role="group" aria-label="Filter events by type"></div>
+    <div class="ev-views" role="group" aria-label="Choose a view">
+      <button type="button" class="ev-view is-on" id="ev-view-list" aria-pressed="true">List</button>
+      <button type="button" class="ev-view" id="ev-view-month" aria-pressed="false">Month</button>
+    </div>
+  </div>
+
+  <!-- List view -->
+  <div id="ev-list-view">
+    <div id="ev-list"><p class="ev-status">Loading events…</p></div>
+    <details class="ev-past" id="ev-past" hidden>
+      <summary>Past events</summary>
+      <div id="ev-past-list"></div>
+    </details>
+  </div>
+
+  <!-- Month view -->
+  <div id="ev-month-view" hidden>
+    <div class="ev-cal">
+      <div class="ev-cal-head">
+        <button type="button" class="ev-cal-nav" id="ev-prev" aria-label="Previous month">&larr;</button>
+        <h2 class="ev-cal-title" id="ev-cal-title" aria-live="polite"></h2>
+        <button type="button" class="ev-cal-nav" id="ev-next" aria-label="Next month">&rarr;</button>
+      </div>
+      <div class="ev-cal-dow" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="ev-cal-grid" id="ev-cal-grid"></div>
+    </div>
+    <div id="ev-day"></div>
+  </div>
+
+  <!-- Evergreen — stays put when nothing is on the calendar -->
+  <section class="page-about" aria-labelledby="ev-about-heading">
+    <h2 id="ev-about-heading">How to Use the Events Calendar</h2>
+    <p>This page is the one place to check what's coming up for Downingtown East Cougars boys
+    volleyball. It lists <strong>open gyms</strong>, <strong>tryouts</strong>,
+    <strong>practices</strong>, <strong>parent meetings</strong>, <strong>clinics and camps</strong>,
+    and <strong>fundraisers</strong>, alongside every match on the
+    <a href="/schedule.html">schedule</a>. Use the buttons at the top to show one kind of event,
+    or switch to the month view to see the whole month at a glance.</p>
+
+    <h3>Save an event to your phone</h3>
+    <p>Every event has an <strong>Add to calendar</strong> option. Choose Google Calendar, or
+    Apple / Outlook to download the event to the calendar app on your phone or computer. Events
+    saved this way don't update themselves, so check back here if plans change.</p>
+
+    <h3>Changes and cancellations</h3>
+    <p>Times and locations can change, especially around weather and gym availability. This page
+    is updated as soon as a change is made, and same-day changes are also posted on
+    <a href="https://instagram.com/deastboysvb" target="_blank" rel="noopener noreferrer">Instagram</a>.
+    Tryout details are posted in <a href="/news.html">news</a> ahead of the season. Questions?
+    <a href="/contact.html">Contact the coaching staff</a>.</p>
+  </section>
+</div>
+</main>
+
+<script src="/js/sheets.js"></script>
+<script>
+(function() {
+  var $ = function(id) { return document.getElementById(id); };
+
+  var matches = null, extras = null;   // null = that tab hasn't reported yet
+  var all = [];                        // every event, both tabs
+  var filter = 'all';
+  var view = 'list';
+  var monthCursor = null;              // first day of the month on screen
+  var selectedDay = null;              // timestamp of the tapped day in month view
+
+  // ── Filter chips ────────────────────────────────────────────────
+  function hashToKey(hash) {
+    var h = (hash || '').replace(/^#/, '').toLowerCase().replace(/[^a-z]/g, '');
+    if (!h) return 'all';
+    for (var i = 0; i < EVENT_TYPES.length; i++) {
+      var t = EVENT_TYPES[i], th = t.hash.replace(/-/g, '');
+      // accept singular/plural either way: #tryout, #open-gyms, #meeting …
+      if (h === th || h + 's' === th || h === th + 's' || h === t.key) return t.key;
+    }
+    return 'all';
+  }
+
+  function keyToHash(key) {
+    for (var i = 0; i < EVENT_TYPES.length; i++) if (EVENT_TYPES[i].key === key) return EVENT_TYPES[i].hash;
+    return '';
+  }
+
+  function renderChips() {
+    var chips = [{ key: 'all', chip: 'All' }].concat(EVENT_TYPES);
+    $('ev-chips').innerHTML = chips.map(function(t) {
+      var on = t.key === filter;
+      return '<button type="button" class="ev-chip ev-k-' + t.key + (on ? ' is-on' : '') +
+        '" data-key="' + t.key + '" aria-pressed="' + on + '">' + t.chip + '</button>';
+    }).join('');
+  }
+
+  $('ev-chips').addEventListener('click', function(e) {
+    var b = e.target.closest('.ev-chip');
+    if (!b) return;
+    filter = b.getAttribute('data-key');
+    selectedDay = null;
+    var hash = keyToHash(filter);
+    try { history.replaceState(null, '', hash ? '#' + hash : location.pathname + location.search); } catch (err) {}
+    render();
+  });
+
+  window.addEventListener('hashchange', function() {
+    filter = hashToKey(location.hash); selectedDay = null; render();
+  });
+
+  // ── View toggle ─────────────────────────────────────────────────
+  function setView(v) {
+    view = v;
+    $('ev-view-list').classList.toggle('is-on', v === 'list');
+    $('ev-view-month').classList.toggle('is-on', v === 'month');
+    $('ev-view-list').setAttribute('aria-pressed', v === 'list');
+    $('ev-view-month').setAttribute('aria-pressed', v === 'month');
+    $('ev-list-view').hidden  = v !== 'list';
+    $('ev-month-view').hidden = v !== 'month';
+    render();
+  }
+  $('ev-view-list').addEventListener('click',  function() { setView('list'); });
+  $('ev-view-month').addEventListener('click', function() { setView('month'); });
+
+  // ── Add-to-calendar ─────────────────────────────────────────────
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function ymd(d) { return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()); }
+
+  /** { allDay, start, end } as calendar stamps — local (Eastern) wall-clock time. */
+  function stamps(e) {
+    var s = parseClock(e.time);
+    if (s == null) {
+      var next = new Date(e.d); next.setDate(next.getDate() + 1);
+      return { allDay: true, start: ymd(e.d), end: ymd(next) };
+    }
+    var en = parseClock(e.endTime);
+    if (en == null || en <= s) en = s + 120;
+    function at(mins) {
+      var d = new Date(e.d); d.setMinutes(mins);
+      return ymd(d) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
+    }
+    return { allDay: false, start: at(s), end: at(en) };
+  }
+
+  function calTitle(e) {
+    return e.key === 'match' ? 'DE Boys Volleyball ' + e.title : e.title + ' — DE Boys Volleyball';
+  }
+
+  function calWhere(e) { return e.address || e.place || ''; }
+
+  function googleURL(e) {
+    var st = stamps(e);
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text='     + encodeURIComponent(calTitle(e)) +
+      '&dates='    + st.start + '/' + st.end +
+      (st.allDay ? '' : '&ctz=America/New_York') +
+      '&details='  + encodeURIComponent((e.notes ? e.notes + '\n\n' : '') + 'https://debvb.github.io/events.html') +
+      '&location=' + encodeURIComponent(calWhere(e));
+  }
+
+  function icsText(e) {
+    var st = stamps(e);
+    function x(s) { return String(s).replace(/\\/g, '\\\\').replace(/([,;])/g, '\\$1').replace(/\r?\n/g, '\\n'); }
+    var now = new Date();
+    var stamp = now.getUTCFullYear() + pad(now.getUTCMonth() + 1) + pad(now.getUTCDate()) + 'T' +
+                pad(now.getUTCHours()) + pad(now.getUTCMinutes()) + pad(now.getUTCSeconds()) + 'Z';
+    var uid = st.start + '-' + e.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '@debvb.github.io';
+    var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//DEBVB//Events//EN', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT', 'UID:' + uid, 'DTSTAMP:' + stamp,
+      st.allDay ? 'DTSTART;VALUE=DATE:' + st.start : 'DTSTART:' + st.start,
+      st.allDay ? 'DTEND;VALUE=DATE:'   + st.end   : 'DTEND:'   + st.end,
+      'SUMMARY:' + x(calTitle(e))];
+    if (calWhere(e)) lines.push('LOCATION:' + x(calWhere(e)));
+    lines.push('DESCRIPTION:' + x((e.notes ? e.notes + '\n\n' : '') + 'https://debvb.github.io/events.html'));
+    lines.push('END:VEVENT', 'END:VCALENDAR');
+    return lines.join('\r\n') + '\r\n';
+  }
+
+  // Delegated: the "Apple / Outlook" button downloads a one-event .ics file
+  document.addEventListener('click', function(ev) {
+    var b = ev.target.closest('.ev-ics');
+    if (!b) return;
+    var e = all[+b.getAttribute('data-i')];
+    if (!e) return;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([icsText(e)], { type: 'text/calendar;charset=utf-8' }));
+    a.download = e.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.ics';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function() { URL.revokeObjectURL(a.href); }, 2000);
+  });
+
+  // ── Cards ───────────────────────────────────────────────────────
+  var PIN = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">' +
+    '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>';
+
+  function timeText(e) {
+    if (!e.time) return 'Time TBA';
+    return e.time + (e.endTime ? ' – ' + e.endTime : '');
+  }
+
+  function cardHTML(e, past) {
+    var meta = [timeText(e), e.place].filter(Boolean).map(esc).join(' &middot; ');
+    var actions = '';
+    if (!past) {
+      if (e.address) {
+        actions += '<a class="ev-btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=' +
+          encodeURIComponent(e.address) + '">' + PIN + 'Directions</a>';
+      }
+      actions += '<span class="ev-add"><span class="ev-add-label">Add to calendar</span>' +
+        '<a class="ev-btn" target="_blank" rel="noopener noreferrer" href="' + esc(googleURL(e)) + '">Google</a>' +
+        '<button type="button" class="ev-btn ev-ics" data-i="' + e.i + '">Apple / Outlook</button></span>';
+    }
+    return '<article class="ev-card ev-k-' + e.key + (past ? ' is-past' : '') + '">' +
+      '<div class="ev-date"><span class="ev-mon">' + _MONS[e.d.getMonth()].toUpperCase() + '</span>' +
+      '<span class="ev-daynum">' + e.d.getDate() + '</span>' +
+      '<span class="ev-dow">' + _DOWS[e.d.getDay()] + '</span></div>' +
+      '<div class="ev-body">' +
+      '<div class="ev-top"><span class="ev-tag">' + esc(e.label) + '</span>' +
+      (e.result ? '<span class="ev-result ev-result-' + e.result.charAt(0).toLowerCase() + '">' + esc(e.result) + '</span>' : '') + '</div>' +
+      '<h3 class="ev-title">' + esc(e.title) + '</h3>' +
+      '<div class="ev-meta">' + meta + '</div>' +
+      (e.notes ? '<p class="ev-notes">' + esc(e.notes) + '</p>' : '') +
+      (actions ? '<div class="ev-actions">' + actions + '</div>' : '') +
+      '</div></article>';
+  }
+
+  function filtered() {
+    return filter === 'all' ? all : all.filter(function(e) { return e.key === filter; });
+  }
+
+  function filterNoun() {
+    for (var i = 0; i < EVENT_TYPES.length; i++) {
+      if (EVENT_TYPES[i].key === filter) return EVENT_TYPES[i].chip.toLowerCase();
+    }
+    return 'events';
+  }
+
+  // ── List view ───────────────────────────────────────────────────
+  function renderList() {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var items = filtered();
+    var upcoming = eventsUpcoming(items);
+    var past = items.filter(function(e) { return e.d < today; })
+      .sort(function(a, b) { return eventSortValue(b) - eventSortValue(a); }).slice(0, 30);
+
+    if (!upcoming.length) {
+      $('ev-list').innerHTML = '<p class="ev-status ev-empty">No upcoming ' + filterNoun() +
+        ' on the calendar right now. New dates are posted here as soon as they are set.</p>';
+    } else {
+      var html = '', lastMonth = '';
+      upcoming.forEach(function(e) {
+        var m = _MONL[e.d.getMonth()] + ' ' + e.d.getFullYear();
+        if (m !== lastMonth) { html += '<h2 class="ev-month">' + m + '</h2>'; lastMonth = m; }
+        html += cardHTML(e, false);
+      });
+      $('ev-list').innerHTML = html;
+    }
+
+    $('ev-past').hidden = !past.length;
+    $('ev-past-list').innerHTML = past.map(function(e) { return cardHTML(e, true); }).join('');
+  }
+
+  // ── Month view ──────────────────────────────────────────────────
+  function renderMonth() {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var items = filtered();
+    if (!monthCursor) {
+      var nxt = eventsUpcoming(items)[0];
+      var base = nxt ? nxt.d : today;
+      monthCursor = new Date(base.getFullYear(), base.getMonth(), 1);
+    }
+    var y = monthCursor.getFullYear(), m = monthCursor.getMonth();
+    $('ev-cal-title').textContent = _MONL[m] + ' ' + y;
+
+    var byDay = {};
+    items.forEach(function(e) {
+      if (e.d.getFullYear() === y && e.d.getMonth() === m) (byDay[e.d.getDate()] = byDay[e.d.getDate()] || []).push(e);
+    });
+
+    var html = '', lead = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+    for (var i = 0; i < lead; i++) html += '<span class="ev-cell ev-cell-blank"></span>';
+    for (var d = 1; d <= days; d++) {
+      var ts = new Date(y, m, d).getTime();
+      var evs = (byDay[d] || []).sort(function(a, b) { return eventSortValue(a) - eventSortValue(b); });
+      var cls = 'ev-cell' + (ts === today.getTime() ? ' is-today' : '') + (ts === selectedDay ? ' is-selected' : '');
+      if (evs.length) {
+        var dots = evs.slice(0, 4).map(function(e) { return '<i class="ev-dot ev-k-' + e.key + '"></i>'; }).join('');
+        var first = '<span class="ev-cell-first ev-k-' + evs[0].key + '">' + esc(evs[0].key === 'match' ? evs[0].title : evs[0].label) + '</span>';
+        var more = evs.length > 1 ? '<span class="ev-cell-more">+' + (evs.length - 1) + ' more</span>' : '';
+        html += '<button type="button" class="' + cls + ' has-events" data-ts="' + ts + '" aria-label="' +
+          esc(_MONL[m] + ' ' + d + ': ' + evs.map(function(e) { return e.title; }).join(', ')) + '">' +
+          '<span class="ev-cell-num">' + d + '</span><span class="ev-dots">' + dots + '</span>' + first + more + '</button>';
+      } else {
+        html += '<span class="' + cls + '"><span class="ev-cell-num">' + d + '</span></span>';
+      }
+    }
+    for (var t = (lead + days) % 7; t > 0 && t < 7; t++) html += '<span class="ev-cell ev-cell-blank"></span>';
+    $('ev-cal-grid').innerHTML = html;
+
+    // Events for the tapped day, or the whole month when no day is picked
+    var show, heading;
+    if (selectedDay != null) {
+      var sd = new Date(selectedDay);
+      show = byDay[sd.getDate()] || [];
+      heading = _DOWL[sd.getDay()] + ', ' + _MONL[m] + ' ' + sd.getDate();
+    } else {
+      show = [];
+      for (var k in byDay) show = show.concat(byDay[k]);
+      show.sort(function(a, b) { return eventSortValue(a) - eventSortValue(b); });
+      heading = 'All of ' + _MONL[m];
+    }
+    $('ev-day').innerHTML = '<h2 class="ev-month">' + heading + '</h2>' +
+      (show.length
+        ? show.map(function(e) { return cardHTML(e, e.d < today); }).join('')
+        : '<p class="ev-status ev-empty">No ' + filterNoun() + ' this month.</p>');
+  }
+
+  $('ev-cal-grid').addEventListener('click', function(e) {
+    var b = e.target.closest('.has-events');
+    if (!b) return;
+    var ts = +b.getAttribute('data-ts');
+    selectedDay = selectedDay === ts ? null : ts;
+    renderMonth();
+  });
+  function shiftMonth(n) {
+    monthCursor = new Date(monthCursor.getFullYear(), monthCursor.getMonth() + n, 1);
+    selectedDay = null;
+    renderMonth();
+  }
+  $('ev-prev').addEventListener('click', function() { shiftMonth(-1); });
+  $('ev-next').addEventListener('click', function() { shiftMonth(1); });
+
+  // ── Render ──────────────────────────────────────────────────────
+  function render() {
+    renderChips();
+    if (matches === null || extras === null) return;   // still loading
+    all = matches.concat(extras);
+    all.forEach(function(e, i) { e.i = i; });
+    var n = eventsUpcoming(all).length;
+    if (n) $('ev-count').textContent = n + ' upcoming event' + (n === 1 ? '' : 's');
+    if (view === 'list') renderList(); else renderMonth();
+  }
+
+  filter = hashToKey(location.hash);
+  renderChips();
+
+  fetchSheet('Schedule', function(err, rows) {
+    matches = (err || !rows) ? [] : rows.map(eventFromMatch).filter(Boolean);
+    render();
+  });
+  fetchSheet('Events', function(err, rows) {
+    if (!err && rows && !eventsTabValid(rows)) {
+      console.warn('[DEBVB] No "Events" tab found in the Google Sheet — see the setup notes in /js/sheets.js.');
+      rows = [];
+    }
+    extras = (err || !rows) ? [] : rows.map(eventFromRow).filter(Boolean);
+    render();
+  });
+})();
+</script>

@@ -4,7 +4,7 @@
 
    SETUP (one time):
    1. Go to sheets.google.com and create a new spreadsheet.
-   2. Add three tabs named exactly:  Schedule  |  Roster  |  News
+   2. Add four tabs named exactly:  Schedule  |  Roster  |  News  |  Events
    3. Click Share → change to "Anyone with the link" → Viewer → Done.
    4. Copy the Sheet ID from the URL:
         https://docs.google.com/spreadsheets/d/[SHEET_ID]/edit
@@ -50,6 +50,29 @@
 
    Most recent row (by Date) is shown expanded on news.html; older posts
    are in collapsible accordions. Only ShowOnHome=yes rows appear on index.html.
+
+   ── Events tab (events.html + "What's coming up" on the home page) ──────────
+   Date | Title | Type | Time | EndTime | Location | Address | Notes
+
+     Date      – YYYY-MM-DD, e.g. 2027-01-12
+     Title     – what families see, e.g. Open Gym  or  Spring Parent Meeting
+     Type      – Open Gym | Tryouts | Practice | Parent Meeting | Clinic |
+                 Fundraiser   (anything else still shows, under "All")
+     Time      – start time, e.g. 6:00 PM  (blank = all-day)
+     EndTime   – e.g. 8:00 PM  (optional; blank = 2 hours after Time)
+     Location  – short place name, e.g. DE Main Gym
+     Address   – optional Google Maps destination → adds a Directions button
+     Notes     – optional one-liner, e.g. Bring a water bottle and court shoes
+
+   One row per date — a weekly open gym is one row per week. Matches are NOT
+   entered here: events.html pulls them from the Schedule tab automatically.
+   Past rows drop into the "Past events" list on their own; delete them
+   whenever you like. To cancel, delete the row or put CANCELLED in the Title.
+
+   Links for Instagram posts (each opens the page pre-filtered):
+     /events.html#open-gym   /events.html#tryouts    /events.html#practice
+     /events.html#meetings   /events.html#clinics    /events.html#fundraisers
+     /events.html#matches
 
    ── Season archive (history.html) ───────────────────────────────────────────
    Seasons tab (one row per archived season):
@@ -447,4 +470,109 @@ function renderHomeAnnouncement(row) {
     '<div class="post-date">' + fmtDateLong(row.Date) + (row.Opponent ? ' &middot; ' + esc(row.Opponent) : '') + '</div>' +
     '<div class="post-body" style="font-size:13px;color:var(--muted);line-height:1.6;">' + bodyHTML + '</div>' +
     '</div>';
+}
+
+// ── Events helpers (events.html + home page "What's coming up") ───────────────
+
+var _DOWS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var _DOWL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var DE_GYM_ADDRESS = '50 Devon Dr, Exton, PA 19341';
+
+/** Category key → chip label and the #hash used in shareable links. */
+var EVENT_TYPES = [
+  { key: 'opengym',    label: 'Open Gym',       chip: 'Open Gyms',   hash: 'open-gym'    },
+  { key: 'tryouts',    label: 'Tryouts',        chip: 'Tryouts',     hash: 'tryouts'     },
+  { key: 'practice',   label: 'Practice',       chip: 'Practices',   hash: 'practice'    },
+  { key: 'match',      label: 'Match',          chip: 'Matches',     hash: 'matches'     },
+  { key: 'meeting',    label: 'Parent Meeting', chip: 'Meetings',    hash: 'meetings'    },
+  { key: 'clinic',     label: 'Clinic / Camp',  chip: 'Clinics',     hash: 'clinics'     },
+  { key: 'fundraiser', label: 'Fundraiser',     chip: 'Fundraisers', hash: 'fundraisers' }
+];
+
+/** Whatever was typed in the Type column → one of the keys above, or 'other'. */
+function eventTypeKey(type) {
+  var t = (type || '').toLowerCase();
+  if (t.indexOf('open') !== -1)                              return 'opengym';
+  if (t.indexOf('tryout') !== -1)                            return 'tryouts';
+  if (t.indexOf('practice') !== -1)                          return 'practice';
+  if (t.indexOf('meeting') !== -1)                           return 'meeting';
+  if (t.indexOf('clinic') !== -1 || t.indexOf('camp') !== -1) return 'clinic';
+  if (t.indexOf('fundrais') !== -1)                          return 'fundraiser';
+  return 'other';
+}
+
+function eventTypeLabel(key, typed) {
+  for (var i = 0; i < EVENT_TYPES.length; i++) {
+    if (EVENT_TYPES[i].key === key) return EVENT_TYPES[i].label;
+  }
+  return typed || 'Event';
+}
+
+/**
+ * Google returns the FIRST tab when the requested tab doesn't exist, so a
+ * missing Events tab would otherwise render the schedule as events.
+ */
+function eventsTabValid(rows) {
+  return !rows.length || (('Title' in rows[0]) && !('Opponent' in rows[0]));
+}
+
+function _eventDate(str) {
+  var d = parseISODate(str) || (str ? new Date(str) : null);
+  if (!d || isNaN(d)) return null;
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+/** Events-tab row → normalised event (null when the row has no usable date). */
+function eventFromRow(r) {
+  var d = _eventDate(r.Date);
+  if (!d) return null;
+  var key = eventTypeKey(r.Type);
+  return {
+    key: key, label: eventTypeLabel(key, r.Type), title: r.Title || r.Type || 'Event',
+    d: d, time: r.Time || '', endTime: r.EndTime || '',
+    place: r.Location || '', address: r.Address || '', notes: r.Notes || '', result: ''
+  };
+}
+
+/** Schedule-tab row → normalised event, so matches sit alongside everything else. */
+function eventFromMatch(r) {
+  var d = _eventDate(r.Date);
+  if (!d) return null;
+  var isHome = (r.Location || '').toLowerCase() === 'home';
+  var type   = (r.Type || '').toLowerCase();
+  var res    = (r.Result || '').toUpperCase();
+  return {
+    key: 'match',
+    label: type === 'scrim' ? 'Scrimmage' : type === 'playoff' ? 'Playoff' : 'Match',
+    title: (isHome ? 'vs. ' : '@ ') + (r.Opponent || 'TBD'),
+    d: d, time: r.Time || '', endTime: '',
+    place: isHome ? 'Home · DE gym' : 'Away',
+    address: r.Address || (isHome ? DE_GYM_ADDRESS : ''), notes: '',
+    result: (res === 'W' || res === 'L') ? res + (r.Score ? ' ' + r.Score.replace('-', '–') : '') : ''
+  };
+}
+
+/** "6:00 PM" / "6pm" / "18:30" → minutes after midnight, or null. */
+function parseClock(str) {
+  var m = /^\s*(\d{1,2})(?::(\d{2}))?\s*([ap])?\.?m?\.?\s*$/i.exec(str || '');
+  if (!m) return null;
+  var h = +m[1], min = +(m[2] || 0), ap = (m[3] || '').toLowerCase();
+  if (h > 23 || min > 59) return null;
+  if (ap === 'p' && h < 12) h += 12;
+  if (ap === 'a' && h === 12) h = 0;
+  return h * 60 + min;
+}
+
+/** Sort key: date, then start time (all-day first). */
+function eventSortValue(e) {
+  var c = parseClock(e.time);
+  return e.d.getTime() + (c == null ? 0 : c * 60000);
+}
+
+/** Events from today on, earliest first. */
+function eventsUpcoming(events) {
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  return events.filter(function(e) { return e.d >= today; })
+    .sort(function(a, b) { return eventSortValue(a) - eventSortValue(b); });
 }

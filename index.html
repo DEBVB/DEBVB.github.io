@@ -173,14 +173,14 @@ preload_json: "/photos/photos.json"
 
     <aside class="upcoming" aria-labelledby="upcoming-heading">
       <div class="sec-head">
-        <div class="sec-kicker">Coming up</div>
-        <h2 class="sec-title" id="upcoming-heading">Next Three</h2>
+        <div class="sec-kicker">Calendar</div>
+        <h2 class="sec-title" id="upcoming-heading">What&rsquo;s Coming Up</h2>
       </div>
       <div class="up-card">
         <ol class="up-list" id="up-list">
-          <li class="up-empty">Match dates post here as soon as the schedule is set.</li>
+          <li class="up-empty">Open gyms, tryouts, and match dates post here as soon as they are set.</li>
         </ol>
-        <a href="/schedule.html" class="up-foot">Full schedule &amp; scores &rarr;</a>
+        <a href="/events.html" class="up-foot">All events &rarr;</a>
       </div>
     </aside>
   </div>
@@ -551,6 +551,33 @@ function upItemHTML(r) {
     '<span class="up-meta">' + esc(meta) + '</span></div></li>';
 }
 
+function upEventHTML(e) {
+  var meta = [DAYS_SHORT[e.d.getDay()], e.time, e.label !== e.title ? e.label : '', e.place].filter(Boolean).join(' · ');
+  return '<li class="up-item">' +
+    '<div class="up-date"><span class="up-mon">' + _MONS[e.d.getMonth()].toUpperCase() + '</span>' +
+    '<span class="up-day">' + e.d.getDate() + '</span></div>' +
+    '<div class="up-txt"><span class="up-opp">' + esc(e.title) + '</span>' +
+    '<span class="up-meta">' + esc(meta) + '</span></div></li>';
+}
+
+// "What's coming up" is fed by two tabs that load independently
+var upMatches = [], upEvents = [], upEmptyMsg = '';
+
+function renderUpNext() {
+  var items = upMatches.map(function(r) {
+    var d = rowDate(r), c = parseClock(r.Time);
+    return { t: (d ? d.getTime() : 0) + (c == null ? 0 : c * 60000), html: upItemHTML(r) };
+  }).concat(upEvents.map(function(e) {
+    return { t: eventSortValue(e), html: upEventHTML(e) };
+  }));
+  items.sort(function(a, b) { return a.t - b.t; });
+  if (items.length) {
+    $('up-list').innerHTML = items.slice(0, 4).map(function(i) { return i.html; }).join('');
+  } else if (upEmptyMsg) {
+    $('up-list').innerHTML = '<li class="up-empty">' + upEmptyMsg + '</li>';
+  }
+}
+
 function chipHTML(r) {
   var res   = (r.Result || '').toUpperCase();
   var score = esc(r.Score || '').replace('-', '&ndash;');
@@ -571,8 +598,10 @@ fetchSheet('Schedule', function(err, rows) {
       detailHTML(ICON_USER, 'No club experience required'),
       actionHTML('btn-solid', '/contact.html', 'Tryout info') +
       actionHTML('btn-ghost', 'https://debvb.github.io/devbclinics/', 'Off-season clinics', true) +
-      actionHTML('md-textlink', '/schedule.html', 'Full schedule &rarr;'),
+      actionHTML('md-textlink', '/events.html', 'Upcoming events &rarr;'),
       null);
+    upMatches = [];
+    renderUpNext();
     return;
   }
 
@@ -651,16 +680,18 @@ fetchSheet('Schedule', function(err, rows) {
     $('rail-last').textContent = '';
   }
 
-  // Next three — the matches after the one in the hero
-  var list = $('up-list');
-  var rest = upcoming.slice(1, 4);
-  if (rest.length) {
-    list.innerHTML = rest.map(upItemHTML).join('');
-  } else if (next) {
-    list.innerHTML = '<li class="up-empty">No other matches on the schedule yet.</li>';
-  } else {
-    list.innerHTML = '<li class="up-empty">The ' + seasonYear + ' season is complete. See you in ' + (seasonYear + 1) + '.</li>';
-  }
+  // Coming up — the matches after the one in the hero, mixed with Events-tab rows
+  upMatches  = upcoming.slice(1);
+  upEmptyMsg = next ? 'Nothing else on the calendar yet.'
+                    : 'The ' + seasonYear + ' season is complete. See you in ' + (seasonYear + 1) + '.';
+  renderUpNext();
+});
+
+// ── Events → open gyms, tryouts, meetings… in "What's coming up" ─
+fetchSheet('Events', function(err, rows) {
+  if (err || !rows || !eventsTabValid(rows)) return;
+  upEvents = eventsUpcoming(rows.map(eventFromRow).filter(Boolean));
+  renderUpNext();
 });
 
 // ── Seasons → "Last Season" quick fact + offseason fallbacks ─────
