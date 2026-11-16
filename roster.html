@@ -209,7 +209,7 @@ document.getElementById('modalOverlay').addEventListener('click',function(e){if(
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 </script>
 
-<script src="/js/sheets.js"></script>
+<script src="/js/sheets.js?v={{ site.time | date: '%s' }}"></script>
 <script>
 // ── Roster loads from the Google Sheet's Roster tab ──────────────────────────
 function gridMessage(id, msg) {

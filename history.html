@@ -100,7 +100,7 @@ css: "schedule news history"
 </div>
 </main>
 
-<script src="/js/sheets.js"></script>
+<script src="/js/sheets.js?v={{ site.time | date: '%s' }}"></script>
 <script>
 (function () {
   var m = /^(19|20)\d{2}$/.exec(new URLSearchParams(location.search).get('season') || '');
