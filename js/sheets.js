@@ -54,11 +54,12 @@
    ── Events tab (events.html + "What's coming up" on the home page) ──────────
    Date | Title | Type | Time | EndTime | Location | Address | Notes
 
-     Date      – YYYY-MM-DD, e.g. 2027-01-12
+     Date      – YYYY-MM-DD, e.g. 2027-01-12  (1/12/2027 and 1/12 also work;
+                 with no year the next occurrence of that date is used)
      Title     – what families see, e.g. Open Gym  or  Spring Parent Meeting
      Type      – Open Gym | Tryouts | Practice | Parent Meeting | Clinic |
                  Fundraiser   (anything else still shows, under "All")
-     Time      – start time, e.g. 6:00 PM  (blank = all-day)
+     Time      – start time, e.g. 6:00 PM  (blank = all-day; always type AM/PM)
      EndTime   – e.g. 8:00 PM  (optional; blank = 2 hours after Time)
      Location  – short place name, e.g. DE Main Gym
      Address   – optional Google Maps destination → adds a Directions button
@@ -516,8 +517,28 @@ function eventsTabValid(rows) {
   return !rows.length || (('Title' in rows[0]) && !('Opponent' in rows[0]));
 }
 
+/**
+ * Accepts 2027-01-12, 1/12/2027, 1/12/27 and a bare 1/12. A date typed with
+ * no year is taken as its next occurrence (anything up to ~2 months back
+ * still counts as this year, so last week's open gym doesn't jump ahead).
+ */
 function _eventDate(str) {
-  var d = parseISODate(str) || (str ? new Date(str) : null);
+  str = (str || '').trim();
+  var d = parseISODate(str), m;
+  if (!d || isNaN(d)) {
+    m = /^(\d{1,2})[\/.\-](\d{1,2})(?:[\/.\-](\d{2}|\d{4}))?$/.exec(str);
+    if (m) {
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      if (m[3]) {
+        d = new Date(m[3].length === 2 ? 2000 + +m[3] : +m[3], +m[1] - 1, +m[2]);
+      } else {
+        d = new Date(today.getFullYear(), +m[1] - 1, +m[2]);
+        if (today - d > 60 * 86400000) d.setFullYear(d.getFullYear() + 1);
+      }
+    } else {
+      d = str ? new Date(str) : null;
+    }
+  }
   if (!d || isNaN(d)) return null;
   d.setHours(0, 0, 0, 0);
   return d;
@@ -559,6 +580,8 @@ function parseClock(str) {
   if (!m) return null;
   var h = +m[1], min = +(m[2] || 0), ap = (m[3] || '').toLowerCase();
   if (h > 23 || min > 59) return null;
+  // No AM/PM typed: 1:00–7:59 can only sensibly be afternoon/evening
+  if (!ap && !/m/i.test(str) && h >= 1 && h <= 7) h += 12;
   if (ap === 'p' && h < 12) h += 12;
   if (ap === 'a' && h === 12) h = 0;
   return h * 60 + min;

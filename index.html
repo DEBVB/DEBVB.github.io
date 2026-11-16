@@ -470,7 +470,7 @@ preload_json: "/photos/photos.json"
 
 </script>
 
-<script src="/js/sheets.js"></script>
+<script src="/js/sheets.js?v={{ site.time | date: '%s' }}"></script>
 <script>
 // ── Matchday helpers ─────────────────────────────────────────────
 var $ = function(id) { return document.getElementById(id); };
