@@ -84,6 +84,11 @@ footer { background: var(--navy); color: var(--white); border-top: 3px solid var
 .page-wrap { animation: fadeUp 0.4s 0.15s both; }
 
 /* ── Responsive ──────────────────────────────────────────────────── */
+/* Eight links + Watch stop fitting beside the brand just under 1000px */
+@media (max-width: 1000px) {
+  .nav-links { display: none; }
+  .nav-burger { display: block; }
+}
 @media (max-width: 900px) {
   .nav-inner { padding: 0 20px; }
   .nav-links { display: none; }

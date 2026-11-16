@@ -24,7 +24,7 @@ footer) lives in `_includes/` and `_layouts/default.html`; per-page styles in
 
 **Live data comes from a Google Sheet** — no code changes needed for routine
 updates. `js/sheets.js` fetches the published sheet's `Schedule`, `Roster`,
-and `News` tabs as CSV at page load (with a 24-hour localStorage fallback
+`News`, and `Events` tabs as CSV at page load (with a 24-hour localStorage fallback
 cache). Column formats for each tab are documented at the top of
 [`js/sheets.js`](js/sheets.js).
 
@@ -37,6 +37,7 @@ which drives the homepage slideshow. Keep images ≤1600px on the long edge.
 | Task | How |
 |---|---|
 | Add a game / result | Edit the `Schedule` tab in the Google Sheet |
+| Add an open gym, tryout, practice, meeting, clinic, or fundraiser | Add a row to the `Events` tab — it appears on `events.html` and the home page |
 | Post news / a recap | Add a row to the `News` tab (`ShowOnHome: yes` to feature it) |
 | Update player stats | Edit the `Roster` tab |
 | Add slideshow photos | Commit images to `photos/` |
