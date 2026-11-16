@@ -149,13 +149,12 @@ css: events
 
   /** { allDay, start, end } as calendar stamps — local (Eastern) wall-clock time. */
   function stamps(e) {
-    var s = parseClock(e.time);
+    var t = eventTimes(e), s = t.start;
     if (s == null) {
       var next = new Date(e.d); next.setDate(next.getDate() + 1);
       return { allDay: true, start: ymd(e.d), end: ymd(next) };
     }
-    var en = parseClock(e.endTime);
-    if (en == null || en <= s) en = s + 120;
+    var en = t.end == null ? s + 120 : t.end;
     function at(mins) {
       var d = new Date(e.d); d.setMinutes(mins);
       return ymd(d) + 'T' + pad(d.getHours()) + pad(d.getMinutes()) + '00';
@@ -215,8 +214,7 @@ css: events
     '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>';
 
   function timeText(e) {
-    if (!e.time) return 'Time TBA';
-    return e.time + (e.endTime ? ' – ' + e.endTime : '');
+    return eventTimeText(e) || 'Time TBA';
   }
 
   function cardHTML(e, past) {

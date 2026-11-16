@@ -552,7 +552,7 @@ function upItemHTML(r) {
 }
 
 function upEventHTML(e) {
-  var meta = [DAYS_SHORT[e.d.getDay()], e.time, e.label !== e.title ? e.label : '', e.place].filter(Boolean).join(' · ');
+  var meta = [DAYS_SHORT[e.d.getDay()], eventTimeText(e).split(' – ')[0], e.label !== e.title ? e.label : '', e.place].filter(Boolean).join(' · ');
   return '<li class="up-item">' +
     '<div class="up-date"><span class="up-mon">' + _MONS[e.d.getMonth()].toUpperCase() + '</span>' +
     '<span class="up-day">' + e.d.getDate() + '</span></div>' +

@@ -59,7 +59,8 @@
      Title     – what families see, e.g. Open Gym  or  Spring Parent Meeting
      Type      – Open Gym | Tryouts | Practice | Parent Meeting | Clinic |
                  Fundraiser   (anything else still shows, under "All")
-     Time      – start time, e.g. 6:00 PM  (blank = all-day; always type AM/PM)
+     Time      – start time, e.g. 6:00 PM  (blank = all-day; 7:30 PM, 7:30pm and 19:30 all
+                 display as 7:30 PM — include AM/PM to avoid guesswork)
      EndTime   – e.g. 8:00 PM  (optional; blank = 2 hours after Time)
      Location  – short place name, e.g. DE Main Gym
      Address   – optional Google Maps destination → adds a Directions button
@@ -585,6 +586,32 @@ function parseClock(str) {
   if (ap === 'p' && h < 12) h += 12;
   if (ap === 'a' && h === 12) h = 0;
   return h * 60 + min;
+}
+
+/**
+ * An event's start/end as minutes after midnight ({start: null} = all-day).
+ * An end time typed without AM/PM that lands before the start (7:30 → 9:30
+ * in the evening) is moved to the afternoon. `end` is null when none was given.
+ */
+function eventTimes(e) {
+  var s = parseClock(e.time), en = parseClock(e.endTime);
+  if (s == null) return { start: null, end: null };
+  if (en != null && en <= s && en + 720 > s && !/[ap]/i.test(e.endTime)) en += 720;
+  if (en != null && en <= s) en = null;
+  return { start: s, end: en };
+}
+
+/** Minutes after midnight → "7:30 PM". */
+function fmtClock(mins) {
+  var h = Math.floor(mins / 60) % 24, m = mins % 60;
+  return ((h % 12) || 12) + ':' + (m < 10 ? '0' : '') + m + ' ' + (h < 12 ? 'AM' : 'PM');
+}
+
+/** "7:30 PM – 9:30 PM", "7:30 PM", or '' when no time was entered. Unreadable text is shown as typed. */
+function eventTimeText(e) {
+  var t = eventTimes(e);
+  if (t.start == null) return e.time || '';
+  return fmtClock(t.start) + (t.end != null ? ' – ' + fmtClock(t.end) : '');
 }
 
 /** Sort key: date, then start time (all-day first). */
