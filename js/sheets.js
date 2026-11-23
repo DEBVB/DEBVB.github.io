@@ -67,7 +67,7 @@
      Notes     – optional one-liner, e.g. Bring a water bottle and court shoes
      RSVP      – optional; type  no  to hide the Going / Maybe / Can't go
                  buttons on that event (blank = buttons shown). Only matters
-                 once attendance is set up — see ATTENDANCE-SETUP.md.
+                 once RSVPs are set up — see ATTENDANCE-SETUP.md.
 
    One row per date — a weekly open gym is one row per week. Matches are NOT
    entered here: events.html pulls them from the Schedule tab automatically.

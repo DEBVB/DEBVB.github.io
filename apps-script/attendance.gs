@@ -1,30 +1,34 @@
 /* =============================================================================
-   DEBVB Attendance backend  ·  Google Apps Script
+   DEBVB RSVP backend  ·  Google Apps Script
    =============================================================================
 
    Paste this whole file into the Apps Script editor of a NEW, PRIVATE Google
    Sheet (not the public website sheet — that one is readable by anyone).
    Full step-by-step setup: ATTENDANCE-SETUP.md in the website repo.
 
-   Script properties (Project Settings → Script properties):
-     TEAM_CODE   – what players/parents type once to RSVP, e.g. cougars27
-     COACH_CODE  – what coaches type to see names and take attendance.
-                   Make it long and keep it private.
+   Script property (Project Settings → Script properties):
+     COACH_CODE  – what coaches type to see who's coming. Long and private.
 
-   Data lives in the "Attendance" tab of this sheet, one row per event+player:
-     EventID | Event | Date | Player | Status | Note | CheckIn | Updated
+   Tabs in this sheet (created automatically the first time they're needed):
 
-     Status  – going | maybe | out      (the player's RSVP)
-     CheckIn – present | late | absent  (what the coach marked at the gym)
+   ── Players ── one row per player; only these people can RSVP
+     Name | Team | Code
+       Name – as you want it shown, e.g. Sam Lee
+       Team – optional, e.g. Varsity or JV (adds a filter on the coach page)
+       Code – the player's personal sign-in code. Leave blank and use the
+              sheet menu  RSVP → Fill in missing player codes  to generate.
+              Delete or change a code to lock that person out.
 
-   The public website only ever receives COUNTS. Names are returned only
-   when the request carries COACH_CODE.
+   ── RSVPs ── written by the website, one row per event + player
+     EventID | Event | Date | Player | Status | Note | Updated
+       Status – going | maybe | out
+
+   Nothing here is public: every request needs a player code or the coach code.
    =========================================================================== */
 
-var TAB = 'Attendance';
-var HEADERS = ['EventID', 'Event', 'Date', 'Player', 'Status', 'Note', 'CheckIn', 'Updated'];
+var PLAYERS = 'Players', PLAYER_HEADERS = ['Name', 'Team', 'Code'];
+var RSVPS = 'RSVPs', RSVP_HEADERS = ['EventID', 'Event', 'Date', 'Player', 'Status', 'Note', 'Updated'];
 var STATUSES = ['going', 'maybe', 'out'];
-var CHECKINS = ['present', 'late', 'absent', ''];
 
 function doGet(e)  { return handle_(e.parameter || {}); }
 function doPost(e) {
@@ -37,13 +41,11 @@ function handle_(p) {
   try {
     var out;
     switch (p.action) {
-      case 'counts':  out = counts_(p);  break;   // public
-      case 'mine':    out = mine_(p);    break;   // team code
-      case 'rsvp':    out = rsvp_(p);    break;   // team code
-      case 'event':   out = eventList_(p); break; // coach code
-      case 'checkin': out = checkin_(p); break;   // coach code
-      case 'report':  out = report_(p);  break;   // coach code
-      case 'verify':  out = verify_(p);  break;
+      case 'verify': out = verify_(p); break;   // any code → who it belongs to
+      case 'mine':   out = mine_(p);   break;   // player code
+      case 'rsvp':   out = rsvp_(p);   break;   // player code
+      case 'counts': out = counts_(p); break;   // player or coach code
+      case 'event':  out = event_(p);  break;   // coach code
       default: throw new Error('Unknown action');
     }
     out.ok = true;
@@ -53,146 +55,159 @@ function handle_(p) {
   }
 }
 
+// ── Sheet menu: generate player codes ────────────────────────────────────────
+
+function onOpen() {
+  SpreadsheetApp.getUi().createMenu('RSVP')
+    .addItem('Fill in missing player codes', 'fillCodes')
+    .addToUi();
+  tab_(PLAYERS, PLAYER_HEADERS);
+  tab_(RSVPS, RSVP_HEADERS);
+}
+
+function fillCodes() {
+  var sh = tab_(PLAYERS, PLAYER_HEADERS), n = sh.getLastRow();
+  if (n < 2) return;
+  var vals = sh.getRange(2, 1, n - 1, 3).getValues(), used = {};
+  vals.forEach(function(r) { if (r[2]) used[String(r[2]).toLowerCase()] = true; });
+  // No 0/O/1/I/L so codes are easy to read out loud
+  var abc = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  vals.forEach(function(r) {
+    if (!String(r[0]).trim() || String(r[2]).trim()) return;
+    var c;
+    do { c = ''; for (var i = 0; i < 6; i++) c += abc.charAt(Math.floor(Math.random() * abc.length)); }
+    while (used[c.toLowerCase()]);
+    used[c.toLowerCase()] = true;
+    r[2] = c;
+  });
+  sh.getRange(2, 1, n - 1, 3).setValues(vals);
+}
+
 // ── Auth ─────────────────────────────────────────────────────────────────────
 
-function prop_(k) { return (PropertiesService.getScriptProperties().getProperty(k) || '').trim(); }
-function same_(a, b) { return !!b && String(a || '').trim().toLowerCase() === b.toLowerCase(); }
-function isCoach_(p) { return same_(p.code, prop_('COACH_CODE')); }
-function isTeam_(p)  { return isCoach_(p) || same_(p.code, prop_('TEAM_CODE')); }
-function needTeam_(p)  { if (!isTeam_(p))  throw new Error('Wrong team code'); }
-function needCoach_(p) { if (!isCoach_(p)) throw new Error('Wrong coach code'); }
+function norm_(s) { return String(s == null ? '' : s).trim().toLowerCase(); }
 
-function verify_(p) { return { team: isTeam_(p), coach: isCoach_(p) }; }
+function isCoach_(p) {
+  var c = norm_(PropertiesService.getScriptProperties().getProperty('COACH_CODE'));
+  return !!c && norm_(p.code) === c;
+}
+
+function players_() {
+  var sh = tab_(PLAYERS, PLAYER_HEADERS), n = sh.getLastRow();
+  if (n < 2) return [];
+  return sh.getRange(2, 1, n - 1, 3).getValues()
+    .map(function(r) { return { name: clean_(r[0], 60), team: clean_(r[1], 30), code: norm_(r[2]) }; })
+    .filter(function(r) { return r.name; });
+}
+
+function playerFor_(code) {
+  var c = norm_(code);
+  if (!c) return null;
+  var all = players_();
+  for (var i = 0; i < all.length; i++) if (all[i].code && all[i].code === c) return all[i];
+  return null;
+}
+
+function needPlayer_(p) {
+  var who = playerFor_(p.code);
+  if (!who) throw new Error('That code didn’t work');
+  return who;
+}
+
+function verify_(p) {
+  var who = playerFor_(p.code);
+  return { coach: isCoach_(p), player: who ? who.name : '' };
+}
 
 // ── Sheet helpers ────────────────────────────────────────────────────────────
 
-function sheet_() {
+function tab_(name, headers) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName(TAB);
+  var sh = ss.getSheetByName(name);
   if (!sh) {
-    sh = ss.insertSheet(TAB);
-    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
+    sh = ss.insertSheet(name);
+    sh.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold');
     sh.setFrozenRows(1);
   }
   return sh;
 }
 
-function rows_() {
-  var sh = sheet_(), n = sh.getLastRow();
+function rsvps_() {
+  var sh = tab_(RSVPS, RSVP_HEADERS), n = sh.getLastRow();
   if (n < 2) return [];
-  return sh.getRange(2, 1, n - 1, HEADERS.length).getValues().map(function(r, i) {
-    return { row: i + 2, eventId: String(r[0]), event: String(r[1]), date: fmtDate_(r[2]),
-             player: String(r[3]), status: String(r[4]), note: String(r[5]),
-             checkin: String(r[6]), updated: r[7] ? new Date(r[7]).toISOString() : '' };
+  return sh.getRange(2, 1, n - 1, RSVP_HEADERS.length).getValues().map(function(r, i) {
+    return { row: i + 2, eventId: String(r[0]), player: String(r[3]), status: String(r[4]), note: String(r[5]) };
   });
 }
 
-function fmtDate_(v) {
-  if (v instanceof Date) return Utilities.formatDate(v, Session.getScriptTimeZone(), 'yyyy-MM-dd');
-  return String(v || '');
-}
-
 function clean_(s, max) { return String(s == null ? '' : s).replace(/[\r\n\t]+/g, ' ').trim().slice(0, max || 80); }
-function key_(s) { return clean_(s).toLowerCase().replace(/\s+/g, ' '); }
 // A leading = + - @ would make Sheets treat typed text as a formula.
 function safe_(s) { return /^[=+\-@]/.test(s) ? "'" + s : s; }
-
-function find_(all, eventId, player) {
-  var k = key_(player);
-  for (var i = 0; i < all.length; i++) {
-    if (all[i].eventId === eventId && key_(all[i].player) === k) return all[i];
-  }
-  return null;
-}
 
 function ids_(p) {
   return String(p.ids || '').split(',').map(function(s) { return clean_(s, 120); }).filter(Boolean);
 }
 
-// ── Public: counts only, never names ─────────────────────────────────────────
+// ── Player actions ───────────────────────────────────────────────────────────
+
+function mine_(p) {
+  var who = needPlayer_(p), set = {}, out = {};
+  ids_(p).forEach(function(id) { set[id] = true; });
+  rsvps_().forEach(function(r) {
+    if (set[r.eventId] && norm_(r.player) === norm_(who.name)) out[r.eventId] = r.status;
+  });
+  return { mine: out };
+}
 
 function counts_(p) {
-  var want = ids_(p), set = {}, out = {};
-  want.forEach(function(id) { set[id] = true; out[id] = { going: 0, maybe: 0, out: 0 }; });
-  rows_().forEach(function(r) {
+  if (!isCoach_(p)) needPlayer_(p);
+  var set = {}, out = {};
+  ids_(p).forEach(function(id) { set[id] = true; out[id] = { going: 0, maybe: 0, out: 0 }; });
+  rsvps_().forEach(function(r) {
     if (set[r.eventId] && out[r.eventId][r.status] != null) out[r.eventId][r.status]++;
   });
   return { counts: out };
 }
 
-// ── Team: one player's own answers, and RSVP ─────────────────────────────────
-
-function mine_(p) {
-  needTeam_(p);
-  var k = key_(p.player), set = {}, out = {};
-  ids_(p).forEach(function(id) { set[id] = true; });
-  rows_().forEach(function(r) {
-    if (set[r.eventId] && key_(r.player) === k) out[r.eventId] = r.status;
-  });
-  return { mine: out };
-}
-
 function rsvp_(p) {
-  needTeam_(p);
-  var eventId = clean_(p.eventId, 120), player = clean_(p.player, 60);
-  var status = String(p.status || '').toLowerCase();
-  if (!eventId || !player) throw new Error('Missing event or name');
+  var who = needPlayer_(p);
+  var eventId = clean_(p.eventId, 120), status = norm_(p.status);
+  if (!eventId) throw new Error('Missing event');
   if (STATUSES.indexOf(status) === -1 && status !== 'clear') throw new Error('Bad status');
 
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    var sh = sheet_(), hit = find_(rows_(), eventId, player);
+    var sh = tab_(RSVPS, RSVP_HEADERS), hit = null, all = rsvps_();
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].eventId === eventId && norm_(all[i].player) === norm_(who.name)) { hit = all[i]; break; }
+    }
     if (status === 'clear') {
       if (hit) sh.deleteRow(hit.row);
     } else {
-      var vals = [safe_(eventId), safe_(clean_(p.event, 120)), clean_(p.date, 10), safe_(player),
-                  status, safe_(clean_(p.note, 200)), hit ? hit.checkin : '', new Date()];
-      if (hit) sh.getRange(hit.row, 1, 1, HEADERS.length).setValues([vals]);
+      var vals = [safe_(eventId), safe_(clean_(p.event, 120)), clean_(p.date, 10), safe_(who.name),
+                  status, safe_(clean_(p.note, 200)), new Date()];
+      if (hit) sh.getRange(hit.row, 1, 1, RSVP_HEADERS.length).setValues([vals]);
       else sh.appendRow(vals);
     }
   } finally { lock.releaseLock(); }
-  return counts_({ ids: eventId });
+  return counts_({ code: p.code, ids: eventId });
 }
 
-// ── Coach: names, check-in, season report ────────────────────────────────────
+// ── Coach: everyone's answer for one event ───────────────────────────────────
 
-function eventList_(p) {
-  needCoach_(p);
-  var id = clean_(p.eventId, 120);
-  return { players: rows_().filter(function(r) { return r.eventId === id; }).map(function(r) {
-    return { player: r.player, status: r.status, note: r.note, checkin: r.checkin, updated: r.updated };
-  }) };
-}
-
-function checkin_(p) {
-  needCoach_(p);
-  var eventId = clean_(p.eventId, 120), player = clean_(p.player, 60);
-  var checkin = String(p.checkin || '').toLowerCase();
-  if (!eventId || !player) throw new Error('Missing event or name');
-  if (CHECKINS.indexOf(checkin) === -1) throw new Error('Bad check-in value');
-
-  var lock = LockService.getScriptLock();
-  lock.waitLock(10000);
-  try {
-    var sh = sheet_(), hit = find_(rows_(), eventId, player);
-    if (hit) {
-      sh.getRange(hit.row, 7, 1, 2).setValues([[checkin, new Date()]]);
-    } else {
-      // Coach marking someone who never RSVP'd
-      sh.appendRow([safe_(eventId), safe_(clean_(p.event, 120)), clean_(p.date, 10), safe_(player),
-                    '', '', checkin, new Date()]);
-    }
-  } finally { lock.releaseLock(); }
-  return {};
-}
-
-function report_(p) {
-  needCoach_(p);
-  return { rows: rows_().map(function(r) {
-    return { eventId: r.eventId, event: r.event, date: r.date, player: r.player,
-             status: r.status, checkin: r.checkin };
-  }) };
+function event_(p) {
+  if (!isCoach_(p)) throw new Error('Wrong coach code');
+  var id = clean_(p.eventId, 120), ans = {};
+  rsvps_().forEach(function(r) { if (r.eventId === id) ans[norm_(r.player)] = r; });
+  var list = players_().map(function(pl) {
+    var a = ans[norm_(pl.name)] || {};
+    delete ans[norm_(pl.name)];
+    return { player: pl.name, team: pl.team, status: a.status || '', note: a.note || '' };
+  });
+  // Answers from players who have since been removed from the Players tab
+  for (var k in ans) list.push({ player: ans[k].player, team: '', status: ans[k].status, note: ans[k].note });
+  return { players: list };
 }
 
 function json_(obj) {

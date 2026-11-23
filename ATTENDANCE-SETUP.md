@@ -1,63 +1,72 @@
-# Attendance & RSVP setup (replaces TeamSnap availability)
+# RSVP setup (replaces TeamSnap availability)
 
-Players and parents tap **Going / Maybe / Can't go** on any event on
+Players tap **Going / Maybe / Can't go** on events on
 [events.html](https://debvb.github.io/events.html). Coaches open
-[attendance.html](https://debvb.github.io/attendance.html) to see who's coming,
-check players in at the gym (Present / Late / Absent) and see season totals.
+[attendance.html](https://debvb.github.io/attendance.html) to see who's coming
+to each event.
 
-It's free: answers are saved by a small Google Apps Script into a **private**
-Google Sheet that only you can open. The public website only ever shows
-**counts** ("12 going · 2 maybe"); names are shown only to someone with the
-coach code.
+**Only your players can RSVP.** Each player has a personal code. The buttons
+only appear on a phone that has signed in with one. Anyone else, like someone
+who finds the site through Instagram, sees the normal events page with no
+buttons and no counts. A personal code also stops one player answering for
+another.
+
+It's free. Answers are saved by a small Google Apps Script into a **private**
+Google Sheet that only you can open.
 
 > **Why a second sheet?** The website sheet is shared "Anyone with the link",
-> so anything in it can be read by anyone. Players' names and attendance
-> shouldn't be, so they go in a separate sheet you never share.
+> so anything in it can be read by anyone. Player codes and answers shouldn't
+> be, so they go in a separate sheet you never share.
 
 ## One-time setup (about 10 minutes)
 
 1. **Make the private sheet.** Go to [sheets.new](https://sheets.new) and name it
-   `DEBVB Attendance`. Do **not** share it.
+   `DEBVB RSVPs`. Do **not** share it.
 2. **Add the script.** In that sheet: **Extensions → Apps Script**. Delete
    what's in `Code.gs`, paste the whole of
    [`apps-script/attendance.gs`](apps-script/attendance.gs), and click **Save**.
-3. **Set the two codes.** In the Apps Script editor: **Project Settings** (gear
-   icon) → **Script properties** → **Add script property**:
-   - `TEAM_CODE` — short and easy, shared with players and parents
-     (e.g. `cougars27`). It just keeps strangers from filling in fake answers.
-   - `COACH_CODE` — long and private, only for coaches. Anyone with it can see
-     every player's answers.
+3. **Set the coach code.** In the Apps Script editor: **Project Settings**
+   (gear icon) → **Script properties** → **Add script property**:
+   `COACH_CODE` = a long private password for coaches.
 4. **Deploy it.** **Deploy → New deployment** → gear → **Web app**:
    - *Execute as:* **Me**
    - *Who has access:* **Anyone**
 
-   Click **Deploy**, approve the permissions prompt (Google warns because it's
-   your own unpublished script: **Advanced → Go to … (unsafe)** → **Allow**),
-   and copy the **Web app URL** (ends in `/exec`).
+   (Google's "Anyone" only means the website is allowed to talk to the script.
+   Every request still needs a valid player or coach code.)
+
+   Click **Deploy** and approve the permissions prompt. Google warns because
+   it's your own unpublished script: choose **Advanced → Go to … (unsafe) →
+   Allow**. Copy the **Web app URL** (it ends in `/exec`).
 5. **Connect the website.** In [`js/attendance.js`](js/attendance.js), paste
    the URL between the quotes:
    ```js
    var ATTENDANCE_URL = 'https://script.google.com/macros/s/AKfy…/exec';
    ```
-   Commit and push. The RSVP buttons appear on every upcoming event.
-6. **Tell the team.** Post the team code in the group chat with the link to
-   the Events page. Each phone asks for the player's name and the code once,
-   then remembers them.
+   Commit and push.
+6. **Add your players.** Reload the private sheet. A **Players** tab and an
+   **RSVP** menu appear. Fill in `Name` (and `Team`, e.g. Varsity / JV, if
+   you want a filter), leave `Code` blank, then click **RSVP → Fill in missing
+   player codes**.
+7. **Send each player their code.** Easiest is a personal link that signs
+   them in with one tap:
+   ```
+   https://debvb.github.io/events.html?rsvp=THEIRCODE
+   ```
+   They can also tap **"sign in to RSVP"** on the Events page and type the
+   code. Their phone remembers it after that. Parents can use the same link to
+   answer for their player.
 
 ## Day to day
 
 | Task | How |
 |---|---|
-| See who's coming | attendance.html → pick the event |
-| Take attendance | Tap **Present / Late / Absent** next to each name (tap again to clear). "Mark everyone Going as present" does it in one tap. |
-| Someone not on the roster shows up (open gym, tryouts) | "Add a walk-in" at the bottom of the event |
-| Season attendance % | attendance.html → **Season** |
-| Export / edit the raw data | Open the private sheet's `Attendance` tab |
+| See who's coming | attendance.html → pick the event (grouped into Going / Maybe / Can't go / No reply yet) |
+| New player | Add a row to **Players**, then **RSVP → Fill in missing player codes** |
+| Player leaves, or a code got shared around | Delete their row, or clear their code and generate a new one. The old code stops working right away. |
 | Turn RSVP off for one event (e.g. a fundraiser) | Type `no` in that row's `RSVP` column on the website sheet's `Events` tab |
-| Change a code | Edit the script property — no redeploy needed. Changing `TEAM_CODE` makes every phone ask again. |
-
-**Names come from the `Roster` tab** of the website sheet, so the dropdown and
-the coach list stay current with the roster you already maintain.
+| Raw data / export | The **RSVPs** tab of the private sheet |
+| Change the coach code | Edit the `COACH_CODE` script property (no redeploy needed) |
 
 **Don't rename an event after people have answered.** Each event is identified
 by its date + title, so changing the title (or date) starts a fresh, empty
@@ -68,11 +77,3 @@ RSVP list for it. Changing the time, location or notes is fine.
 Edit the code, then **Deploy → Manage deployments → ✏️ → Version: New
 version → Deploy**. That keeps the same URL, so the website doesn't need to
 change. (A *New deployment* would make a new URL.)
-
-## What this doesn't do (yet)
-
-TeamSnap extras that aren't included: automatic reminder emails/texts, team
-chat, and payments. Reminders can be added later with an Apps Script
-time-driven trigger that emails parents whose players haven't answered —
-it would need a `Parent Email` column on the Roster (kept in the private
-sheet, not the public one).

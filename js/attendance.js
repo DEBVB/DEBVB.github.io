@@ -1,15 +1,19 @@
 /* =============================================================================
-   DEBVB attendance / RSVP  ·  /js/attendance.js
+   DEBVB RSVP  ·  /js/attendance.js
    =============================================================================
    Talks to the Google Apps Script web app in /apps-script/attendance.gs.
-   Setup steps: ATTENDANCE-SETUP.md. Until ATTENDANCE_URL is filled in, the
-   RSVP buttons simply don't appear and nothing else on the site changes.
+   Setup steps: ATTENDANCE-SETUP.md. Until ATTENDANCE_URL is filled in, nothing
+   on the site changes.
+
+   Only players with a personal code (Players tab of the private sheet) see
+   the Going / Maybe / Can't go buttons. Everyone else sees the plain page.
+   Personal sign-in link for a player:  /events.html?rsvp=THEIRCODE
    =========================================================================== */
 
 var ATTENDANCE_URL = '';   // e.g. https://script.google.com/macros/s/AKfy…/exec
 
 var Attendance = (function() {
-  var LS_CODE = 'debvb:att:code', LS_PLAYER = 'debvb:att:player', LS_COACH = 'debvb:att:coach';
+  var LS_CODE = 'debvb:rsvp:code', LS_PLAYER = 'debvb:rsvp:player', LS_COACH = 'debvb:rsvp:coach';
 
   function enabled() { return /^https:\/\/script\.google(usercontent)?\.com\//.test(ATTENDANCE_URL); }
 
@@ -27,12 +31,11 @@ var Attendance = (function() {
 
   /** Reads go as GET, writes as a text/plain POST (no CORS preflight for Apps Script). */
   function call(action, params, cb) {
-    if (!enabled()) { cb(new Error('Attendance is not set up yet')); return; }
+    if (!enabled()) { cb(new Error('RSVP is not set up yet')); return; }
     params = params || {};
     params.action = action;
-    var write = action === 'rsvp' || action === 'checkin';
     var opts, url = ATTENDANCE_URL;
-    if (write) {
+    if (action === 'rsvp') {
       opts = { method: 'POST', body: JSON.stringify(params), headers: { 'Content-Type': 'text/plain;charset=utf-8' } };
     } else {
       url += '?' + Object.keys(params).map(function(k) {
@@ -43,13 +46,15 @@ var Attendance = (function() {
     fetch(url, opts)
       .then(function(r) { return r.json(); })
       .then(function(j) { j && j.ok ? cb(null, j) : cb(new Error((j && j.error) || 'Something went wrong')); })
-      .catch(function() { cb(new Error('Could not reach the attendance service. Check your connection and try again.')); });
+      .catch(function() { cb(new Error('Could not reach the RSVP service. Check your connection and try again.')); });
   }
 
   // ── Events-page RSVP widget ──────────────────────────────────────────────
-  var counts = {}, mine = {}, asked = {}, byId = {}, roster = [], dialog = null;
+  var counts = {}, mine = {}, asked = {}, byId = {}, dialog = null, rerender = function() {};
 
   var LABELS = { going: 'Going', maybe: 'Maybe', out: "Can't go" };
+
+  function signedIn() { return enabled() && !!get(LS_CODE) && !!get(LS_PLAYER); }
 
   function countText(c) {
     if (!c) return '';
@@ -60,9 +65,9 @@ var Attendance = (function() {
     return bits.join(' · ');
   }
 
-  /** HTML for one card's RSVP row (empty string when RSVPs are off). */
+  /** HTML for one card's RSVP row — empty unless a player is signed in on this device. */
   function rsvpHTML(e) {
-    if (!enabled() || e.rsvp === false || /cancel/i.test(e.title)) return '';
+    if (!signedIn() || e.rsvp === false || /cancel/i.test(e.title)) return '';
     var id = eventId(e);
     byId[id] = e;
     var cur = mine[id] || '';
@@ -72,7 +77,7 @@ var Attendance = (function() {
         '" data-rsvp="' + s + '" aria-pressed="' + on + '">' + LABELS[s] + '</button>';
     }).join('');
     return '<div class="ev-rsvp" data-event="' + esc(id) + '">' +
-      '<span class="ev-add-label">Attendance</span>' +
+      '<span class="ev-add-label">Will you be there?</span>' +
       '<span class="ev-rsvp-btns" role="group" aria-label="Will you be there?">' + btns + '</span>' +
       '<span class="ev-rsvp-count" aria-live="polite">' + esc(countText(counts[id])) + '</span>' +
       '</div>';
@@ -92,40 +97,31 @@ var Attendance = (function() {
     }
   }
 
-  /** After the cards are drawn: load counts (+ this player's answers) for any we haven't asked about. */
+  function signOut(msg) {
+    set(LS_CODE, ''); set(LS_PLAYER, '');
+    counts = {}; mine = {}; asked = {};
+    paintWho(msg); rerender();
+  }
+
+  /** After the cards are drawn: load counts + this player's answers for any we haven't asked about. */
   function hydrate() {
-    if (!enabled()) return;
+    if (!signedIn()) return;
     var ids = [], nodes = document.querySelectorAll('.ev-rsvp[data-event]');
     for (var i = 0; i < nodes.length; i++) {
       var id = nodes[i].getAttribute('data-event');
       if (!asked[id]) { asked[id] = true; ids.push(id); }
     }
-    if (!ids.length) return;
-    // Keep URLs short: ask in batches
-    for (var b = 0; b < ids.length; b += 25) (function(batch) {
-      call('counts', { ids: batch.join(',') }, function(err, j) {
-        if (err) return;
+    var code = get(LS_CODE);
+    for (var b = 0; b < ids.length; b += 25) (function(batch) {   // keep URLs short
+      call('counts', { ids: batch, code: code }, function(err, j) {
+        if (err) { if (/code/i.test(err.message)) signOut('Your RSVP code no longer works — ask a coach for a new one.'); return; }
         for (var k in j.counts) { counts[k] = j.counts[k]; paint(k); }
       });
-      var player = get(LS_PLAYER), code = get(LS_CODE);
-      if (player && code) call('mine', { ids: batch.join(','), player: player, code: code }, function(err, j) {
+      call('mine', { ids: batch, code: code }, function(err, j) {
         if (err) return;
         for (var k in j.mine) { mine[k] = j.mine[k]; paint(k); }
       });
-    })(ids.slice(b, b + 25));
-  }
-
-  function refreshMine() {
-    mine = {};
-    var ids = Object.keys(asked), player = get(LS_PLAYER), code = get(LS_CODE);
-    ids.forEach(paint);
-    if (!player || !code || !ids.length) return;
-    for (var b = 0; b < ids.length; b += 25) {
-      call('mine', { ids: ids.slice(b, b + 25).join(','), player: player, code: code }, function(err, j) {
-        if (err) return;
-        for (var k in j.mine) { mine[k] = j.mine[k]; paint(k); }
-      });
-    }
+    })(ids.slice(b, b + 25).join(','));
   }
 
   function send(id, status, box) {
@@ -135,15 +131,15 @@ var Attendance = (function() {
     var next = prev === status ? 'clear' : status;   // tap the lit button again to undo
     mine[id] = next === 'clear' ? '' : next;
     paint(id);
-    if (box) box.classList.add('is-busy');
+    box.classList.add('is-busy');
     call('rsvp', {
-      code: get(LS_CODE), player: get(LS_PLAYER), status: next,
-      eventId: id, event: (e.key === 'match' ? 'Match ' : '') + e.title, date: isoDate(e.d)
+      code: get(LS_CODE), status: next, eventId: id,
+      event: (e.key === 'match' ? 'Match ' : '') + e.title, date: isoDate(e.d)
     }, function(err, j) {
-      if (box) box.classList.remove('is-busy');
+      box.classList.remove('is-busy');
       if (err) {
         mine[id] = prev; paint(id);
-        if (/team code/i.test(err.message)) { set(LS_CODE, ''); openDialog(id, status, 'That team code didn’t work — check with your coach.'); }
+        if (/code/i.test(err.message)) signOut('Your RSVP code no longer works — ask a coach for a new one.');
         else alert(err.message);
         return;
       }
@@ -152,97 +148,96 @@ var Attendance = (function() {
     });
   }
 
-  // ── "Who's answering?" dialog ────────────────────────────────────────────
+  // ── Sign-in ──────────────────────────────────────────────────────────────
+  function signIn(code, done) {
+    call('verify', { code: code }, function(err, j) {
+      if (err) return done(err.message);
+      if (!j.player) return done('That code didn’t work. Check with a coach.');
+      set(LS_CODE, code); set(LS_PLAYER, j.player);
+      counts = {}; mine = {}; asked = {};
+      paintWho(); rerender();
+      done(null);
+    });
+  }
+
   function buildDialog() {
     if (dialog) return dialog;
     dialog = document.createElement('dialog');
     dialog.className = 'att-dialog';
     dialog.innerHTML =
       '<form method="dialog" class="att-form">' +
-      '<h2 class="att-h">Who’s answering?</h2>' +
-      '<p class="att-p">Pick the player’s name. This phone or computer will remember it, so next time it’s one tap.</p>' +
-      '<label class="att-label" for="att-player">Player name</label>' +
-      '<input class="att-input" id="att-player" list="att-roster" autocomplete="off" required maxlength="60" placeholder="First and last name">' +
-      '<datalist id="att-roster"></datalist>' +
-      '<label class="att-label" for="att-code">Team code</label>' +
-      '<input class="att-input" id="att-code" autocomplete="off" autocapitalize="off" spellcheck="false" required maxlength="60" placeholder="From the team group chat">' +
+      '<h2 class="att-h">Player sign-in</h2>' +
+      '<p class="att-p">Enter the personal RSVP code your coach gave you. This phone will remember it.</p>' +
+      '<label class="att-label" for="att-code">Your code</label>' +
+      '<input class="att-input" id="att-code" autocomplete="off" autocapitalize="characters" spellcheck="false" required maxlength="40">' +
       '<p class="att-err" id="att-err" role="alert"></p>' +
-      '<div class="att-row"><button type="button" class="ev-btn" value="cancel" id="att-cancel">Cancel</button>' +
-      '<button type="submit" class="ev-btn att-primary" id="att-save">Save</button></div>' +
+      '<div class="att-row"><button type="button" class="ev-btn" id="att-cancel">Cancel</button>' +
+      '<button type="submit" class="ev-btn att-primary" id="att-save">Sign in</button></div>' +
       '</form>';
     document.body.appendChild(dialog);
     dialog.querySelector('#att-cancel').addEventListener('click', function() { dialog.close(); });
     dialog.querySelector('form').addEventListener('submit', function(ev) {
       ev.preventDefault();
-      var name = dialog.querySelector('#att-player').value.replace(/\s+/g, ' ').trim();
-      var code = dialog.querySelector('#att-code').value.trim();
-      var err = dialog.querySelector('#att-err');
-      if (!name || !code) { err.textContent = 'Fill in both boxes.'; return; }
-      // Match roster spelling when the name is typed slightly differently
-      for (var i = 0; i < roster.length; i++) if (roster[i].toLowerCase() === name.toLowerCase()) name = roster[i];
-      var btn = dialog.querySelector('#att-save');
-      btn.disabled = true; err.textContent = '';
-      call('verify', { code: code }, function(e2, j) {
+      var code = dialog.querySelector('#att-code').value.trim(), btn = dialog.querySelector('#att-save');
+      if (!code) return;
+      btn.disabled = true; dialog.querySelector('#att-err').textContent = '';
+      signIn(code, function(msg) {
         btn.disabled = false;
-        if (e2) { err.textContent = e2.message; return; }
-        if (!j.team) { err.textContent = 'That team code didn’t work — check with your coach.'; return; }
-        var changed = name !== get(LS_PLAYER);
-        set(LS_PLAYER, name); set(LS_CODE, code);
-        dialog.close();
-        paintWho();
-        if (changed) refreshMine();
-        if (dialog._then) { var t = dialog._then; dialog._then = null; t(); }
+        if (msg) dialog.querySelector('#att-err').textContent = msg;
+        else dialog.close();
       });
     });
     return dialog;
   }
 
-  function openDialog(id, status, msg) {
+  function openDialog() {
     var d = buildDialog();
-    d.querySelector('#att-roster').innerHTML = roster.map(function(n) { return '<option value="' + esc(n) + '">'; }).join('');
-    d.querySelector('#att-player').value = get(LS_PLAYER);
-    d.querySelector('#att-code').value = get(LS_CODE);
-    d.querySelector('#att-err').textContent = msg || '';
-    d._then = id ? function() { send(id, status, null); } : null;
+    d.querySelector('#att-code').value = '';
+    d.querySelector('#att-err').textContent = '';
     if (d.showModal) d.showModal(); else d.setAttribute('open', '');
-    d.querySelector(get(LS_PLAYER) ? '#att-code' : '#att-player').focus();
+    d.querySelector('#att-code').focus();
   }
 
-  /** "Answering as Sam Lee · Change" line above the list. */
-  function paintWho() {
+  /** The line above the list: "Players: sign in to RSVP" or "Signed in as Sam Lee · Sign out". */
+  function paintWho(msg) {
     var el = document.getElementById('att-who');
     if (!el) return;
     if (!enabled()) { el.hidden = true; return; }
-    var p = get(LS_PLAYER);
     el.hidden = false;
-    el.innerHTML = p
-      ? 'Answering as <strong>' + esc(p) + '</strong> · <button type="button" class="att-link" id="att-change">Change</button>'
-      : 'Players: tap <strong>Going</strong>, <strong>Maybe</strong> or <strong>Can’t go</strong> on any event so the coaches know who to expect.';
-    var c = document.getElementById('att-change');
-    if (c) c.addEventListener('click', function() { openDialog(null); });
+    el.innerHTML = signedIn()
+      ? 'RSVPing as <strong>' + esc(get(LS_PLAYER)) + '</strong> · <button type="button" class="att-link" data-att="out">Sign out</button>'
+      : (msg ? '<span class="att-warn">' + esc(msg) + '</span> ' : '') +
+        'Players: <button type="button" class="att-link" data-att="in">sign in to RSVP</button>';
   }
 
-  function initEventsPage() {
+  function initEventsPage(onChange) {
     if (!enabled()) return;
+    rerender = onChange || rerender;
+
+    // Personal link: /events.html?rsvp=CODE — sign in, then drop the code from the address bar
+    var m = /[?&]rsvp=([^&#]+)/.exec(location.search);
+    if (m) {
+      var code = decodeURIComponent(m[1]).trim();
+      try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}
+      if (code && code.toLowerCase() !== get(LS_CODE).toLowerCase()) {
+        signIn(code, function(msg) { if (msg) paintWho(msg); });
+      }
+    }
     paintWho();
-    fetchSheet('Roster', function(err, rows) {
-      if (err || !rows) return;
-      roster = rows.map(function(r) { return (r.Name || '').trim(); }).filter(Boolean)
-        .filter(function(n, i, a) { return a.indexOf(n) === i; }).sort();
-    });
+
     document.addEventListener('click', function(ev) {
+      var a = ev.target.closest('[data-att]');
+      if (a) { a.getAttribute('data-att') === 'in' ? openDialog() : signOut(); return; }
       var b = ev.target.closest('.ev-rsvp-btn');
       if (!b) return;
-      var box = b.closest('.ev-rsvp'), id = box.getAttribute('data-event'), s = b.getAttribute('data-rsvp');
-      if (!get(LS_PLAYER) || !get(LS_CODE)) openDialog(id, s);
-      else send(id, s, box);
+      var box = b.closest('.ev-rsvp');
+      send(box.getAttribute('data-event'), b.getAttribute('data-rsvp'), box);
     });
   }
 
   return {
-    enabled: enabled, eventId: eventId, isoDate: isoDate, call: call,
+    enabled: enabled, eventId: eventId, call: call,
     rsvpHTML: rsvpHTML, hydrate: hydrate, initEventsPage: initEventsPage,
-    coachCode: function(v) { if (arguments.length) set(LS_COACH, v); return get(LS_COACH); },
-    LABELS: LABELS
+    coachCode: function(v) { if (arguments.length) set(LS_COACH, v); return get(LS_COACH); }
   };
 })();

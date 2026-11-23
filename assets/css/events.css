@@ -128,6 +128,7 @@
 .att-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 8px 0 4px; }
 .att-input { font: 16px 'DM Sans', sans-serif; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--white); color: var(--ink); width: 100%; }
 .att-input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.att-warn { color: #991b1b; }
 .att-err { min-height: 18px; font-size: 13px; color: #991b1b; margin-top: 8px; }
 .att-row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
 .att-row .ev-btn { min-height: 38px; padding: 0 16px; }

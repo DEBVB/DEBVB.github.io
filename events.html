@@ -368,7 +368,7 @@ css: events
 
   filter = hashToKey(location.hash);
   renderChips();
-  Attendance.initEventsPage();
+  Attendance.initEventsPage(render);
 
   fetchSheet('Schedule', function(err, rows) {
     matches = (err || !rows) ? [] : rows.map(eventFromMatch).filter(Boolean);
