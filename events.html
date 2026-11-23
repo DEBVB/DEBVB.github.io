@@ -27,6 +27,8 @@ css: events
     </div>
   </div>
 
+  <p class="att-who" id="att-who" hidden></p>
+
   <!-- List view -->
   <div id="ev-list-view">
     <div id="ev-list"><p class="ev-status">Loading events…</p></div>
@@ -78,6 +80,7 @@ css: events
 </main>
 
 <script src="/js/sheets.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/js/attendance.js?v={{ site.time | date: '%s' }}"></script>
 <script>
 (function() {
   var $ = function(id) { return document.getElementById(id); };
@@ -219,12 +222,13 @@ css: events
 
   function cardHTML(e, past) {
     var meta = [timeText(e), e.place].filter(Boolean).map(esc).join(' &middot; ');
-    var actions = '';
+    var actions = '', rsvp = '';
     if (!past) {
       if (e.address) {
         actions += '<a class="ev-btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/dir/?api=1&destination=' +
           encodeURIComponent(e.address) + '">' + PIN + 'Directions</a>';
       }
+      rsvp = Attendance.rsvpHTML(e);
       actions += '<span class="ev-add"><span class="ev-add-label">Add to calendar</span>' +
         '<a class="ev-btn" target="_blank" rel="noopener noreferrer" href="' + esc(googleURL(e)) + '">Google</a>' +
         '<button type="button" class="ev-btn ev-ics" data-i="' + e.i + '">Apple / Outlook</button></span>';
@@ -239,6 +243,7 @@ css: events
       '<h3 class="ev-title">' + esc(e.title) + '</h3>' +
       '<div class="ev-meta">' + meta + '</div>' +
       (e.notes ? '<p class="ev-notes">' + esc(e.notes) + '</p>' : '') +
+      rsvp +
       (actions ? '<div class="ev-actions">' + actions + '</div>' : '') +
       '</div></article>';
   }
@@ -358,10 +363,12 @@ css: events
     var n = eventsUpcoming(all).length;
     if (n) $('ev-count').textContent = n + ' upcoming event' + (n === 1 ? '' : 's');
     if (view === 'list') renderList(); else renderMonth();
+    Attendance.hydrate();
   }
 
   filter = hashToKey(location.hash);
   renderChips();
+  Attendance.initEventsPage();
 
   fetchSheet('Schedule', function(err, rows) {
     matches = (err || !rows) ? [] : rows.map(eventFromMatch).filter(Boolean);

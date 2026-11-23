@@ -1,0 +1,45 @@
+/* ── Coach attendance (attendance.html) — builds on events.css ──── */
+.at-card[hidden], #at-app[hidden], #at-event-view[hidden], #at-report-view[hidden] { display: none; }
+.at-card { background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 16px 18px; margin: 14px 0; display: flex; flex-direction: column; }
+.at-login { max-width: 420px; }
+.at-inline { display: flex; flex-flow: row wrap; gap: 8px; align-items: center; }
+.at-inline .att-input { flex: 1 1 200px; width: auto; }
+.at-inline .ev-btn { min-height: 42px; padding: 0 16px; }
+.at-team { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.at-team:empty { display: none; }
+.att-link { font: inherit; font-size: 13px; color: var(--navy); background: none; border: none; padding: 0; text-decoration: underline; cursor: pointer; align-self: center; }
+
+.at-sum { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px; }
+.at-pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 999px; background: var(--soft); color: #4a453d; }
+.at-pill.at-going { background: #dcfce7; color: #166534; }
+.at-pill.at-maybe { background: #fdf3d0; color: #8a6500; }
+.at-pill.at-out   { background: #fee2e2; color: #991b1b; }
+.at-pill.at-here  { background: var(--navy); color: var(--white); }
+.at-bulk { margin-bottom: 10px; }
+.at-bulk .ev-btn { min-height: 36px; }
+
+.at-rows { list-style: none; margin: 0; padding: 0; background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.at-r { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; padding: 12px 16px; }
+.at-r + .at-r { border-top: 1px solid var(--rule); }
+.at-who { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.at-name { font-weight: 600; font-size: 15px; color: var(--ink); }
+.at-teamtag { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.at-rsvp { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 7px; border-radius: 3px; background: var(--soft); color: var(--muted); }
+.at-rsvp.at-going { background: #dcfce7; color: #166534; }
+.at-rsvp.at-maybe { background: #fdf3d0; color: #8a6500; }
+.at-rsvp.at-out   { background: #fee2e2; color: #991b1b; }
+.at-note { width: 100%; font-size: 13px; color: var(--muted); font-style: italic; }
+.at-checks { display: inline-flex; border: 1px solid var(--rule); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+.at-check { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; min-height: 40px; padding: 0 12px; background: var(--white); color: var(--ink); border: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.at-check + .at-check { border-left: 1px solid var(--rule); }
+.at-check:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.at-c-present.is-on { background: #166534; color: #fff; }
+.at-c-late.is-on    { background: #8a6500; color: #fff; }
+.at-c-absent.is-on  { background: #991b1b; color: #fff; }
+
+.at-help { font-size: 13.5px; line-height: 1.6; color: #4a453d; margin: 14px 0; }
+.at-table-wrap { overflow-x: auto; background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); }
+.at-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.at-table th { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.at-table td { padding: 10px 14px; border-top: 1px solid var(--soft); }
+.at-table td:not(:first-child), .at-table th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }

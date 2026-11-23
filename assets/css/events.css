@@ -105,3 +105,31 @@
   .ev-dots { display: flex; }
   .ev-cal-dow span { letter-spacing: 0.08em; }
 }
+
+/* ── Attendance / RSVP (js/attendance.js) ───────────────────────── */
+.att-who { margin: 14px 0 0; font-size: 13.5px; color: #4a453d; line-height: 1.5; }
+.att-link { font: inherit; color: var(--navy); background: none; border: none; padding: 0; text-decoration: underline; cursor: pointer; }
+.ev-rsvp { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--rule); }
+.ev-rsvp.is-busy { opacity: 0.6; }
+.ev-rsvp-btns { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.ev-rsvp-btn { min-height: 34px; padding: 0 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); background: var(--white); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.ev-rsvp-btn:hover { border-color: var(--navy); }
+.ev-rsvp-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ev-rsvp-going.is-on { background: #166534; border-color: #166534; color: #fff; }
+.ev-rsvp-maybe.is-on { background: #8a6500; border-color: #8a6500; color: #fff; }
+.ev-rsvp-out.is-on   { background: #991b1b; border-color: #991b1b; color: #fff; }
+.ev-rsvp-count { font-size: 12.5px; color: var(--muted); }
+
+.att-dialog { border: none; border-radius: var(--radius-md); box-shadow: var(--shadow-feat); padding: 0; width: min(420px, calc(100vw - 32px)); background: var(--white); color: var(--ink); }
+.att-dialog::backdrop { background: rgba(13,15,20,0.45); }
+.att-form { padding: 22px 22px 18px; display: flex; flex-direction: column; }
+.att-h { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 24px; color: var(--navy); }
+.att-p { font-size: 13.5px; line-height: 1.55; color: #4a453d; margin: 6px 0 14px; }
+.att-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 8px 0 4px; }
+.att-input { font: 16px 'DM Sans', sans-serif; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--white); color: var(--ink); width: 100%; }
+.att-input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.att-err { min-height: 18px; font-size: 13px; color: #991b1b; margin-top: 8px; }
+.att-row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.att-row .ev-btn { min-height: 38px; padding: 0 16px; }
+.ev-btn.att-primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.ev-btn.att-primary:disabled { opacity: 0.6; cursor: wait; }
