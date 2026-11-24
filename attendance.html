@@ -1,0 +1,181 @@
+---
+layout: default
+title: "Coach RSVPs — Downingtown East Boys Volleyball"
+description: "Coach-only RSVP list for Downingtown East boys volleyball."
+robots: "noindex, nofollow"
+css: "events attendance"
+---
+
+<main id="main">
+<div class="page-header">
+  <div class="page-header-kicker">Coaches only</div>
+  <h1>Who's <em>Coming</em></h1>
+  <div class="page-header-sub">Player RSVPs from the Events page</div>
+</div>
+
+<div class="page-wrap">
+
+  <p class="ev-status ev-empty" id="at-off" hidden>RSVPs aren't switched on yet. Follow the steps in
+    <code>ATTENDANCE-SETUP.md</code> in the website repository, then paste the web-app link into
+    <code>/js/attendance.js</code>.</p>
+
+  <!-- Sign in -->
+  <form class="at-card at-login" id="at-login" hidden>
+    <label class="att-label" for="at-code">Coach code</label>
+    <div class="at-inline">
+      <input class="att-input" id="at-code" type="password" autocomplete="current-password" required>
+      <button type="submit" class="ev-btn att-primary">Open</button>
+    </div>
+    <p class="att-err" id="at-login-err" role="alert"></p>
+  </form>
+
+  <div id="at-app" hidden>
+    <div class="at-card">
+      <label class="att-label" for="at-event">Event</label>
+      <select class="att-input" id="at-event"></select>
+      <div class="at-team" role="group" aria-label="Show team" id="at-team"></div>
+    </div>
+    <div class="at-sum" id="at-sum" aria-live="polite"></div>
+    <div id="at-list"><p class="ev-status">Loading…</p></div>
+    <p class="at-help">Players are listed from the <em>Players</em> tab of your private RSVP sheet.
+      <button type="button" class="att-link" id="at-signout">Sign out on this device</button></p>
+  </div>
+</div>
+</main>
+
+<script src="/js/sheets.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/js/attendance.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+(function() {
+  var $ = function(id) { return document.getElementById(id); };
+  if (!Attendance.enabled()) { $('at-off').hidden = false; return; }
+
+  var code = Attendance.coachCode();
+  var events = [], matches = null, extras = null;
+  var current = null;   // selected event
+  var answers = null;   // [{player, team, status, note}] for the selected event
+  var team = 'all';
+
+  // ── Sign in ──────────────────────────────────────────────────────────────
+  function showLogin(msg) {
+    $('at-app').hidden = true; $('at-login').hidden = false;
+    $('at-login-err').textContent = msg || '';
+    $('at-code').focus();
+  }
+  $('at-login').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var c = $('at-code').value.trim();
+    Attendance.call('verify', { code: c }, function(err, j) {
+      if (err) { $('at-login-err').textContent = err.message; return; }
+      if (!j.coach) { $('at-login-err').textContent = 'That isn’t the coach code.'; return; }
+      code = c; Attendance.coachCode(c); start();
+    });
+  });
+  $('at-signout').addEventListener('click', function() { Attendance.coachCode(''); code = ''; showLogin(); });
+
+  function start() {
+    $('at-login').hidden = true; $('at-app').hidden = false;
+    if (current) loadEvent();
+  }
+
+  // ── Events from the public sheet ─────────────────────────────────────────
+  function fmtEvent(e) {
+    return _DOWS[e.d.getDay()] + ' ' + _MONS[e.d.getMonth()] + ' ' + e.d.getDate() + ' — ' +
+      (e.key === 'match' ? 'Match ' : '') + e.title + (eventTimeText(e) ? ' · ' + eventTimeText(e) : '');
+  }
+
+  function buildEvents() {
+    if (matches === null || extras === null) return;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var lo = today.getTime() - 30 * 86400000, hi = today.getTime() + 120 * 86400000;
+    events = matches.concat(extras).filter(function(e) {
+      return e.rsvp !== false && !/cancel/i.test(e.title) && e.d.getTime() >= lo && e.d.getTime() <= hi;
+    }).sort(function(a, b) { return eventSortValue(a) - eventSortValue(b); });
+    if (!events.length) { $('at-list').innerHTML = '<p class="ev-status ev-empty">No events in the last month or the next four.</p>'; return; }
+
+    var keep = current && Attendance.eventId(current), pick = -1;
+    $('at-event').innerHTML = events.map(function(e, i) {
+      if (Attendance.eventId(e) === keep) pick = i;
+      return '<option value="' + i + '">' + esc(fmtEvent(e)) + '</option>';
+    }).join('');
+    if (pick < 0) {   // default: today's event, else the next one, else the latest
+      for (var i = 0; i < events.length; i++) if (events[i].d >= today) { pick = i; break; }
+      if (pick < 0) pick = events.length - 1;
+    }
+    $('at-event').value = pick;
+    current = events[pick];
+    if (code && !$('at-app').hidden) loadEvent();
+  }
+
+  $('at-event').addEventListener('change', function() { current = events[+this.value]; loadEvent(); });
+
+  fetchSheet('Schedule', function(err, rows) { matches = (err || !rows) ? [] : rows.map(eventFromMatch).filter(Boolean); buildEvents(); });
+  fetchSheet('Events', function(err, rows) {
+    if (!err && rows && !eventsTabValid(rows)) rows = [];
+    extras = (err || !rows) ? [] : rows.map(eventFromRow).filter(Boolean); buildEvents();
+  });
+
+  $('at-team').addEventListener('click', function(e) {
+    var b = e.target.closest('[data-team]'); if (!b) return;
+    team = b.getAttribute('data-team');
+    renderList();
+  });
+
+  // ── One event ────────────────────────────────────────────────────────────
+  function loadEvent() {
+    if (!current) return;
+    var id = Attendance.eventId(current);
+    answers = null;
+    $('at-sum').innerHTML = '';
+    $('at-list').innerHTML = '<p class="ev-status">Loading…</p>';
+    Attendance.call('event', { code: code, eventId: id }, function(err, j) {
+      if (!current || Attendance.eventId(current) !== id) return;   // picked another event meanwhile
+      if (err) {
+        if (/coach code/i.test(err.message)) { Attendance.coachCode(''); showLogin(err.message); }
+        else $('at-list').innerHTML = '<p class="ev-status ev-empty">' + esc(err.message) + '</p>';
+        return;
+      }
+      answers = j.players;
+      renderList();
+    });
+  }
+
+  var GROUPS = [['going', 'Going'], ['maybe', 'Maybe'], ['out', "Can't go"], ['', 'No reply yet']];
+
+  function renderList() {
+    if (!answers) return;
+    var teams = answers.map(function(p) { return p.team; }).filter(function(t, i, a) { return t && a.indexOf(t) === i; });
+    if (team !== 'all' && teams.indexOf(team) === -1) team = 'all';
+    $('at-team').innerHTML = teams.length > 1 ? ['all'].concat(teams).map(function(t) {
+      return '<button type="button" class="ev-chip ev-k-all' + (t === team ? ' is-on' : '') + '" aria-pressed="' + (t === team) +
+        '" data-team="' + esc(t) + '">' + (t === 'all' ? 'Everyone' : esc(t)) + '</button>';
+    }).join('') : '';
+
+    var list = answers.filter(function(p) { return team === 'all' || p.team === team; });
+    if (!list.length) {
+      $('at-sum').innerHTML = '';
+      $('at-list').innerHTML = '<p class="ev-status ev-empty">No players yet — add them to the Players tab of your private RSVP sheet.</p>';
+      return;
+    }
+    var by = { going: [], maybe: [], out: [], '': [] };
+    list.forEach(function(p) { (by[p.status] || by['']).push(p); });
+
+    $('at-sum').innerHTML = GROUPS.map(function(g) {
+      return '<span class="at-pill at-' + (g[0] || 'none') + '">' + by[g[0]].length + ' ' + g[1].toLowerCase() + '</span>';
+    }).join('');
+
+    $('at-list').innerHTML = GROUPS.map(function(g) {
+      var ps = by[g[0]].sort(function(a, b) { return a.player.localeCompare(b.player); });
+      if (!ps.length) return '';
+      return '<h2 class="ev-month at-group at-' + (g[0] || 'none') + '">' + g[1] + ' · ' + ps.length + '</h2>' +
+        '<ul class="at-rows">' + ps.map(function(p) {
+          return '<li class="at-r"><span class="at-name">' + esc(p.player) + '</span>' +
+            (p.team && teams.length > 1 ? '<span class="at-teamtag">' + esc(p.team) + '</span>' : '') +
+            (p.note ? '<span class="at-note">' + esc(p.note) + '</span>' : '') + '</li>';
+        }).join('') + '</ul>';
+    }).join('');
+  }
+
+  if (code) start(); else showLogin();
+})();
+</script>

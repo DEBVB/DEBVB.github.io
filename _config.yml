@@ -2,3 +2,5 @@ exclude:
   - README.md
   - SEO-NOTES.md
   - hero-preview.html
+  - ATTENDANCE-SETUP.md
+  - apps-script
